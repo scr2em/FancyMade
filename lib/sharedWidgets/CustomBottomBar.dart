@@ -11,6 +11,18 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      if(index == 0){
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+      }else if (index == 1){
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/second', (Route<dynamic> route) => false);
+      }else{
+
+      }
+
+      // Navigator.pushNamed(context, '/second');
+
     });
   }
 

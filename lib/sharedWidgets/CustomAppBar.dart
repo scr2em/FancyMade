@@ -16,7 +16,9 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    return AppBar(title: customSearchInput(context), actions: <Widget>[
+    return AppBar(title: customSearchInput(context),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
       Ink(
         decoration: ShapeDecoration(
           color: Theme.of(context).accentColor,
