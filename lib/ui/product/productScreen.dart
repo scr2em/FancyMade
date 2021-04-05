@@ -37,7 +37,7 @@ class ProductScreen extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -60,7 +60,7 @@ class ProductScreen extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -89,7 +89,7 @@ class ProductScreen extends StatelessWidget {
             )
           ])),
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10),
         child: Text(
           "category / shoes ",
           style: TextStyle(
@@ -98,7 +98,7 @@ class ProductScreen extends StatelessWidget {
       ),
       Stack(children: [
         Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(10),
           child: Text(
             'Adidas Men’s Socce r Tiro 17 Training Pants',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -129,10 +129,37 @@ class ProductScreen extends StatelessWidget {
         )
       ]),
       Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10),
           child: Text(
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-              style: TextStyle(fontSize: 14, color: HexColor('5F5F5F'))))
+              style: TextStyle(fontSize: 14, color: HexColor('5F5F5F')))),
+      Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+          border: Border.all(
+            width: .02,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            Text(
+              'Details',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            Text('Availability: in stock')
+          ],
+        ),
+      )
     ])));
   }
 }
