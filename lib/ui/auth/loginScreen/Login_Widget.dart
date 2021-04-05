@@ -18,11 +18,34 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String email;
-  String password;
+  String email = "";
+  String password = "";
+  bool _obscureText = true;
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
-  onPressed() {}
+  onEmailChange(value) {
+    setState(() {
+      email = value.trim();
+    });
+  }
+
+  onPasswordChange(value) {
+    setState(() {
+      password = value;
+    });
+  }
+
+  onPressed() async {
+    print({email, password});
+    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+    if (result == null) {
+      print('error signing in');
+    } else {
+      print('signedin');
+      print(result);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +63,15 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text("Log into your account",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
             ),
-            CustomTextFormField(hintText: "Email"),
-            CustomTextFormField(hintText: "Password", obscureText: true),
+            CustomTextFormField(
+              hintText: "Email",
+              onChanged: onEmailChange,
+            ),
+            CustomTextFormField(
+              hintText: "Password",
+              obscureText: _obscureText,
+              onChanged: onPasswordChange,
+            ),
             Row(
               children: [
                 Padding(
@@ -54,17 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            ElevatedButton(
-                child: Text('signin'),
-                onPressed: () async {
-                  dynamic result = await _auth.signInAnonymously();
-                  if (result == null) {
-                    print('error signing in');
-                  } else {
-                    print('signedin');
-                    print(result);
-                  }
-                })
+            ElevatedButton(child: Text('signin'), onPressed: onPressed)
           ],
         ))),
         bottomNavigationBar: CustomBottomBar());

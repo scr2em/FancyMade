@@ -43,7 +43,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
           label: 'Wish list',
         ),
         BottomNavigationBarItem(
-          icon: user == null ? Icon( Icons.login):Icon(Icons.account_circle_rounded),
+          icon: user == null
+              ? Icon(Icons.login)
+              : Icon(Icons.account_circle_rounded),
           label: user == null ? "login" : "Profile",
         ),
       ],
