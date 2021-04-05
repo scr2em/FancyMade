@@ -1,3 +1,6 @@
 {
-    "helloWorld": "Hola Mundo!"
+    "helloWorld": "Hola Mundo!",
+    "checkoutSuccess":"Success",
+    "thank":"Thank you!",
+    "placedOrder":"Your order has been placed"
 }

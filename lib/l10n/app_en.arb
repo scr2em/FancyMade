@@ -2,5 +2,17 @@
     "helloWorld": "Hello World!",
     "@helloWorld": {
       "description": "The conventional newborn programmer greeting"
+    },
+    "checkoutSuccess":"Success",
+    "@checkoutSuccess":{
+      "description": "The conventional newborn programmer greeting"
+    },
+    "thank":"Thank you!",
+    "@thank":{
+      "description": "The conventional newborn programmer greeting"
+    },
+    "placedOrder":"Your order has been placed",
+    "@placedOrder":{
+      "description": "The conventional newborn programmer greeting"
     }
 }
