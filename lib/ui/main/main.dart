@@ -16,6 +16,8 @@ import '../auth/loginScreen/Login_Widget.dart';
 import '../auth/signupScreen/Signup_Widget.dart';
 import "../homeScreen/Home_Widget.dart";
 import "../auth/LoginProfileWrapper.dart";
+import "../checkout/checkoutSuccessScreen.dart";
+import "../productScreen/productScreen.dart";
 
 //Main Provider
 import 'main_provider.dart';

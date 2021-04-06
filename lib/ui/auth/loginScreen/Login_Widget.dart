@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,9 @@ import '../../../sharedWidgets/CustomTextFormField.dart';
 import "../../../services/auth_service.dart";
 import "../../../models/CustomUser.dart";
 
+import "../../../utils/validators.dart";
+import "../../../sharedWidgets/Loading.dart";
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -21,6 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String email = "";
   String password = "";
   bool _obscureText = true;
+  String errorMessage = "";
+  bool loading = false;
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -37,57 +43,84 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   onPressed() async {
-    print({email, password});
-    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-    if (result == null) {
-      print('error signing in');
-    } else {
-      print('signedin');
-      print(result);
+    if (_formKey.currentState.validate()) {
+      setState(() {
+        loading = true;
+      });
+      dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+      if (result == null) {
+        setState(() {
+          errorMessage = "Something went wrong, please try again.";
+        });
+      } else {
+        setState(() {
+          errorMessage = "";
+        });
+        print(result);
+      }
+      setState(() {
+        loading = false;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: CustomAppBar(),
-        body: Center(
-            child: Container(
-                child: Column(
-          children: [
-            SizedBox(
-              height: 80,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Log into your account",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-            ),
-            CustomTextFormField(
-              hintText: "Email",
-              onChanged: onEmailChange,
-            ),
-            CustomTextFormField(
-              hintText: "Password",
-              obscureText: _obscureText,
-              onChanged: onPasswordChange,
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 27),
-                  child: Text(
-                    "Forgot your password ?",
-                    style: TextStyle(decoration: TextDecoration.underline),
+    return loading
+        ? Loading()
+        : Scaffold(
+            appBar: CustomAppBar(),
+            body: Container(
+                child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Log into your account",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 22)),
                   ),
-                ),
-              ],
-            ),
-            ElevatedButton(child: Text('signin'), onPressed: onPressed)
-          ],
-        ))),
-        bottomNavigationBar: CustomBottomBar());
+                  CustomTextFormField(
+                    validator: emailValidator,
+                    hintText: "Email",
+                    onChanged: onEmailChange,
+                  ),
+                  CustomTextFormField(
+                    validator: passwordValidator,
+                    hintText: "Password",
+                    obscureText: _obscureText,
+                    onChanged: onPasswordChange,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 35),
+                        child: Text(
+                          errorMessage,
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 35),
+                        child: Text(
+                          "Forgot your password ?",
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
+                        ),
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(child: Text('signin'), onPressed: onPressed)
+                ],
+              ),
+            )),
+            bottomNavigationBar: CustomBottomBar());
   }
 }
 

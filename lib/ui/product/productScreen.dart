@@ -1,6 +1,5 @@
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_color/flutter_color.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
 
@@ -71,7 +70,8 @@ class ProductScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10),
             child: Text(
-              'Adidas Men’s Socce r Tiro 17 Training Pants', //////need responsive
+              'Adidas Men’s Socce r Tiro 17 Training Pants',
+              //////need responsive
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
@@ -102,8 +102,12 @@ class ProductScreen extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.all(10),
             child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-                style: TextStyle(fontSize: 14, color: HexColor('5F5F5F')))),
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+              style: TextStyle(
+                fontSize: 14,
+                color: Color(0xff5F5F5F),
+              ),
+            )),
         Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
