@@ -18,7 +18,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
       } else if (index == 1) {
         Navigator.of(context).pushNamedAndRemoveUntil(
-            '/signup', (Route<dynamic> route) => false);
+            '/product', (Route<dynamic> route) => false);
       } else if (index == 2) {
         Navigator.of(context).pushNamedAndRemoveUntil(
             '/loginProfileWrapper', (Route<dynamic> route) => false);
