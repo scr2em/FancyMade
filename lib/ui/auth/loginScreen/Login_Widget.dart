@@ -100,7 +100,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 8.0, horizontal: 35),
-                        child: Text(errorMessage),
+                        child: Text(
+                          errorMessage,
+                          style: TextStyle(color: Colors.red),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
