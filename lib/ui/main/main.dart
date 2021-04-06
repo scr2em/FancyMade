@@ -1,3 +1,4 @@
+import 'package:finalproject/ui/auth/profileScreen/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
 import 'package:finalproject/ui/product/productScreen.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
             '/': (context) => HomeScreen(),
             '/signup': (context) => SignupScreen(),
             '/loginProfileWrapper': (context) => LoginProfileWrapper(),
+            '/profile': (context) => Profile()
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         ));

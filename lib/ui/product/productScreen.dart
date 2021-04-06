@@ -186,4 +186,4 @@ class ProductScreen extends StatelessWidget {
 // 2_right text postion
 // 3_color
 // 4_height og input text
-// bottomNavigationBar
+// 5_bottomNavigationBar
