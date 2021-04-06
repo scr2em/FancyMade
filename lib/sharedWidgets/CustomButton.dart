@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '404_pageNotFound.dart';
+import '../ui/404/404_pageNotFound.dart';
 
 class Custombuttons extends StatefulWidget {
   // Custombuttons({Key:key}):

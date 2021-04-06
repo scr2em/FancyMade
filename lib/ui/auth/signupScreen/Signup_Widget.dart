@@ -90,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 35),
                   child: Text(errorMessage),
                 ),
-                ElevatedButton(child: Text('sign up'), onPressed: onPressed),
+                ElevatedButton(child: Text('sign up'), onPressed: onPressed)
               ],
           ),
         ),
