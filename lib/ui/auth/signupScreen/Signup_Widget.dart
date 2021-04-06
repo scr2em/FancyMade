@@ -7,6 +7,9 @@ import '../../../sharedWidgets/CustomAppBar.dart';
 import "../../../sharedWidgets/CustomTextFormField.dart";
 import "../../../services/auth_service.dart";
 
+import "../../../utils/validators.dart";
+import "../../../sharedWidgets/Loading.dart";
+
 class SignupScreen extends StatefulWidget {
   @override
   _SignupScreenState createState() => _SignupScreenState();
@@ -15,12 +18,14 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   String email = "";
   String password = "";
+  String errorMessage = "";
+  bool loading = false;
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   onEmailChange(value) {
     setState(() {
-      email = value;
+      email = value.trim();
     });
   }
 
@@ -31,44 +36,65 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   onPressed() async {
-    dynamic result =
-        await _auth.createUserWithEmailAndPassword(email, password);
-    if (result == null) {
-      print('error signing up');
-    } else {
-      print('signed up successfully');
-      print(result);
+    if (_formKey.currentState.validate()) {
+      setState(() {
+        loading=true;
+      });
+      dynamic result =
+          await _auth.createUserWithEmailAndPassword(email, password);
+      if (result == null) {
+        setState(() {
+          errorMessage = "Something went wrong, please try again.";
+        });
+      } else {
+        print('signed up successfully');
+        print(result);
+      }
+      setState(() {
+        loading=false;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
         appBar: CustomAppBar(),
-        body: Center(
-            child: Container(
-                child: Column(
-          children: [
-            SizedBox(
-              height: 80,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Create a new account",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-            ),
-            CustomTextFormField(
-              hintText: "Email",
-              onChanged: onEmailChange,
-            ),
-            CustomTextFormField(
-              hintText: "Password",
-              obscureText: true,
-              onChanged: onPasswordChange,
-            ),
-            ElevatedButton(child: Text('sign up'), onPressed: onPressed)
-          ],
-        ))),
+        body: Container(
+            child: Center(
+              child: Form(
+          key: _formKey,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Create a new account",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+                ),
+                CustomTextFormField(
+                  validator: emailValidator,
+                  hintText: "Email",
+                  onChanged: onEmailChange,
+                ),
+                CustomTextFormField(
+                  validator: passwordValidator,
+                  hintText: "Password",
+                  obscureText: true,
+                  onChanged: onPasswordChange,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 35),
+                  child: Text(errorMessage),
+                ),
+                ElevatedButton(child: Text('sign up'), onPressed: onPressed)
+              ],
+          ),
+        ),
+            )),
         bottomNavigationBar: CustomBottomBar());
   }
 }

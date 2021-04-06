@@ -7,13 +7,15 @@ class CustomTextFormField extends StatefulWidget {
   Function onChanged = () {};
   Function onSuffixIconPress = () {};
   bool passwordVisible = false;
+  Function validator;
 
   CustomTextFormField(
       {this.hintText = "Placeholder...",
       this.obscureText = false,
       this.width = 400,
       this.onChanged,
-      this.onSuffixIconPress});
+      this.onSuffixIconPress,
+      this.validator});
 
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
@@ -33,6 +35,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       padding: const EdgeInsets.all(8.0),
       width: widget.width,
       child: TextFormField(
+        validator: widget.validator,
         style: TextStyle(color: Theme.of(context).primaryColor),
         obscureText: widget.obscureText,
         decoration: InputDecoration(
