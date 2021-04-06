@@ -38,7 +38,7 @@ class PageNotFound extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 const Text(
-                  'Page not found!',
+                  'Page not found!, please try again',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
