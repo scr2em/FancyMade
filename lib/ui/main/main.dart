@@ -17,7 +17,6 @@ import '../auth/signupScreen/Signup_Widget.dart';
 import "../homeScreen/Home_Widget.dart";
 import "../auth/LoginProfileWrapper.dart";
 import "../checkout/checkoutSuccessScreen.dart";
-import "../productScreen/productScreen.dart";
 
 //Main Provider
 import 'main_provider.dart';
@@ -54,7 +53,7 @@ class MyApp extends StatelessWidget {
             '/': (context) => HomeScreen(),
             '/signup': (context) => SignupScreen(),
             '/loginProfileWrapper': (context) => LoginProfileWrapper(),
-            '/profile': (context) => Profile()
+            '/product': (context) => ProductScreen()
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         ));

@@ -75,7 +75,13 @@ class Profile extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
-                      InkWell(child: new Text('Edit'), onTap: () => {}),
+                      InkWell(
+                          child: new Text(
+                            'Edit',
+                            style:
+                                TextStyle(color: Theme.of(context).accentColor),
+                          ),
+                          onTap: () => {}),
                     ],
                   ),
                 ),
@@ -122,7 +128,13 @@ class Profile extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
-                      InkWell(child: new Text('Edit'), onTap: () => {}),
+                      InkWell(
+                          child: new Text(
+                            'Edit',
+                            style:
+                                TextStyle(color: Theme.of(context).accentColor),
+                          ),
+                          onTap: () => {}),
                     ],
                   ),
                 ),
