@@ -8,6 +8,8 @@ class CustomTextFormField extends StatefulWidget {
   Function onSuffixIconPress = () {};
   bool passwordVisible = false;
   Function validator;
+  int maxLines;
+
 
   CustomTextFormField(
       {this.hintText = "Placeholder...",
@@ -15,7 +17,8 @@ class CustomTextFormField extends StatefulWidget {
       this.width = 400,
       this.onChanged,
       this.onSuffixIconPress,
-      this.validator});
+      this.validator,
+      this.maxLines = 1});
 
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
@@ -32,13 +35,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8.0),
       width: widget.width,
       child: TextFormField(
+        maxLines: widget.maxLines,
         validator: widget.validator,
         style: TextStyle(color: Theme.of(context).primaryColor),
         obscureText: widget.obscureText,
         decoration: InputDecoration(
+
           suffixIcon: widget.obscureText
               ? IconButton(
                   icon: Icon(Icons.visibility),
@@ -50,9 +54,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       onPressed: onShowPassword,
                     )
                   : null,
-          hintText: widget.hintText,
+          labelText: widget.hintText,
           fillColor: Theme.of(context).backgroundColor,
           filled: true,
+
           contentPadding:
               EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           border: OutlineInputBorder(

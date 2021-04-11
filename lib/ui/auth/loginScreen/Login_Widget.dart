@@ -72,58 +72,62 @@ class _LoginScreenState extends State<LoginScreen> {
         : Scaffold(
             appBar: CustomAppBar(),
             body: Container(
-                child: Form(
+                padding: const EdgeInsets.all(10.0),
+
+                child: ListView(
+                  children: [Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Log into your account",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 22)),
-                  ),
-                  CustomTextFormField(
-                    validator: emailValidator,
-                    hintText: "Email",
-                    onChanged: onEmailChange,
-                  ),
-                  CustomTextFormField(
-                    validator: passwordValidator,
-                    hintText: "Password",
-                    obscureText: _obscureText,
-                    onChanged: onPasswordChange,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 35),
-                        child: Text(
-                          errorMessage,
-                          style: TextStyle(color: Colors.red),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Log into your account",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22)),
+                    ),
+                    CustomTextFormField(
+                      validator: emailValidator,
+                      hintText: "Email",
+                      onChanged: onEmailChange,
+                    ),
+                    CustomTextFormField(
+                      validator: passwordValidator,
+                      hintText: "Password",
+                      obscureText: _obscureText,
+                      onChanged: onPasswordChange,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 35),
+                          child: Text(
+                            errorMessage,
+                            style: TextStyle(color: Colors.red),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 35),
-                        child: Text(
-                          "Forgot your password ?",
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 35),
+                          child: Text(
+                            "Forgot your password ?",
+                            style:
+                                TextStyle(decoration: TextDecoration.underline),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  ElevatedButton(child: Text('signin'), onPressed: onPressed),
-                  CustomButton(
-                    primary: Theme.of(context).accentColor,
-                  )
-                ],
+                      ],
+                    ),
+                    ElevatedButton(child: Text('signin'), onPressed: onPressed),
+                    CustomButton(
+                      primary: Theme.of(context).accentColor,
+                    )
+                  ],
               ),
-            )),
+            ),]
+                )),
             bottomNavigationBar: CustomBottomBar());
   }
 }

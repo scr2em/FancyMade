@@ -66,45 +66,47 @@ class _SignupScreenState extends State<SignupScreen> {
             appBar: CustomAppBar(),
             body: Container(
                 child: Center(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Create a new account",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 22)),
-                    ),
-                    CustomTextFormField(
-                      validator: emailValidator,
-                      hintText: "Email",
-                      onChanged: onEmailChange,
-                    ),
-                    CustomTextFormField(
-                      validator: passwordValidator,
-                      hintText: "Password",
-                      obscureText: true,
-                      onChanged: onPasswordChange,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 35),
-                      child: Text(errorMessage),
-                    ),
-                    ElevatedButton(
-                        child: Text('sign up'), onPressed: onPressed),
-                    CustomButton(
-                      width: 300,
-                      height: 50,
-                      text: 'Continue with google',
-                      primary: Theme.of(context).primaryColor,
-                      icons: Icons.mail,
-                    )
-                  ],
-                ),
+              child: ListView(
+                children: [Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text("Create a new account",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 22)),
+                      ),
+                      CustomTextFormField(
+                        validator: emailValidator,
+                        hintText: "Email",
+                        onChanged: onEmailChange,
+                      ),
+                      CustomTextFormField(
+                        validator: passwordValidator,
+                        hintText: "Password",
+                        obscureText: true,
+                        onChanged: onPasswordChange,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 35),
+                        child: Text(errorMessage),
+                      ),
+                      ElevatedButton(
+                          child: Text('sign up'), onPressed: onPressed),
+                      CustomButton(
+                        width: 300,
+                        height: 50,
+                        text: 'Continue with google',
+                        primary: Theme.of(context).primaryColor,
+                        icons: Icons.mail,
+                      )
+                    ],
+                  ),
+                ),]
               ),
             )),
             bottomNavigationBar: CustomBottomBar());

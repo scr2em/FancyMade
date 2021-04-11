@@ -1,165 +1,87 @@
 import 'dart:io';
 
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
+import 'package:finalproject/ui/store/CreateStoreForm.dart';
 import "package:flutter/material.dart";
 import "../../../sharedWidgets/CustomAppBar.dart";
 import "../../../sharedWidgets/CustomBottomBar.dart";
 import "../../../services/auth_service.dart";
-
+import "../../../sharedWidgets/CustomNavigationButton.dart";
+import "../../../sharedWidgets/CustomButton.dart";
 class Profile extends StatelessWidget {
   final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
-      body: ListView(
-        children: [
-          Center(
-              child: Text(
-            "My Name Name",
-            style:
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 24, height: 2),
-          )),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Text('Hello User ! Nice to meet you '),
-          ),
-          new AlertDialog(
-            title: new Text("Hello User!"),
-            content: Text(
-              "From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.",
-              style: TextStyle(
-                  fontWeight: FontWeight.normal, fontSize: 14, height: 2),
+      appBar: AppBar(
+        title: Text(
+          "Profile",
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(
+            color: Theme.of(context).accentColor
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: ListView(
+          children: [
+            SizedBox(height: 20),
+            CircleAvatar(
+                radius: 55,
+                backgroundImage: NetworkImage('https://via.placeholder.com/110x110')
             ),
-            actions: <Widget>[
-              FlatButton(
-                child: Text(
-                  'Close',
-                  style: TextStyle(color: Theme.of(context).accentColor),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RichText(
+              text: new TextSpan(
+                style: new TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.black,
+
                 ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 3,
-                  blurRadius: 5,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-              border: Border.all(
-                width: .02,
+                children: <TextSpan>[
+                  new TextSpan(text: 'Welcome, '),
+                  new TextSpan(text: 'Mohamed', style: new TextStyle(fontWeight: FontWeight.bold)),
+                ],
               ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Contact Information',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                      InkWell(
-                          child: new Text(
-                            'Edit',
-                            style:
-                                TextStyle(color: Theme.of(context).accentColor),
-                          ),
-                          onTap: () => {}),
-                    ],
-                  ),
-                ),
-                Text(
-                  'username',
-                  style: TextStyle(height: 1.5),
-                ),
-                Text(
-                  'user@user.com',
-                  style: TextStyle(height: 1.5),
-                )
-              ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 3,
-                  blurRadius: 5,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-              border: Border.all(
-                width: .02,
+
+        ),
+            CustomNavigationButton(text:"Info",backgroundColor: Theme.of(context).backgroundColor,),
+            CustomNavigationButton(text:"Settings",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.settings_outlined),
+            CustomNavigationButton(text:"Orders",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.list,),
+            CustomNavigationButton(text:"Store",backgroundColor: Color(0xff283148),prefixIcon: Icons.assistant_photo_outlined,textColor: Colors.white,),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 14.5),
+              child: CustomButton(
+                height: 50,
+                primary: Theme.of(context).accentColor,
+                text: "Create your store now",
+                  onpress: (){
+
+                    Navigator.pushNamed(context, '/CreateStoreForm');
+
+                  }
               ),
-              borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Manage Address',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                      InkWell(
-                          child: new Text(
-                            'Edit',
-                            style:
-                                TextStyle(color: Theme.of(context).accentColor),
-                          ),
-                          onTap: () => {}),
-                    ],
-                  ),
-                ),
-                Text(
-                  'Main Paying Address: ',
-                  style: TextStyle(
-                    height: 1.5,
-                  ),
-                ),
-                Text(
-                  'Address Address',
-                  style: TextStyle(fontWeight: FontWeight.w200),
-                ),
-                Text(
-                  'Main Shipping Address',
-                  style: TextStyle(height: 1.5),
-                ),
-                Text(
-                  'Address Address',
-                  style: TextStyle(fontWeight: FontWeight.w200),
-                ),
-              ],
-            ),
-          )
-        ],
+            SizedBox(height: 20,),
+            Text("Help", style: TextStyle(fontSize:18, fontWeight: FontWeight.bold ),),
+            CustomNavigationButton(text:"FAQ",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.help_outline),
+            CustomNavigationButton(text:"Contact Us",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.call,),
+            SizedBox(height: 40,),
+
+
+
+
+          ],
+        ),
       ),
       bottomNavigationBar: CustomBottomBar(),
 
