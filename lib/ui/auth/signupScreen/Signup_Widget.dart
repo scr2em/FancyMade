@@ -1,3 +1,5 @@
+import 'package:finalproject/sharedWidgets/CustomButton.dart';
+import 'package:finalproject/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -38,7 +40,7 @@ class _SignupScreenState extends State<SignupScreen> {
   onPressed() async {
     if (_formKey.currentState.validate()) {
       setState(() {
-        loading=true;
+        loading = true;
       });
       dynamic result =
           await _auth.createUserWithEmailAndPassword(email, password);
@@ -51,50 +53,60 @@ class _SignupScreenState extends State<SignupScreen> {
         print(result);
       }
       setState(() {
-        loading=false;
+        loading = false;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return loading ? Loading() : Scaffold(
-        appBar: CustomAppBar(),
-        body: Container(
-            child: Center(
+    return loading
+        ? Loading()
+        : Scaffold(
+            appBar: CustomAppBar(),
+            body: Container(
+                child: Center(
               child: Form(
-          key: _formKey,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Create a new account",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Create a new account",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22)),
+                    ),
+                    CustomTextFormField(
+                      validator: emailValidator,
+                      hintText: "Email",
+                      onChanged: onEmailChange,
+                    ),
+                    CustomTextFormField(
+                      validator: passwordValidator,
+                      hintText: "Password",
+                      obscureText: true,
+                      onChanged: onPasswordChange,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 35),
+                      child: Text(errorMessage),
+                    ),
+                    ElevatedButton(
+                        child: Text('sign up'), onPressed: onPressed),
+                    CustomButton(
+                      width: 300,
+                      height: 50,
+                      text: 'Continue with google',
+                      primary: Theme.of(context).primaryColor,
+                      icons: Icons.mail,
+                    )
+                  ],
                 ),
-                CustomTextFormField(
-                  validator: emailValidator,
-                  hintText: "Email",
-                  onChanged: onEmailChange,
-                ),
-                CustomTextFormField(
-                  validator: passwordValidator,
-                  hintText: "Password",
-                  obscureText: true,
-                  onChanged: onPasswordChange,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 35),
-                  child: Text(errorMessage),
-                ),
-                ElevatedButton(child: Text('sign up'), onPressed: onPressed)
-              ],
-          ),
-        ),
+              ),
             )),
-        bottomNavigationBar: CustomBottomBar());
+            bottomNavigationBar: CustomBottomBar());
   }
 }
