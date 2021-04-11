@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "../../sharedWidgets/CustomAppBar.dart";
 import "../../sharedWidgets/CustomBottomBar.dart";
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,11 +11,12 @@ class HomeScreen extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               // Navigate back to first screen when tapped.
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/store-dashboard', (Route<dynamic> route) => false);
             },
-            child: Text('hommee'),
+            child: Text('home'),
           ),
         ),
-        bottomNavigationBar: CustomBottomBar()
-    );
+        bottomNavigationBar: CustomBottomBar());
   }
 }

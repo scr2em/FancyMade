@@ -1,6 +1,8 @@
 import 'package:finalproject/ui/auth/profileScreen/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
 import 'package:finalproject/ui/product/productScreen.dart';
+import 'package:finalproject/ui/store/store-dashboard/dashboard.dart';
+import 'package:finalproject/ui/store/store-dashboard/inventory.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -53,7 +55,9 @@ class MyApp extends StatelessWidget {
             '/': (context) => HomeScreen(),
             '/signup': (context) => SignupScreen(),
             '/loginProfileWrapper': (context) => LoginProfileWrapper(),
-            '/product': (context) => ProductScreen()
+            '/product': (context) => ProductScreen(),
+            '/store-dashboard': (context) => StoreDashboard(),
+            '/store-inventory': (context) => StoreInventory()
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         ));
