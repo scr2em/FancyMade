@@ -11,12 +11,15 @@ class HomeScreen extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ChatPage()),
-              );
+              // Navigate back to first screen when tapped.
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/order', (Route<dynamic> route) => false);
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => ChatPage()),
+              // );
             },
-            child: Text('hommee'),
+            child: Text('home'),
           ),
         ),
         bottomNavigationBar: CustomBottomBar());
