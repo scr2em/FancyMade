@@ -20,6 +20,7 @@ import '../auth/signupScreen/Signup_Widget.dart';
 import "../homeScreen/Home_Widget.dart";
 import "../auth/LoginProfileWrapper.dart";
 import "../checkout/checkoutSuccessScreen.dart";
+import "../store/CreateStoreForm.dart";
 
 //Main Provider
 import 'main_provider.dart';
@@ -57,9 +58,13 @@ class MyApp extends StatelessWidget {
             '/signup': (context) => SignupScreen(),
             '/loginProfileWrapper': (context) => LoginProfileWrapper(),
             '/product': (context) => ProductScreen(),
+<<<<<<< HEAD
             '/store-dashboard': (context) => StoreDashboard(),
             '/store-inventory': (context) => StoreInventory(),
             '/order': (context) => Order(),
+=======
+            '/CreateStoreForm': (context) => CreateStoreForm(),
+>>>>>>> bf61297153e0c05e5a5585ec843de8336c5efad3
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         ));
