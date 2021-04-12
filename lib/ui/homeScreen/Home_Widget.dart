@@ -13,11 +13,11 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               // Navigate back to first screen when tapped.
               Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/store-dashboard', (Route<dynamic> route) => false);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ChatPage()),
-              );
+                  '/order', (Route<dynamic> route) => false);
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => ChatPage()),
+              // );
             },
             child: Text('home'),
           ),

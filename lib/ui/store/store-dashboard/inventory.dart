@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
 import 'package:flutter/material.dart';
@@ -9,98 +11,126 @@ class StoreInventory extends StatelessWidget {
       appBar: AppBar(
         title: Center(child: Text('Inventory')),
       ),
-      body: ListView(
+      body: Column(
         children: [
           Container(
-              // padding: Theme,
-              )
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: (Colors.grey),
+                  blurRadius: 10, // soften the shadow
+                  spreadRadius: 1, //extend the shadow
+                  offset: Offset(1, 1),
+                )
+              ],
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      Text(
+                        "200",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                      Text(
+                        "Total Items",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 20,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      Text(
+                        "110",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                      Text(
+                        "Offers",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 20,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                // if (constraints.maxWidth > 200.0) {
+                //   return new Text('BIG');
+                // } else {
+                //   return new Text('SMALL');
+                // }
+                Expanded(
+                  child: SizedBox(
+                    height: constraints.maxHeight,
+                    child: ListView.builder(
+                        itemCount: 20,
+                        itemBuilder: (context, index) {
+                          return Container(child: Text("data"));
+                        }),
+                  ),
+                );
+              }),
+              //     Expanded(
+              //   child: SizedBox(
+              //     height:constraints.maxWidth ,
+              //     child: ListView.builder(
+              //         itemCount: 20,
+              //         itemBuilder: (context, index) {
+              //           return Text("data");
+              //         }),
+              //   ),
+              // )
+              //  Container(
+              //     padding: EdgeInsets.all(3),
+              //     decoration: BoxDecoration(
+              //         border: Border(
+              //             bottom: BorderSide(color: Colors.black12))),
+              //     child:
+
+              // Row(
+              //   children: [
+              //     ClipRRect(
+              //       borderRadius: BorderRadius.circular(8.0),
+              //       child: Image.network(
+              //         "https://wilderness-production.imgix.net/2018/11/Terra-pants.jpg?auto=compress%2Cformat&fit=scale&h=1020&ixlib=php-3.3.0&w=1536&wpsize=1536x1536",
+              //         height: 150.0,
+              //         width: 100.0,
+              //       ),
+              //     )
+              //   ],
+              // )
+              // );
+              // })
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: DashboardBottomBar(),
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-
-// /// This is the main application widget.
-// class StoreInventory extends StatelessWidget {
-//   const StoreInventory({Key key}) : super(key: key);
-
-//   static const String _title = 'Flutter Code Sample';
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       title: _title,
-//       home: MyStatefulWidget(),
-//     );
-//   }
-// }
-
-// /// This is the stateful widget that the main application instantiates.
-// class MyStatefulWidget extends StatefulWidget {
-//   const MyStatefulWidget({Key key}) : super(key: key);
-
-//   @override
-//   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-// }
-
-// /// This is the private State class that goes with MyStatefulWidget.
-// class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-//   int _selectedIndex = 0;
-//   static const TextStyle optionStyle =
-//       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-//   static const List<Widget> _widgetOptions = <Widget>[
-//     Text(
-//       'Index 0: Home',
-//       style: optionStyle,
-//     ),
-//     Text(
-//       'Index 1: Business',
-//       style: optionStyle,
-//     ),
-//     Text(
-//       'Index 2: School',
-//       style: optionStyle,
-//     ),
-//   ];
-
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('BottomNavigationBar Sample'),
-//       ),
-//       body: Center(
-//         child: _widgetOptions.elementAt(_selectedIndex),
-//       ),
-//       bottomNavigationBar: BottomNavigationBar(
-//         items: const <BottomNavigationBarItem>[
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.home),
-//             label: 'Home',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.business),
-//             label: 'Business',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.school),
-//             label: 'School',
-//           ),
-//         ],
-//         currentIndex: _selectedIndex,
-//         selectedItemColor: Colors.amber[800],
-//         onTap: _onItemTapped,
-//         backgroundColor: Color(0xff283148),
-//       ),
-//     );
-//   }
-// }

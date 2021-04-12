@@ -1,5 +1,6 @@
 import 'package:finalproject/ui/auth/profileScreen/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
+import 'package:finalproject/ui/order/order.dart';
 import 'package:finalproject/ui/product/productScreen.dart';
 import 'package:finalproject/ui/store/store-dashboard/dashboard.dart';
 import 'package:finalproject/ui/store/store-dashboard/inventory.dart';
@@ -57,7 +58,8 @@ class MyApp extends StatelessWidget {
             '/loginProfileWrapper': (context) => LoginProfileWrapper(),
             '/product': (context) => ProductScreen(),
             '/store-dashboard': (context) => StoreDashboard(),
-            '/store-inventory': (context) => StoreInventory()
+            '/store-inventory': (context) => StoreInventory(),
+            '/order': (context) => Order(),
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         ));
