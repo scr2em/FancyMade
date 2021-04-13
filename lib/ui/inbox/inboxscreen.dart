@@ -1,8 +1,12 @@
+import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
 import 'package:finalproject/sharedWidgets/CustomBottomBar.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
+import 'package:finalproject/ui/inbox/individual_chat.dart';
+import 'package:finalproject/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'dart:developer';
+import 'package:flutter/foundation.dart';
 import 'inboxscreen_model.dart';
 
 class ChatPage extends StatefulWidget {
@@ -56,20 +60,35 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        // automaticallyImplyLeading: false,
+        backgroundColor: Color(0xfffafafa),
+        centerTitle: true,
+        // Text('test')
+        title: Text(
+          "Messages",
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        // backgroundColor: Color(0xffffffff),
+        // bottomOpacity: 0.4,
+        // toolbarOpacity: 0.4,
+      ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SafeArea(
-              child: Padding(
-                padding: EdgeInsets.all(8),
-                child: Text(
-                  AppLocalizations.of(context).messages,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+            // SafeArea(
+            //   child: Padding(
+            //     padding: EdgeInsets.all(8),
+            //     child: Text(
+            //       AppLocalizations.of(context).messages,
+            //       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            //     ),
+            //   ),
+            // ),
+
             Row(
               // children: [CustomButton()],
               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,27 +112,38 @@ class _ChatPageState extends State<ChatPage> {
                 // ElevatedButton(onPressed: null, child: Text("hi"))
               ],
             ),
-            ListView.builder(
-              itemCount: chatUsers.length,
-              shrinkWrap: true,
-              padding: EdgeInsets.only(top: 16),
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Container(
-                  padding: EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                      border:
-                          Border(bottom: BorderSide(color: Colors.black12))),
-                  child: ConversationList(
-                    name: chatUsers[index].name,
-                    messageText: chatUsers[index].messageText,
-                    imageUrl: chatUsers[index].imageURL,
-                    time: chatUsers[index].time,
-                    isMessageRead: (index == 0 || index == 3) ? true : false,
-                  ),
-                );
-              },
-            ),
+            chatUsers.length > 1
+                ? ListView.builder(
+                    itemCount: chatUsers.length,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.only(top: 16),
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: EdgeInsets.all(3),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(color: Colors.black12))),
+                        child: ConversationList(
+                          name: chatUsers[index].name,
+                          messageText: chatUsers[index].messageText,
+                          imageUrl: chatUsers[index].imageURL,
+                          time: chatUsers[index].time,
+                          isMessageRead:
+                              (index == 0 || index == 3) ? true : false,
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Individual_chat(),
+                                    settings: RouteSettings(
+                                        arguments: chatUsers[index])));
+                          },
+                        ),
+                      );
+                    },
+                  )
+                : Image.asset('assets/image 4.jpg'),
           ],
         ),
       ),
@@ -128,12 +158,15 @@ class ConversationList extends StatefulWidget {
   String imageUrl;
   String time;
   bool isMessageRead;
+  Function onTap = () {};
   ConversationList(
       {@required this.name,
       @required this.messageText,
       @required this.imageUrl,
       @required this.time,
-      @required this.isMessageRead});
+      @required this.isMessageRead,
+      this.onTap});
+
   @override
   _ConversationListState createState() => _ConversationListState();
 }
@@ -142,7 +175,7 @@ class _ConversationListState extends State<ConversationList> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: widget.onTap,
       child: Container(
         padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
         child: Row(

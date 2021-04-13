@@ -1,6 +1,9 @@
 import 'package:finalproject/ui/auth/profile/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
+import 'package:finalproject/ui/order/order.dart';
 import 'package:finalproject/ui/product/productScreen.dart';
+import 'package:finalproject/ui/store/store-dashboard/dashboard.dart';
+import 'package:finalproject/ui/store/store-dashboard/inventory.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -72,5 +75,6 @@ class MyApp extends StatelessWidget {
         );
       }),
     );
+
   }
 }
