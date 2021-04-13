@@ -23,7 +23,7 @@ class CheckoutSuccessScreen extends StatelessWidget {
                   ),
                   Center(
                     child: Text(
-                      "hello",
+                      AppLocalizations.of(context).hello,
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
@@ -52,13 +52,13 @@ class CheckoutSuccessScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Thank you!',
+                              AppLocalizations.of(context).thankYou,
                               // AppLocalizations.of(context).Thank,
                               style: TextStyle(
                                   fontWeight: FontWeight.w600, fontSize: 18),
                             ),
                             Text(
-                              'Your order #BE12345 has been placed.',
+                              AppLocalizations.of(context).yourOrderHasBeenPlaced,
                               // AppLocalizations.of(context).placed_order,
                               style: TextStyle(fontSize: 16),
                             ),
@@ -66,17 +66,17 @@ class CheckoutSuccessScreen extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    'We sent an email to orders@banuelson.com with your order confirmation and bill. ',
+                    AppLocalizations.of(context).weSentAnEmail,
                     style: TextStyle(fontSize: 14),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 50, bottom: 50),
-                    child: Text('Time placed: 17/02/2020 12:45 CEST'),
+                    child: Text(AppLocalizations.of(context).timePlaced),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Text(
-                      "Shipping",
+                      AppLocalizations.of(context).shipping,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -108,7 +108,7 @@ class CheckoutSuccessScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10, top: 10),
                     child: Text(
-                      "Billing",
+                      AppLocalizations.of(context).billing,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),

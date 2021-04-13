@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import "../models/CustomUser.dart";
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomBottomBar extends StatefulWidget {
   @override
@@ -14,14 +15,11 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
     setState(() {
       _selectedIndex = index;
       if (index == 0) {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+        Navigator.of(context).pushNamed('/');
       } else if (index == 1) {
-        Navigator.of(context).pushNamedAndRemoveUntil(
-            '/product', (Route<dynamic> route) => false);
+        Navigator.of(context).pushNamed('/product');
       } else if (index == 2) {
-        Navigator.of(context).pushNamedAndRemoveUntil(
-            '/loginProfileWrapper', (Route<dynamic> route) => false);
+        Navigator.of(context).pushNamed('/loginProfileWrapper');
       } else {}
 
       // Navigator.pushNamed(context, '/second');
@@ -36,17 +34,17 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: AppLocalizations.of(context).sw_CustomBottomBar_home,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite),
-          label: 'Wish list',
+          label: AppLocalizations.of(context).sw_CustomBottomBar_favorite,
         ),
         BottomNavigationBarItem(
           icon: user == null
               ? Icon(Icons.login)
               : Icon(Icons.account_circle_rounded),
-          label: user == null ? "login" : "Profile",
+          label: user == null ? AppLocalizations.of(context).login : AppLocalizations.of(context).profile,
         ),
       ],
       currentIndex: _selectedIndex,

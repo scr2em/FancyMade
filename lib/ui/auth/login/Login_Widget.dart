@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
       dynamic result = await _auth.signInWithEmailAndPassword(email, password);
       if (result == null) {
         setState(() {
-          errorMessage = "Something went wrong, please try again.";
+          errorMessage = AppLocalizations.of(context).somethingWentWrong;
         });
       } else {
         setState(() {
@@ -83,18 +83,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Log into your account",
+                      child: Text(AppLocalizations.of(context).logIntoYourAccount,
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 22)),
                     ),
                     CustomTextFormField(
                       validator: emailValidator,
-                      hintText: "Email",
+                      hintText: AppLocalizations.of(context).email,
                       onChanged: onEmailChange,
                     ),
                     CustomTextFormField(
                       validator: passwordValidator,
-                      hintText: "Password",
+                      hintText: AppLocalizations.of(context).password,
                       obscureText: _obscureText,
                       onChanged: onPasswordChange,
                     ),
@@ -113,14 +113,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 8.0, horizontal: 35),
                           child: Text(
-                            "Forgot your password ?",
+                            AppLocalizations.of(context).forgotYourPassword,
                             style:
                                 TextStyle(decoration: TextDecoration.underline),
                           ),
                         ),
                       ],
                     ),
-                    ElevatedButton(child: Text('signin'), onPressed: onPressed),
+                    ElevatedButton(child: Text(AppLocalizations.of(context).signin), onPressed: onPressed),
                     CustomButton(
                       primary: Theme.of(context).accentColor,
                     )

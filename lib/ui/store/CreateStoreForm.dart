@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import "../../sharedWidgets/CustomTextFormField.dart";
 import "../../sharedWidgets/CustomButton.dart";
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class CreateStoreForm extends StatefulWidget {
   @override
   _CreateStoreFormState createState() => _CreateStoreFormState();
@@ -14,7 +16,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Create Store",
+          AppLocalizations.of(context).createStore,
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
@@ -29,50 +31,50 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
               SizedBox(
                 height: 20,
               ),
-              Text('Arabic Details',
+              Text(AppLocalizations.of(context).arabicDetails,
                   style: Theme.of(context).textTheme.headline6),
               SizedBox(
                 height: 10,
               ),
               CustomTextFormField(
-                hintText: "Store name",
+                hintText: AppLocalizations.of(context).storeName,
               ),
               SizedBox(
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: "Address",
+                hintText: AppLocalizations.of(context).address,
               ),
               SizedBox(
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: "Description",
+                hintText: AppLocalizations.of(context).description,
                   maxLines:6
 
               ),
               SizedBox(
                 height: 29,
               ),
-              Text('English Details',
+              Text(AppLocalizations.of(context).englishDetails,
                   style: Theme.of(context).textTheme.headline6),
               SizedBox(
                 height: 10,
               ),
               CustomTextFormField(
-                hintText: "Store name",
+                hintText: AppLocalizations.of(context).storeName,
               ),
               SizedBox(
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: "Address",
+                hintText: AppLocalizations.of(context).address,
               ),
               SizedBox(
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: "Description",
+                hintText: AppLocalizations.of(context).description,
                   maxLines:6
               ),
               SizedBox(
@@ -85,13 +87,13 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: "Products Address",
+                hintText: AppLocalizations.of(context).productsAddress,
               ),
               SizedBox(
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: "Facebook Page (optional)",
+                hintText: AppLocalizations.of(context).facebookPageOptional ,
               ),
               SizedBox(
                 height: 29,
@@ -100,7 +102,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 contentPadding: EdgeInsets.all(0),
                 
                 child: CheckboxListTile(
-                  title: Text("I agree to the terms of  service and privacy policies. "),
+                  title: Text(AppLocalizations.of(context).iAgreeToTheTerms),
                   value: checkedValue,
                   onChanged: (newValue) {
                     setState(() {
@@ -115,7 +117,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
               ),
               CustomButton(
                 height: 50,
-                text: 'Done',
+                text: AppLocalizations.of(context).done,
                 primary: Theme.of(context).primaryColor,
               ),
             ],

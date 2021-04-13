@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   // to customize the height use int instead of kToolbarHeight;
@@ -17,7 +18,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: customSearchInput(context),
+        title: CustomSearchInput(),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           Ink(
@@ -34,13 +35,27 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ]);
   }
 }
+class CustomSearchInput extends StatefulWidget {
+  @override
+  _CustomSearchInputState createState() => _CustomSearchInputState();
+}
 
-TextField customSearchInput(context) => TextField(
+class _CustomSearchInputState extends State<CustomSearchInput> {
+  var _controller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: _controller,
       style: TextStyle(color: Theme.of(context).primaryColor),
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.search),
-        suffixIcon: Icon(Icons.highlight_remove),
-        hintText: 'Search...',
+        suffixIcon: IconButton(
+          onPressed: _controller.clear,
+          icon: Icon(Icons.clear),
+        ),
+
+        hintText: AppLocalizations.of(context).sw_CustomAppBar_Search,
         fillColor: Theme.of(context).backgroundColor,
         filled: true,
         contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -49,12 +64,12 @@ TextField customSearchInput(context) => TextField(
         ),
         enabledBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: Theme.of(context).accentColor, width: 1.0),
+          BorderSide(color: Theme.of(context).accentColor, width: 1.0),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+          BorderSide(color: Theme.of(context).accentColor, width: 2.0),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
       ),
@@ -62,3 +77,6 @@ TextField customSearchInput(context) => TextField(
 //Do something with the user input.
       },
     );
+  }
+}
+

@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "../../models/CustomUser.dart";
 import "package:provider/provider.dart";
-import "loginScreen/Login_Widget.dart";
-import "profileScreen/Profile_Widget.dart";
+import "login/Login_Widget.dart";
+import "profile/Profile_Widget.dart";
 
 class LoginProfileWrapper extends StatelessWidget {
   @override

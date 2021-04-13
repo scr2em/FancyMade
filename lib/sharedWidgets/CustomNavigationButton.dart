@@ -8,11 +8,13 @@ class CustomNavigationButton extends StatelessWidget {
   double padX = 18;
   double padY = 14.5;
 Color textColor ;
+String route;
 
   CustomNavigationButton({
     this.prefixIcon = Icons.info_outline,
     this.suffixIcon = Icons.arrow_forward_ios,
     this.text = "",
+    this.route ="/",
     this.backgroundColor,
     this.textColor= Colors.black,
   });
@@ -33,6 +35,7 @@ Color textColor ;
           ),
           onPressed: () {
             // Respond to button press
+            Navigator.of(context).pushNamed(route);
           },
           child: Padding(
             padding:  EdgeInsets.symmetric(vertical: padY),

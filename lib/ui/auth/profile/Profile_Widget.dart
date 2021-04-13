@@ -8,6 +8,8 @@ import "../../../sharedWidgets/CustomBottomBar.dart";
 import "../../../services/auth_service.dart";
 import "../../../sharedWidgets/CustomNavigationButton.dart";
 import "../../../sharedWidgets/CustomButton.dart";
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Profile extends StatelessWidget {
   final AuthService _auth = AuthService();
 
@@ -16,7 +18,7 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Profile",
+            AppLocalizations.of(context).profile,
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
@@ -46,7 +48,7 @@ class Profile extends StatelessWidget {
 
                 ),
                 children: <TextSpan>[
-                  new TextSpan(text: 'Welcome, '),
+                  new TextSpan(text: AppLocalizations.of(context).welcome),
                   new TextSpan(text: 'Mohamed', style: new TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
@@ -54,27 +56,27 @@ class Profile extends StatelessWidget {
           ),
 
         ),
-            CustomNavigationButton(text:"Info",backgroundColor: Theme.of(context).backgroundColor,),
-            CustomNavigationButton(text:"Settings",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.settings_outlined),
-            CustomNavigationButton(text:"Orders",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.list,),
-            CustomNavigationButton(text:"Store",backgroundColor: Color(0xff283148),prefixIcon: Icons.assistant_photo_outlined,textColor: Colors.white,),
+            CustomNavigationButton(route:'/profileInfo',text:AppLocalizations.of(context).info,backgroundColor: Theme.of(context).backgroundColor,),
+            CustomNavigationButton(route:'/profileSettings',text:AppLocalizations.of(context).settings,backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.settings_outlined),
+            CustomNavigationButton(route:'/orders',text:AppLocalizations.of(context).orders,backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.list,),
+            CustomNavigationButton(route:'/store',text:AppLocalizations.of(context).store,backgroundColor: Color(0xff283148),prefixIcon: Icons.assistant_photo_outlined,textColor: Colors.white,),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 14.5),
               child: CustomButton(
                 height: 50,
                 primary: Theme.of(context).accentColor,
-                text: "Create your store now",
+                text: AppLocalizations.of(context).createYourStoreNow,
                   onpress: (){
+                    Navigator.of(context).pushNamed('/CreateStoreForm');
 
-                    Navigator.pushNamed(context, '/CreateStoreForm');
 
                   }
               ),
             ),
             SizedBox(height: 20,),
-            Text("Help", style: TextStyle(fontSize:18, fontWeight: FontWeight.bold ),),
-            CustomNavigationButton(text:"FAQ",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.help_outline),
-            CustomNavigationButton(text:"Contact Us",backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.call,),
+            Text(AppLocalizations.of(context).help, style: TextStyle(fontSize:18, fontWeight: FontWeight.bold ),),
+            CustomNavigationButton(text:AppLocalizations.of(context).faq,backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.help_outline),
+            CustomNavigationButton(text:AppLocalizations.of(context).contactUs,backgroundColor: Theme.of(context).backgroundColor,prefixIcon: Icons.call,),
             SizedBox(height: 40,),
 
 

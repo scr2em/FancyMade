@@ -1,6 +1,7 @@
 import 'package:finalproject/sharedWidgets/CustomBottomBar.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'inboxscreen_model.dart';
 
@@ -15,12 +16,12 @@ class _ChatPageState extends State<ChatPage> {
         name: "Jane Russel",
         messageText: "Awesome Setup",
         imageURL: "images/userImage1.jpeg",
-        time: "Now"),
+        time: "now"),
     ChatUsers(
         name: "Glady's Murphy",
         messageText: "That's Great",
         imageURL: "images/userImage2.jpeg",
-        time: "Yesterday"),
+        time: "now"),
     ChatUsers(
         name: "Jorge Henry",
         messageText: "Hey where are you?",
@@ -64,7 +65,7 @@ class _ChatPageState extends State<ChatPage> {
               child: Padding(
                 padding: EdgeInsets.all(8),
                 child: Text(
-                  "Messages",
+                  AppLocalizations.of(context).messages,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -77,14 +78,14 @@ class _ChatPageState extends State<ChatPage> {
                 CustomButton(
                   width: 174,
                   height: 60,
-                  text: 'All',
+                  text: AppLocalizations.of(context).all,
                   primary: Theme.of(context).highlightColor,
                   onprimary: Theme.of(context).primaryColor,
                 ),
                 CustomButton(
                   width: 174,
                   height: 60,
-                  text: 'Archived',
+                  text: AppLocalizations.of(context).archived,
                   primary: Theme.of(context).highlightColor,
                   onprimary: Theme.of(context).primaryColor,
                 ),

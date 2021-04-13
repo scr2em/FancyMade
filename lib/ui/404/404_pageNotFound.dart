@@ -1,5 +1,5 @@
-import 'package:finalproject/sharedWidgets/CustomBottomBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PageNotFound extends StatelessWidget {
   @override
@@ -26,9 +26,9 @@ class PageNotFound extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                const Text(
-                  'OOPS!\n404',
+              children:  [
+                 Text(
+                  AppLocalizations.of(context).pageNotFound_header,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 50,
@@ -37,8 +37,8 @@ class PageNotFound extends StatelessWidget {
                       fontFamily: 'Anton',
                       fontWeight: FontWeight.bold),
                 ),
-                const Text(
-                  'Page not found!, please try again',
+                 Text(
+                  AppLocalizations.of(context).pageNotFound_text,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,

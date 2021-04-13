@@ -9,16 +9,17 @@ class CustomTextFormField extends StatefulWidget {
   bool passwordVisible = false;
   Function validator;
   int maxLines;
-
+  bool enabled;
 
   CustomTextFormField(
-      {this.hintText = "Placeholder...",
+      {this.hintText,
       this.obscureText = false,
       this.width = 400,
       this.onChanged,
       this.onSuffixIconPress,
       this.validator,
-      this.maxLines = 1});
+      this.maxLines = 1,
+      this.enabled=true});
 
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
@@ -37,12 +38,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return Container(
       width: widget.width,
       child: TextFormField(
+        enabled:widget.enabled ,
         maxLines: widget.maxLines,
         validator: widget.validator,
         style: TextStyle(color: Theme.of(context).primaryColor),
         obscureText: widget.obscureText,
         decoration: InputDecoration(
-
           suffixIcon: widget.obscureText
               ? IconButton(
                   icon: Icon(Icons.visibility),
@@ -57,7 +58,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           labelText: widget.hintText,
           fillColor: Theme.of(context).backgroundColor,
           filled: true,
-
           contentPadding:
               EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           border: OutlineInputBorder(

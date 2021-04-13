@@ -2,6 +2,7 @@ import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductScreen extends StatelessWidget {
   @override
@@ -140,7 +141,7 @@ class ProductScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Details',
+                              AppLocalizations.of(context).details,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -193,7 +194,7 @@ class ProductScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Users Review',
+                            AppLocalizations.of(context).userReviews,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -212,7 +213,7 @@ class ProductScreen extends StatelessWidget {
                         ],
                       ),
                       CustomTextFormField(
-                        hintText: "Your opinion",
+                        hintText: AppLocalizations.of(context).yourOpinion,
                       ),
                     ],
                   ),
@@ -238,19 +239,19 @@ class ProductScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Requst a special item ?',
+                        AppLocalizations.of(context).requestAspecialItem,
                         style: TextStyle(
                             fontWeight: FontWeight.normal, fontSize: 16),
                       ),
                       CustomTextFormField(
-                        hintText: "Describe your requested item",
+                        hintText: AppLocalizations.of(context).describeYourRequestedItem ,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           ElevatedButton(
                             onPressed: () {},
-                            child: Text('Request'),
+                            child: Text(AppLocalizations.of(context).request),
                             style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.resolveWith<Color>(
@@ -281,7 +282,7 @@ class ProductScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Quantity',
+                        AppLocalizations.of(context).quantity,
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 20,
@@ -289,7 +290,7 @@ class ProductScreen extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {},
-                        child: Text('Request'),
+                        child: Text(AppLocalizations.of(context).request),
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.resolveWith<Color>(
