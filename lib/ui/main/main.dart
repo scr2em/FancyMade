@@ -2,6 +2,7 @@ import 'package:finalproject/ui/auth/profile/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
 import 'package:finalproject/ui/order/order.dart';
 import 'package:finalproject/ui/product/productScreen.dart';
+import 'package:finalproject/ui/store/Add%20Prodect/ProductListingScreen.dart';
 import 'package:finalproject/ui/store/store-dashboard/dashboard.dart';
 import 'package:finalproject/ui/store/store-dashboard/inventory.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ import '../auth/signup/Signup_Widget.dart';
 import "../home/Home_Widget.dart";
 import "../auth/LoginProfileWrapper.dart";
 import "../checkout/checkoutSuccessScreen.dart";
+import '../order/order.dart';
 import "../store/CreateStoreForm.dart";
 import "../auth/profile/Info/Info_Widget.dart";
 import "../auth/profile/Settings/Settings_Widget.dart";
@@ -49,7 +51,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<MainLocaleProvider>(
       create: (context) => MainLocaleProvider(),
-      child: Consumer<MainLocaleProvider>(builder: (context, mainLocaleProvider, child) {
+      child: Consumer<MainLocaleProvider>(
+          builder: (context, mainLocaleProvider, child) {
         print(mainLocaleProvider.applicationLocale);
         return StreamProvider<CustomUser>.value(
           value: AuthService().user,
@@ -60,7 +63,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
-            initialRoute: '/',
+            initialRoute: '/productlisting',
             routes: {
               '/': (context) => HomeScreen(),
               '/signup': (context) => SignupScreen(),
@@ -69,12 +72,13 @@ class MyApp extends StatelessWidget {
               '/CreateStoreForm': (context) => CreateStoreForm(),
               '/profileInfo': (context) => InfoScreen(),
               '/profileSettings': (context) => SettingsScreen(),
+              '/order': (context) => Order(),
+              '/productlisting': (context) => ProductListing()
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),
         );
       }),
     );
-
   }
 }
