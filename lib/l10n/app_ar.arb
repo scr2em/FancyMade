@@ -12,7 +12,8 @@
      "password": "كلمة المرور",
      "forgotYourPassword": "نسيت كلمة المرور ؟",
      "signin": "تسجيل الدخول",
-      "signout": "تسجيل الخروج",
+      signout": "تسجيل الخروج",
+      "signup": "تسجيل",
      "info": "معلومات",
      "enterYourName": "أدخل اسمك",
      "enterYourEmail": "أدخل البريد الإلكتروني",
@@ -56,5 +57,7 @@
      "done": "تم",
      "language": "اللغة",
      "createAnAccount": "أنشىء حساب",
-    "thankYou":"شكرا لك"
+     "orCreateANewAccount" : "أو أنشئ حساب جديد",
+      "orSignIn" : "أو سجل الدخول",
+     "thankYou":"شكرا لك"
 }

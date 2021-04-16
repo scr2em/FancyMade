@@ -1,5 +1,5 @@
 {
-    "sw_CustomAppBar_Search": "I'm searching for...",
+    "sw_CustomAppBar_Search": "I'm looking for...",
     "sw_CustomBottomBar_home": "Home",
      "sw_CustomBottomBar_favorite": "Favorite",
      "pageNotFound_header": "OOPS!",
@@ -13,6 +13,7 @@
      "forgotYourPassword": "Forgot your password ?",
      "signin": "Sign in",
       "signout": "Sign out",
+      "signup": "Signup",
      "info": "Info",
      "enterYourName": "Enter your name",
      "enterYourEmail": "Enter your email",
@@ -56,7 +57,7 @@
      "done": "Done",
      "language": "Language",
      "createAnAccount": "Create an account",
-     "createAnAccount": "Create an account",
-
-    "thankYou":"Thank you!"
+     "orCreateANewAccount" : " Or create a new account",
+     "orSignIn" : "Or sign in",
+     "thankYou":"Thank you!"
 }

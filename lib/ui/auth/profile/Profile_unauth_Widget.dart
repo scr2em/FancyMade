@@ -11,7 +11,6 @@ import "../../../sharedWidgets/CustomButton.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileUnAuth extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +43,7 @@ class ProfileUnAuth extends StatelessWidget {
                       color: Colors.black,
                     ),
                     children: <TextSpan>[
-                       TextSpan(text: AppLocalizations.of(context).welcome),
+                      TextSpan(text: AppLocalizations.of(context).welcome),
                     ],
                   ),
                 ),
@@ -101,7 +100,7 @@ class ProfileUnAuth extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     )),
                   ),
-                  child:  Text(AppLocalizations.of(context).createAnAccount),
+                  child: Text(AppLocalizations.of(context).createAnAccount),
                 ),
               ),
             ),
@@ -116,7 +115,8 @@ class ProfileUnAuth extends StatelessWidget {
                     Navigator.of(context).pushNamed('/signin');
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor),
+                    backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).accentColor),
                     side: MaterialStateProperty.all(
                         BorderSide(color: Theme.of(context).accentColor)),
                     foregroundColor: MaterialStateProperty.all(
@@ -129,7 +129,8 @@ class ProfileUnAuth extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     )),
                   ),
-                  child:  Text(AppLocalizations.of(context).signin, style:TextStyle(color:Colors.white)),
+                  child: Text(AppLocalizations.of(context).signin,
+                      style: TextStyle(color: Colors.white)),
                 ),
               ),
             ),

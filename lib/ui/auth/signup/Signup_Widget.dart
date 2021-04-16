@@ -60,55 +60,96 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return loading
-        ? Loading()
-        : Scaffold(
-            appBar: CustomAppBar(),
-            body: Container(
+    return Scaffold(
+        appBar: CustomAppBar(),
+        body: loading
+            ? Loading()
+            : Container(
                 child: Center(
-              child: ListView(
-                children: [Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text("Create a new account",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 22)),
-                      ),
-                      CustomTextFormField(
-                        validator: emailValidator,
-                        hintText: "Email",
-                        onChanged: onEmailChange,
-                      ),
-                      CustomTextFormField(
-                        validator: passwordValidator,
-                        hintText: "Password",
-                        obscureText: true,
-                        onChanged: onPasswordChange,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 35),
-                        child: Text(errorMessage),
-                      ),
-                      ElevatedButton(
-                          child: Text('sign up'), onPressed: onPressed),
-                      CustomButton(
-                        width: 300,
-                        height: 50,
-                        text: 'Continue with google',
-                        primary: Theme.of(context).primaryColor,
-                        icons: Icons.mail,
-                      )
-                    ],
+                child: ListView(children: [
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                              AppLocalizations.of(context).createAnAccount,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 22)),
+                        ),
+                        CustomTextFormField(
+                          validator: emailValidator,
+                          hintText: AppLocalizations.of(context).email,
+                          onChanged: onEmailChange,
+                        ),
+                        CustomTextFormField(
+                          validator: passwordValidator,
+                          hintText: AppLocalizations.of(context).password,
+                          obscureText: true,
+                          onChanged: onPasswordChange,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 35),
+                          child: Text(errorMessage),
+                        ),
+
+                        //signup button
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            height: 50,
+                            width: 150,
+                            child: TextButton(
+                              onPressed: onPressed,
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xff273147)),
+                                // side: MaterialStateProperty.all(
+                                //     BorderSide(color: Theme.of(context).accentColor)),
+                                foregroundColor: MaterialStateProperty.all(
+                                  Colors.black,
+                                ),
+                                overlayColor: MaterialStateProperty.all(
+                                  Theme.of(context).accentColor,
+                                ),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                )),
+                              ),
+                              child: Text(AppLocalizations.of(context).signup,
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          child: Text(
+                              AppLocalizations.of(context)
+                                  .orSignIn
+                                  .toUpperCase(),
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline)),
+                          onTap: () {
+                            Navigator.of(context).pushNamed("/signin");
+                          },
+                        )
+                        // CustomButton(
+                        //   width: 300,
+                        //   height: 50,
+                        //   text: 'Continue with google',
+                        //   primary: Theme.of(context).primaryColor,
+                        //   icons: Icons.mail,
+                        //
+                        // )
+                      ],
+                    ),
                   ),
-                ),]
-              ),
-            )),
-            bottomNavigationBar: CustomBottomBar());
+                ]),
+              )),
+        bottomNavigationBar: CustomBottomBar());
   }
 }

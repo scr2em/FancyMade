@@ -18,23 +18,25 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: CustomSearchInput(),
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Ink(
-            decoration: ShapeDecoration(
-              color: Theme.of(context).accentColor,
-              shape: CircleBorder(),
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.shopping_cart),
-              color: Colors.white,
-              onPressed: () {},
-            ),
-          ),
-        ]);
+      title: CustomSearchInput(),
+      automaticallyImplyLeading: false,
+      // actions: <Widget>[
+      //   Ink(
+      //     decoration: ShapeDecoration(
+      //       color: Theme.of(context).accentColor,
+      //       shape: CircleBorder(),
+      //     ),
+      //     child: IconButton(
+      //       icon: const Icon(Icons.shopping_cart),
+      //       color: Colors.white,
+      //       onPressed: () {},
+      //     ),
+      //   ),
+      // ]
+    );
   }
 }
+
 class CustomSearchInput extends StatefulWidget {
   @override
   _CustomSearchInputState createState() => _CustomSearchInputState();
@@ -54,7 +56,6 @@ class _CustomSearchInputState extends State<CustomSearchInput> {
           onPressed: _controller.clear,
           icon: Icon(Icons.clear),
         ),
-
         hintText: AppLocalizations.of(context).sw_CustomAppBar_Search,
         fillColor: Theme.of(context).backgroundColor,
         filled: true,
@@ -64,12 +65,12 @@ class _CustomSearchInputState extends State<CustomSearchInput> {
         ),
         enabledBorder: OutlineInputBorder(
           borderSide:
-          BorderSide(color: Theme.of(context).accentColor, width: 1.0),
+              BorderSide(color: Theme.of(context).accentColor, width: 1.0),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide:
-          BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+              BorderSide(color: Theme.of(context).accentColor, width: 2.0),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
       ),
@@ -79,4 +80,3 @@ class _CustomSearchInputState extends State<CustomSearchInput> {
     );
   }
 }
-

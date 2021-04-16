@@ -6,13 +6,23 @@ ThemeData theme = ThemeData(
   backgroundColor: Color(0xffEEEEEE),
   highlightColor: Colors.grey[200],
   textTheme: TextTheme(
-    headline1: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.black),
-    headline2: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
-    headline3: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.black),
-    headline4: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
-    headline5: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.black),
-    headline6: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold, color: Colors.black),
-    bodyText1: TextStyle(fontSize: 14.0, ),
-    bodyText2: TextStyle(fontSize: 12.0, ),
+    headline1: TextStyle(
+        fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.black),
+    headline2: TextStyle(
+        fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+    headline3: TextStyle(
+        fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.black),
+    headline4: TextStyle(
+        fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
+    headline5: TextStyle(
+        fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.black),
+    headline6: TextStyle(
+        fontSize: 12.0, fontWeight: FontWeight.bold, color: Colors.black),
+    bodyText1: TextStyle(
+      fontSize: 14.0,
+    ),
+    bodyText2: TextStyle(
+      fontSize: 12.0,
+    ),
   ),
 );

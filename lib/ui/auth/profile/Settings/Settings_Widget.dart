@@ -113,6 +113,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: OutlinedButton(
                         onPressed: () async {
                           await _auth.signOut();
+                          Navigator.of(context).pushNamed("/signin");
                         },
                         style: ButtonStyle(
                           side: MaterialStateProperty.all(
@@ -128,7 +129,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             borderRadius: BorderRadius.circular(10.0),
                           )),
                         ),
-                        child: const Text("Sign out"),
+                        child:  Text(AppLocalizations.of(context).signout),
                       ),
                     ),
                   ),

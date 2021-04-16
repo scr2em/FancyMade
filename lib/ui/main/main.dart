@@ -24,6 +24,7 @@ import "../store/CreateStoreForm.dart";
 import "../auth/profile/Info/Info_Widget.dart";
 import "../auth/profile/Settings/Settings_Widget.dart";
 import '../store/Store.dart';
+
 //Main Provider
 import 'main_provider.dart';
 import 'main_locale_provider.dart';
@@ -49,7 +50,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<MainLocaleProvider>(
       create: (context) => MainLocaleProvider(),
-      child: Consumer<MainLocaleProvider>(builder: (context, mainLocaleProvider, child) {
+      child: Consumer<MainLocaleProvider>(
+          builder: (context, mainLocaleProvider, child) {
         print(mainLocaleProvider.applicationLocale);
         return StreamProvider<CustomUser>.value(
           value: AuthService().user,
@@ -78,6 +80,5 @@ class MyApp extends StatelessWidget {
         );
       }),
     );
-
   }
 }
