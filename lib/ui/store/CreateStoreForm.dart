@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "../../sharedWidgets/CustomTextFormField.dart";
 import "../../sharedWidgets/CustomButton.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../sharedWidgets/CustomBottomBar.dart';
 class CreateStoreForm extends StatefulWidget {
   @override
   _CreateStoreFormState createState() => _CreateStoreFormState();
@@ -11,6 +11,7 @@ class CreateStoreForm extends StatefulWidget {
 
 class _CreateStoreFormState extends State<CreateStoreForm> {
   bool checkedValue = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,9 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
       ),
       body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10,),
+          padding: EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
           child: ListView(
             children: [
               SizedBox(
@@ -49,10 +52,8 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: AppLocalizations.of(context).description,
-                  maxLines:6
-
-              ),
+                  hintText: AppLocalizations.of(context).description,
+                  maxLines: 6),
               SizedBox(
                 height: 29,
               ),
@@ -74,9 +75,8 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: AppLocalizations.of(context).description,
-                  maxLines:6
-              ),
+                  hintText: AppLocalizations.of(context).description,
+                  maxLines: 6),
               SizedBox(
                 height: 29,
               ),
@@ -93,14 +93,13 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: AppLocalizations.of(context).facebookPageOptional ,
+                hintText: AppLocalizations.of(context).facebookPageOptional,
               ),
               SizedBox(
                 height: 29,
               ),
               ListTileTheme(
                 contentPadding: EdgeInsets.all(0),
-                
                 child: CheckboxListTile(
                   title: Text(AppLocalizations.of(context).iAgreeToTheTerms),
                   value: checkedValue,
@@ -109,7 +108,8 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                       checkedValue = newValue;
                     });
                   },
-                  controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                  controlAffinity:
+                      ListTileControlAffinity.leading, //  <-- leading Checkbox
                 ),
               ),
               SizedBox(
@@ -120,8 +120,12 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 text: AppLocalizations.of(context).done,
                 primary: Theme.of(context).primaryColor,
               ),
+              SizedBox(
+                height: 29,
+              ),
             ],
           )),
+      bottomNavigationBar: CustomBottomBar(),
     );
   }
 }

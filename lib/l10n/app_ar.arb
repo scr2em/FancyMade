@@ -11,7 +11,8 @@
      "phoneNumber": "رقم الهاتف",
      "password": "كلمة المرور",
      "forgotYourPassword": "نسيت كلمة المرور ؟",
-     "signin": "دخول",
+     "signin": "تسجيل الدخول",
+      "signout": "تسجيل الخروج",
      "info": "معلومات",
      "enterYourName": "أدخل اسمك",
      "enterYourEmail": "أدخل البريد الإلكتروني",
@@ -54,7 +55,6 @@
      "iAgreeToTheTerms": "أوافق على شروط الخدمة وسياسات الخصوصية. ",
      "done": "تم",
      "language": "اللغة",
-     "login": "تسجيل الدخول",
-
+     "createAnAccount": "أنشىء حساب",
     "thankYou":"شكرا لك"
 }

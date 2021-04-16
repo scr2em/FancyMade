@@ -11,7 +11,8 @@
      "phoneNumber": "Phone Number",
      "password": "Password",
      "forgotYourPassword": "Forgot your password ?",
-     "signin": "signin",
+     "signin": "Sign in",
+      "signout": "Sign out",
      "info": "Info",
      "enterYourName": "Enter your name",
      "enterYourEmail": "Enter your email",
@@ -54,7 +55,8 @@
      "iAgreeToTheTerms": "I agree to the terms of  service and privacy policies. ",
      "done": "Done",
      "language": "Language",
-     "login": "Login",
+     "createAnAccount": "Create an account",
+     "createAnAccount": "Create an account",
 
     "thankYou":"Thank you!"
 }

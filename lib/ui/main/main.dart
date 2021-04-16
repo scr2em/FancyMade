@@ -23,7 +23,7 @@ import "../checkout/checkoutSuccessScreen.dart";
 import "../store/CreateStoreForm.dart";
 import "../auth/profile/Info/Info_Widget.dart";
 import "../auth/profile/Settings/Settings_Widget.dart";
-
+import '../store/Store.dart';
 //Main Provider
 import 'main_provider.dart';
 import 'main_locale_provider.dart';
@@ -60,15 +60,18 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
-            initialRoute: '/',
+            initialRoute: '/store',
             routes: {
-              '/': (context) => HomeScreen(),
+              // '/': (context) => HomeScreen(),
+              '/': (context) => Store(),
               '/signup': (context) => SignupScreen(),
+              '/signin': (context) => LoginScreen(),
               '/loginProfileWrapper': (context) => LoginProfileWrapper(),
               '/product': (context) => ProductScreen(),
               '/CreateStoreForm': (context) => CreateStoreForm(),
               '/profileInfo': (context) => InfoScreen(),
               '/profileSettings': (context) => SettingsScreen(),
+              '/store': (context) => Store(),
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),
