@@ -58,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
           errorMessage = "";
         });
         print(result);
+        Navigator.of(context).pushNamed("/");
       }
       setState(() {
         loading = false;

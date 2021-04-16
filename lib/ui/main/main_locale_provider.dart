@@ -9,17 +9,15 @@ const String APP_SAVED_LOCALE = "APP_SAVED_LOCALE";
 class MainLocaleProvider extends ChangeNotifier {
   Locale applicationLocale;
 
-
   MainLocaleProvider() {
     loadSavedLocale();
   }
   updateApplicationLocale(String languageCode) {
-
     Locale newLocale = AppLocalizations.supportedLocales
         .firstWhere((locale) => locale.languageCode == languageCode);
-      saveApplicationLocale(languageCode);
-      applicationLocale = newLocale;
-      notifyListeners();
+    saveApplicationLocale(languageCode);
+    applicationLocale = newLocale;
+    notifyListeners();
   }
 
   void loadSavedLocale() async {
@@ -30,6 +28,7 @@ class MainLocaleProvider extends ChangeNotifier {
       updateApplicationLocale(languageCode);
     }
   }
+
   Future<String> getSelectedLocale() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(APP_SAVED_LOCALE) ?? "ar"; //default language is ar
