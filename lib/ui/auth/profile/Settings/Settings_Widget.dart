@@ -100,13 +100,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     DropdownMenuItem(
                       child: Text("عربي"),
                       onTap: () async {
-                        Provider.of<MainLocaleProvider>(context,listen: false).updateApplicationLocale('ar');
+                        Provider.of<MainLocaleProvider>(context, listen: false)
+                            .updateApplicationLocale('ar');
                       },
                     ),
                     DropdownMenuItem(
                       child: Text("english"),
                       onTap: () async {
-                        Provider.of<MainLocaleProvider>(context,listen: false).updateApplicationLocale('en');
+                        Provider.of<MainLocaleProvider>(context, listen: false)
+                            .updateApplicationLocale('en');
                       },
                     ),
                   ],

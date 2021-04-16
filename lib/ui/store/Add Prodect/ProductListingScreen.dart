@@ -134,42 +134,6 @@ class _ProductListingState extends State<ProductListing> {
                 ),
               ),
             ),
-            // Container(
-            //   decoration: BoxDecoration(
-            //       color: Color(0xffEEEEEE),
-            //       borderRadius: BorderRadius.all(Radius.circular(10))),
-            //   padding: EdgeInsets.all(15),
-            //   margin: EdgeInsets.only(top: 16),
-            //   child: DropdownButton(
-            //       isExpanded: true,
-            //       icon: RotationTransition(
-            //           turns: AlwaysStoppedAnimation(270 / 360),
-            //           child: Icon(Icons.arrow_forward_ios)),
-            //       value: _langValue,
-            //       items: <String>[
-            //         AppLocalizations.of(context).chooselang,
-            //         AppLocalizations.of(context).en,
-            //         AppLocalizations.of(context).ar,
-            //       ].map<DropdownMenuItem<String>>((String value) {
-            //         return DropdownMenuItem<String>(
-            //           value: value,
-            //           child: Row(
-            //             children: [
-            //               Icon(Icons.flag_outlined),
-            //               Text(value),
-            //             ],
-            //           ),
-            //         );
-            //       }).toList(),
-            //       hint: Text(
-            //         "Langauage", //////////////////////////////////////hint not working
-            //       ),
-            //       onChanged: (value) {
-            //         setState(() {
-            //           _langValue = value;
-            //         });
-            //       }),
-            // ),
             Container(
               decoration: BoxDecoration(
                   color: Color(0xffEEEEEE),

@@ -3,6 +3,7 @@ import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
 import 'package:finalproject/ui/order/order.dart';
 import 'package:finalproject/ui/product/productScreen.dart';
 import 'package:finalproject/ui/store/Add%20Prodect/ProductListingScreen.dart';
+import 'package:finalproject/ui/store/Add%20Prodect/ProductReviewScreen.dart';
 import 'package:finalproject/ui/store/store-dashboard/dashboard.dart';
 import 'package:finalproject/ui/store/store-dashboard/inventory.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
-            initialRoute: '/productlisting',
+            initialRoute: '/productReview',
             routes: {
               '/': (context) => HomeScreen(),
               '/signup': (context) => SignupScreen(),
@@ -73,7 +74,8 @@ class MyApp extends StatelessWidget {
               '/profileInfo': (context) => InfoScreen(),
               '/profileSettings': (context) => SettingsScreen(),
               '/order': (context) => Order(),
-              '/productlisting': (context) => ProductListing()
+              '/productlisting': (context) => ProductListing(),
+              '/productReview': (context) => ProductReview()
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),

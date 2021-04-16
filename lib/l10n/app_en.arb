@@ -82,7 +82,14 @@
     "channel":"Fullfilment channel",
     "selfship":"I will ship the item myself",
     "appship":"Fancymade will ship \nand provide customer support \n(requires Fancymade verification)",
-    "checkSpecialitem":"this item can be offered in variants or as a special order"
+    "checkSpecialitem":"this item can be offered in variants or as a special order",
+    "review":"Review",
+    "reviewsbelow":"review and submit your listing",
+    "prodInfo":"Product Information",
+    "price":"Price",
+    "pound":"L.E",
+    "submityourlisting":"Submit your listing",
+    "youcanaddlater":"You can always add or update information later"
 
     
 
