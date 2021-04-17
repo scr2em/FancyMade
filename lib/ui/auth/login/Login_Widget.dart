@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   onEmailChange(value) {
     setState(() {
-      email = value.trim();
+      email = value.trim().toLowerCase();
     });
   }
 
@@ -58,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
           errorMessage = "";
         });
         print(result);
+        Navigator.of(context).pushNamed("/");
       }
       setState(() {
         loading = false;
@@ -67,68 +68,106 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return loading
-        ? Loading()
-        : Scaffold(
-            appBar: CustomAppBar(),
-            body: Container(
-                padding: const EdgeInsets.all(10.0),
+    return Scaffold(
+        appBar: CustomAppBar(),
+        body: loading
+            ? Loading()
+            : Container(
+                padding: EdgeInsets.all(10.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                        child: Text(
+                            AppLocalizations.of(context).logIntoYourAccount,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 22)),
+                      ),
+                      CustomTextFormField(
+                        validator: emailValidator,
+                        hintText: AppLocalizations.of(context).email,
+                        onChanged: onEmailChange,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      CustomTextFormField(
+                        validator: passwordValidator,
+                        hintText: AppLocalizations.of(context).password,
+                        obscureText: _obscureText,
+                        onChanged: onPasswordChange,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 10),
+                            child: Text(
+                              errorMessage,
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 10),
+                            child: Text(
+                              AppLocalizations.of(context).forgotYourPassword,
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline),
+                            ),
+                          ),
+                        ],
+                      ),
 
-                child: ListView(
-                  children: [Form(
-              key: _formKey,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(AppLocalizations.of(context).logIntoYourAccount,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 22)),
-                    ),
-                    CustomTextFormField(
-                      validator: emailValidator,
-                      hintText: AppLocalizations.of(context).email,
-                      onChanged: onEmailChange,
-                    ),
-                    CustomTextFormField(
-                      validator: passwordValidator,
-                      hintText: AppLocalizations.of(context).password,
-                      obscureText: _obscureText,
-                      onChanged: onPasswordChange,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 35),
-                          child: Text(
-                            errorMessage,
-                            style: TextStyle(color: Colors.red),
+                      //login button
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          height: 50,
+                          width: 150,
+                          child: TextButton(
+                            onPressed: onPressed,
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Color(0xff273147)),
+                              // side: MaterialStateProperty.all(
+                              //     BorderSide(color: Theme.of(context).accentColor)),
+                              foregroundColor: MaterialStateProperty.all(
+                                Colors.black,
+                              ),
+                              overlayColor: MaterialStateProperty.all(
+                                Theme.of(context).accentColor,
+                              ),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              )),
+                            ),
+                            child: Text(AppLocalizations.of(context).signin,
+                                style: TextStyle(color: Colors.white)),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 35),
-                          child: Text(
-                            AppLocalizations.of(context).forgotYourPassword,
-                            style:
-                                TextStyle(decoration: TextDecoration.underline),
-                          ),
-                        ),
-                      ],
-                    ),
-                    ElevatedButton(child: Text(AppLocalizations.of(context).signin), onPressed: onPressed),
-                    CustomButton(
-                      primary: Theme.of(context).accentColor,
-                    )
-                  ],
-              ),
-            ),]
+                      ),
+                      GestureDetector(
+                        child: Text(
+                            AppLocalizations.of(context)
+                                .orCreateANewAccount
+                                .toUpperCase(),
+                            style: TextStyle(
+                                decoration: TextDecoration.underline)),
+                        onTap: () {
+                          Navigator.of(context).pushNamed("/signup");
+                        },
+                      )
+                    ],
+                  ),
                 )),
-            bottomNavigationBar: CustomBottomBar());
+        bottomNavigationBar: CustomBottomBar());
   }
 }
 

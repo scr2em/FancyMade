@@ -1,5 +1,5 @@
 {
-    "sw_CustomAppBar_Search": "I'm searching for...",
+    "sw_CustomAppBar_Search": "I'm looking for...",
     "sw_CustomBottomBar_home": "Home",
      "sw_CustomBottomBar_favorite": "Favorite",
      "pageNotFound_header": "OOPS!",
@@ -11,7 +11,9 @@
      "phoneNumber": "Phone Number",
      "password": "Password",
      "forgotYourPassword": "Forgot your password ?",
-     "signin": "signin",
+     "signin": "Sign in",
+      "signout": "Sign out",
+      "signup": "Signup",
      "info": "Info",
      "enterYourName": "Enter your name",
      "enterYourEmail": "Enter your email",
@@ -54,8 +56,10 @@
      "iAgreeToTheTerms": "I agree to the terms of  service and privacy policies. ",
      "done": "Done",
      "language": "Language",
+     "createAnAccount": "Create an account",
+     "orCreateANewAccount" : " Or create a new account",
+     "orSignIn" : "Or sign in",
      "login": "Login",
-
     "thankYou":"Thank you!",
     "addProductImg":"Add your product image here",
     "detailsbelow":"Sell on  Fancymade-Enter listing details below",
@@ -90,7 +94,4 @@
     "pound":"L.E",
     "submityourlisting":"Submit your listing",
     "youcanaddlater":"You can always add or update information later"
-
-    
-
 }

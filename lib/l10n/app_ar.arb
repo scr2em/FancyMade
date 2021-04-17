@@ -11,7 +11,9 @@
      "phoneNumber": "رقم الهاتف",
      "password": "كلمة المرور",
      "forgotYourPassword": "نسيت كلمة المرور ؟",
-     "signin": "دخول",
+     "signin": "تسجيل الدخول",
+      "signout": "تسجيل الخروج",
+      "signup": "تسجيل",
      "info": "معلومات",
      "enterYourName": "أدخل اسمك",
      "enterYourEmail": "أدخل البريد الإلكتروني",
@@ -54,9 +56,11 @@
      "iAgreeToTheTerms": "أوافق على شروط الخدمة وسياسات الخصوصية. ",
      "done": "تم",
      "language": "اللغة",
+     "createAnAccount": "أنشىء حساب",
+     "orCreateANewAccount" : "أو أنشئ حساب جديد",
+      "orSignIn" : "أو سجل الدخول",
+     "thankYou":"شكرا لك",
      "login": "تسجيل الدخول",
-
-    "thankYou":"شكرا لك",
     "addProductImg":"اضف صورة منتجك هنا",
     "detailsbelow":"قم بالبيع على Fancymade - ادخل التفاصيل بالأسفل",
     "en":"إنجليزي",
@@ -90,5 +94,4 @@
     "pound":"جنيه",
     "submityourlisting":"أرسل قائمتك",
     "youcanaddlater":"يمكنك دائمًا إضافة المعلومات أو تحديثها لاحقًا"
-
 }

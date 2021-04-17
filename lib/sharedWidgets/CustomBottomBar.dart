@@ -28,7 +28,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<CustomUser>(context);
+    // final user = Provider.of<CustomUser>(context);
 
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
@@ -41,10 +41,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
           label: AppLocalizations.of(context).sw_CustomBottomBar_favorite,
         ),
         BottomNavigationBarItem(
-          icon: user == null
-              ? Icon(Icons.login)
-              : Icon(Icons.account_circle_rounded),
-          label: user == null ? AppLocalizations.of(context).login : AppLocalizations.of(context).profile,
+          icon:  Icon(Icons.account_circle_rounded),
+          label: AppLocalizations.of(context).profile,
         ),
       ],
       currentIndex: _selectedIndex,

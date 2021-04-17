@@ -29,6 +29,7 @@ import '../product/productScreen.dart';
 import "../store/CreateStoreForm.dart";
 import "../auth/profile/Info/Info_Widget.dart";
 import "../auth/profile/Settings/Settings_Widget.dart";
+import '../store/Store.dart';
 
 //Main Provider
 import 'main_provider.dart';
@@ -67,15 +68,21 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
+<<<<<<< HEAD
             initialRoute: '/checkout',
+=======
+            initialRoute: '/store',
+>>>>>>> 9e2481ae20da9646b2df2f8d43d0be63e412772b
             routes: {
-              '/': (context) => HomeScreen(),
+              '/': (context) => Store(),
               '/signup': (context) => SignupScreen(),
+              '/signin': (context) => LoginScreen(),
               '/loginProfileWrapper': (context) => LoginProfileWrapper(),
               '/product': (context) => ProductScreen(),
               '/CreateStoreForm': (context) => CreateStoreForm(),
               '/profileInfo': (context) => InfoScreen(),
               '/profileSettings': (context) => SettingsScreen(),
+              '/store': (context) => Store(),
               '/order': (context) => Order(),
               '/productlisting': (context) => ProductListing(),
               '/productReview': (context) => ProductReview(),
