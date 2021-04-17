@@ -190,7 +190,7 @@ class _ProductListingState extends State<ProductListing> {
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                         Text(
-                          AppLocalizations.of(context).byAr,
+                          AppLocalizations.of(context).byEn,
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),

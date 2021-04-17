@@ -4,6 +4,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../sharedWidgets/CustomButton.dart';
+
 class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,99 +41,102 @@ class ProductScreen extends StatelessWidget {
                     right: 0,
                   )
                 ]),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Text(
-                          "category / shoes ",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 11),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          FloatingActionButton(
-                              mini: true,
-                              child: Icon(
-                                Icons.favorite_border_rounded,
-                                color: Colors.red[400],
-                              ),
-                              backgroundColor: Colors.white,
-                              onPressed: () {}),
-                          FloatingActionButton(
-                              mini: true,
-                              child: Icon(
-                                Icons.share,
-                                color: Colors.black,
-                              ),
-                              backgroundColor: Colors.white,
-                              onPressed: () {}),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Text(
-                    'Adidas Men’s Socce r Tiro 17 Training Pants',
-                    //////need responsive
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        '500',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                            decoration: TextDecoration.lineThrough),
-                      ),
-                      Text(
-                        ' 250 EGP',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Theme.of(context).accentColor),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                    padding:
-                        const EdgeInsets.only(right: 10, left: 10, bottom: 20),
-                    child: Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xff5F5F5F),
-                      ),
-                    )),
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(20)),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "category / shoes ",
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 11),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                FloatingActionButton(
+                                    mini: true,
+                                    child: Icon(
+                                      Icons.favorite_border_rounded,
+                                      color: Colors.red[400],
+                                    ),
+                                    backgroundColor: Colors.white,
+                                    onPressed: () {}),
+                                FloatingActionButton(
+                                    mini: true,
+                                    child: Icon(
+                                      Icons.share,
+                                      color: Colors.black,
+                                    ),
+                                    backgroundColor: Colors.white,
+                                    onPressed: () {}),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          'Adidas Men’s Socce r Tiro 17 Training Pants',
+                          //////need responsive
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              '500',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  decoration: TextDecoration.lineThrough),
+                            ),
+                            Text(
+                              ' 250 EGP',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                  color: Theme.of(context).accentColor),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, left: 10, bottom: 20),
+                          child: Text(
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff5F5F5F),
+                            ),
+                          )),
                     ],
-                    border: Border.all(
-                      width: .02,
-                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Expanded(
@@ -140,12 +145,15 @@ class ProductScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              AppLocalizations.of(context).details,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  height: 1.5),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: Text(
+                                AppLocalizations.of(context).details,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    height: 1.5),
+                              ),
                             ),
                             Text('Availability: in stock'),
                             Text(
@@ -171,20 +179,10 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    border: Border.all(
-                      width: .02,
-                    ),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
@@ -193,12 +191,15 @@ class ProductScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            AppLocalizations.of(context).userReviews,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                height: 1.5),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              AppLocalizations.of(context).userReviews,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  height: 1.5),
+                            ),
                           ),
                           RatingBarIndicator(
                             rating: 2.75,
@@ -219,49 +220,40 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  margin: EdgeInsets.only(top: 20, bottom: 20),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    border: Border.all(
-                      width: .02,
-                    ),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        AppLocalizations.of(context).requestAspecialItem,
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal, fontSize: 16),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: Text(
+                          AppLocalizations.of(context).requestAspecialItem,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16),
+                        ),
                       ),
                       CustomTextFormField(
-                        hintText: AppLocalizations.of(context).describeYourRequestedItem ,
+                        maxLines: 5,
+                        hintText: AppLocalizations.of(context)
+                            .describeYourRequestedItem,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: Text(AppLocalizations.of(context).request),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                                  return Theme.of(context)
-                                      .accentColor; // Use the component's default.
-                                },
-                              ),
-                            ),
-                          )
+                          CustomButton(
+                              elevation: 0,
+                              // height: 60,
+                              width: 150,
+                              primary: Theme.of(context).accentColor,
+                              text: AppLocalizations.of(context).request,
+                              onpress: () {
+                                Navigator.of(context).pushNamed('/product');
+                              })
                         ],
                       ),
                     ],
@@ -281,26 +273,66 @@ class ProductScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        AppLocalizations.of(context).quantity,
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 20,
-                            height: 1.5),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(AppLocalizations.of(context).request),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                              return Theme.of(context)
-                                  .accentColor; // Use the component's default.
-                            },
+                      Column(
+                        children: [
+                          Text(
+                            AppLocalizations.of(context).quantity,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16,
+                                height: 1.5),
                           ),
-                        ),
-                      )
+                          Container(
+                            width: 100,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 2,
+                                color: Theme.of(context).highlightColor,
+                              ),
+                              borderRadius: BorderRadius.circular(5),
+                              color: Theme.of(context).highlightColor,
+                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "-",
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 40,
+                                    color: Colors.white,
+                                    child: Center(
+                                      child: Text(
+                                        "2",
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text("+",
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                      ))
+                                ]),
+                          )
+                        ],
+                      ),
+                      CustomButton(
+                          elevation: 0,
+                          // height: 60,
+                          width: 150,
+                          primary: Theme.of(context).accentColor,
+                          text: "Add to Cart",
+                          //       // AppLocalizations.of(context).addtocart
+                          onpress: () {
+                            Navigator.of(context).pushNamed('/product');
+                          })
                     ],
                   ),
                 ),

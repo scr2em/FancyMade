@@ -10,6 +10,7 @@ class CustomButton extends StatefulWidget {
   Object onprimary;
   Object icons;
   Function onpress = () {};
+  double elevation;
 
   CustomButton(
       {this.text = "cutomize me",
@@ -18,7 +19,8 @@ class CustomButton extends StatefulWidget {
       this.height = 50,
       this.onpress,
       this.icons,
-      this.onprimary});
+      this.onprimary,
+      this.elevation = 2});
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -31,17 +33,19 @@ class _CustomButtonState extends State<CustomButton> {
         width: widget.width,
         height: widget.height,
         child: ElevatedButton(
-          child: Stack(
-            children: [
-              Align(alignment: Alignment.centerLeft, child: Icon(widget.icons)),
-              Align(
-                alignment: Alignment.center,
-                child: Text(widget.text),
-              ),
-            ],
-          ),
-          style: ElevatedButton.styleFrom(
+            child: Stack(
+              children: [
+                Align(
+                    alignment: Alignment.centerLeft, child: Icon(widget.icons)),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(widget.text),
+                ),
+              ],
+            ),
+            style: ElevatedButton.styleFrom(
               primary: widget.primary,
+              elevation: widget.elevation,
               onPrimary: widget.onprimary,
               onSurface: Colors.grey,
               textStyle: TextStyle(
@@ -49,9 +53,10 @@ class _CustomButtonState extends State<CustomButton> {
                 fontSize: 16,
               ),
               shape: (RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  side: BorderSide(color: widget.primary),)),),
-          onPressed: widget.onpress
-        ));
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(color: widget.primary),
+              )),
+            ),
+            onPressed: widget.onpress));
   }
 }

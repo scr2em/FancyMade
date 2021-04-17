@@ -251,7 +251,7 @@ class ProductReview extends StatelessWidget {
                 child: Center(
                     child: Text(
                   "(${AppLocalizations.of(context).youcanaddlater})",
-                  style: TextStyle(fontSize: 14),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                 )),
               )
             ],

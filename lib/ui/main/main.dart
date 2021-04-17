@@ -1,10 +1,11 @@
 import 'package:finalproject/ui/auth/profile/Profile_Widget.dart';
+import 'package:finalproject/ui/checkout/checkout.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
 import 'package:finalproject/ui/order/order.dart';
-import 'package:finalproject/ui/product/productScreen.dart';
 import 'package:finalproject/ui/store/Add%20Prodect/ProductListingScreen.dart';
 import 'package:finalproject/ui/store/Add%20Prodect/ProductReviewScreen.dart';
 import 'package:finalproject/ui/store/store-dashboard/dashboard.dart';
+import 'package:finalproject/ui/store/store-dashboard/info.dart';
 import 'package:finalproject/ui/store/store-dashboard/inventory.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,10 +20,12 @@ import '../../sharedWidgets/CustomAppBar.dart';
 //UI
 import '../auth/login/Login_Widget.dart';
 import '../auth/signup/Signup_Widget.dart';
+import '../checkout/checkoutSuccessScreen.dart';
 import "../home/Home_Widget.dart";
 import "../auth/LoginProfileWrapper.dart";
 import "../checkout/checkoutSuccessScreen.dart";
 import '../order/order.dart';
+import '../product/productScreen.dart';
 import "../store/CreateStoreForm.dart";
 import "../auth/profile/Info/Info_Widget.dart";
 import "../auth/profile/Settings/Settings_Widget.dart";
@@ -64,7 +67,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
-            initialRoute: '/productReview',
+            initialRoute: '/checkout',
             routes: {
               '/': (context) => HomeScreen(),
               '/signup': (context) => SignupScreen(),
@@ -75,7 +78,10 @@ class MyApp extends StatelessWidget {
               '/profileSettings': (context) => SettingsScreen(),
               '/order': (context) => Order(),
               '/productlisting': (context) => ProductListing(),
-              '/productReview': (context) => ProductReview()
+              '/productReview': (context) => ProductReview(),
+              '/store-info': (context) => StoreInfo(),
+              '/checkout': (context) => Checkout(),
+              '/checkout-success': (context) => CheckoutSuccessScreen(),
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),
