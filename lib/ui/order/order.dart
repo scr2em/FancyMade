@@ -7,7 +7,6 @@ class Order extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Order #114224')),
-        // backgroundColor: transpaew,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
@@ -83,21 +82,21 @@ class Order extends StatelessWidget {
                                 'Color: Blue',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: Color(0xff868E96),
+                                    color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
                                 'Size: 37',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: Color(0xff868E96),
+                                    color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
                                 'Qty: 1',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: Color(0xff868E96),
+                                    color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                             ],
@@ -166,21 +165,21 @@ class Order extends StatelessWidget {
                                 'Color: Blue',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: Color(0xff868E96),
+                                    color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
                                 'Size: 37',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: Color(0xff868E96),
+                                    color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
                                 'Qty: 1',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: Color(0xff868E96),
+                                    color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                             ],

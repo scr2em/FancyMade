@@ -41,7 +41,9 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   shared_preferences: ^2.0.5
   ndialog: ^4.0.1
-  
+  image_picker: ^0.7.4
+  group_radio_button: ^1.0.1
+  flat_icons_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +64,6 @@ flutter:
   assets:
     - assets/images/language/
 
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -75,6 +76,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
+  #   - family: MyFlutterApp
+  #     fonts:
+  #       - asset: icons/MyFlutterApp.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

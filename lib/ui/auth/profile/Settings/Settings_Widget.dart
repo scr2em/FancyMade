@@ -5,6 +5,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../main/main_locale_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../sharedWidgets/CustomBottomBar.dart';
+import "../../../../services/auth_service.dart";
+import "../../../main/main_provider.dart";
+import "../../../../models/CustomUser.dart";
 
 const int ARABIC_VALUE = 1;
 const int ENGLISH_VALUE = 2;
@@ -16,9 +19,11 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   List<String> languages = ["عربي", "english"];
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<CustomUser>(context);
     return Scaffold(
       appBar: AppBar(
         // leading: Icon(Icons.arrow_back_ios),
@@ -35,28 +40,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: ListView(
           children: [
-            // Container(
-            //   decoration: BoxDecoration(
-            //     color: Theme.of(context).backgroundColor,
-            //     borderRadius: BorderRadius.circular(10),
-            //   ),
-            //   child: ListTile(
-            //     leading: Icon(Icons.flag_outlined,
-            //         color: Theme.of(context).accentColor),
-            //     title: Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //       children: [
-            //         Text("Language"),
-            //         Image.asset(
-            //           "assets/images/language/ar.png",
-            //           scale: 11,
-            //         )
-            //       ],
-            //     ),
-            //     trailing: Icon(Icons.keyboard_arrow_down,
-            //         color: Theme.of(context).accentColor),
-            //   ),
-            // ),
             SizedBox(
               height: 50,
               child: DecoratedBox(
@@ -100,13 +83,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     DropdownMenuItem(
                       child: Text("عربي"),
                       onTap: () async {
-                        Provider.of<MainLocaleProvider>(context,listen: false).updateApplicationLocale('ar');
+                        Provider.of<MainLocaleProvider>(context, listen: false)
+                            .updateApplicationLocale('ar');
                       },
                     ),
                     DropdownMenuItem(
                       child: Text("english"),
                       onTap: () async {
-                        Provider.of<MainLocaleProvider>(context,listen: false).updateApplicationLocale('en');
+                        Provider.of<MainLocaleProvider>(context, listen: false)
+                            .updateApplicationLocale('en');
                       },
                     ),
                   ],
@@ -117,6 +102,41 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         ),
       ),
+      bottomSheet: user != null
+          ? Container(
+        padding: EdgeInsets.all(15),
+        child: Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      height: 50,
+                      child: OutlinedButton(
+                        onPressed: () async {
+                          await _auth.signOut();
+                          Navigator.of(context).pushNamed("/signin");
+                        },
+                        style: ButtonStyle(
+                          side: MaterialStateProperty.all(
+                              BorderSide(color: Theme.of(context).accentColor)),
+                          foregroundColor: MaterialStateProperty.all(
+                            Colors.black,
+                          ),
+                          overlayColor: MaterialStateProperty.all(
+                            Theme.of(context).accentColor,
+                          ),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          )),
+                        ),
+                        child:  Text(AppLocalizations.of(context).signout),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+           ,
+      )  : null,
       bottomNavigationBar: CustomBottomBar(),
     );
   }

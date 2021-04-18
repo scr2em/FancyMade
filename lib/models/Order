@@ -1,0 +1,62 @@
+
+// To parse this JSON data, do
+//
+//     final order = orderFromJson(jsonString);
+
+import 'dart:convert';
+import './CartList.dart'
+Order orderFromJson(String str) => Order.fromJson(json.decode(str));
+
+String orderToJson(Order data) => json.encode(data.toJson());
+
+class Order {
+  Order({
+    this.owner,
+    this.createdAt,
+    this.dispatchedAt,
+    this.delieveredAt,
+    this.cartList,
+  });
+
+  String owner;
+  String createdAt;
+  String dispatchedAt;
+  String delieveredAt;
+  List<CartList> cartList;
+
+  factory Order.fromJson(Map<String, dynamic> json) => Order(
+    owner: json["owner"],
+    createdAt: json["createdAt"],
+    dispatchedAt: json["dispatchedAt"],
+    delieveredAt: json["delieveredAt"],
+    cartList: List<CartList>.from(json["cartList"].map((x) => CartList.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "owner": owner,
+    "createdAt": createdAt,
+    "dispatchedAt": dispatchedAt,
+    "delieveredAt": delieveredAt,
+    "cartList": List<dynamic>.from(cartList.map((x) => x.toJson())),
+  };
+}
+
+
+
+
+// {
+// "owner" : "userId",
+// "createdAt": "date",
+// "dispatchedAt" : "date",
+// "delieveredAt" : "date",
+// "cartList": [
+// {
+// "productId" : "id",
+// "qty" : 1
+// }   ,
+// {
+// "productId" : "id",
+// "qty" : 1
+// }
+// ]
+// }

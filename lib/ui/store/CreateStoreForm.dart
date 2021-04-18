@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "../../sharedWidgets/CustomTextFormField.dart";
 import "../../sharedWidgets/CustomButton.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../sharedWidgets/CustomBottomBar.dart';
 class CreateStoreForm extends StatefulWidget {
   @override
   _CreateStoreFormState createState() => _CreateStoreFormState();
@@ -11,6 +11,7 @@ class CreateStoreForm extends StatefulWidget {
 
 class _CreateStoreFormState extends State<CreateStoreForm> {
   bool checkedValue = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,8 +121,12 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 text: AppLocalizations.of(context).done,
                 primary: Theme.of(context).primaryColor,
               ),
+              SizedBox(
+                height: 29,
+              ),
             ],
           )),
+      bottomNavigationBar: CustomBottomBar(),
     );
   }
 }
