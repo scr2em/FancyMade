@@ -25,7 +25,9 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
       ),
       body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10,),
+          padding: EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
           child: ListView(
             children: [
               SizedBox(
@@ -49,10 +51,8 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: AppLocalizations.of(context).description,
-                  maxLines:6
-
-              ),
+                  hintText: AppLocalizations.of(context).description,
+                  maxLines: 6),
               SizedBox(
                 height: 29,
               ),
@@ -74,9 +74,8 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: AppLocalizations.of(context).description,
-                  maxLines:6
-              ),
+                  hintText: AppLocalizations.of(context).description,
+                  maxLines: 6),
               SizedBox(
                 height: 29,
               ),
@@ -93,14 +92,13 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomTextFormField(
-                hintText: AppLocalizations.of(context).facebookPageOptional ,
+                hintText: AppLocalizations.of(context).facebookPageOptional,
               ),
               SizedBox(
                 height: 29,
               ),
               ListTileTheme(
                 contentPadding: EdgeInsets.all(0),
-                
                 child: CheckboxListTile(
                   title: Text(AppLocalizations.of(context).iAgreeToTheTerms),
                   value: checkedValue,
@@ -109,13 +107,15 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                       checkedValue = newValue;
                     });
                   },
-                  controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                  controlAffinity:
+                      ListTileControlAffinity.leading, //  <-- leading Checkbox
                 ),
               ),
               SizedBox(
                 height: 29,
               ),
               CustomButton(
+                onpress: () {},
                 height: 50,
                 text: AppLocalizations.of(context).done,
                 primary: Theme.of(context).primaryColor,

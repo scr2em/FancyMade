@@ -49,7 +49,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<MainLocaleProvider>(
       create: (context) => MainLocaleProvider(),
-      child: Consumer<MainLocaleProvider>(builder: (context, mainLocaleProvider, child) {
+      child: Consumer<MainLocaleProvider>(
+          builder: (context, mainLocaleProvider, child) {
         print(mainLocaleProvider.applicationLocale);
         return StreamProvider<CustomUser>.value(
           value: AuthService().user,
@@ -69,12 +70,12 @@ class MyApp extends StatelessWidget {
               '/CreateStoreForm': (context) => CreateStoreForm(),
               '/profileInfo': (context) => InfoScreen(),
               '/profileSettings': (context) => SettingsScreen(),
+              '/order': (context) => SettingsScreen(),
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),
         );
       }),
     );
-
   }
 }

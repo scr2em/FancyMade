@@ -66,8 +66,8 @@ class _SignupScreenState extends State<SignupScreen> {
             appBar: CustomAppBar(),
             body: Container(
                 child: Center(
-              child: ListView(
-                children: [Form(
+              child: ListView(children: [
+                Form(
                   key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -98,6 +98,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ElevatedButton(
                           child: Text('sign up'), onPressed: onPressed),
                       CustomButton(
+                        onpress: () {},
                         width: 300,
                         height: 50,
                         text: 'Continue with google',
@@ -106,8 +107,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       )
                     ],
                   ),
-                ),]
-              ),
+                ),
+              ]),
             )),
             bottomNavigationBar: CustomBottomBar());
   }

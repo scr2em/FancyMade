@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:developer';
 import 'package:flutter/foundation.dart';
-import 'inboxscreen_model.dart';
+import '../../models/inboxscreen_model.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -95,6 +95,7 @@ class _ChatPageState extends State<ChatPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomButton(
+                  onpress: () {},
                   width: 174,
                   height: 60,
                   text: AppLocalizations.of(context).all,
@@ -102,6 +103,7 @@ class _ChatPageState extends State<ChatPage> {
                   onprimary: Theme.of(context).primaryColor,
                 ),
                 CustomButton(
+                  onpress: () {},
                   width: 174,
                   height: 60,
                   text: AppLocalizations.of(context).archived,

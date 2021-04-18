@@ -1,5 +1,5 @@
 import 'package:finalproject/sharedWidgets/CustomNavigationButton.dart';
-import 'package:finalproject/ui/inbox/inboxscreen_model.dart';
+import 'package:finalproject/models/inboxscreen_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 import 'package:flutter/foundation.dart';
