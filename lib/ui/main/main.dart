@@ -68,11 +68,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
-<<<<<<< HEAD
-            initialRoute: '/checkout',
-=======
-            initialRoute: '/store',
->>>>>>> 9e2481ae20da9646b2df2f8d43d0be63e412772b
+            initialRoute: '/product',
             routes: {
               '/': (context) => Store(),
               '/signup': (context) => SignupScreen(),

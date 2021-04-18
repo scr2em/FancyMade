@@ -77,8 +77,14 @@ class _StoreState extends State<Store> {
                               discount: 20,
                               badges: false,
                             ),
-                            Product(price: 150,badges: false,),
-                            Product(price: 120,badges: false,),
+                            Product(
+                              price: 150,
+                              badges: false,
+                            ),
+                            Product(
+                              price: 120,
+                              badges: false,
+                            ),
                           ],
                         ),
                       ),
@@ -107,7 +113,10 @@ class _StoreState extends State<Store> {
                     children: [
                       Product(price: 100),
                       Product(price: 100),
-                      Product(price: 100,discount: 15,),
+                      Product(
+                        price: 100,
+                        discount: 15,
+                      ),
                       Product(price: 100),
                       Product(price: 100),
                       Product(price: 100),
@@ -153,12 +162,17 @@ class Product extends StatelessWidget {
                 child: Price(
                   value: price,
                   discount: discount,
-
                 ),
               ),
-              Icon(badges ? Icons.beenhere_outlined: null, color: Colors.grey,size: 18,),
-              Icon(badges ? Icons.local_offer_outlined: null, color: Colors.grey,size: 18),
-              Icon(badges ? Icons.local_shipping_outlined: null, color: Colors.grey,size: 18),
+              Icon(
+                badges ? Icons.beenhere_outlined : null,
+                color: Colors.grey,
+                size: 18,
+              ),
+              Icon(badges ? Icons.local_offer_outlined : null,
+                  color: Colors.grey, size: 18),
+              Icon(badges ? Icons.local_shipping_outlined : null,
+                  color: Colors.grey, size: 18),
             ],
           )
         ],

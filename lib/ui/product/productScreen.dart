@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 
 import '../../sharedWidgets/CustomButton.dart';
 
@@ -98,24 +101,40 @@ class ProductScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.only(
+                            bottom: 10, right: 10, left: 10),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              '500',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
-                                  decoration: TextDecoration.lineThrough),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '500',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 20,
+                                      decoration: TextDecoration.lineThrough),
+                                ),
+                                Text(
+                                  ' 250 EGP',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30,
+                                      color: Theme.of(context).accentColor),
+                                )
+                              ],
                             ),
-                            Text(
-                              ' 250 EGP',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30,
-                                  color: Theme.of(context).accentColor),
-                            )
+                            RatingBarIndicator(
+                              rating: 2.75,
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              itemCount: 5,
+                              itemSize: 20,
+                              direction: Axis.horizontal,
+                            ),
                           ],
                         ),
                       ),
@@ -201,20 +220,133 @@ class ProductScreen extends StatelessWidget {
                                   height: 1.5),
                             ),
                           ),
-                          RatingBarIndicator(
-                            rating: 2.75,
-                            itemBuilder: (context, index) => Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
-                            itemCount: 5,
-                            itemSize: 20,
-                            direction: Axis.horizontal,
-                          ),
                         ],
                       ),
-                      CustomTextFormField(
-                        hintText: AppLocalizations.of(context).yourOpinion,
+                      // CustomTextFormField(
+                      //   hintText: AppLocalizations.of(context).yourOpinion,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        maxRadius: 20,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 10, left: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Albert Flores",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                            RatingBarIndicator(
+                                              rating: 2.75,
+                                              itemBuilder: (context, index) =>
+                                                  Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                              ),
+                                              itemCount: 5,
+                                              itemSize: 20,
+                                              direction: Axis.horizontal,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    "20 April 2020",
+                                    style: TextStyle(
+                                        color: Theme.of(context).hintColor),
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Text(
+                                  "user review user review user review user review user review user review ",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Divider(),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        maxRadius: 20,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 10, left: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Albert Flores",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                            RatingBarIndicator(
+                                              rating: 2.75,
+                                              itemBuilder: (context, index) =>
+                                                  Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                              ),
+                                              itemCount: 5,
+                                              itemSize: 20,
+                                              direction: Axis.horizontal,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    "20 April 2020",
+                                    style: TextStyle(
+                                        color: Theme.of(context).hintColor),
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Text(
+                                  "user review user review user review user review user review user review ",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -245,20 +377,134 @@ class ProductScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          CustomButton(
-                              elevation: 0,
-                              // height: 60,
-                              width: 150,
-                              primary: Theme.of(context).accentColor,
-                              text: AppLocalizations.of(context).request,
-                              onpress: () {
-                                Navigator.of(context).pushNamed('/product');
-                              })
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: CustomButton(
+                                elevation: 0,
+                                // height: 60,
+                                width: 150,
+                                primary: Theme.of(context).accentColor,
+                                text: AppLocalizations.of(context).request,
+                                onpress: () {
+                                  Navigator.of(context).pushNamed('/product');
+                                }),
+                          )
                         ],
                       ),
                     ],
                   ),
-                )
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              "Store Info",
+                              // AppLocalizations.of(context).userReviews,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  height: 1.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                      // CustomTextFormField(
+                      //   hintText: AppLocalizations.of(context).yourOpinion,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        maxRadius: 35,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 10, left: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Store Name",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5, bottom: 5),
+                                              child: Row(
+                                                children: [
+                                                  RatingBarIndicator(
+                                                    rating: 2.75 / 5,
+                                                    itemBuilder:
+                                                        (context, index) =>
+                                                            Icon(
+                                                      Icons.star,
+                                                      color: Colors.amber,
+                                                    ),
+                                                    itemCount: 1,
+                                                    itemSize: 20,
+                                                    direction: Axis.horizontal,
+                                                  ),
+                                                  Text(
+                                                    " 2.75",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 16),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Text(
+                                              "95% Positive FeedBack",
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .hintColor,
+                                                  fontSize: 14),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: Theme.of(context).hintColor,
+                                    ),
+                                    onPressed: () {},
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ]),
             ),
           ),
@@ -283,28 +529,36 @@ class ProductScreen extends StatelessWidget {
                                 height: 1.5),
                           ),
                           Container(
-                            width: 100,
-                            height: 30,
+                            // width: 100,
+                            // height: 30,
                             decoration: BoxDecoration(
                               border: Border.all(
                                 width: 2,
-                                color: Theme.of(context).highlightColor,
+                                color: Color(0xff283148).withOpacity(.2),
                               ),
-                              borderRadius: BorderRadius.circular(5),
-                              color: Theme.of(context).highlightColor,
+                              borderRadius: BorderRadius.circular(6),
+                              color: Color(0xff283148).withOpacity(.2),
                             ),
                             child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text(
-                                    "-",
-                                    style: TextStyle(
-                                      fontSize: 22,
+                                  TextButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                        minimumSize: MaterialStateProperty.all(
+                                            Size(10, 2))),
+                                    child: Text(
+                                      "-",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
                                     ),
                                   ),
                                   Container(
-                                    width: 40,
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 15),
                                     color: Colors.white,
                                     child: Center(
                                       child: Text(
@@ -315,10 +569,15 @@ class ProductScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Text("+",
-                                      style: TextStyle(
-                                        fontSize: 22,
-                                      ))
+                                  TextButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                        minimumSize: MaterialStateProperty.all(
+                                            Size(10, 2))),
+                                    child: Text("+",
+                                        style: TextStyle(
+                                            fontSize: 22, color: Colors.black)),
+                                  )
                                 ]),
                           )
                         ],
