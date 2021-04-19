@@ -17,7 +17,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
       if (index == 0) {
         Navigator.of(context).pushNamed('/');
       } else if (index == 1) {
-        Navigator.of(context).pushNamed('/product');
+        Navigator.of(context).pushNamed('/faq');
       } else if (index == 2) {
         Navigator.of(context).pushNamed('/loginProfileWrapper');
       } else {}

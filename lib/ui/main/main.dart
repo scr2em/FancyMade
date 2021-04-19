@@ -1,3 +1,5 @@
+import 'package:finalproject/ui/ContactUs/contactus.dart';
+import 'package:finalproject/ui/FAQ/faq.dart';
 import 'package:finalproject/ui/auth/profile/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkout.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
@@ -90,7 +92,9 @@ class MyApp extends StatelessWidget {
               '/checkout': (context) => Checkout(),
               '/checkout-success': (context) => CheckoutSuccessScreen(),
               '/store-dashboard': (context) => StoreDashboard(),
-              '/req-msgs': (context) => ReqChatPage()
+              '/req-msgs': (context) => ReqChatPage(),
+              '/contactUs': (context) => ContactUs(),
+              '/faq': (context) => FAQ()
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),

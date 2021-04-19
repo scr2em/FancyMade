@@ -10,7 +10,7 @@ class StoreInfo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Info",
+          AppLocalizations.of(context).storeInfo,
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
@@ -32,13 +32,13 @@ class StoreInfo extends StatelessWidget {
                           'https://th.bing.com/th/id/OIP.LC6JuWgA_1GxGH-nQJ1b0wHaHa?w=159&h=180&c=7&o=5&dpr=1.25&pid=1.7')),
                 ),
                 Text(
-                  "Store Name",
+                  AppLocalizations.of(context).storeName,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 15),
                   child: Text(
-                    'Owner name',
+                    AppLocalizations.of(context).ownerName,
                     style: TextStyle(
                         fontSize: 16, color: Theme.of(context).accentColor),
                   ),
@@ -56,7 +56,7 @@ class StoreInfo extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20, bottom: 10),
                   child: Text(
-                    'Average Rating',
+                    AppLocalizations.of(context).avgRating,
                     style: TextStyle(
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ),
@@ -64,7 +64,7 @@ class StoreInfo extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('Quality'),
+                    Text(AppLocalizations.of(context).quality),
                     RatingBarIndicator(
                       rating: 2.75,
                       itemBuilder: (context, index) => Icon(
@@ -80,7 +80,7 @@ class StoreInfo extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('Price'),
+                    Text(AppLocalizations.of(context).price),
                     RatingBarIndicator(
                       rating: 2.75,
                       itemBuilder: (context, index) => Icon(
@@ -94,9 +94,9 @@ class StoreInfo extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Text(
-                    'Reviews',
+                    AppLocalizations.of(context).reviews,
                     style: TextStyle(
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ),
