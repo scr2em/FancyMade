@@ -411,7 +411,7 @@ class ProductScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(bottom: 10),
                             child: Text(
                               "Store Info",
-                              // AppLocalizations.of(context).userReviews,
+                              // AppLocalizations.of(context).storeInfo,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -520,12 +520,13 @@ class ProductScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             AppLocalizations.of(context).quantity,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
-                                fontSize: 16,
+                                fontSize: 18,
                                 height: 1.5),
                           ),
                           Container(
@@ -587,10 +588,9 @@ class ProductScreen extends StatelessWidget {
                           // height: 60,
                           width: 150,
                           primary: Theme.of(context).accentColor,
-                          text: "Add to Cart",
-                          //       // AppLocalizations.of(context).addtocart
+                          text: AppLocalizations.of(context).addtocart,
                           onpress: () {
-                            Navigator.of(context).pushNamed('/product');
+                            Navigator.of(context).pushNamed('/profileSettings');
                           })
                     ],
                   ),

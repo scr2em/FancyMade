@@ -7,14 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:developer';
 import 'package:flutter/foundation.dart';
+import '../../../../sharedWidgets/DashboardBottomBar.dart';
 import 'inboxscreen_model.dart';
 
-class ChatPage extends StatefulWidget {
+class ReqChatPage extends StatefulWidget {
   @override
-  _ChatPageState createState() => _ChatPageState();
+  _ReqChatPageState createState() => _ReqChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ReqChatPageState extends State<ReqChatPage> {
   List<ChatUsers> chatUsers = [
     ChatUsers(
         name: "Jane Russel",
@@ -147,7 +148,7 @@ class _ChatPageState extends State<ChatPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(child: CustomBottomBar()),
+      bottomNavigationBar: Container(child: DashboardBottomBar()),
     );
   }
 }

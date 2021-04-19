@@ -93,5 +93,16 @@
     "price":"Price",
     "pound":"L.E",
     "submityourlisting":"Submit your listing",
-    "youcanaddlater":"You can always add or update information later"
+    "youcanaddlater":"You can always add or update information later",
+    "securePayment":"Secure Payment",
+    "addAddress":"Add Address",
+    "payment":"Payment",
+    "addCredit":"Add Credit",
+    "debitCard":"Debit Card",
+    "expireDate":"Expire Date",
+    "items":"Items",
+    "arrivesby":"Arrives by",
+    "to":"to",
+    "finalStep":"This is the final step, after you touching Pay Now button, the payment will be transaction",
+    "addtocart":"Add to Cart"
 }
