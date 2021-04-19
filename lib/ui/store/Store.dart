@@ -108,7 +108,7 @@ class _StoreState extends State<Store> {
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 2,
-                    childAspectRatio: 2.7 / 3,
+                    childAspectRatio: 2.5 / 3,
                     crossAxisSpacing: 10,
                     children: [
                       Product(price: 100),

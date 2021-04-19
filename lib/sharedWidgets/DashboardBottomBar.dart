@@ -19,10 +19,10 @@ class _DashboardBottomBarState extends State<DashboardBottomBar> {
             '/store-inventory', (Route<dynamic> route) => false);
       } else if (index == 1) {
         Navigator.of(context).pushNamedAndRemoveUntil(
-            '/store-dashboard', (Route<dynamic> route) => false);
+            '/req-msgs', (Route<dynamic> route) => false);
       } else if (index == 2) {
         Navigator.of(context).pushNamedAndRemoveUntil(
-            '/store-dashboard', (Route<dynamic> route) => false);
+            '/store-info', (Route<dynamic> route) => false);
       } else if (index == 3) {
         Navigator.of(context).pushNamedAndRemoveUntil(
             '/store-dashboard', (Route<dynamic> route) => false);
@@ -37,6 +37,7 @@ class _DashboardBottomBarState extends State<DashboardBottomBar> {
     final user = Provider.of<CustomUser>(context);
 
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.inventory),
@@ -58,6 +59,7 @@ class _DashboardBottomBarState extends State<DashboardBottomBar> {
       currentIndex: _selectedIndex,
       selectedItemColor: Theme.of(context).accentColor,
       backgroundColor: Color(0xff283148),
+      unselectedItemColor: Theme.of(context).backgroundColor,
       onTap: _onItemTapped,
     );
   }

@@ -21,8 +21,6 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
       } else if (index == 2) {
         Navigator.of(context).pushNamed('/loginProfileWrapper');
       } else {}
-
-      // Navigator.pushNamed(context, '/second');
     });
   }
 

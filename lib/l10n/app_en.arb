@@ -94,5 +94,16 @@
     "pound":"L.E",
     "submityourlisting":"Submit your listing",
     "youcanaddlater":"You can always add or update information later",
-    "cart":"cart"
+    "cart":"cart",
+    "securePayment":"Secure Payment",
+    "addAddress":"Add Address",
+    "payment":"Payment",
+    "addCredit":"Add Credit",
+    "debitCard":"Debit Card",
+    "expireDate":"Expire Date",
+    "items":"Items",
+    "arrivesby":"Arrives by",
+    "to":"to",
+    "finalStep":"This is the final step, after you touching Pay Now button, the payment will be transaction",
+    "addtocart":"Add to Cart"
 }
