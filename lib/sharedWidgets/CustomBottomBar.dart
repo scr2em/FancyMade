@@ -15,7 +15,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
     setState(() {
       _selectedIndex = index;
       if (index == 0) {
-        Navigator.of(context).pushNamed('/');
+        Navigator.of(context).pushNamed('/home');
       } else if (index == 1) {
         Navigator.of(context).pushNamed('/faq');
       } else if (index == 2) {

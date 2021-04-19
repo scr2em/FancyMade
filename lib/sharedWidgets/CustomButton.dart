@@ -44,30 +44,60 @@ class _CustomButtonState extends State<CustomButton> {
         width: widget.width,
         height: widget.height,
         child: ElevatedButton(
-            child: Stack(
-              children: [
-                Align(
-                    alignment: Alignment.centerLeft, child: Icon(widget.icons)),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(widget.text),
-                ),
-              ],
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: widget.primary,
-              elevation: widget.elevation,
-              onPrimary: widget.onprimary,
-              onSurface: Colors.grey,
-              textStyle: TextStyle(
-                // color: Colors.blue,
-                fontSize: 16,
+          onPressed: widget.onpress,
+          child: Stack(
+            children: [
+              Align(alignment: Alignment.centerLeft, child: Icon(widget.icons)),
+              Align(
+                alignment: Alignment.center,
+                child: Text(widget.text),
               ),
-              shape: (RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                side: BorderSide(color: widget.primary),
-              )),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: widget.primary,
+            onPrimary: widget.onprimary,
+            elevation: widget.elevation,
+            onSurface: Colors.grey,
+            textStyle: TextStyle(
+              // backgroundColor: Colors.yellow,
+              // decorationColor: Colors.black,
+              // color: Colors.black,
+              fontSize: widget.fontsize,
             ),
-            onPressed: widget.onpress));
+            shape: (RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(widget.radiustopright),
+                  topLeft: Radius.circular(widget.radiustopleft),
+                  bottomRight: Radius.circular(widget.radiustbotright),
+                  bottomLeft: Radius.circular(widget.radiusbotleft)),
+              side: BorderSide(color: widget.bordercolor),
+            )),
+          ),
+        ));
+    // child:
+    // Stack(
+    //   children: [
+    //     Align(alignment: Alignment.centerLeft, child: Icon(widget.icons)),
+    //     Align(
+    //       alignment: Alignment.center,
+    //       child: Text(widget.text),
+    //     ),
+    //   ],
+    // );
+    // style:
+    // ElevatedButton.styleFrom(
+    //   primary: widget.primary,
+    //   elevation: widget.elevation,
+    //   onPrimary: widget.onprimary,
+    //   onSurface: Colors.grey,
+    //   textStyle: TextStyle(
+    //     // color: Colors.blue,
+    //     fontSize: 16,
+    //   ),
+    //   shape: (RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(10.0),
+    //     side: BorderSide(color: widget.primary),
+    //   )),
   }
 }

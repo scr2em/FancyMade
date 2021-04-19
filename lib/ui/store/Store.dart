@@ -22,9 +22,7 @@ class _StoreState extends State<Store> {
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
         actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert),
-          ),
+          IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
         ],
       ),
       body: Column(
@@ -40,7 +38,9 @@ class _StoreState extends State<Store> {
                     child: Row(
                       children: [
                         Expanded(child: CustomSearchInput()),
-                        IconButton(icon: Icon(Icons.filter_alt_outlined)),
+                        IconButton(
+                            icon: Icon(Icons.filter_alt_outlined),
+                            onPressed: () {})
                       ],
                     ),
                   ),
