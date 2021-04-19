@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
-            initialRoute: '/product',
+            initialRoute: '/home',
             routes: {
               '/': (context) => Store(),
               '/signup': (context) => SignupScreen(),
@@ -85,6 +85,11 @@ class MyApp extends StatelessWidget {
               '/store-info': (context) => StoreInfo(),
               '/checkout': (context) => Checkout(),
               '/checkout-success': (context) => CheckoutSuccessScreen(),
+              '/home': (context) => HomeScreen(),
+              // '/store-info': (context) => StoreInfo(),
+              '/store-inventory': (context) => StoreInventory(),
+              '/store-dashboard': (context) => StoreDashboard(),
+              // '/req-msgs': (context) => ReqChatPage()
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),

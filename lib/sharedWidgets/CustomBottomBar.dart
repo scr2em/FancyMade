@@ -15,7 +15,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
     setState(() {
       _selectedIndex = index;
       if (index == 0) {
-        Navigator.of(context).pushNamed('/');
+        Navigator.of(context).pushNamed('/home');
       } else if (index == 1) {
         Navigator.of(context).pushNamed('/product');
       } else if (index == 2) {
@@ -41,7 +41,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
           label: AppLocalizations.of(context).sw_CustomBottomBar_favorite,
         ),
         BottomNavigationBarItem(
-          icon:  Icon(Icons.account_circle_rounded),
+          icon: Icon(Icons.account_circle_rounded),
           label: AppLocalizations.of(context).profile,
         ),
       ],

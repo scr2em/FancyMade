@@ -65,12 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ? Loading()
             : Container(
                 child: Center(
-<<<<<<< HEAD
-              child: ListView(children: [
-                Form(
-=======
                 child: Form(
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
                   key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -121,17 +116,6 @@ class _SignupScreenState extends State<SignupScreen> {
                             vertical: 8.0, horizontal: 35),
                         child: Text(errorMessage),
                       ),
-<<<<<<< HEAD
-                      ElevatedButton(
-                          child: Text('sign up'), onPressed: onPressed),
-                      CustomButton(
-                        onpress: () {},
-                        width: 300,
-                        height: 50,
-                        text: 'Continue with google',
-                        primary: Theme.of(context).primaryColor,
-                        icons: Icons.mail,
-=======
 
                       //signup button
                       Padding(
@@ -170,7 +154,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         onTap: () {
                           Navigator.of(context).pushNamed("/signin");
                         },
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
                       )
                       // CustomButton(
                       //   width: 300,
@@ -183,13 +166,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ],
                   ),
                 ),
-<<<<<<< HEAD
-              ]),
-            )),
-            bottomNavigationBar: CustomBottomBar());
-=======
               )),
         bottomNavigationBar: CustomBottomBar());
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
   }
 }

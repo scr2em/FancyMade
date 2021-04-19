@@ -68,73 +68,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return loading
-        ? Loading()
-        : Scaffold(
-            appBar: CustomAppBar(),
-            body: Container(
-                padding: const EdgeInsets.all(10.0),
-                child: ListView(children: [
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              AppLocalizations.of(context).logIntoYourAccount,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 22)),
-                        ),
-                        CustomTextFormField(
-                          validator: emailValidator,
-                          hintText: AppLocalizations.of(context).email,
-                          onChanged: onEmailChange,
-                        ),
-                        CustomTextFormField(
-                          validator: passwordValidator,
-                          hintText: AppLocalizations.of(context).password,
-                          obscureText: _obscureText,
-                          onChanged: onPasswordChange,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 35),
-                              child: Text(
-                                errorMessage,
-                                style: TextStyle(color: Colors.red),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 35),
-                              child: Text(
-                                AppLocalizations.of(context).forgotYourPassword,
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline),
-                              ),
-                            ),
-                          ],
-                        ),
-                        ElevatedButton(
-                            child: Text(AppLocalizations.of(context).signin),
-                            onPressed: onPressed),
-                        CustomButton(
-                          primary: Theme.of(context).accentColor,
-                          onpress: () {},
-                        )
-                      ],
-                    ),
-                  ),
-                ])),
-            bottomNavigationBar: CustomBottomBar());
-=======
     return Scaffold(
         appBar: CustomAppBar(),
         body: loading
@@ -235,7 +168,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 )),
         bottomNavigationBar: CustomBottomBar());
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
   }
 }
 

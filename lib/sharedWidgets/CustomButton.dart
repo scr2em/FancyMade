@@ -13,12 +13,8 @@ class CustomButton extends StatefulWidget {
   Object primary;
   Object onprimary;
   Object icons;
-<<<<<<< HEAD
-  Function onpress;
-=======
   Function onpress = () {};
   double elevation;
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
 
   CustomButton(
       {this.text = "cutomize me",
@@ -48,7 +44,7 @@ class _CustomButtonState extends State<CustomButton> {
         width: widget.width,
         height: widget.height,
         child: ElevatedButton(
-<<<<<<< HEAD
+          onPressed: widget.onpress,
           child: Stack(
             children: [
               Align(alignment: Alignment.centerLeft, child: Icon(widget.icons)),
@@ -58,10 +54,10 @@ class _CustomButtonState extends State<CustomButton> {
               ),
             ],
           ),
-          onPressed: widget.onpress,
           style: ElevatedButton.styleFrom(
             primary: widget.primary,
             onPrimary: widget.onprimary,
+            elevation: widget.elevation,
             onSurface: Colors.grey,
             textStyle: TextStyle(
               // backgroundColor: Colors.yellow,
@@ -79,32 +75,29 @@ class _CustomButtonState extends State<CustomButton> {
             )),
           ),
         ));
-=======
-            child: Stack(
-              children: [
-                Align(
-                    alignment: Alignment.centerLeft, child: Icon(widget.icons)),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(widget.text),
-                ),
-              ],
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: widget.primary,
-              elevation: widget.elevation,
-              onPrimary: widget.onprimary,
-              onSurface: Colors.grey,
-              textStyle: TextStyle(
-                // color: Colors.blue,
-                fontSize: 16,
-              ),
-              shape: (RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                side: BorderSide(color: widget.primary),
-              )),
-            ),
-            onPressed: widget.onpress));
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
+    // child:
+    // Stack(
+    //   children: [
+    //     Align(alignment: Alignment.centerLeft, child: Icon(widget.icons)),
+    //     Align(
+    //       alignment: Alignment.center,
+    //       child: Text(widget.text),
+    //     ),
+    //   ],
+    // );
+    // style:
+    // ElevatedButton.styleFrom(
+    //   primary: widget.primary,
+    //   elevation: widget.elevation,
+    //   onPrimary: widget.onprimary,
+    //   onSurface: Colors.grey,
+    //   textStyle: TextStyle(
+    //     // color: Colors.blue,
+    //     fontSize: 16,
+    //   ),
+    //   shape: (RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(10.0),
+    //     side: BorderSide(color: widget.primary),
+    //   )),
   }
 }
