@@ -91,6 +91,7 @@ class CartState extends State<Cart> {
         imageURL:
             'https://images.pexels.com/photos/2072181/pexels-photo-2072181.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -367,6 +368,7 @@ class Cartproducts {
   String productname;
   String imageURL;
   int multiplier;
+
   Cartproducts({
     @required this.price,
     @required this.productname,

@@ -108,7 +108,7 @@ class _StoreState extends State<Store> {
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 2,
-                    childAspectRatio: 2.7 / 3,
+                    childAspectRatio: 2.5 / 3,
                     crossAxisSpacing: 10,
                     children: [
                       Product(price: 100),
@@ -138,6 +138,7 @@ class Product extends StatelessWidget {
   int price;
   int discount;
   bool badges;
+
   Product({this.price, this.discount = 0, this.badges = true});
 
   @override

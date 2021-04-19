@@ -51,11 +51,11 @@ class Order {
 // "delieveredAt" : "date",
 // "cartList": [
 // {
-// "productId" : "id",
+// "product" : "product",
 // "qty" : 1
 // }   ,
 // {
-// "productId" : "id",
+// "product" : "product",
 // "qty" : 1
 // }
 // ]

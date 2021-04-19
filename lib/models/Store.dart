@@ -109,6 +109,8 @@ class Social {
 // "category" : "categoryId",
 // "plan": "basic",
 // "social" : {
-// "facebook" : "http://...."
+// "facebook" : "http://....",
+// },
 // }
-// }
+
+

@@ -58,7 +58,6 @@ class MyApp extends StatelessWidget {
       create: (context) => MainLocaleProvider(),
       child: Consumer<MainLocaleProvider>(
           builder: (context, mainLocaleProvider, child) {
-        print(mainLocaleProvider.applicationLocale);
         return StreamProvider<CustomUser>.value(
           value: AuthService().user,
           initialData: null,
@@ -68,9 +67,11 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: theme,
-            initialRoute: '/product',
+            // themeMode: ThemeMode.dark,
+            // darkTheme: darkTheme,
+            initialRoute: '/',
             routes: {
-              '/': (context) => Store(),
+              '/': (context) => HomeScreen(),
               '/signup': (context) => SignupScreen(),
               '/signin': (context) => LoginScreen(),
               '/loginProfileWrapper': (context) => LoginProfileWrapper(),

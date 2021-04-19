@@ -6,6 +6,7 @@ class MainProvider extends ChangeNotifier {
 
 
   MainProvider();
+
   changeAuth() {
     signedin = !signedin;
     notifyListeners();

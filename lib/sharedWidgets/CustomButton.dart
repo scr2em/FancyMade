@@ -13,12 +13,8 @@ class CustomButton extends StatefulWidget {
   Object primary;
   Object onprimary;
   Object icons;
-<<<<<<< HEAD
-  Function onpress;
-=======
   Function onpress = () {};
   double elevation;
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
 
   CustomButton(
       {this.text = "cutomize me",
@@ -48,38 +44,7 @@ class _CustomButtonState extends State<CustomButton> {
         width: widget.width,
         height: widget.height,
         child: ElevatedButton(
-<<<<<<< HEAD
-          child: Stack(
-            children: [
-              Align(alignment: Alignment.centerLeft, child: Icon(widget.icons)),
-              Align(
-                alignment: Alignment.center,
-                child: Text(widget.text),
-              ),
-            ],
-          ),
-          onPressed: widget.onpress,
-          style: ElevatedButton.styleFrom(
-            primary: widget.primary,
-            onPrimary: widget.onprimary,
-            onSurface: Colors.grey,
-            textStyle: TextStyle(
-              // backgroundColor: Colors.yellow,
-              // decorationColor: Colors.black,
-              // color: Colors.black,
-              fontSize: widget.fontsize,
-            ),
-            shape: (RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(widget.radiustopright),
-                  topLeft: Radius.circular(widget.radiustopleft),
-                  bottomRight: Radius.circular(widget.radiustbotright),
-                  bottomLeft: Radius.circular(widget.radiusbotleft)),
-              side: BorderSide(color: widget.bordercolor),
-            )),
-          ),
-        ));
-=======
+
             child: Stack(
               children: [
                 Align(
@@ -105,6 +70,5 @@ class _CustomButtonState extends State<CustomButton> {
               )),
             ),
             onPressed: widget.onpress));
->>>>>>> 2e8a754b8d9cd1bd2e9d8c5e79386c07e9fc2bdd
   }
 }

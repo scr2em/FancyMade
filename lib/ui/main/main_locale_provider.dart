@@ -8,10 +8,12 @@ const String APP_SAVED_LOCALE = "APP_SAVED_LOCALE";
 
 class MainLocaleProvider extends ChangeNotifier {
   Locale applicationLocale;
+  int x = 1;
 
   MainLocaleProvider() {
     loadSavedLocale();
   }
+
   updateApplicationLocale(String languageCode) {
     Locale newLocale = AppLocalizations.supportedLocales
         .firstWhere((locale) => locale.languageCode == languageCode);
