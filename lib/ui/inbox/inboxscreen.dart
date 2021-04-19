@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:developer';
 import 'package:flutter/foundation.dart';
-import 'inboxscreen_model.dart';
+import '../../models/inboxscreen_model.dart';
 
 class ChatPage extends StatefulWidget {
   @override

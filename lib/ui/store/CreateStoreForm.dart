@@ -116,6 +116,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                 height: 29,
               ),
               CustomButton(
+                onpress: () {},
                 height: 50,
                 text: AppLocalizations.of(context).done,
                 primary: Theme.of(context).primaryColor,
