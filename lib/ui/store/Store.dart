@@ -110,6 +110,7 @@ class _StoreState extends State<Store> {
                     crossAxisCount: 2,
                     childAspectRatio: 2.5 / 3,
                     crossAxisSpacing: 10,
+                    mainAxisSpacing: 20,
                     children: [
                       Product(price: 100),
                       Product(price: 100),
@@ -145,8 +146,8 @@ class Product extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(right: 8),
       width: 190.0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Wrap(
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Placeholder(
             fallbackHeight: 150,
@@ -156,25 +157,19 @@ class Product extends StatelessWidget {
             child: Text("Product name ",
                 style: Theme.of(context).textTheme.bodyText1),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Price(
-                  value: price,
-                  discount: discount,
-                ),
-              ),
-              Icon(
-                badges ? Icons.beenhere_outlined : null,
-                color: Colors.grey,
-                size: 18,
-              ),
-              Icon(badges ? Icons.local_offer_outlined : null,
-                  color: Colors.grey, size: 18),
-              Icon(badges ? Icons.local_shipping_outlined : null,
-                  color: Colors.grey, size: 18),
-            ],
-          )
+          Price(
+            value: price,
+            discount: discount,
+          ),
+          Icon(
+            badges ? Icons.beenhere_outlined : null,
+            color: Colors.grey,
+            size: 18,
+          ),
+          Icon(badges ? Icons.local_offer_outlined : null,
+              color: Colors.grey, size: 18),
+          Icon(badges ? Icons.local_shipping_outlined : null,
+              color: Colors.grey, size: 18)
         ],
       ),
     );

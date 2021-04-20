@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 child: Text('home'),
               ),
               CustomButton(
-                text: 'test',
+                text: 'test1',
                 onpress: () {
                   NAlertDialog(
                     content: Cart(),
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test2',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test3',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test4',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test5',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test6',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test7',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test8',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test9',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test10',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test11',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -118,7 +118,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test12',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -126,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test13',
                 height: 40,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -134,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test14',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -142,7 +142,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test15',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -150,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test16',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -158,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test17',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -166,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test18',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -174,11 +174,43 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               CustomButton(
-                text: 'test',
+                text: 'test19',
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       '/checkout', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test20',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/contactUs', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test21',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/faq', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test22',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/req-msgs', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test23',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/notfound', (Route<dynamic> route) => false);
                 },
               ),
             ],

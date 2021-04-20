@@ -21,6 +21,7 @@ import '../../sharedWidgets/CustomBottomBar.dart';
 import '../../sharedWidgets/CustomAppBar.dart';
 
 //UI
+import '../404/404_pageNotFound.dart';
 import '../auth/login/Login_Widget.dart';
 import '../auth/signup/Signup_Widget.dart';
 import '../checkout/checkoutSuccessScreen.dart';
@@ -92,18 +93,11 @@ class MyApp extends StatelessWidget {
               '/checkout': (context) => Checkout(),
               '/checkout-success': (context) => CheckoutSuccessScreen(),
               '/home': (context) => HomeScreen(),
-              // '/store-info': (context) => StoreInfo(),
-              // '/store-inventory': (context) => StoreInventory(),
               '/store-dashboard': (context) => StoreDashboard(),
-<<<<<<< HEAD
               '/req-msgs': (context) => ReqChatPage(),
               '/contactUs': (context) => ContactUs(),
-              '/faq': (context) => FAQ()
-=======
-              // '/req-msgs': (context) => ReqChatPage()
-              // '/store-dashboard': (context) => StoreDashboard(),
-              '/req-msgs': (context) => ReqChatPage()
->>>>>>> b74b1c35b589fcf1ccac94abb2b23603dce9f789
+              '/faq': (context) => FAQ(),
+              '/notfound': (context) => PageNotFound()
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),

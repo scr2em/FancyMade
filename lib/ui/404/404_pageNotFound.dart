@@ -5,7 +5,16 @@ class PageNotFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          AppLocalizations.of(context).faq,
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Color(0xff273147)),
+      ),
       backgroundColor: const Color(323232),
       body: Stack(
         children: [
@@ -26,8 +35,8 @@ class PageNotFound extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children:  [
-                 Text(
+              children: [
+                Text(
                   AppLocalizations.of(context).pageNotFound_header,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -37,7 +46,7 @@ class PageNotFound extends StatelessWidget {
                       fontFamily: 'Anton',
                       fontWeight: FontWeight.bold),
                 ),
-                 Text(
+                Text(
                   AppLocalizations.of(context).pageNotFound_text,
                   textAlign: TextAlign.center,
                   style: TextStyle(
