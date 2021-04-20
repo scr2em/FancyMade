@@ -95,15 +95,9 @@ class MyApp extends StatelessWidget {
               // '/store-info': (context) => StoreInfo(),
               // '/store-inventory': (context) => StoreInventory(),
               '/store-dashboard': (context) => StoreDashboard(),
-<<<<<<< HEAD
               '/req-msgs': (context) => ReqChatPage(),
               '/contactUs': (context) => ContactUs(),
               '/faq': (context) => FAQ()
-=======
-              // '/req-msgs': (context) => ReqChatPage()
-              // '/store-dashboard': (context) => StoreDashboard(),
-              '/req-msgs': (context) => ReqChatPage()
->>>>>>> b74b1c35b589fcf1ccac94abb2b23603dce9f789
             },
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
           ),

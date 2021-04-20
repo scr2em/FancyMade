@@ -101,7 +101,7 @@ class CartState extends State<Cart> {
           preferredSize: Size.fromHeight(MediaQuery.of(context).size.height),
           child: Scaffold(
               appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(30),
+                  preferredSize: Size.fromHeight(34),
                   child: AppBar(
                       elevation: 0,
                       automaticallyImplyLeading: false,
@@ -190,7 +190,7 @@ class CartState extends State<Cart> {
                                                   ),
                                                   // should be localized
                                                   Text(
-                                                    'Price:${cartproducts[index].price} L.E',
+                                                    'Price:${cartproducts[index].price} ${AppLocalizations.of(context).lE}',
                                                     style: TextStyle(
                                                       fontSize: 10,
                                                       color:
@@ -283,7 +283,7 @@ class CartState extends State<Cart> {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(SnackBar(
                                                         content: Text(
-                                                            "removed item")));
+                                                            "${AppLocalizations.of(context).itemremoved}")));
                                               },
                                             ),
                                             SizedBox(
@@ -291,7 +291,7 @@ class CartState extends State<Cart> {
                                             ),
                                             Container(
                                               child: Text(
-                                                '${onload(index)} L.E',
+                                                '${onload(index)} ${AppLocalizations.of(context).lE}',
                                                 textScaleFactor: 0.9,
                                               ),
                                             )
@@ -305,6 +305,9 @@ class CartState extends State<Cart> {
                             ),
                           );
                         }),
+                    SizedBox(
+                      height: 10,
+                    )
                   ],
                 ),
               ),
@@ -321,7 +324,7 @@ class CartState extends State<Cart> {
                         width: 150,
                         height: 40,
                         //need localization
-                        text: 'Check out',
+                        text: '${AppLocalizations.of(context).checkout}',
                         fontsize: 12,
                         primary: Theme.of(context).accentColor,
                         onprimary: Colors.white,
@@ -337,7 +340,7 @@ class CartState extends State<Cart> {
                         Align(
                           alignment: Alignment.bottomLeft,
                           child: Text(
-                            'Total',
+                            '${AppLocalizations.of(context).total}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
