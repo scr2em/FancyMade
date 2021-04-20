@@ -124,8 +124,8 @@
     "fqa_q3":"What types of Support do you offer?",
     "fqa_a3":"Support for your website is offered via email, 6 days a week. We are off on biblical holidays.\nWe have two types of online support methods:\n A knowledge base with questions & answers and tutorials which we add to on a regular basis.\nAn online email ticket system where you can have your specific questions answered via email by a real person.\nWe don’t provide telephone support. We do not offer specific help with the live theme editor to tell you how to achieve a look you want to achieve, but can answer basic questions about its functionality and at our discretion provide assistance on a best-efforts basis.",
     "lE":"L.E",
-     "itemremoved":"Item removed",
-     "checkout":"Check out",
-     "total":"Total",
+    "itemremoved":"Item removed",
+    "checkout":"Check out",
+    "total":"Total"
 
 }

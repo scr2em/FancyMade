@@ -1,4 +1,7 @@
 import 'dart:math';
+import 'package:provider/provider.dart';
+
+import '../../ui/main/main_locale_provider.dart';
 
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:flutter/material.dart';
@@ -94,276 +97,323 @@ class CartState extends State<Cart> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * .75,
-      width: MediaQuery.of(context).size.width,
-      child: PreferredSize(
-          preferredSize: Size.fromHeight(MediaQuery.of(context).size.height),
-          child: Scaffold(
-              appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(34),
-                  child: AppBar(
-                      elevation: 0,
-                      automaticallyImplyLeading: false,
-                      backgroundColor: Colors.white,
-                      flexibleSpace: SafeArea(
-                          minimum: EdgeInsets.all(5),
-                          child: Row(
-                            children: [
-                              Text(
-                                  //should be localized
-                                  // 'cart'
-                                  AppLocalizations.of(context).cart,
-                                  textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.headline1),
-                              Spacer(),
-                              IconButton(
-                                padding: EdgeInsets.zero,
-                                icon: Icon(
-                                  Icons.cancel,
-                                  color: Colors.black,
-                                  size: 16,
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          )))),
-              backgroundColor: Colors.white,
-              body: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    ListView.builder(
-                        itemCount: cartproducts.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(color: Colors.black12))),
-                            child: GestureDetector(
-                              child: Container(
+    return ChangeNotifierProvider<MainLocaleProvider>(
+        create: (context) => MainLocaleProvider(),
+        child: Consumer<MainLocaleProvider>(
+            builder: (context, mainLocaleProvider, child) {
+          print(mainLocaleProvider.applicationLocale);
+          return Container(
+            height: MediaQuery.of(context).size.height * .75,
+            width: MediaQuery.of(context).size.width,
+            child: PreferredSize(
+                preferredSize:
+                    Size.fromHeight(MediaQuery.of(context).size.height),
+                child: Scaffold(
+                    appBar: PreferredSize(
+                        preferredSize: Size.fromHeight(34),
+                        child: AppBar(
+                            elevation: 0,
+                            automaticallyImplyLeading: false,
+                            backgroundColor: Colors.white,
+                            flexibleSpace: SafeArea(
+                                minimum: EdgeInsets.all(5),
                                 child: Row(
-                                  children: <Widget>[
-                                    Expanded(
+                                  children: [
+                                    Text(
+                                        //should be localized
+                                        // 'cart'
+                                        AppLocalizations.of(context).cart,
+                                        textAlign: TextAlign.left,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline1),
+                                    Spacer(),
+                                    IconButton(
+                                      padding: EdgeInsets.zero,
+                                      icon: Icon(
+                                        Icons.cancel,
+                                        color: Colors.black,
+                                        size: 16,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                )))),
+                    backgroundColor: Colors.white,
+                    body: SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          ListView.builder(
+                              itemCount: cartproducts.length,
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.black12))),
+                                  child: GestureDetector(
+                                    child: Container(
                                       child: Row(
                                         children: <Widget>[
-                                          Container(
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(1),
-                                                  border: Border.all(
-                                                      color: Colors.grey[100])),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
-                                                child: Image.network(
-                                                    cartproducts[index]
-                                                        .imageURL,
-                                                    height: 90,
-                                                    width: 90.0,
-                                                    fit: BoxFit.fill),
-                                              )),
-                                          SizedBox(
-                                            width: 16,
-                                          ),
                                           Expanded(
-                                            child: Container(
-                                              color: Colors.transparent,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: <Widget>[
-                                                  Text(
-                                                    'Men shoes',
-                                                    style: TextStyle(
-                                                        fontSize: 13,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 7,
-                                                  ),
-                                                  // should be localized
-                                                  Text(
-                                                    'Price:${cartproducts[index].price} ${AppLocalizations.of(context).lE}',
-                                                    style: TextStyle(
-                                                      fontSize: 10,
-                                                      color:
-                                                          Colors.grey.shade600,
+                                            child: Row(
+                                              children: <Widget>[
+                                                Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(1),
+                                                        border: Border.all(
+                                                            color: Colors
+                                                                .grey[100])),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4),
+                                                      child: Image.network(
+                                                          cartproducts[index]
+                                                              .imageURL,
+                                                          height: 90,
+                                                          width: 90.0,
+                                                          fit: BoxFit.fill),
+                                                    )),
+                                                SizedBox(
+                                                  width: 16,
+                                                ),
+                                                Expanded(
+                                                  child: Container(
+                                                    color: Colors.transparent,
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          'Men shoes',
+                                                          style: TextStyle(
+                                                              fontSize: 13,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 7,
+                                                        ),
+                                                        // should be localized
+                                                        Text(
+                                                          '${AppLocalizations.of(context).price}:${cartproducts[index].price} ${AppLocalizations.of(context).lE}',
+                                                          style: TextStyle(
+                                                            fontSize: 10,
+                                                            color: Colors
+                                                                .grey.shade600,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 20,
+                                                        ),
+
+                                                        Container(
+                                                            width: 112,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4),
+                                                                border: Border.all(
+                                                                    color: Colors
+                                                                            .grey[
+                                                                        300])),
+                                                            child: Row(
+                                                              children: [
+                                                                CustomButton(
+                                                                    width: 37.5,
+                                                                    height: 23,
+                                                                    text: '-',
+                                                                    fontsize:
+                                                                        12,
+                                                                    primary: Colors
+                                                                            .grey[
+                                                                        300],
+                                                                    onprimary:
+                                                                        Colors
+                                                                            .black,
+                                                                    radiusbotleft: (mainLocaleProvider.applicationLocale ==
+                                                                                'en'
+                                                                            ? 4
+                                                                            : 0)
+                                                                        .toDouble(),
+                                                                    radiustopleft: (mainLocaleProvider.applicationLocale == 'en'
+                                                                            ? 4
+                                                                            : 0)
+                                                                        .toDouble(),
+                                                                    radiustbotright:
+                                                                        0,
+                                                                    radiustopright:
+                                                                        0,
+                                                                    bordercolor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onpress:
+                                                                        () {
+                                                                      onCrement(
+                                                                          -1,
+                                                                          index);
+                                                                    }),
+                                                                Container(
+                                                                  width: 35,
+                                                                  child: Text(
+                                                                    '${cartproducts[index].multiplier}',
+                                                                    textScaleFactor:
+                                                                        1.1,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                  ),
+                                                                ),
+                                                                CustomButton(
+                                                                    width: 37.5,
+                                                                    height: 23,
+                                                                    text: '+',
+                                                                    fontsize:
+                                                                        12,
+                                                                    primary:
+                                                                        Colors.grey[
+                                                                            300],
+                                                                    onprimary:
+                                                                        Colors
+                                                                            .black,
+                                                                    radiusbotleft:
+                                                                        0,
+                                                                    radiustopleft:
+                                                                        0,
+                                                                    radiustbotright: (mainLocaleProvider.applicationLocale == 'en'
+                                                                            ? 4
+                                                                            : 0)
+                                                                        .toDouble(),
+                                                                    radiustopright: (mainLocaleProvider.applicationLocale == 'en'
+                                                                            ? 4
+                                                                            : 0)
+                                                                        .toDouble(),
+                                                                    bordercolor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onpress:
+                                                                        () {
+                                                                      onCrement(
+                                                                          1,
+                                                                          index);
+                                                                    }),
+                                                              ],
+                                                            )),
+                                                      ],
                                                     ),
                                                   ),
-                                                  SizedBox(
-                                                    height: 20,
+                                                ),
+                                                Column(children: [
+                                                  IconButton(
+                                                    icon: Icon(
+                                                      Icons
+                                                          .delete_forever_outlined,
+                                                      color: Colors.red,
+                                                      size: 20,
+                                                    ),
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        cartproducts
+                                                            .removeAt(index);
+                                                      });
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(SnackBar(
+                                                              content: Text(
+                                                                  "${AppLocalizations.of(context).itemremoved}")));
+                                                    },
                                                   ),
-
+                                                  SizedBox(
+                                                    height: 60,
+                                                  ),
                                                   Container(
-                                                      width: 112,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(4),
-                                                          border: Border.all(
-                                                              color: Colors
-                                                                  .grey[300])),
-                                                      child: Row(
-                                                        children: [
-                                                          CustomButton(
-                                                              width: 37.5,
-                                                              height: 23,
-                                                              text: '-',
-                                                              fontsize: 12,
-                                                              primary: Colors
-                                                                  .grey[300],
-                                                              onprimary:
-                                                                  Colors.black,
-                                                              radiusbotleft: 4,
-                                                              radiustopleft: 4,
-                                                              radiustbotright:
-                                                                  0,
-                                                              radiustopright: 0,
-                                                              bordercolor: Colors
-                                                                  .transparent,
-                                                              onpress: () {
-                                                                onCrement(
-                                                                    -1, index);
-                                                              }),
-                                                          Container(
-                                                            width: 35,
-                                                            child: Text(
-                                                              '${cartproducts[index].multiplier}',
-                                                              textScaleFactor:
-                                                                  1.1,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                            ),
-                                                          ),
-                                                          CustomButton(
-                                                              width: 37.5,
-                                                              height: 23,
-                                                              text: '+',
-                                                              fontsize: 12,
-                                                              primary: Colors
-                                                                  .grey[300],
-                                                              onprimary:
-                                                                  Colors.black,
-                                                              radiusbotleft: 0,
-                                                              radiustopleft: 0,
-                                                              radiustbotright:
-                                                                  4,
-                                                              radiustopright: 4,
-                                                              bordercolor: Colors
-                                                                  .transparent,
-                                                              onpress: () {
-                                                                onCrement(
-                                                                    1, index);
-                                                              }),
-                                                        ],
-                                                      )),
-                                                ],
-                                              ),
+                                                    child: Text(
+                                                      '${onload(index)} ${AppLocalizations.of(context).lE}',
+                                                      textScaleFactor: 0.9,
+                                                    ),
+                                                  )
+                                                ])
+                                              ],
                                             ),
                                           ),
-                                          Column(children: [
-                                            IconButton(
-                                              icon: Icon(
-                                                Icons.delete_forever_outlined,
-                                                color: Colors.red,
-                                                size: 20,
-                                              ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  cartproducts.removeAt(index);
-                                                });
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                        content: Text(
-                                                            "${AppLocalizations.of(context).itemremoved}")));
-                                              },
-                                            ),
-                                            SizedBox(
-                                              height: 60,
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                '${onload(index)} ${AppLocalizations.of(context).lE}',
-                                                textScaleFactor: 0.9,
-                                              ),
-                                            )
-                                          ])
                                         ],
                                       ),
                                     ),
-                                  ],
+                                  ),
+                                );
+                              }),
+                          SizedBox(
+                            height: 100,
+                          )
+                        ],
+                      ),
+                    ),
+                    bottomSheet: Container(
+                      padding: EdgeInsets.zero,
+                      color: Colors.white,
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.width / 5.5,
+                      // child: Text('hi'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CustomButton(
+                              width: 150,
+                              height: 40,
+                              //need localization
+                              text: '${AppLocalizations.of(context).checkout}',
+                              fontsize: 12,
+                              primary: Theme.of(context).accentColor,
+                              onprimary: Colors.white,
+                              bordercolor: Colors.transparent,
+                              onpress: () {}),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              SizedBox(height: 6),
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  '${AppLocalizations.of(context).total}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        }),
-                    SizedBox(
-                      height: 10,
-                    )
-                  ],
-                ),
-              ),
-              bottomSheet: Container(
-                padding: EdgeInsets.zero,
-                color: Colors.white,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width / 5.5,
-                // child: Text('hi'),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CustomButton(
-                        width: 150,
-                        height: 40,
-                        //need localization
-                        text: '${AppLocalizations.of(context).checkout}',
-                        fontsize: 12,
-                        primary: Theme.of(context).accentColor,
-                        onprimary: Colors.white,
-                        bordercolor: Colors.transparent,
-                        onpress: () {}),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        SizedBox(height: 6),
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Text(
-                            '${AppLocalizations.of(context).total}',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  '${cartproducts.map((e) => e.price * e.multiplier).reduce((value, element) => value + element)}',
+                                  style: TextStyle(
+                                    color: Theme.of(context).accentColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 21,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Text(
-                            '${cartproducts.map((e) => e.price * e.multiplier).reduce((value, element) => value + element)}',
-                            style: TextStyle(
-                              color: Theme.of(context).accentColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 21,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ))),
-    );
+                        ],
+                      ),
+                    ))),
+          );
+        }));
   }
 }
 
