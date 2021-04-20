@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../.../../../sharedWidgets/CustomBottomBar.dart';
 import '../.../../../sharedWidgets/CustomAppBar.dart';
 
@@ -108,9 +109,9 @@ class _StoreState extends State<Store> {
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 2,
-                    childAspectRatio: 2.5 / 3,
+                    childAspectRatio: 2 / 3,
                     crossAxisSpacing: 10,
-                    mainAxisSpacing: 20,
+                    // mainAxisSpacing: 75,
                     children: [
                       Product(price: 100),
                       Product(price: 100),
@@ -147,15 +148,24 @@ class Product extends StatelessWidget {
       padding: EdgeInsets.only(right: 8),
       width: 190.0,
       child: Wrap(
-        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Placeholder(
             fallbackHeight: 150,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.only(top: 8.0),
             child: Text("Product name ",
                 style: Theme.of(context).textTheme.bodyText1),
+          ),
+          RatingBarIndicator(
+            rating: 2.75,
+            itemBuilder: (context, index) => Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            itemCount: 5,
+            itemSize: 20,
+            direction: Axis.horizontal,
           ),
           Price(
             value: price,
@@ -169,7 +179,7 @@ class Product extends StatelessWidget {
           Icon(badges ? Icons.local_offer_outlined : null,
               color: Colors.grey, size: 18),
           Icon(badges ? Icons.local_shipping_outlined : null,
-              color: Colors.grey, size: 18)
+              color: Colors.grey, size: 18),
         ],
       ),
     );

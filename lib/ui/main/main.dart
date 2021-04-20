@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
       create: (context) => MainLocaleProvider(),
       child: Consumer<MainLocaleProvider>(
           builder: (context, mainLocaleProvider, child) {
-        print(mainLocaleProvider.applicationLocale);
+        // print(mainLocaleProvider.applicationLocale);
         return StreamProvider<CustomUser>.value(
           value: AuthService().user,
           initialData: null,

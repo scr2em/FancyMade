@@ -30,51 +30,6 @@ class ProductReview extends StatelessWidget {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
               ),
-              // DataTable(columns: [
-              //   DataColumn(label: Text("Name")),
-              //   DataColumn(label: Text("Value"))
-              // ], rows: [
-              //   DataRow(cells: [
-              //     DataCell(Text("bag")),
-              //     DataCell(Text("200 L.E"), showEditIcon: true, onTap: () {})
-              //   ]),
-              //   DataRow(cells: [
-              //     DataCell(Text("bag")),
-              //     DataCell(Text("200 L.E"), showEditIcon: true, onTap: () {})
-              //   ])
-              // ])
-              //
-              // GridView.builder(),
-              // GridView.count(
-              //   mainAxisSpacing: 2,
-              //   crossAxisCount: 2,
-              //   children: [
-              //     Text("Name"),
-              //     Text("bag"),
-              //     Text("Name"),
-              //     Text("bag"),
-              //     Text("Name"),
-              //     Text("bag"),
-              //     Text("Name"),
-              //     Text("bag"),
-              //   ],
-              // )
-              //
-              // GridView.count(
-              //   // Create a grid with 2 columns. If you change the scrollDirection to
-              //   // horizontal, this produces 2 rows.
-              //   crossAxisCount: 2,
-              //   // Generate 100 widgets that display their index in the List.
-              //   children: List.generate(8, (index) {
-              //     return Center(
-              //       child: Text(
-              //         'Item $index',
-              //         style: Theme.of(context).textTheme.headline5,
-              //       ),
-              //     );
-              //   }, growable: true),
-              // )
-              //
               Container(
                 decoration: BoxDecoration(
                     color: Color(0xffeeeeee),

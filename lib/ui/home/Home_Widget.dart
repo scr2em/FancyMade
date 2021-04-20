@@ -127,7 +127,7 @@ class HomeScreen extends StatelessWidget {
               ),
               CustomButton(
                 text: 'test13',
-                height: 40,
+                height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       '/store-info', (Route<dynamic> route) => false);
@@ -147,14 +147,6 @@ class HomeScreen extends StatelessWidget {
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       '/checkout-success', (Route<dynamic> route) => false);
-                },
-              ),
-              CustomButton(
-                text: 'test16',
-                height: 20,
-                onpress: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/checkout', (Route<dynamic> route) => false);
                 },
               ),
               CustomButton(
@@ -178,7 +170,7 @@ class HomeScreen extends StatelessWidget {
                 height: 20,
                 onpress: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/checkout', (Route<dynamic> route) => false);
+                      '/', (Route<dynamic> route) => false);
                 },
               ),
               CustomButton(

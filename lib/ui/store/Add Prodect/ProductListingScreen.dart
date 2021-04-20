@@ -417,7 +417,7 @@ class _ProductListingState extends State<ProductListing> {
                 primary: Color(0xff273147),
                 text: AppLocalizations.of(context).done,
                 onpress: () {
-                  Navigator.of(context).pushNamed('/CreateStoreForm');
+                  Navigator.of(context).pushNamed('/productReview');
                 })));
   }
 }
