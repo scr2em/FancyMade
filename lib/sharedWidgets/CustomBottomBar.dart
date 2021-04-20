@@ -1,4 +1,6 @@
+import 'package:finalproject/ui/cart/Cart.dart';
 import 'package:flutter/material.dart';
+import 'package:ndialog/ndialog.dart';
 import 'package:provider/provider.dart';
 import "../models/CustomUser.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,10 +19,20 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
       if (index == 0) {
         Navigator.of(context).pushNamed('/home');
       } else if (index == 1) {
-        Navigator.of(context).pushNamed('/product');
+        Navigator.of(context).pushNamed('/faq');
       } else if (index == 2) {
         Navigator.of(context).pushNamed('/loginProfileWrapper');
-      } else {}
+      } else if (index == 3) {
+        NAlertDialog(
+          content: Cart(),
+          blur: 2,
+        ).show(context, transitionType: DialogTransitionType.Bubble);
+      } else {
+        NAlertDialog(
+          content: Cart(),
+          blur: 2,
+        ).show(context, transitionType: DialogTransitionType.Bubble);
+      }
     });
   }
 
@@ -29,6 +41,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
     // final user = Provider.of<CustomUser>(context);
 
     return BottomNavigationBar(
+      // iconSize: 9,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -42,6 +55,10 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
           icon: Icon(Icons.account_circle_rounded),
           label: AppLocalizations.of(context).profile,
         ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(Icons.shopping_cart_outlined),
+        //   label: AppLocalizations.of(context).cart,
+        // ),
       ],
       currentIndex: _selectedIndex,
       selectedItemColor: Theme.of(context).accentColor,

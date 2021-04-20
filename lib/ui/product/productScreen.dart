@@ -13,6 +13,16 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            AppLocalizations.of(context).productlisting,
+            style: TextStyle(color: Colors.black),
+          ),
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Color(0xff273147)),
+        ),
         body: Column(children: <Widget>[
           Expanded(
             child: SingleChildScrollView(

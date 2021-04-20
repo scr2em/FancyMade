@@ -1,3 +1,5 @@
+import 'package:finalproject/ui/ContactUs/contactus.dart';
+import 'package:finalproject/ui/FAQ/faq.dart';
 import 'package:finalproject/ui/auth/profile/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkout.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
@@ -19,6 +21,7 @@ import '../../sharedWidgets/CustomBottomBar.dart';
 import '../../sharedWidgets/CustomAppBar.dart';
 
 //UI
+import '../404/404_pageNotFound.dart';
 import '../auth/login/Login_Widget.dart';
 import '../auth/signup/Signup_Widget.dart';
 import '../checkout/checkoutSuccessScreen.dart';
@@ -61,6 +64,7 @@ class MyApp extends StatelessWidget {
       create: (context) => MainLocaleProvider(),
       child: Consumer<MainLocaleProvider>(
           builder: (context, mainLocaleProvider, child) {
+<<<<<<< HEAD
         return MaterialApp(
           locale: mainLocaleProvider.applicationLocale,
           title: "FancyMade",
@@ -69,31 +73,30 @@ class MyApp extends StatelessWidget {
           theme: theme,
           // themeMode: ThemeMode.dark,
           // darkTheme: darkTheme,
-          initialRoute: '/',
+          initialRoute: '/home',
           routes: {
-            '/': (context) => HomeScreen(),
-            '/signup': (context) => SignupScreen(),
-            '/signin': (context) => LoginScreen(),
-            '/loginProfileWrapper': (context) => LoginProfileWrapper(),
-            '/product': (context) => ProductScreen(),
-            '/CreateStoreForm': (context) => CreateStoreForm(),
-            '/profileInfo': (context) => InfoScreen(),
-            '/profileSettings': (context) => SettingsScreen(),
-            '/store': (context) => Store(),
-            '/order': (context) => Order(),
-            '/productlisting': (context) => ProductListing(),
-            '/productReview': (context) => ProductReview(),
-            '/store-info': (context) => StoreInfo(),
-            '/store-inventory': (context) => StoreInventory(),
-            '/checkout': (context) => Checkout(),
-            '/checkout-success': (context) => CheckoutSuccessScreen(),
-            '/home': (context) => HomeScreen(),
-            // '/store-info': (context) => StoreInfo(),
-            // '/store-inventory': (context) => StoreInventory(),
-            '/store-dashboard': (context) => StoreDashboard(),
-            // '/req-msgs': (context) => ReqChatPage()
-            // '/store-dashboard': (context) => StoreDashboard(),
-            '/req-msgs': (context) => ReqChatPage()
+             '/': (context) => HomeScreen(),
+              '/signup': (context) => SignupScreen(),
+              '/signin': (context) => LoginScreen(),
+              '/loginProfileWrapper': (context) => LoginProfileWrapper(),
+              '/product': (context) => ProductScreen(),
+              '/CreateStoreForm': (context) => CreateStoreForm(),
+              '/profileInfo': (context) => InfoScreen(),
+              '/profileSettings': (context) => SettingsScreen(),
+              '/store': (context) => Store(),
+              '/order': (context) => Order(),
+              '/productlisting': (context) => ProductListing(),
+              '/productReview': (context) => ProductReview(),
+              '/store-info': (context) => StoreInfo(),
+              '/store-inventory': (context) => StoreInventory(),
+              '/checkout': (context) => Checkout(),
+              '/checkout-success': (context) => CheckoutSuccessScreen(),
+              '/home': (context) => HomeScreen(),
+              '/store-dashboard': (context) => StoreDashboard(),
+              '/req-msgs': (context) => ReqChatPage(),
+              '/contactUs': (context) => ContactUs(),
+              '/faq': (context) => FAQ(),
+              '/notfound': (context) => PageNotFound()
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         );

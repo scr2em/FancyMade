@@ -1,6 +1,7 @@
 import 'package:finalproject/models/CustomUser.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DashboardBottomBar extends StatefulWidget {
   const DashboardBottomBar({Key key}) : super(key: key);
@@ -38,22 +39,22 @@ class _DashboardBottomBarState extends State<DashboardBottomBar> {
 
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.inventory),
-          label: 'Inventory',
+          label: AppLocalizations.of(context).inventory,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.mail),
-          label: 'Request Msg',
+          label: AppLocalizations.of(context).requestmsg,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.info),
-          label: "Info",
+          label: AppLocalizations.of(context).info,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.dashboard),
-          label: "Dashboard",
+          label: "${AppLocalizations.of(context).dashboard}",
         ),
       ],
       currentIndex: _selectedIndex,
