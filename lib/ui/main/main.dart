@@ -64,7 +64,6 @@ class MyApp extends StatelessWidget {
       create: (context) => MainLocaleProvider(),
       child: Consumer<MainLocaleProvider>(
           builder: (context, mainLocaleProvider, child) {
-<<<<<<< HEAD
         return MaterialApp(
           locale: mainLocaleProvider.applicationLocale,
           title: "FancyMade",
