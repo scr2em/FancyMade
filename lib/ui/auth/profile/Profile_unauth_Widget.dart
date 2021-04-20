@@ -69,7 +69,8 @@ class ProfileUnAuth extends StatelessWidget {
               text: AppLocalizations.of(context).contactUs,
               backgroundColor: Theme.of(context).backgroundColor,
               prefixIcon: Icons.call,
-            ),
+              route: '/dashboard',
+            ), //dashboard
             SizedBox(
               height: 40,
             ),

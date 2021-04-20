@@ -16,26 +16,30 @@ class CustomUser {
     this.name,
     this.email,
     this.joinedAt,
-    this.storeName = false,
-    this.avatar = "https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png",
+    this.shippingAddress = "",
+    this.storeId = false,
+    this.avatar =
+        "https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png",
   });
 
   String uid;
   String avatar;
   String phoneNumber;
   String name;
-  dynamic storeName;
+  dynamic storeId;
   String email;
   String joinedAt;
+  String shippingAddress;
 
   factory CustomUser.fromJson(Map<String, dynamic> json) => CustomUser(
         uid: json["uid"],
         avatar: json["avatar"],
         phoneNumber: json["phoneNumber"],
         name: json["name"],
-        storeName: json["StoreName"],
+        storeId: json["storeId"],
         email: json["email"],
-        joinedAt: json["joinedAt"],
+        // joinedAt: json["joinedAt"],
+      shippingAddress: json["shippingAddress"]
       );
 
   Map<String, dynamic> toJson() => {
@@ -43,9 +47,10 @@ class CustomUser {
         "avatar": avatar,
         "phoneNumber": phoneNumber,
         "name": name,
-        "StoreName": storeName,
+        "storeId": storeId,
         "email": email,
         "joinedAt": joinedAt,
+      "shippingAddress" : shippingAddress
       };
 }
 
@@ -56,5 +61,6 @@ class CustomUser {
 // "name" : "name",
 // "StoreName" : "null or storeId",
 // "email" : "mohamed@gmail.com",
-// "joinedAt" : "date"
+// "joinedAt" : "date",
+//"shippingAddress" : "shippingAddress"
 // }

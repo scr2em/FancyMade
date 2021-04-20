@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -112,7 +113,8 @@ class CartState extends State<Cart> {
                             children: [
                               Text(
                                   //should be localized
-                                  'cart',
+                                  // 'cart'
+                                  AppLocalizations.of(context).cart,
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context).textTheme.headline1),
                               Spacer(),

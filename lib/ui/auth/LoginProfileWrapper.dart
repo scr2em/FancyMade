@@ -4,11 +4,16 @@ import "package:provider/provider.dart";
 import "login/Login_Widget.dart";
 import "profile/Profile_Widget.dart";
 import "profile/Profile_unauth_Widget.dart";
+import "package:finalproject/ui/main/main_locale_provider.dart";
+
 class LoginProfileWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<CustomUser>(context);
-
+    final user = Provider.of<MainLocaleProvider>(context).user;
+    print("fromwrapper");
+      print(user);
+      print(user.toString());
+      print("fromwrapper");
     return user == null ? ProfileUnAuth() : Profile();
   }
 }

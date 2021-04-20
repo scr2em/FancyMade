@@ -18,8 +18,8 @@ class _CheckoutState extends State<Checkout> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "Secure Payment",
-          // AppLocalizations.of(context).review,
+          // "Secure Payment",
+          AppLocalizations.of(context).securePayment,
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
@@ -35,8 +35,8 @@ class _CheckoutState extends State<Checkout> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  // AppLocalizations.of(context).review,
-                  "Shipping ",
+                  AppLocalizations.of(context).shipping,
+                  // "Shipping ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
                 Container(
@@ -54,7 +54,9 @@ class _CheckoutState extends State<Checkout> {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(right: 10, left: 10),
-                                child: Text("Add Address"),
+                                child: Text(
+                                    // "Add Address",
+                                    AppLocalizations.of(context).addAddress),
                               ),
                             ],
                           ),
@@ -93,8 +95,8 @@ class _CheckoutState extends State<Checkout> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  // AppLocalizations.of(context).review,
-                  "Payment ",
+                  AppLocalizations.of(context).payment,
+                  // "Payment ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
                 Container(
@@ -112,8 +114,8 @@ class _CheckoutState extends State<Checkout> {
                           Padding(
                             padding: const EdgeInsets.only(right: 10, left: 10),
                             child: Text(
-                              // AppLocalizations.of(context).details,
-                              "Add Credit / Debit Card",
+                              // AppLocalizations.of(context).debitCard,
+                              "${AppLocalizations.of(context).addCredit} / ${AppLocalizations.of(context).debitCard}",
                               style: TextStyle(fontSize: 15),
                             ),
                           )
@@ -137,8 +139,8 @@ class _CheckoutState extends State<Checkout> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: Text(
-                          // AppLocalizations.of(context).details,
-                          "Expire Date",
+                          AppLocalizations.of(context).expireDate,
+                          // "Expire Date",
                           style: TextStyle(fontSize: 14),
                         ),
                       ),
@@ -193,14 +195,14 @@ class _CheckoutState extends State<Checkout> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Items :',
+                      '${AppLocalizations.of(context).items} :',
                       style: TextStyle(fontSize: 20, color: Color(0xff495057)),
                     ),
                     Container(
                       padding: EdgeInsets.only(
                           right: 20, left: 20, top: 10, bottom: 10),
                       child: Text(
-                        "Arrives by April 3 to April 9th",
+                        "${AppLocalizations.of(context).arrivesby} 3 April ${AppLocalizations.of(context).to} 9 April",
                         style: TextStyle(
                             fontSize: 14,
                             color: Color(0xff495057),
@@ -440,7 +442,7 @@ class _CheckoutState extends State<Checkout> {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  "This is the final step, after you touching Pay Now button, the payment will be transaction",
+                  AppLocalizations.of(context).finalStep,
                   style: TextStyle(
                     fontSize: 13,
                     color: Theme.of(context).hintColor,

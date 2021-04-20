@@ -2,7 +2,8 @@ import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:finalproject/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import "package:provider/provider.dart";
+import "package:finalproject/ui/main/main_locale_provider.dart";
 //Custom Widgets
 import '../../../sharedWidgets/CustomBottomBar.dart';
 import '../../../sharedWidgets/CustomAppBar.dart';
@@ -38,11 +39,13 @@ class _SignupScreenState extends State<SignupScreen> {
       password = value;
     });
   }
+
   onNameChange(value) {
     setState(() {
       name = value;
     });
   }
+
   onPhoneNumberChange(value) {
     setState(() {
       phoneNumber = value;
@@ -54,16 +57,14 @@ class _SignupScreenState extends State<SignupScreen> {
       setState(() {
         loading = true;
       });
-      dynamic result =
-          await _auth.createUserWithEmailAndPassword(email, password,phoneNumber,name);
+      dynamic result = await _auth.createUserWithEmailAndPassword(
+          email, password, phoneNumber, name);
       if (result == null) {
         setState(() {
           errorMessage = "Something went wrong, please try again.";
         });
       } else {
-        print("this is from signup---");
-        print(result);
-        print("this is from signup---");
+        Provider.of<MainLocaleProvider>(context, listen: false).updateUser(result);
         Navigator.of(context).pushNamed("/");
       }
       setState(() {
@@ -79,8 +80,8 @@ class _SignupScreenState extends State<SignupScreen> {
         body: loading
             ? Loading()
             : SingleChildScrollView(
-              child: Container(
-                  child: Center(
+                child: Container(
+                    child: Center(
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -145,8 +146,8 @@ class _SignupScreenState extends State<SignupScreen> {
                             child: TextButton(
                               onPressed: onPressed,
                               style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Color(0xff273147)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xff273147)),
                                 // side: MaterialStateProperty.all(
                                 //     BorderSide(color: Theme.of(context).accentColor)),
                                 foregroundColor: MaterialStateProperty.all(
@@ -167,7 +168,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         GestureDetector(
                           child: Text(
-                              AppLocalizations.of(context).orSignIn.toUpperCase(),
+                              AppLocalizations.of(context)
+                                  .orSignIn
+                                  .toUpperCase(),
                               style: TextStyle(
                                   decoration: TextDecoration.underline)),
                           onTap: () {
@@ -185,9 +188,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       ],
                     ),
                   ),
-                // ]),
-              )),
-            ),
-            bottomNavigationBar: CustomBottomBar());
+                  // ]),
+                )),
+              ),
+        bottomNavigationBar: CustomBottomBar());
   }
 }

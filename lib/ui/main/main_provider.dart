@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-
+import "package:finalproject/models/CustomUser.dart";
 
 class MainProvider extends ChangeNotifier {
-  bool signedin = true;
-
+  CustomUser user;
 
   MainProvider();
 
-  changeAuth() {
-    signedin = !signedin;
+  updateUser(u){
+    user = u;
     notifyListeners();
   }
-
 }

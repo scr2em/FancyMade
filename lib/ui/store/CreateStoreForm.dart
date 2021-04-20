@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:provider/provider.dart';
 import "../../sharedWidgets/CustomTextFormField.dart";
 import "../../sharedWidgets/CustomButton.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
 import '../../utils/validators.dart';
+import 'package:finalproject/models/Store.dart';
+import "package:finalproject/ui/main/main_locale_provider.dart";
 
 class CreateStoreForm extends StatefulWidget {
   @override
@@ -13,7 +16,15 @@ class CreateStoreForm extends StatefulWidget {
 
 class _CreateStoreFormState extends State<CreateStoreForm> {
   bool checkedValue = false;
-  final _formKey = GlobalKey<FormState>();
+  String arName;
+  String arAddress;
+  String arDescription;
+  String enName;
+  String enAddress;
+  String enDescription;
+  String productsAddress;
+  String facebookPage;
+  final _CreateStoreformKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +45,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
           ),
           child: SingleChildScrollView(
             child: Form(
-              key: _formKey,
+              key: _CreateStoreformKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -49,6 +60,11 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context).storeName,
                     validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        arName = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
@@ -56,6 +72,11 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context).address,
                     validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        arAddress = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
@@ -64,6 +85,11 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                     hintText: AppLocalizations.of(context).description,
                     maxLines: 6,
                     validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        arDescription = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
@@ -76,6 +102,11 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context).storeName,
                     validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        enName = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
@@ -83,6 +114,11 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context).address,
                     validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        enAddress = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
@@ -91,6 +127,11 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                     hintText: AppLocalizations.of(context).description,
                     maxLines: 6,
                     validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        enDescription = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
@@ -104,13 +145,22 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context).productsAddress,
                     validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        productsAddress = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
                   ),
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context).facebookPageOptional,
-                    validator: notEmpty,
+                    onChanged: (val) {
+                      setState(() {
+                        facebookPage = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 29,
@@ -134,11 +184,46 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                     height: 29,
                   ),
                   CustomButton(
-                    onpress: () {
-                      if (_formKey.currentState.validate()) {
-                        print("ok");
-                      }
-                    },
+                    onpress: checkedValue
+                        ? () async {
+                            setState(() {
+                              checkedValue = false;
+                            });
+                            if (_CreateStoreformKey.currentState.validate()) {
+                              try {
+                                Store store = Store.fromJson({
+                                  "arName": arName?.trim(),
+                                  "arAddress": arAddress?.trim(),
+                                  "arDesc": arDescription?.trim(),
+                                  "enName": enName?.trim(),
+                                  "enAddress": enAddress?.trim(),
+                                  "enDesc": enDescription?.trim(),
+                                  "productsAddress": productsAddress?.trim(),
+                                  "social": {"facebook": facebookPage?.trim()}
+                                });
+                                await Provider.of<MainLocaleProvider>(context,
+                                        listen: false)
+                                    .createStore(store);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  backgroundColor: Colors.green,
+                                  content: Text(
+                                      "Store '$enName' created successfully."),
+                                ));
+                                Navigator.of(context).pushNamed('/store-dashboard');
+                              } catch (err) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  backgroundColor: Colors.red,
+                                  content: Text('$err'),
+                                ));
+                                setState(() {
+                                  checkedValue = true;
+                                });
+                              }
+                            }
+                          }
+                        : null,
                     height: 50,
                     text: AppLocalizations.of(context).done,
                     primary: Theme.of(context).primaryColor,

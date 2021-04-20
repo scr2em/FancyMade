@@ -1,6 +1,9 @@
 // To parse this JSON data, do
 //
 //     final store = storeFromJson(jsonString);
+// To parse this JSON data, do
+//
+//     final store = storeFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -10,18 +13,26 @@ String storeToJson(Store data) => json.encode(data.toJson());
 
 class Store {
   Store({
-    this.ownerId,
-    this.ar,
-    this.en,
+    this.ownerId = "",
+    this.arName,
+    this.arAddress,
+    this.arDesc,
+    this.enName,
+    this.enAddress,
+    this.enDesc,
     this.productsAddress,
-    this.category,
-    this.plan,
+    this.category ="",
+    this.plan = "",
     this.social,
   });
 
   String ownerId;
-  Ar ar;
-  Ar en;
+  String arName;
+  String arAddress;
+  String arDesc;
+  String enName;
+  String enAddress;
+  String enDesc;
   String productsAddress;
   String category;
   String plan;
@@ -29,9 +40,13 @@ class Store {
 
   factory Store.fromJson(Map<String, dynamic> json) => Store(
     ownerId: json["ownerId"],
-    ar: Ar.fromJson(json["ar"]),
-    en: Ar.fromJson(json["en"]),
-    productsAddress: json["products address"],
+    arName: json["arName"],
+    arAddress: json["arAddress"],
+    arDesc: json["arDesc"],
+    enName: json["enName"],
+    enAddress: json["enAddress"],
+    enDesc: json["enDesc"],
+    productsAddress: json["productsAddress"],
     category: json["category"],
     plan: json["plan"],
     social: Social.fromJson(json["social"]),
@@ -39,36 +54,16 @@ class Store {
 
   Map<String, dynamic> toJson() => {
     "ownerId": ownerId,
-    "ar": ar.toJson(),
-    "en": en.toJson(),
-    "products address": productsAddress,
+    "arName": arName,
+    "arAddress": arAddress,
+    "arDesc": arDesc,
+    "enName": enName,
+    "enAddress": enAddress,
+    "enDesc": enDesc,
+    "productsAddress": productsAddress,
     "category": category,
     "plan": plan,
     "social": social.toJson(),
-  };
-}
-
-class Ar {
-  Ar({
-    this.storeName,
-    this.address,
-    this.desc,
-  });
-
-  String storeName;
-  String address;
-  String desc;
-
-  factory Ar.fromJson(Map<String, dynamic> json) => Ar(
-    storeName: json["storeName"],
-    address: json["address"],
-    desc: json["desc"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "storeName": storeName,
-    "address": address,
-    "desc": desc,
   };
 }
 
@@ -91,21 +86,15 @@ class Social {
 
 
 
-
-
 // {
 // "ownerId": "ownerId",
-// "ar": {
-// "storeName" : "name",
-// "address" : "address",
-// "desc" : "desc"
-// },
-// "en": {
-// "storeName" : "name",
-// "address" : "address",
-// "desc" : "desc"
-// },
-// "products address" : "address",
+// "arName" : "name",
+// "arAddress" : "address",
+// "arDesc" : "desc"
+// "enName" : "name",
+// "enAddress" : "address",
+// "enDesc" : "desc"
+// "productsAddress" : "address",
 // "category" : "categoryId",
 // "plan": "basic",
 // "social" : {

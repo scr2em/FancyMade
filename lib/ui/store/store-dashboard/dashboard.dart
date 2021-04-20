@@ -2,6 +2,9 @@ import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
 import 'package:flutter/material.dart';
 
+import '../../../sharedWidgets/CustomBottomBar.dart';
+import '../../../sharedWidgets/DashboardBottomBar.dart';
+
 class StoreDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -392,6 +395,7 @@ class StoreDashboard extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Add your onPressed code here!
+          Navigator.of(context).pushNamed("productlisting");
         },
         child: const Icon(Icons.add),
         backgroundColor: Theme.of(context).accentColor,

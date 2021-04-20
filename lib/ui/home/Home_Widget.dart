@@ -36,7 +36,151 @@ class HomeScreen extends StatelessWidget {
                     blur: 2,
                   ).show(context, transitionType: DialogTransitionType.Bubble);
                 },
-              )
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/signup', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/signin', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/loginProfileWrapper', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/product', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/CreateStoreForm', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/profileInfo', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/profileSettings', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/store', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/order', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/productlisting', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/productReview', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 40,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/store-info', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/checkout', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/checkout-success', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/checkout', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/store-dashboard', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/store-inventory', (Route<dynamic> route) => false);
+                },
+              ),
+              CustomButton(
+                text: 'test',
+                height: 20,
+                onpress: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/checkout', (Route<dynamic> route) => false);
+                },
+              ),
             ],
           ),
         ),

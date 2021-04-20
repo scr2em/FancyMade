@@ -7,6 +7,7 @@ import 'package:finalproject/ui/store/Add%20Prodect/ProductReviewScreen.dart';
 import 'package:finalproject/ui/store/store-dashboard/dashboard.dart';
 import 'package:finalproject/ui/store/store-dashboard/info.dart';
 import 'package:finalproject/ui/store/store-dashboard/inventory.dart';
+import 'package:finalproject/ui/store/store-dashboard/req-inbox/inboxscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,6 +33,8 @@ import "../auth/profile/Settings/Settings_Widget.dart";
 import '../store/Store.dart';
 
 //Main Provider
+import '../store/store-dashboard/dashboard.dart';
+import '../store/store-dashboard/inventory.dart';
 import 'main_provider.dart';
 import 'main_locale_provider.dart';
 
@@ -58,37 +61,41 @@ class MyApp extends StatelessWidget {
       create: (context) => MainLocaleProvider(),
       child: Consumer<MainLocaleProvider>(
           builder: (context, mainLocaleProvider, child) {
-        return StreamProvider<CustomUser>.value(
-          value: AuthService().user,
-          initialData: null,
-          child: MaterialApp(
-            locale: mainLocaleProvider.applicationLocale,
-            title: "FancyMade",
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            theme: theme,
-            // themeMode: ThemeMode.dark,
-            // darkTheme: darkTheme,
-            initialRoute: '/',
-            routes: {
-              '/': (context) => HomeScreen(),
-              '/signup': (context) => SignupScreen(),
-              '/signin': (context) => LoginScreen(),
-              '/loginProfileWrapper': (context) => LoginProfileWrapper(),
-              '/product': (context) => ProductScreen(),
-              '/CreateStoreForm': (context) => CreateStoreForm(),
-              '/profileInfo': (context) => InfoScreen(),
-              '/profileSettings': (context) => SettingsScreen(),
-              '/store': (context) => Store(),
-              '/order': (context) => Order(),
-              '/productlisting': (context) => ProductListing(),
-              '/productReview': (context) => ProductReview(),
-              '/store-info': (context) => StoreInfo(),
-              '/checkout': (context) => Checkout(),
-              '/checkout-success': (context) => CheckoutSuccessScreen(),
-            },
-            // home: MyHomePage(title: 'Flutter Demo Home Page1'),
-          ),
+        return MaterialApp(
+          locale: mainLocaleProvider.applicationLocale,
+          title: "FancyMade",
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          theme: theme,
+          // themeMode: ThemeMode.dark,
+          // darkTheme: darkTheme,
+          initialRoute: '/',
+          routes: {
+            '/': (context) => HomeScreen(),
+            '/signup': (context) => SignupScreen(),
+            '/signin': (context) => LoginScreen(),
+            '/loginProfileWrapper': (context) => LoginProfileWrapper(),
+            '/product': (context) => ProductScreen(),
+            '/CreateStoreForm': (context) => CreateStoreForm(),
+            '/profileInfo': (context) => InfoScreen(),
+            '/profileSettings': (context) => SettingsScreen(),
+            '/store': (context) => Store(),
+            '/order': (context) => Order(),
+            '/productlisting': (context) => ProductListing(),
+            '/productReview': (context) => ProductReview(),
+            '/store-info': (context) => StoreInfo(),
+            '/store-inventory': (context) => StoreInventory(),
+            '/checkout': (context) => Checkout(),
+            '/checkout-success': (context) => CheckoutSuccessScreen(),
+            '/home': (context) => HomeScreen(),
+            // '/store-info': (context) => StoreInfo(),
+            // '/store-inventory': (context) => StoreInventory(),
+            '/store-dashboard': (context) => StoreDashboard(),
+            // '/req-msgs': (context) => ReqChatPage()
+            // '/store-dashboard': (context) => StoreDashboard(),
+            '/req-msgs': (context) => ReqChatPage()
+          },
+          // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         );
       }),
     );

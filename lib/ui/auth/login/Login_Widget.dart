@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:finalproject/ui/main/main_locale_provider.dart';
 
 //Custom Widgets
 import '../../../sharedWidgets/CustomBottomBar.dart';
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {
           errorMessage = "";
         });
-        print(result);
+        Provider.of<MainLocaleProvider>(context, listen: false).updateUser(result);
         Navigator.of(context).pushNamed("/");
       }
       setState(() {
@@ -88,9 +89,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 20.0),
                               child: Text(
-                                  AppLocalizations.of(context).logIntoYourAccount,
+                                  AppLocalizations.of(context)
+                                      .logIntoYourAccount,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 22)),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22)),
                             ),
                             CustomTextFormField(
                               validator: emailValidator,
@@ -154,7 +157,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       borderRadius: BorderRadius.circular(10.0),
                                     )),
                                   ),
-                                  child: Text(AppLocalizations.of(context).signin,
+                                  child: Text(
+                                      AppLocalizations.of(context).signin,
                                       style: TextStyle(color: Colors.white)),
                                 ),
                               ),
