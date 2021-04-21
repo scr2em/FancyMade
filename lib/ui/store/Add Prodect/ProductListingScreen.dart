@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../sharedWidgets/CustomButton.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import '../../../utils/validators.dart';
+
 class ProductListing extends StatefulWidget {
   @override
   _ProductListingState createState() => _ProductListingState();
@@ -17,13 +18,16 @@ class _ProductListingState extends State<ProductListing> {
   final _picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
 
+  bool _checked = false;
+
+  String _groupValue;
+
   _imgFromCamera() async {
     PickedFile image =
         await _picker.getImage(source: ImageSource.camera, imageQuality: 50);
 
     setState(() {
       _image = File(image.path);
-
     });
   }
 
@@ -68,8 +72,6 @@ class _ProductListingState extends State<ProductListing> {
 
   @override
   Widget build(BuildContext context) {
-    String _groupValue;
-    bool _checked = false;
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -177,8 +179,9 @@ class _ProductListingState extends State<ProductListing> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
                         child: CustomLightTextFormField(
-                            hintText: AppLocalizations.of(context).productName,
-                             validator: notEmpty,),
+                          hintText: AppLocalizations.of(context).productName,
+                          validator: notEmpty,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
@@ -186,7 +189,7 @@ class _ProductListingState extends State<ProductListing> {
                           hintText:
                               AppLocalizations.of(context).productdescription,
                           maxLines: 5,
-                           validator: notEmpty,
+                          validator: notEmpty,
                         ),
                       ),
                       Padding(
@@ -209,8 +212,9 @@ class _ProductListingState extends State<ProductListing> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
                         child: CustomLightTextFormField(
-                            hintText: AppLocalizations.of(context).productName,
-                            validator: notEmpty,),                        
+                          hintText: AppLocalizations.of(context).productName,
+                          validator: notEmpty,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
@@ -218,7 +222,7 @@ class _ProductListingState extends State<ProductListing> {
                           hintText:
                               AppLocalizations.of(context).productdescription,
                           maxLines: 5,
-                           validator: notEmpty,
+                          validator: notEmpty,
                         ),
                       ),
                     ],
@@ -284,7 +288,7 @@ class _ProductListingState extends State<ProductListing> {
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
-                                  color: Theme.of(context).accentColor,
+                                  color: Color(0xff273147),
                                   height: .9),
                             ),
                           ),
@@ -317,7 +321,7 @@ class _ProductListingState extends State<ProductListing> {
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: CustomLightTextFormField(
-                          hintText: AppLocalizations.of(context).prodCat),
+                          hintText: AppLocalizations.of(context).defineprodCat),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
@@ -362,13 +366,13 @@ class _ProductListingState extends State<ProductListing> {
                       ),
                       Row(
                         children: [
-                          RadioButton(
-                            description: '',
-                            groupValue: _groupValue,
+                          Radio(
+                            activeColor: Color(0xff273147),
+                            groupValue: this._groupValue,
                             onChanged: (value) => setState(() {
                               _groupValue = value;
                             }),
-                            value: '',
+                            value: 'Ship myself',
                           ),
                           Text(
                             AppLocalizations.of(context).selfship,
@@ -379,13 +383,13 @@ class _ProductListingState extends State<ProductListing> {
                       ),
                       Row(
                         children: [
-                          RadioButton(
-                            description: '',
-                            groupValue: _groupValue,
+                          Radio(
+                            activeColor: Color(0xff273147),
+                            groupValue: this._groupValue,
                             onChanged: (value) => setState(() {
                               _groupValue = value;
                             }),
-                            value: '',
+                            value: 'Ship by App',
                           ),
                           Text(
                             AppLocalizations.of(context).appship,
@@ -397,9 +401,11 @@ class _ProductListingState extends State<ProductListing> {
                       Row(
                         children: [
                           Checkbox(
-                              value: _checked,
+                              activeColor: Color(0xff273147),
+                              checkColor: Colors.white,
+                              value: this._checked,
                               onChanged: (value) => setState(() {
-                                    _groupValue = value as String;
+                                    this._checked = value;
                                   })),
                           Text(
                             AppLocalizations.of(context).checkSpecialitem,

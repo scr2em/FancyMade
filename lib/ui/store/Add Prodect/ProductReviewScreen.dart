@@ -62,23 +62,98 @@ class ProductReview extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  AppLocalizations.of(context).name,
+                                  "${AppLocalizations.of(context).name} ${AppLocalizations.of(context).byAr}",
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 1,
+                                flex: 2,
                               ),
                               Expanded(
                                 child: Text(
-                                  "Bag",
+                                  "value",
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 3,
+                                flex: 5,
+                              )
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).description,
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "value",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
+                              )
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "${AppLocalizations.of(context).name} ${AppLocalizations.of(context).byEn}",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "200 ${AppLocalizations.of(context).pound}",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
+                              )
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).description,
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "value",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
                               )
                             ],
                           ),
@@ -93,7 +168,7 @@ class ProductReview extends StatelessWidget {
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 1,
+                                flex: 2,
                               ),
                               Expanded(
                                 child: Text(
@@ -103,7 +178,7 @@ class ProductReview extends StatelessWidget {
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 3,
+                                flex: 5,
                               )
                             ],
                           ),
@@ -112,24 +187,24 @@ class ProductReview extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  AppLocalizations.of(context).name,
+                                  AppLocalizations.of(context).discount,
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 1,
+                                flex: 2,
                               ),
                               Expanded(
                                 child: Text(
-                                  "Bag",
+                                  "value",
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 3,
-                              )
+                                flex: 5,
+                              ),
                             ],
                           ),
                           Divider(),
@@ -137,24 +212,24 @@ class ProductReview extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  AppLocalizations.of(context).price,
+                                  AppLocalizations.of(context).maxquan,
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 1,
+                                flex: 2,
                               ),
                               Expanded(
                                 child: Text(
-                                  "200 ${AppLocalizations.of(context).pound}",
+                                  "value",
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 3,
-                              )
+                                flex: 5,
+                              ),
                             ],
                           ),
                           Divider(),
@@ -162,24 +237,149 @@ class ProductReview extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  AppLocalizations.of(context).name,
+                                  AppLocalizations.of(context).quan,
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 1,
+                                flex: 2,
                               ),
                               Expanded(
                                 child: Text(
-                                  "Bag",
+                                  "value",
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                flex: 3,
-                              )
+                                flex: 5,
+                              ),
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).discDur,
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "value",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
+                              ),
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).prodCat,
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "value",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
+                              ),
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).tags,
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "value",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
+                              ),
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).shipping,
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "value",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
+                              ),
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).specialOrder,
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 2,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "bool",
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                flex: 5,
+                              ),
                             ],
                           ),
                         ],
@@ -190,7 +390,7 @@ class ProductReview extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  top: 100,
+                  top: 50,
                 ),
                 child: CustomButton(
                     width: MediaQuery.of(context).size.width,

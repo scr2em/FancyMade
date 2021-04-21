@@ -41,6 +41,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
     // final user = Provider.of<CustomUser>(context);
 
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+
       // iconSize: 9,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -55,10 +57,10 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
           icon: Icon(Icons.account_circle_rounded),
           label: AppLocalizations.of(context).profile,
         ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(Icons.shopping_cart_outlined),
-        //   label: AppLocalizations.of(context).cart,
-        // ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart_outlined),
+          label: AppLocalizations.of(context).cart,
+        ),
       ],
       currentIndex: _selectedIndex,
       selectedItemColor: Theme.of(context).accentColor,
