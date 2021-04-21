@@ -130,7 +130,11 @@
     "itemremoved":"تم حذف المنتج",
     "checkout":"أتمام عملية الشراء",
     "total":"الاجمالي",
-     "backToDashboard" : "عودة إلى لوحة القيادة"
+     "backToDashboard" : "عودة إلى لوحة القيادة",
+     "categories":"الفئات",
+     "viewall":"عرض الكل",
+     "bestSeller":"الأكثر مبيعًا",
+     "nearbyStore":"المتاجر المجاورة"
 
 
 
