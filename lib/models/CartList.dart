@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-List<CartList> cartListFromJson(String str) => List<CartList>.from(json.decode(str).map((x) => CartList.fromJson(x)));
+List<CartList> cartListFromJson(String str) =>
+    List<CartList>.from(json.decode(str).map((x) => CartList.fromJson(x)));
 
-String cartListToJson(List<CartList> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String cartListToJson(List<CartList> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class CartList {
   CartList({
@@ -18,17 +20,15 @@ class CartList {
   int qty;
 
   factory CartList.fromJson(Map<String, dynamic> json) => CartList(
-    productId: json["productId"],
-    qty: json["qty"],
-  );
+        productId: json["productId"],
+        qty: json["qty"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "productId": productId,
-    "qty": qty,
-  };
+        "productId": productId,
+        "qty": qty,
+      };
 }
-
-
 
 // [
 // {

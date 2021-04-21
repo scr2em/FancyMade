@@ -24,6 +24,7 @@ class Product {
     this.rating,
     this.tags,
     this.maxQuantityPerOrder,
+    this.storeId,
   });
 
   Ar ar;
@@ -40,40 +41,43 @@ class Product {
   String rating;
   List<String> tags;
   int maxQuantityPerOrder;
+  String storeId;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    ar: Ar.fromJson(json["ar"]),
-    en: Ar.fromJson(json["en"]),
-    price: json["price"],
-    discount: json["discount"],
-    discountDuration: json["DiscountDuration"],
-    category: json["category"],
-    images: List<String>.from(json["images"].map((x) => x)),
-    sku: json["sku"],
-    itemsAvailable: json["itemsAvailable"],
-    freeShipping: json["freeShipping"],
-    verifiedStore: json["verifiedStore"],
-    rating: json["rating"],
-    tags: List<String>.from(json["tags"].map((x) => x)),
-    maxQuantityPerOrder: json["maxQuantityPerOrder"],
-  );
+        ar: Ar.fromJson(json["ar"]),
+        en: Ar.fromJson(json["en"]),
+        price: json["price"],
+        discount: json["discount"],
+        discountDuration: json["DiscountDuration"],
+        category: json["category"],
+        images: List<String>.from(json["images"].map((x) => x)),
+        sku: json["sku"],
+        itemsAvailable: json["itemsAvailable"],
+        freeShipping: json["freeShipping"],
+        verifiedStore: json["verifiedStore"],
+        rating: json["rating"],
+        tags: List<String>.from(json["tags"].map((x) => x)),
+        maxQuantityPerOrder: json["maxQuantityPerOrder"],
+        storeId: json["storeId"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "ar": ar.toJson(),
-    "en": en.toJson(),
-    "price": price,
-    "discount": discount,
-    "DiscountDuration": discountDuration,
-    "category": category,
-    "images": List<dynamic>.from(images.map((x) => x)),
-    "sku": sku,
-    "itemsAvailable": itemsAvailable,
-    "freeShipping": freeShipping,
-    "verifiedStore": verifiedStore,
-    "rating": rating,
-    "tags": List<dynamic>.from(tags.map((x) => x)),
-    "maxQuantityPerOrder": maxQuantityPerOrder,
-  };
+        "ar": ar.toJson(),
+        "en": en.toJson(),
+        "price": price,
+        "discount": discount,
+        "DiscountDuration": discountDuration,
+        "category": category,
+        "images": List<dynamic>.from(images.map((x) => x)),
+        "sku": sku,
+        "itemsAvailable": itemsAvailable,
+        "freeShipping": freeShipping,
+        "verifiedStore": verifiedStore,
+        "rating": rating,
+        "tags": List<dynamic>.from(tags.map((x) => x)),
+        "maxQuantityPerOrder": maxQuantityPerOrder,
+        "storeId": storeId,
+      };
 }
 
 class Ar {
@@ -86,17 +90,15 @@ class Ar {
   String desc;
 
   factory Ar.fromJson(Map<String, dynamic> json) => Ar(
-    title: json["title"],
-    desc: json["desc"],
-  );
+        title: json["title"],
+        desc: json["desc"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "title": title,
-    "desc": desc,
-  };
+        "title": title,
+        "desc": desc,
+      };
 }
-
-
 
 // {
 // "ar" : {
@@ -121,6 +123,6 @@ class Ar {
 // "verifiedStore" : true,
 // "rating": "4.5",
 // "tags" : ["test","test2"],
-// "maxQuantityPerOrder" : 20
-//
+// "maxQuantityPerOrder" : 20,
+// "storeId" : "storeId
 // }

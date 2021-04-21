@@ -140,6 +140,7 @@ class Product extends StatelessWidget {
   int price;
   int discount;
   bool badges;
+
   Product({this.price, this.discount = 0, this.badges = true});
 
   @override

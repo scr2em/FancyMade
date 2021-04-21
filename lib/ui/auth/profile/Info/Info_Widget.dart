@@ -2,6 +2,12 @@ import "package:flutter/material.dart";
 import "../../../../sharedWidgets/CustomTextFormField.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../sharedWidgets/CustomBottomBar.dart';
+import "package:finalproject/ui/main/main_locale_provider.dart";
+import "package:provider/provider.dart";
+import "package:finalproject/services/database.dart";
+import "package:finalproject/models/CustomUser.dart";
+import "package:finalproject/ui/main/main_locale_provider.dart";
+
 class InfoScreen extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
@@ -10,6 +16,7 @@ class InfoScreen extends StatefulWidget {
 class _InfoScreenState extends State<InfoScreen> {
   var _isShippingInputEnabled = false;
   var _isPaymentInputEnabled = false;
+  String shippingAddress = "";
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +39,30 @@ class _InfoScreenState extends State<InfoScreen> {
           children: [
             EditInputField(
                 label: AppLocalizations.of(context).name,
-                text: "Mohamed",
+                text: Provider.of<MainLocaleProvider>(context).user.name,
                 hintText: AppLocalizations.of(context).enterYourName,
-                obscure: false),
+                obscure: false,
+                onPress: (newValue) async {
+                  await Provider.of<MainLocaleProvider>(context, listen: false)
+                      .updateAsingleProperty(
+                          property: "name", newValue: newValue);
+                }),
             EditInputField(
-                label: AppLocalizations.of(context).email,
-                text: "Mohamed@gmail.com",
-                hintText: AppLocalizations.of(context).enterYourEmail,
-                obscure: false),
+              label: AppLocalizations.of(context).email,
+              text: Provider.of<MainLocaleProvider>(context).user.email,
+              hintText: AppLocalizations.of(context).enterYourEmail,
+              obscure: false,
+            ),
             EditInputField(
                 label: AppLocalizations.of(context).phoneNumber,
-                text: "0123456789",
+                text: Provider.of<MainLocaleProvider>(context).user.phoneNumber,
                 hintText: AppLocalizations.of(context).enterAvalidPhoneNumber,
-                obscure: false),
+                obscure: false,
+                onPress: (newValue) async {
+                  await Provider.of<MainLocaleProvider>(context, listen: false)
+                      .updateAsingleProperty(
+                          property: "phoneNumber", newValue: newValue);
+                }),
             EditInputField(
               label: AppLocalizations.of(context).password,
               text: "0123456789",
@@ -68,7 +86,13 @@ class _InfoScreenState extends State<InfoScreen> {
                                 Icons.check_outlined,
                                 color: Theme.of(context).accentColor,
                               ),
-                              onPressed: () {
+                              onPressed: () async {
+                                await Provider.of<MainLocaleProvider>(context,
+                                        listen: false)
+                                    .updateAsingleProperty(
+                                        property: "shippingAddress",
+                                        newValue: shippingAddress);
+
                                 setState(() {
                                   _isShippingInputEnabled = false;
                                 });
@@ -90,8 +114,16 @@ class _InfoScreenState extends State<InfoScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: CustomTextFormField(
+                    initialValue: Provider.of<MainLocaleProvider>(context)
+                        .user
+                        .shippingAddress,
                     maxLines: 6,
                     enabled: _isShippingInputEnabled,
+                    onChanged: (val) {
+                      setState(() {
+                        shippingAddress = val;
+                      });
+                    },
                   ),
                 ),
               ],
@@ -99,7 +131,7 @@ class _InfoScreenState extends State<InfoScreen> {
           ],
         ),
       ),
-        bottomNavigationBar: CustomBottomBar(),
+      bottomNavigationBar: CustomBottomBar(),
     );
   }
 }
@@ -110,8 +142,11 @@ class EditInputField extends StatefulWidget {
   String label;
   String hintText;
   bool obscure;
+  String newText;
+  Function onPress;
 
-  EditInputField({this.label, this.text, this.hintText, this.obscure});
+  EditInputField(
+      {this.label, this.text, this.hintText, this.obscure, this.onPress});
 
   @override
   _EditInputFieldState createState() => _EditInputFieldState();
@@ -131,7 +166,9 @@ class _EditInputFieldState extends State<EditInputField> {
                 Icons.check_outlined,
                 color: Theme.of(context).accentColor,
               ),
-              onPressed: () {
+              onPressed: () async {
+                widget.onPress(widget.newText);
+
                 setState(() {
                   widget.boolValue = false;
                 });
@@ -148,26 +185,28 @@ class _EditInputFieldState extends State<EditInputField> {
                 });
               }),
       title: TextField(
-        obscureText: widget.obscure,
-        enabled: widget.boolValue,
-        controller: _controller,
-        decoration: InputDecoration(
-          hintText: widget.hintText,
-          labelText: widget.label,
-          labelStyle: TextStyle(color: Theme.of(context).accentColor),
-          suffixIcon: widget.boolValue
-              ? IconButton(
-                  onPressed: _controller.clear,
-                  icon: Icon(Icons.clear),
-                )
-              : null,
-          // labelText: "Name:",
-          focusedBorder: UnderlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+          obscureText: widget.obscure,
+          enabled: widget.boolValue,
+          controller: _controller,
+          decoration: InputDecoration(
+            hintText: widget.hintText,
+            labelText: widget.label,
+            labelStyle: TextStyle(color: Theme.of(context).accentColor),
+            suffixIcon: widget.boolValue
+                ? IconButton(
+                    onPressed: _controller.clear,
+                    icon: Icon(Icons.clear),
+                  )
+                : null,
+            // labelText: "Name:",
+            focusedBorder: UnderlineInputBorder(
+              borderSide:
+                  BorderSide(color: Theme.of(context).accentColor, width: 2.0),
+            ),
           ),
-        ),
-      ),
+          onChanged: (val) {
+            widget.newText = val;
+          }),
     );
   }
 }

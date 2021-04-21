@@ -44,6 +44,7 @@ class _CustomButtonState extends State<CustomButton> {
         width: widget.width,
         height: widget.height,
         child: ElevatedButton(
+
           onPressed: widget.onpress,
           child: Stack(
             children: [
@@ -75,29 +76,6 @@ class _CustomButtonState extends State<CustomButton> {
             )),
           ),
         ));
-    // child:
-    // Stack(
-    //   children: [
-    //     Align(alignment: Alignment.centerLeft, child: Icon(widget.icons)),
-    //     Align(
-    //       alignment: Alignment.center,
-    //       child: Text(widget.text),
-    //     ),
-    //   ],
-    // );
-    // style:
-    // ElevatedButton.styleFrom(
-    //   primary: widget.primary,
-    //   elevation: widget.elevation,
-    //   onPrimary: widget.onprimary,
-    //   onSurface: Colors.grey,
-    //   textStyle: TextStyle(
-    //     // color: Colors.blue,
-    //     fontSize: 16,
-    //   ),
-    //   shape: (RoundedRectangleBorder(
-    //     borderRadius: BorderRadius.circular(10.0),
-    //     side: BorderSide(color: widget.primary),
-    //   )),
+
   }
 }

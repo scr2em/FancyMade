@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../sharedWidgets/CustomButton.dart';
 import 'package:group_radio_button/group_radio_button.dart';
-
+import '../../../utils/validators.dart';
 class ProductListing extends StatefulWidget {
   @override
   _ProductListingState createState() => _ProductListingState();
@@ -15,13 +15,15 @@ class ProductListing extends StatefulWidget {
 class _ProductListingState extends State<ProductListing> {
   File _image;
   final _picker = ImagePicker();
+  final _formKey = GlobalKey<FormState>();
 
   _imgFromCamera() async {
     PickedFile image =
         await _picker.getImage(source: ImageSource.camera, imageQuality: 50);
 
     setState(() {
-      _image = image as File;
+      _image = File(image.path);
+
     });
   }
 
@@ -175,7 +177,8 @@ class _ProductListingState extends State<ProductListing> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
                         child: CustomLightTextFormField(
-                            hintText: AppLocalizations.of(context).productName),
+                            hintText: AppLocalizations.of(context).productName,
+                             validator: notEmpty,),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
@@ -183,6 +186,7 @@ class _ProductListingState extends State<ProductListing> {
                           hintText:
                               AppLocalizations.of(context).productdescription,
                           maxLines: 5,
+                           validator: notEmpty,
                         ),
                       ),
                       Padding(
@@ -205,7 +209,8 @@ class _ProductListingState extends State<ProductListing> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
                         child: CustomLightTextFormField(
-                            hintText: AppLocalizations.of(context).productName),
+                            hintText: AppLocalizations.of(context).productName,
+                            validator: notEmpty,),                        
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
@@ -213,6 +218,7 @@ class _ProductListingState extends State<ProductListing> {
                           hintText:
                               AppLocalizations.of(context).productdescription,
                           maxLines: 5,
+                           validator: notEmpty,
                         ),
                       ),
                     ],
