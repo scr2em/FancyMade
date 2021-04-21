@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
             theme: theme,
             initialRoute: '/home',
             routes: {
-              '/': (context) => Store(),
+              '/': (context) => HomeScreen(),
               '/signup': (context) => SignupScreen(),
               '/signin': (context) => LoginScreen(),
               '/loginProfileWrapper': (context) => LoginProfileWrapper(),
