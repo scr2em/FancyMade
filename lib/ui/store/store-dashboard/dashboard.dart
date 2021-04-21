@@ -411,7 +411,7 @@ class StoreDashboard extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Add your onPressed code here!
-          Navigator.of(context).pushNamed("productlisting");
+          Navigator.of(context).pushNamed("/productlisting");
         },
         child: const Icon(Icons.add),
         backgroundColor: Theme.of(context).accentColor,

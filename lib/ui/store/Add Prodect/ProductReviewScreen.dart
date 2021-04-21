@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import "package:finalproject/models/Product.dart";
 import '../../../sharedWidgets/CustomButton.dart';
-
+import "package:finalproject/sharedWidgets/DashboardBottomBar.dart";
 class ProductReview extends StatelessWidget {
+  // final Product product;
+  // ProductReview({this.product});
   @override
   Widget build(BuildContext context) {
+    final Product product = ModalRoute.of(context).settings.arguments as Product;
+  print(product.toJson());
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -72,7 +76,7 @@ class ProductReview extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Text(
-                                  "Bag",
+                                  '${product.arName}/${product.enName}',
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
@@ -97,7 +101,7 @@ class ProductReview extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Text(
-                                  "200 ${AppLocalizations.of(context).pound}",
+                                  "${product.price} ${AppLocalizations.of(context).pound}",
                                   style: TextStyle(
                                       height: 1.5,
                                       fontSize: 16,
@@ -196,9 +200,9 @@ class ProductReview extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: 70,
                     primary: Color(0xff273147),
-                    text: AppLocalizations.of(context).submityourlisting,
+                    text: AppLocalizations.of(context).backToDashboard,
                     onpress: () {
-                      Navigator.of(context).pushNamed('/');
+                      Navigator.of(context).pushNamed('/store-dashboard');
                     }),
               ),
               Padding(
@@ -213,6 +217,7 @@ class ProductReview extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: DashboardBottomBar(),
     );
   }
 }

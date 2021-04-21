@@ -35,7 +35,6 @@ class _DashboardBottomBarState extends State<DashboardBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<CustomUser>(context);
 
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
