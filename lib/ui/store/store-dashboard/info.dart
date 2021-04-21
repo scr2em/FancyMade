@@ -218,7 +218,7 @@ class StoreInfo extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: DashboardBottomBar(),
+      bottomNavigationBar: DashboardBottomBar(selectedIndex:3),
     );
   }
 }

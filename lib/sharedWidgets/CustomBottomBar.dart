@@ -5,65 +5,56 @@ import 'package:provider/provider.dart';
 import "../models/CustomUser.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CustomBottomBar extends StatefulWidget {
-  @override
-  _CustomBottomBarState createState() => _CustomBottomBarState();
-}
+class CustomBottomBar extends StatelessWidget {
+  final int selectedIndex;
 
-class _CustomBottomBarState extends State<CustomBottomBar> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      if (index == 0) {
-        Navigator.of(context).pushNamed('/home');
-      } else if (index == 1) {
-        Navigator.of(context).pushNamed('/faq');
-      } else if (index == 2) {
-        Navigator.of(context).pushNamed('/loginProfileWrapper');
-      } else if (index == 3) {
-        NAlertDialog(
-          content: Cart(),
-          blur: 2,
-        ).show(context, transitionType: DialogTransitionType.Bubble);
-      } else {
-        NAlertDialog(
-          content: Cart(),
-          blur: 2,
-        ).show(context, transitionType: DialogTransitionType.Bubble);
-      }
-    });
-  }
+  CustomBottomBar({Key key, this.selectedIndex = 0}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final user = Provider.of<CustomUser>(context);
-
     return BottomNavigationBar(
-      // iconSize: 9,
+      type: BottomNavigationBarType.fixed,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: AppLocalizations.of(context).sw_CustomBottomBar_home,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: AppLocalizations.of(context).sw_CustomBottomBar_favorite,
+          icon: Icon(Icons.shopping_cart_outlined),
+          label: AppLocalizations.of(context).cart,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.mark_email_unread_outlined),
+          label: AppLocalizations.of(context).messages,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.account_circle_rounded),
           label: AppLocalizations.of(context).profile,
         ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(Icons.shopping_cart_outlined),
-        //   label: AppLocalizations.of(context).cart,
-        // ),
+
       ],
-      currentIndex: _selectedIndex,
+      currentIndex: selectedIndex,
       selectedItemColor: Theme.of(context).accentColor,
       backgroundColor: Theme.of(context).backgroundColor,
-      onTap: _onItemTapped,
+      onTap: (int index) {
+        if (index == 0) {
+          Navigator.of(context).pushNamed('/home');
+        } else if (index == 1) {
+          Navigator.of(context).pushNamed('/faq');
+        } else if (index == 2) {
+          Navigator.of(context).pushNamed('/loginProfileWrapper');
+        } else if (index == 3) {
+          NAlertDialog(
+            content: Cart(),
+            blur: 2,
+          ).show(context, transitionType: DialogTransitionType.Bubble);
+        } else {
+          NAlertDialog(
+            content: Cart(),
+            blur: 2,
+          ).show(context, transitionType: DialogTransitionType.Bubble);
+        }
+      },
     );
   }
 }

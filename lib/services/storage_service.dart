@@ -6,7 +6,7 @@ import 'dart:math';
 class StorageService {
   FirebaseStorage storage = FirebaseStorage.instance;
 
-  Future uploadImage(File img, {storeId}) async {
+  Future uploadImage(File img, storeId) async {
     List imagePath = img.toString().split("/");
     String  imageName = Random().nextInt(100).toString() + imagePath[imagePath.length-1];
     UploadTask task = storage.ref("products/$storeId").child(imageName).putFile(img);

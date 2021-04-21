@@ -17,9 +17,7 @@ class DatabaseService {
   final CollectionReference productsCollection =
       FirebaseFirestore.instance.collection("products");
 
-  Future addProduct(Product product)async {
-        return  await productsCollection.add(product.toJson());
-  }
+
 
   Future updateUserData(
       {String phoneNumber, String name, String email, storeId = false}) async {

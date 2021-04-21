@@ -550,14 +550,17 @@ class _ProductListingState extends State<ProductListing> {
                             "maxQuantityPerOrder": maxQuantityPerOrder,
                             "shipment": groupValue
                           });
-
                             try{
                               await Provider.of<MainLocaleProvider>(context,
                                   listen: false).addProduct(product, image);
                               Navigator.of(context).pushNamed('/productReview', arguments: product);
 
                             } catch(err){
-
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor: Colors.red,
+                                content: Text('Something went wrong'),
+                              ));
                             }
 
 
