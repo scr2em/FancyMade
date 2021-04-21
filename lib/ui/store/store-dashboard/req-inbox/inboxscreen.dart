@@ -154,7 +154,7 @@ class _ReqChatPageState extends State<ReqChatPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(child: DashboardBottomBar()),
+      bottomNavigationBar: Container(child: DashboardBottomBar(selectedIndex:2)),
     );
   }
 }

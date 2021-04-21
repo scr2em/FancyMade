@@ -88,6 +88,8 @@ class _ProductListingState extends State<ProductListing> {
 
   @override
   Widget build(BuildContext context) {
+    final productToEdit = ModalRoute.of(context).settings.arguments;
+    // print(productToEdit['arName']);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -492,14 +494,18 @@ class _ProductListingState extends State<ProductListing> {
                             "maxQuantityPerOrder": maxQuantityPerOrder,
                             "shipment": groupValue
                           });
-
                           try {
                             await Provider.of<MainLocaleProvider>(context,
                                     listen: false)
                                 .addProduct(product, image);
                             Navigator.of(context).pushNamed('/productReview',
                                 arguments: product);
-                          } catch (err) {}
+                          } catch (err) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text('Something went wrong'),
+                            ));
+                          }
                         }
                       }))
             ]),

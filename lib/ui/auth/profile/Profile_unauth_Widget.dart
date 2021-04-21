@@ -138,7 +138,7 @@ class ProfileUnAuth extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomBar(),
+      bottomNavigationBar: CustomBottomBar(selectedIndex:3),
 
       // Center(
       //   child: ElevatedButton(

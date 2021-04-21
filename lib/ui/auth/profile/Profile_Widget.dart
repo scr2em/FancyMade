@@ -114,10 +114,13 @@ class Profile extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             CustomNavigationButton(
+                route: '/faq',
                 text: AppLocalizations.of(context).faq,
                 backgroundColor: Theme.of(context).backgroundColor,
-                prefixIcon: Icons.help_outline),
+                prefixIcon: Icons.help_outline,
+            ),
             CustomNavigationButton(
+                route: '/contactUs',
               text: AppLocalizations.of(context).contactUs,
               backgroundColor: Theme.of(context).backgroundColor,
               prefixIcon: Icons.call,
@@ -128,7 +131,7 @@ class Profile extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomBar(),
+      bottomNavigationBar: CustomBottomBar(selectedIndex:3),
 
       // Center(
       //   child: ElevatedButton(

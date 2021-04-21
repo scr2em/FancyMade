@@ -416,7 +416,7 @@ class StoreDashboard extends StatelessWidget {
         child: const Icon(Icons.add),
         backgroundColor: Theme.of(context).accentColor,
       ),
-      bottomNavigationBar: DashboardBottomBar(),
+      bottomNavigationBar: DashboardBottomBar(selectedIndex:0),
     );
   }
 }
