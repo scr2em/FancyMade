@@ -58,7 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {
           errorMessage = "";
         });
-        Provider.of<MainLocaleProvider>(context, listen: false).updateUser(result);
+        Provider.of<MainLocaleProvider>(context, listen: false)
+            .updateUser(result);
         Navigator.of(context).pushNamed("/");
       }
       setState(() {
@@ -138,14 +139,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: const EdgeInsets.all(8.0),
                               child: SizedBox(
                                 height: 50,
-                                width: 150,
+                                width: .583 * MediaQuery.of(context).size.width,
                                 child: TextButton(
                                   onPressed: onPressed,
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
-                                        Color(0xff273147)),
+                                        Theme.of(context).accentColor),
                                     // side: MaterialStateProperty.all(
-                                    //     BorderSide(color: Theme.of(context).accentColor)),
+                                    //     (Theme.of(context).accentColor)),
                                     foregroundColor: MaterialStateProperty.all(
                                       Colors.black,
                                     ),

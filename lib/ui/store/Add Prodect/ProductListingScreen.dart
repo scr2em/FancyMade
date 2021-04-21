@@ -35,6 +35,7 @@ class _ProductListingState extends State<ProductListing> {
   int maxQuantityPerOrder;
   String shipment;
   bool _checked = false;
+  String _groupValue;
 
   _imgFromCamera() async {
     PickedFile img =
@@ -417,8 +418,8 @@ class _ProductListingState extends State<ProductListing> {
                     ),
                     Row(
                       children: [
-                        RadioButton(
-                          description: '',
+                        Radio(
+                          activeColor: Color(0xff273147),
                           groupValue: groupValue,
                           onChanged: (value) => setState(() {
                             groupValue = value;
@@ -434,8 +435,8 @@ class _ProductListingState extends State<ProductListing> {
                     ),
                     Row(
                       children: [
-                        RadioButton(
-                          description: '',
+                        Radio(
+                          activeColor: Color(0xff273147),
                           groupValue: groupValue,
                           onChanged: (value) => setState(() {
                             groupValue = value;
@@ -474,6 +475,7 @@ class _ProductListingState extends State<ProductListing> {
                       primary: Color(0xff273147),
                       text: AppLocalizations.of(context).done,
                       onpress: () async {
+                        print(image != null);
                         if (_productListingForm.currentState.validate() &&
                             image != null) {
                           Product product = Product.fromJson({
