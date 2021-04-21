@@ -4,10 +4,12 @@ import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
 import 'package:finalproject/ui/main/main_locale_provider.dart';
+import 'package:finalproject/ui/product/EditProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import "package:finalproject/services/products_service.dart";
 import 'package:provider/provider.dart';
+
 class StoreInventory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,16 +31,16 @@ class StoreInventory extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: ProductsService().getInventory(uid: Provider.of<MainLocaleProvider>(context).user.uid),
-        builder: (context, snapshot){
-          if(snapshot.hasData){
+        future: ProductsService().getInventory(
+            uid: Provider.of<MainLocaleProvider>(context).user.uid),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
             final docs = snapshot.data.docs;
             return Padding(
               padding: const EdgeInsets.all(10),
               child: DefaultTabController(
                 length: 5,
                 child: SingleChildScrollView(
-
                   child: Column(
                     children: [
                       Container(
@@ -108,8 +110,8 @@ class StoreInventory extends StatelessWidget {
                         unselectedLabelColor: Theme.of(context).hintColor,
                         indicatorWeight: 5,
                         isScrollable: true,
-                        labelStyle:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                        labelStyle: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w900),
                         unselectedLabelStyle: TextStyle(
                           fontSize: 18,
                         ),
@@ -146,44 +148,50 @@ class StoreInventory extends StatelessWidget {
                           ),
                         ],
                       ),
-                      LayoutBuilder(
-                          builder: (BuildContext context, BoxConstraints constraints) {
-                            return Container(
-                              height: 400,
-                              child: TabBarView(
-                                children: [
-                                  _buildList(key: "key1", string: "List1: ", docs: docs),
-                                  _buildList(key: "key2", string: "List2: ", docs: docs),
-                                  _buildList(key: "key3", string: "List3: ", docs: docs),
-                                  _buildList(key: "key4", string: "List4: ", docs: docs),
-                                  _buildList(key: "key5", string: "List5: ", docs: docs),
-                                ],
-                              ),
-                            );
-                          })
+                      LayoutBuilder(builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        return Container(
+                          height: 400,
+                          child: TabBarView(
+                            children: [
+                              _buildList(
+                                  key: "key1", string: "List1: ", docs: docs),
+                              _buildList(
+                                  key: "key2", string: "List2: ", docs: docs),
+                              _buildList(
+                                  key: "key3", string: "List3: ", docs: docs),
+                              _buildList(
+                                  key: "key4", string: "List4: ", docs: docs),
+                              _buildList(
+                                  key: "key5", string: "List5: ", docs: docs),
+                            ],
+                          ),
+                        );
+                      })
                     ],
                   ),
                 ),
               ),
             );
-          }else if (snapshot.hasError){
-            return Container(child: Center(child: Text("Error something went wrong please reload...")));
-          }else{
-           return Container(child: Center(child: CircularProgressIndicator()));
+          } else if (snapshot.hasError) {
+            return Container(
+                child: Center(
+                    child:
+                        Text("Error something went wrong please reload...")));
+          } else {
+            return Container(child: Center(child: CircularProgressIndicator()));
           }
-
         },
-
       ),
-      bottomNavigationBar: DashboardBottomBar(selectedIndex:1),
+      bottomNavigationBar: DashboardBottomBar(selectedIndex: 1),
     );
   }
 }
 
-Widget _buildList({String key, String string,docs}) {
+Widget _buildList({String key, String string, docs}) {
   return ListView.builder(
     key: PageStorageKey(key),
-    itemCount:docs.length,
+    itemCount: docs.length,
     itemBuilder: (context, i) => Container(
         margin: EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
@@ -192,8 +200,8 @@ Widget _buildList({String key, String string,docs}) {
         child: ListTile(
           leading: CircleAvatar(
             maxRadius: 50,
-            child: Image.network( docs[i]["image"]
-             ,
+            child: Image.network(
+              docs[i]["image"],
             ),
           ),
           title: Text(docs[i]["arName"]),
@@ -203,7 +211,13 @@ Widget _buildList({String key, String string,docs}) {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushNamed("/productlisting" , arguments: docs[i]);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditProduct(
+                            newProduct: Product.fromJson(docs[i].data()),
+                            productId: docs[i].id)),
+                  );
                 },
                 child: Text(
                   "edit",

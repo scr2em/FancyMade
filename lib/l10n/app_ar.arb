@@ -134,9 +134,8 @@
      "categories":"الفئات",
      "viewall":"عرض الكل",
      "bestSeller":"الأكثر مبيعًا",
-     "nearbyStore":"المتاجر المجاورة"
-
-
-
+     "nearbyStore":"المتاجر المجاورة",
+    "editProduct" : "تعديل المنتج",
+    "edit": "تعديل"
 
 }

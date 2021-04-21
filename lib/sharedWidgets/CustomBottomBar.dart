@@ -44,6 +44,8 @@ class CustomBottomBar extends StatelessWidget {
             blur: 2,
           ).show(context, transitionType: DialogTransitionType.Bubble);
         } else if (index == 2) {
+          Navigator.of(context).pushNamed('/product');
+
         } else if (index == 3) {
           Navigator.of(context).pushNamed('/loginProfileWrapper');
         } else {

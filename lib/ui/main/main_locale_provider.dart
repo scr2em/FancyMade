@@ -21,12 +21,23 @@ class MainLocaleProvider extends ChangeNotifier {
   MainLocaleProvider() {
     loadSavedLocale();
   }
-  Future addProduct(Product product , File img) async{
+
+  Future updateProduct(Product product, File img, String productId) async {
+    if (img != null) {
+      product.image = await StorageService().uploadImage(img, user.uid);
+    }
+    print(product.image);
+
+    await ProductsService().updateProduct(product, productId);
+  }
+
+  Future addProduct(Product product, File img) async {
     product.storeId = user.uid;
-    product.image=  await StorageService().uploadImage(img,user.uid);
+    product.image = await StorageService().uploadImage(img, user.uid);
     print(product.image);
     await ProductsService().addProduct(product);
   }
+
   createStore(Store store) async {
     store.ownerId = user.uid;
     CustomUser newData =

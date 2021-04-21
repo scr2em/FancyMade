@@ -30,6 +30,7 @@ import "../auth/LoginProfileWrapper.dart";
 import "../checkout/checkoutSuccessScreen.dart";
 import '../order/order.dart';
 import '../product/productScreen.dart';
+import '../product/EditProduct.dart';
 import "../store/CreateStoreForm.dart";
 import "../auth/profile/Info/Info_Widget.dart";
 import "../auth/profile/Settings/Settings_Widget.dart";

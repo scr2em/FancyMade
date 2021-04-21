@@ -134,6 +134,8 @@
     "categories":"categories",
     "viewall":"View all",
     "bestSeller":"Best Seller",
-    "nearbyStore":"Nearby stores"
+    "nearbyStore":"Nearby stores",
+    "editProduct" : "Editing product",
+    "edit": "Edit"
 
 }
