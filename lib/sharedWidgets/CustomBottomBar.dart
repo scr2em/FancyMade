@@ -31,7 +31,6 @@ class CustomBottomBar extends StatelessWidget {
           icon: Icon(Icons.account_circle_rounded),
           label: AppLocalizations.of(context).profile,
         ),
-
       ],
       currentIndex: selectedIndex,
       selectedItemColor: Theme.of(context).accentColor,
@@ -40,19 +39,15 @@ class CustomBottomBar extends StatelessWidget {
         if (index == 0) {
           Navigator.of(context).pushNamed('/home');
         } else if (index == 1) {
-          Navigator.of(context).pushNamed('/faq');
+          NAlertDialog(
+            content: Cart(),
+            blur: 2,
+          ).show(context, transitionType: DialogTransitionType.Bubble);
         } else if (index == 2) {
-          Navigator.of(context).pushNamed('/loginProfileWrapper');
         } else if (index == 3) {
-          NAlertDialog(
-            content: Cart(),
-            blur: 2,
-          ).show(context, transitionType: DialogTransitionType.Bubble);
+          Navigator.of(context).pushNamed('/loginProfileWrapper');
         } else {
-          NAlertDialog(
-            content: Cart(),
-            blur: 2,
-          ).show(context, transitionType: DialogTransitionType.Bubble);
+          Navigator.of(context).pushNamed('/home');
         }
       },
     );

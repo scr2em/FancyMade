@@ -12,6 +12,7 @@ import "package:finalproject/models/Product.dart";
 import "package:finalproject/ui/main/main_locale_provider.dart";
 
 class ProductListing extends StatefulWidget {
+
   @override
   _ProductListingState createState() => _ProductListingState();
 }
@@ -87,6 +88,8 @@ class _ProductListingState extends State<ProductListing> {
 
   @override
   Widget build(BuildContext context) {
+    final productToEdit = ModalRoute.of(context).settings.arguments ;
+    // print(productToEdit['arName']);
     return Scaffold(
       appBar: AppBar(
         title: Text(

@@ -202,7 +202,9 @@ Widget _buildList({String key, String string,docs}) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed("/productlisting" , arguments: docs[i]);
+                },
                 child: Text(
                   "edit",
                   style: TextStyle(
