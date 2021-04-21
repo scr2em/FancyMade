@@ -14,11 +14,6 @@ class CustomBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-<<<<<<< HEAD
-
-      // iconSize: 9,
-=======
->>>>>>> 3cdf7c1ff41fe9f2791919e76333df926b270370
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -36,13 +31,6 @@ class CustomBottomBar extends StatelessWidget {
           icon: Icon(Icons.account_circle_rounded),
           label: AppLocalizations.of(context).profile,
         ),
-<<<<<<< HEAD
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart_outlined),
-          label: AppLocalizations.of(context).cart,
-        ),
-=======
->>>>>>> 3cdf7c1ff41fe9f2791919e76333df926b270370
       ],
       currentIndex: selectedIndex,
       selectedItemColor: Theme.of(context).accentColor,
