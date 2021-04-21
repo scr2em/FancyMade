@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../utils/shared_preference.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:finalproject/models/CustomUser.dart';
 import 'package:finalproject/models/Store.dart';
+import 'package:finalproject/models/Product.dart';
 import "package:finalproject/services/database.dart";
+import "package:finalproject/services/storage_service.dart";
 
 const String APP_FIRST_OPEN = "APP_FIRST_OPEN";
 const String APP_SAVED_LOCALE = "APP_SAVED_LOCALE";
@@ -16,7 +20,11 @@ class MainLocaleProvider extends ChangeNotifier {
   MainLocaleProvider() {
     loadSavedLocale();
   }
-
+  void addProduct(Product product , File img) async{
+    product.storeId = user.uid;
+    product.image=  await StorageService().uploadImage(img, storeId:user.uid);
+    await DatabaseService(uid: user.uid).addProduct(product);
+  }
   createStore(Store store) async {
     store.ownerId = user.uid;
     CustomUser newData =

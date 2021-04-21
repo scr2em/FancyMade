@@ -10,13 +10,15 @@ String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
   Product({
-    this.ar,
-    this.en,
+    this.arName,
+    this.arDesc,
+    this.enName,
+    this.enDesc,
     this.price,
-    this.discount,
-    this.discountDuration,
+    this.discount = 0,
+    this.discountDuration = 0,
     this.category,
-    this.images,
+    this.image,
     this.sku,
     this.itemsAvailable,
     this.freeShipping,
@@ -25,15 +27,18 @@ class Product {
     this.tags,
     this.maxQuantityPerOrder,
     this.storeId,
+    this.shipment
   });
 
-  Ar ar;
-  Ar en;
+  String arName;
+  String arDesc;
+  String enName;
+  String enDesc;
   int price;
   int discount;
   int discountDuration;
   String category;
-  List<String> images;
+  String image ;
   String sku;
   int itemsAvailable;
   bool freeShipping;
@@ -42,15 +47,18 @@ class Product {
   List<String> tags;
   int maxQuantityPerOrder;
   String storeId;
+  String shipment;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        ar: Ar.fromJson(json["ar"]),
-        en: Ar.fromJson(json["en"]),
+        arName: json["arName"],
+        arDesc: json["arDesc"],
+        enName: json["enName"],
+        enDesc: json["enDesc"],
         price: json["price"],
         discount: json["discount"],
         discountDuration: json["DiscountDuration"],
         category: json["category"],
-        images: List<String>.from(json["images"].map((x) => x)),
+        image: json["image"],
         sku: json["sku"],
         itemsAvailable: json["itemsAvailable"],
         freeShipping: json["freeShipping"],
@@ -59,16 +67,19 @@ class Product {
         tags: List<String>.from(json["tags"].map((x) => x)),
         maxQuantityPerOrder: json["maxQuantityPerOrder"],
         storeId: json["storeId"],
+    shipment: json["shipment"],
       );
 
   Map<String, dynamic> toJson() => {
-        "ar": ar.toJson(),
-        "en": en.toJson(),
+        "arName": arName,
+        "arDesc": arDesc,
+        "enName": enName,
+        "enDesc": enDesc,
         "price": price,
         "discount": discount,
         "DiscountDuration": discountDuration,
         "category": category,
-        "images": List<dynamic>.from(images.map((x) => x)),
+        "image": image,
         "sku": sku,
         "itemsAvailable": itemsAvailable,
         "freeShipping": freeShipping,
@@ -77,45 +88,22 @@ class Product {
         "tags": List<dynamic>.from(tags.map((x) => x)),
         "maxQuantityPerOrder": maxQuantityPerOrder,
         "storeId": storeId,
-      };
-}
-
-class Ar {
-  Ar({
-    this.title,
-    this.desc,
-  });
-
-  String title;
-  String desc;
-
-  factory Ar.fromJson(Map<String, dynamic> json) => Ar(
-        title: json["title"],
-        desc: json["desc"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "title": title,
-        "desc": desc,
+    "shipment" : shipment
       };
 }
 
 // {
-// "ar" : {
-// "title": "product name",
-// "desc" : "Product Description"
-// },
-// "en": {
-// "title": "product name",
-// "desc" : "Product Description"
-// },
+// "arName": "product name",
+// "arDesc" : "Product Description",
+// "enName": "product name",
+// "enDesc" : "Product Description",
 // "price" : 100,
 // "discount": 10,
 // "DiscountDuration": 150,
 // "category": "categoryId",
 // "images": [
 // "first image url",
-// "second iamge url"
+// "second image url"
 // ],
 // "sku": "12314",
 // "itemsAvailable" : 5,

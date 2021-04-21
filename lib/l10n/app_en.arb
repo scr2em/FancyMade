@@ -61,7 +61,7 @@
      "orSignIn" : "Or sign in",
      "login": "Login",
     "thankYou":"Thank you!",
-    "addProductImg":"Add your product image here",
+    "addProductImg":"Product image",
     "detailsbelow":"Sell on  Fancymade-Enter listing details below",
     "en":"English",
     "ar":"Arabic",
@@ -129,6 +129,7 @@
     "lE":"L.E",
     "itemremoved":"Item removed",
     "checkout":"Check out",
-    "total":"Total"
+    "total":"Total",
+    "backToDashboard" : "Back to dashboard"
 
 }
