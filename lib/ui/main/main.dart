@@ -30,6 +30,7 @@ import "../auth/LoginProfileWrapper.dart";
 import "../checkout/checkoutSuccessScreen.dart";
 import '../order/order.dart';
 import '../product/productScreen.dart';
+import '../product/EditProduct.dart';
 import "../store/CreateStoreForm.dart";
 import "../auth/profile/Info/Info_Widget.dart";
 import "../auth/profile/Settings/Settings_Widget.dart";
@@ -74,28 +75,28 @@ class MyApp extends StatelessWidget {
           // darkTheme: darkTheme,
           initialRoute: '/home',
           routes: {
-             '/': (context) => HomeScreen(),
-              '/signup': (context) => SignupScreen(),
-              '/signin': (context) => LoginScreen(),
-              '/loginProfileWrapper': (context) => LoginProfileWrapper(),
-              '/product': (context) => ProductScreen(),
-              '/CreateStoreForm': (context) => CreateStoreForm(),
-              '/profileInfo': (context) => InfoScreen(),
-              '/profileSettings': (context) => SettingsScreen(),
-              '/store': (context) => Store(),
-              '/order': (context) => Order(),
-              '/productlisting': (context) => ProductListing(),
-              '/productReview': (context) => ProductReview(),
-              '/store-info': (context) => StoreInfo(),
-              '/store-inventory': (context) => StoreInventory(),
-              '/checkout': (context) => Checkout(),
-              '/checkout-success': (context) => CheckoutSuccessScreen(),
-              '/home': (context) => HomeScreen(),
-              '/store-dashboard': (context) => StoreDashboard(),
-              '/req-msgs': (context) => ReqChatPage(),
-              '/contactUs': (context) => ContactUs(),
-              '/faq': (context) => FAQ(),
-              '/notfound': (context) => PageNotFound()
+            '/': (context) => HomeScreen(),
+            '/signup': (context) => SignupScreen(),
+            '/signin': (context) => LoginScreen(),
+            '/loginProfileWrapper': (context) => LoginProfileWrapper(),
+            '/product': (context) => ProductScreen(),
+            '/CreateStoreForm': (context) => CreateStoreForm(),
+            '/profileInfo': (context) => InfoScreen(),
+            '/profileSettings': (context) => SettingsScreen(),
+            '/store': (context) => Store(),
+            '/order': (context) => Order(),
+            '/productlisting': (context) => ProductListing(),
+            '/productReview': (context) => ProductReview(),
+            '/store-info': (context) => StoreInfo(),
+            '/store-inventory': (context) => StoreInventory(),
+            '/checkout': (context) => Checkout(),
+            '/checkout-success': (context) => CheckoutSuccessScreen(),
+            '/home': (context) => HomeScreen(),
+            '/store-dashboard': (context) => StoreDashboard(),
+            '/req-msgs': (context) => ReqChatPage(),
+            '/contactUs': (context) => ContactUs(),
+            '/faq': (context) => FAQ(),
+            '/notfound': (context) => PageNotFound()
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         );

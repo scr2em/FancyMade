@@ -127,6 +127,8 @@
     "itemremoved":"Item removed",
     "checkout":"Check out",
     "total":"Total",
-    "backToDashboard" : "Back to dashboard"
+    "backToDashboard" : "Back to dashboard",
+    "editProduct" : "Editing product",
+    "edit": "Edit"
 
 }
