@@ -1,52 +1,102 @@
+import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import "package:finalproject/models/Product.dart";
+import "package:finalproject/ui/product/productScreen.dart";
+import "package:finalproject/sharedWidgets/LanguageTextSwitcher.dart";
+import 'package:provider/provider.dart';
 
-class Product extends StatelessWidget {
-  int price;
-  int discount;
+class ProductThumbnail extends StatelessWidget {
+  Product product;
   bool badges;
 
-  Product({this.price, this.discount = 0, this.badges = true});
+  ProductThumbnail({this.product, this.badges = true});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(right: 8),
       width: 190.0,
-      child: Wrap(
-        children: [
-          Placeholder(
-            fallbackHeight: 150,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Text("Product name ",
-                style: Theme.of(context).textTheme.bodyText1),
-          ),
-          RatingBarIndicator(
-            rating: 2.75,
-            itemBuilder: (context, index) => Icon(
-              Icons.star,
-              color: Colors.amber,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductScreen(
+                      product: product,
+                    )),
+          );
+        },
+        child: Wrap(
+          children: [
+            Image.network(
+              product.image,
+              height: 150,
+              width: 190,
+              fit: BoxFit.cover,
             ),
-            itemCount: 5,
-            itemSize: 20,
-            direction: Axis.horizontal,
-          ),
-          Price(
-            value: price,
-            discount: discount,
-          ),
-          Icon(
-            badges ? Icons.beenhere_outlined : null,
-            color: Colors.grey,
-            size: 18,
-          ),
-          Icon(badges ? Icons.local_offer_outlined : null,
-              color: Colors.grey, size: 18),
-          Icon(badges ? Icons.local_shipping_outlined : null,
-              color: Colors.grey, size: 18),
-        ],
+            Row(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: LanguageTextSwitcher(
+                      ar: product.arName,
+                      en: product.enName,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    )),
+              ],
+            ),
+            Row(
+              children: [
+                RatingBarIndicator(
+                  rating: 2.75,
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  itemCount: 5,
+                  itemSize: 20,
+                  direction: Axis.horizontal,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Price(
+                  value: product.price,
+                  discount: product.discount,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      product.verifiedStore != null
+                          ? Icons.beenhere_outlined
+                          : null,
+                      color: Colors.grey,
+                      size: 18,
+                    ),
+                    //failed to combine them
+                    Icon(
+                        product.discount != null
+                            ? product.discount != 0
+                                ? Icons.local_offer_outlined
+                                : null
+                            : null,
+                        color: Colors.grey,
+                        size: 18),
+                    Icon(
+                        product.freeShipping != null
+                            ? Icons.local_shipping_outlined
+                            : null,
+                        color: Colors.grey,
+                        size: 18),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -66,7 +116,10 @@ class Price extends StatelessWidget {
           children: discount != 0
               ? [
                   Text(
-                    '$value EGP',
+                    Provider.of<MainLocaleProvider>(context)
+                        .applicationLocale
+                        .languageCode ==
+                        "ar" ? '$value جنيه' :'$value EGP' ,
                     style: TextStyle(
                         decoration: TextDecoration.lineThrough,
                         color: Color(0xffFF5959),

@@ -333,7 +333,6 @@ class _EditProductState extends State<EditProduct> {
                           widget.newProduct.discountDuration.toString(),
                       hintText: AppLocalizations.of(context).discDur,
                       onChanged: (val) {
-                        print('cahaaaaaaaaaaaaa');
                         widget.newProduct.discountDuration = int.parse(val);
                       },
                     ),

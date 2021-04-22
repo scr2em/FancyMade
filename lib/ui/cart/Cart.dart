@@ -102,7 +102,6 @@ class CartState extends State<Cart> {
         create: (context) => MainLocaleProvider(),
         child: Consumer<MainLocaleProvider>(
             builder: (context, mainLocaleProvider, child) {
-          print(mainLocaleProvider.applicationLocale);
           return Container(
             height: MediaQuery.of(context).size.height * .75,
             width: MediaQuery.of(context).size.width,

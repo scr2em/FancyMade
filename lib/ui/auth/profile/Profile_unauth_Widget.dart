@@ -62,15 +62,17 @@ class ProfileUnAuth extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             CustomNavigationButton(
-                text: AppLocalizations.of(context).faq,
-                backgroundColor: Theme.of(context).backgroundColor,
-                prefixIcon: Icons.help_outline),
+              route: '/faq',
+              text: AppLocalizations.of(context).faq,
+              backgroundColor: Theme.of(context).backgroundColor,
+              prefixIcon: Icons.help_outline,
+            ),
             CustomNavigationButton(
+              route: '/contactUs',
               text: AppLocalizations.of(context).contactUs,
               backgroundColor: Theme.of(context).backgroundColor,
               prefixIcon: Icons.call,
-              route: '/dashboard',
-            ), //dashboard
+            ),
             SizedBox(
               height: 40,
             ),
