@@ -243,12 +243,12 @@ class CartState extends State<Cart> {
                                                                     onprimary:
                                                                         Colors
                                                                             .black,
-                                                                    radiusbotleft: (mainLocaleProvider.applicationLocale ==
+                                                                    radiusbotleft: (mainLocaleProvider.applicationLocale.languageCode ==
                                                                                 'en'
                                                                             ? 4
                                                                             : 0)
                                                                         .toDouble(),
-                                                                    radiustopleft: (mainLocaleProvider.applicationLocale == 'en'
+                                                                    radiustopleft: (mainLocaleProvider.applicationLocale.languageCode == 'en'
                                                                             ? 4
                                                                             : 0)
                                                                         .toDouble(),

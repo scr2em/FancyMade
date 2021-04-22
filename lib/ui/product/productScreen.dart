@@ -20,10 +20,10 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            product.enName,
-            style: TextStyle(color: Colors.black),
-          ),
+          title: LanguageTextSwitcher(
+              ar: product.arName,
+              en: product.enName,
+              style: TextStyle(color: Colors.black)),
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.white,
@@ -113,9 +113,9 @@ class ProductScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(10),
-                            child: Text(
-                              '${product.enName}',
-                              //////need responsive
+                            child: LanguageTextSwitcher(
+                              ar: product.arName,
+                              en: product.enName,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),

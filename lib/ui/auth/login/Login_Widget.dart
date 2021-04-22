@@ -45,11 +45,13 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   onPressed() async {
-    if (_formKey.currentState.validate()) {
+    // if (_formKey.currentState.validate()) {
       setState(() {
         loading = true;
       });
-      dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+      dynamic result = await _auth.signInWithGoogle();
+      print(result);
+      // dynamic result = await _auth.signInWithEmailAndPassword(email, password);
       if (result == null) {
         setState(() {
           errorMessage = AppLocalizations.of(context).somethingWentWrong;
@@ -65,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         loading = false;
       });
-    }
+    // }
   }
 
   @override

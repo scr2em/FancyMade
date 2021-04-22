@@ -37,6 +37,7 @@ class Profile extends StatelessWidget {
               radius: 55,
               backgroundImage: NetworkImage(
                   Provider.of<MainLocaleProvider>(context).user.avatar),
+
             ),
             Center(
               child: Padding(

@@ -20,10 +20,9 @@ class DatabaseService {
 
 
   Future updateUserData(
-      {String phoneNumber, String name, String email, storeId = false}) async {
+      {String phoneNumber, String name, String email, storeId = false, avatar = "https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png"}) async {
     return await usersCollection.doc(uid).set({
-      "avatar":
-          "https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png",
+      "avatar":avatar,
       "phoneNumber": phoneNumber,
       "name": name,
       "email": email,
