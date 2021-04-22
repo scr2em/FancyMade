@@ -44,7 +44,7 @@ class DashboardBottomBar extends StatelessWidget {
         } else if (index == 3) {
           Navigator.of(context).pushNamed('/store-info');
         } else {
-          Navigator.pushNamed(context, "/store-dashboard");
+          Navigator.of(context).pushNamed('/store-dashboard');
         }
       },
     );

@@ -1,8 +1,8 @@
 import 'dart:ui';
-
 import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
+import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:finalproject/ui/product/EditProduct.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +23,6 @@ class StoreInventory extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Color(0xff273147)),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pushNamed('/');
-          },
-        ),
       ),
       body: FutureBuilder(
         future: ProductsService().getInventory(
@@ -204,7 +198,7 @@ Widget _buildList({String key, String string, docs}) {
               docs[i]["image"],
             ),
           ),
-          title: Text(docs[i]["arName"]),
+          title:LanguageTextSwitcher(ar:docs[i]["arName"], en: docs[i]["enName"] ),
           subtitle: Text('Men\'s Shoes'),
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

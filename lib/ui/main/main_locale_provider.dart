@@ -26,7 +26,6 @@ class MainLocaleProvider extends ChangeNotifier {
     if (img != null) {
       product.image = await StorageService().uploadImage(img, user.uid);
     }
-    print(product.image);
 
     await ProductsService().updateProduct(product, productId);
   }
@@ -34,7 +33,6 @@ class MainLocaleProvider extends ChangeNotifier {
   Future addProduct(Product product, File img) async {
     product.storeId = user.uid;
     product.image = await StorageService().uploadImage(img, user.uid);
-    print(product.image);
     await ProductsService().addProduct(product);
   }
 

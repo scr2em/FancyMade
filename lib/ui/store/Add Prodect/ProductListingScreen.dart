@@ -398,7 +398,7 @@ class _ProductListingState extends State<ProductListing> {
                 padding: const EdgeInsets.all(
                   10,
                 ),
-                margin: EdgeInsets.only(top: 16, bottom: 100),
+                margin: EdgeInsets.only(top: 16, bottom: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

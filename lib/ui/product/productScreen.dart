@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
+import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
@@ -10,12 +12,16 @@ import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 import '../../sharedWidgets/CustomButton.dart';
 
 class ProductScreen extends StatelessWidget {
+  final Product product;
+
+  ProductScreen({this.product});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context).productlisting,
+            product.enName,
             style: TextStyle(color: Colors.black),
           ),
           elevation: 0,
@@ -31,9 +37,7 @@ class ProductScreen extends StatelessWidget {
                   Container(
                     decoration: new BoxDecoration(color: Colors.white),
                     alignment: Alignment.topCenter,
-                    child: Image.network(
-                        "https://wilderness-production.imgix.net/2018/11/Terra-pants.jpg?auto=compress%2Cformat&fit=scale&h=1020&ixlib=php-3.3.0&w=1536&wpsize=1536x1536",
-                        fit: BoxFit.fill),
+                    child: Image.network(product.image, fit: BoxFit.fill),
                   ),
                   Positioned(
                     child: Container(
@@ -42,13 +46,17 @@ class ProductScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.red[400],
                       ),
-                      child: Text(
-                        '50%',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24),
-                      ),
+                      child: product.discount != null
+                          ? product.discount != 0
+                              ? Text(
+                                  '${product.discount}\$',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24),
+                                )
+                              : null
+                          : null,
                     ),
                     bottom: 50,
                     right: 0,
@@ -71,7 +79,7 @@ class ProductScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                "category / shoes ",
+                                "category / ${product.category} ",
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w400,
@@ -101,14 +109,18 @@ class ProductScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Text(
-                          'Adidas Men’s Socce r Tiro 17 Training Pants',
-                          //////need responsive
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              '${product.enName}',
+                              //////need responsive
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -120,14 +132,14 @@ class ProductScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  '500',
+                                  '${product.price}',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w900,
                                       fontSize: 20,
                                       decoration: TextDecoration.lineThrough),
                                 ),
                                 Text(
-                                  ' 250 EGP',
+                                  '${(product.price * (1 - (product.discount / 100))).toStringAsFixed(2)}',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 30,
@@ -148,16 +160,20 @@ class ProductScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              right: 10, left: 10, bottom: 20),
-                          child: Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Color(0xff5F5F5F),
-                            ),
-                          )),
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, bottom: 20),
+                              child: LanguageTextSwitcher(
+                                  ar: product.arDesc,
+                                  en: product.enDesc,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xff5F5F5F),
+                                  ))),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -184,23 +200,13 @@ class ProductScreen extends StatelessWidget {
                                     height: 1.5),
                               ),
                             ),
-                            Text('Availability: in stock'),
                             Text(
-                              '• Available size',
-                              style: TextStyle(height: 1.5),
-                            ),
+                                'Availability: ${product.itemsAvailable} in stock'),
                             Text(
-                              '• Available size',
-                              style: TextStyle(height: 1.5),
-                            ),
+                                'Max quantity per order: ${product.maxQuantityPerOrder}'),
                             Text(
-                              '• Available size',
-                              style: TextStyle(height: 1.5),
-                            ),
-                            Text(
-                              '• Available size',
-                              style: TextStyle(height: 1.5),
-                            ),
+                                'discountDuration: ${product.discountDuration} minutes'),
+                            Text('will be shipped by: ${product.shipment}'),
                           ],
                         ),
                       ],

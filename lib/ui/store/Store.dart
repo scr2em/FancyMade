@@ -70,24 +70,24 @@ class _StoreState extends State<Store> {
 // This next line does the trick.
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            Product(
-                              price: 100,
-                              discount: 10,
-                              badges: false,
-                            ),
-                            Product(
-                              price: 200,
-                              discount: 20,
-                              badges: false,
-                            ),
-                            Product(
-                              price: 150,
-                              badges: false,
-                            ),
-                            Product(
-                              price: 120,
-                              badges: false,
-                            ),
+                            // ProductThumbnail(
+                            //   price: 100,
+                            //   discount: 10,
+                            //   badges: false,
+                            // ),
+                            // ProductThumbnail(
+                            //   price: 200,
+                            //   discount: 20,
+                            //   badges: false,
+                            // ),
+                            // ProductThumbnail(
+                            //   price: 150,
+                            //   badges: false,
+                            // ),
+                            // ProductThumbnail(
+                            //   price: 120,
+                            //   badges: false,
+                            // ),
                           ],
                         ),
                       ),
@@ -115,16 +115,16 @@ class _StoreState extends State<Store> {
                     crossAxisSpacing: 10,
                     // mainAxisSpacing: 75,
                     children: [
-                      Product(price: 100),
-                      Product(price: 100),
-                      Product(
-                        price: 100,
-                        discount: 15,
-                      ),
-                      Product(price: 100),
-                      Product(price: 100),
-                      Product(price: 100),
-                      Product(price: 100),
+                      // ProductThumbnail(price: 100),
+                      // ProductThumbnail(price: 100),
+                      // ProductThumbnail(
+                      //   price: 100,
+                      //   discount: 15,
+                      // ),
+                      // ProductThumbnail(price: 100),
+                      // ProductThumbnail(price: 100),
+                      // ProductThumbnail(price: 100),
+                      // ProductThumbnail(price: 100),
                     ],
                   ),
                 ],
