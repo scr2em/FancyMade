@@ -8,6 +8,7 @@ import '../../../../sharedWidgets/CustomBottomBar.dart';
 import "../../../../services/auth_service.dart";
 import "../../../main/main_provider.dart";
 import "../../../../models/CustomUser.dart";
+
 const int ARABIC_VALUE = 1;
 const int ENGLISH_VALUE = 2;
 
@@ -98,20 +99,91 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 50,
+              child: DecoratedBox(
+                decoration: ShapeDecoration(
+                  color: Theme.of(context).backgroundColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                child: DropdownButton<String>(
+                  underline: Container(),
+                  isExpanded: true,
+                  icon: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                  hint: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.flag_outlined,
+                          color: Theme.of(context).accentColor,
+                        ),
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Text(AppLocalizations.of(context).thankYou),
+                        )),
+                        Image.asset(
+                          "assets/images/language/ar.png",
+                          scale: 11,
+                        ),
+                      ],
+                    ),
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      child: Text("dark"),
+                      onTap: () async {
+                        Provider.of<MainLocaleProvider>(context, listen: false)
+                            .updateApplicationTheme('ThemeMode.dark');
+                      },
+                    ),
+                    DropdownMenuItem(
+                      child: Text("light"),
+                      onTap: () async {
+                        Provider.of<MainLocaleProvider>(context, listen: false)
+                            .updateApplicationTheme('ThemeMode.light');
+                      },
+                    ),
+                    DropdownMenuItem(
+                      child: Text("Following system theme"),
+                      onTap: () async {
+                        Provider.of<MainLocaleProvider>(context, listen: false)
+                            .updateApplicationTheme('ThemeMode.system');
+                      },
+                    ),
+                  ],
+                  onChanged: (_) {},
+                ),
+              ),
+            ),
           ],
         ),
       ),
       bottomSheet: user != null
           ? Container(
-        padding: EdgeInsets.all(15),
-        child: Row(
+              padding: EdgeInsets.all(15),
+              child: Row(
                 children: [
                   Expanded(
                     child: SizedBox(
                       height: 50,
                       child: OutlinedButton(
                         onPressed: () async {
-                          Provider.of<MainLocaleProvider>(context, listen: false).signOut();
+                          Provider.of<MainLocaleProvider>(context,
+                                  listen: false)
+                              .signOut();
                           Navigator.of(context).pushNamed("/signin");
                         },
                         style: ButtonStyle(
@@ -128,14 +200,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             borderRadius: BorderRadius.circular(10.0),
                           )),
                         ),
-                        child:  Text(AppLocalizations.of(context).signout),
+                        child: Text(AppLocalizations.of(context).signout),
                       ),
                     ),
                   ),
                 ],
-              )
-           ,
-      )  : null,
+              ),
+            )
+          : null,
       bottomNavigationBar: CustomBottomBar(),
     );
   }

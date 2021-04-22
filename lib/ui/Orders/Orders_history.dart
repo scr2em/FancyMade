@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
@@ -103,18 +104,22 @@ class OrdersHistoryState extends State<OrdersHistory> {
                                   ),
                                   Align(
                                     alignment: Alignment.bottomCenter,
-                                    child: CustomButton(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3,
-                                        height: 40,
-                                        text:
-                                            '${AppLocalizations.of(context).moredetails}',
-                                        fontsize: 12,
-                                        primary: Theme.of(context).accentColor,
-                                        onprimary: Colors.white,
-                                        bordercolor: Colors.transparent,
-                                        onpress: () {}),
+                                    child: BounceInDown(
+                                      child: CustomButton(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3,
+                                          height: 40,
+                                          text:
+                                              '${AppLocalizations.of(context).moredetails}',
+                                          fontsize: 12,
+                                          primary:
+                                              Theme.of(context).accentColor,
+                                          onprimary: Colors.white,
+                                          bordercolor: Colors.transparent,
+                                          onpress: () {}),
+                                    ),
                                   ),
                                 ],
                               ),
