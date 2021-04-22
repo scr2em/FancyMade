@@ -34,9 +34,9 @@ class DatabaseService {
 
   Future getUserDate() async {
     var data = await usersCollection.doc(uid).get();
-  print(data.data());
     return CustomUser.fromJson({...data.data(),"uid":uid});
   }
+
   Future createStore(Store store) async {
     var arData = await storesCollection.where("arName", isEqualTo: store.arName).get();
     var enData =  await storesCollection.where("enName", isEqualTo: store.enName).get();

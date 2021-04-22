@@ -1,3 +1,4 @@
+import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:finalproject/sharedWidgets/ProductModel.dart';
@@ -12,6 +13,7 @@ import 'package:ndialog/ndialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import "package:finalproject/services/products_service.dart";
 
 // var obj = new CartState();
 
@@ -20,126 +22,156 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(),
-        body: Padding(
-          padding: EdgeInsets.all(10),
-          child: ListView(children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(AppLocalizations.of(context).categories,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    )),
-                InkWell(
-                  child: Text(
-                    AppLocalizations.of(context).viewall,
-                    style: TextStyle(
-                        color: Theme.of(context).accentColor, fontSize: 16),
+        body: FutureBuilder(
+          future: ProductsService().getHomePageProducts(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Padding(
+                padding: EdgeInsets.all(10),
+                child: ListView(children: [
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       Text(AppLocalizations
+//                           .of(context)
+//                           .categories,
+//                           style: TextStyle(
+//                             fontSize: 22,
+//                             fontWeight: FontWeight.bold,
+//                           )),
+//                       InkWell(
+//                         child: Text(
+//                           AppLocalizations
+//                               .of(context)
+//                               .viewall,
+//                           style: TextStyle(
+//                               color: Theme
+//                                   .of(context)
+//                                   .accentColor, fontSize: 16),
+//                         ),
+//                         onTap: () {
+//                           Navigator.pushNamed(context, '/');
+//                         },
+//                       )
+//                     ],
+//                   ),
+//                   Container(
+//                       child: StaggeredGridView.count(
+//                         shrinkWrap: true,
+//                         crossAxisCount: 3,
+//                         staggeredTiles: _cardTile,
+//                         children: _listTile,
+//                         mainAxisSpacing: 10,
+//                         crossAxisSpacing: 10,
+//                       )),
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       Text(AppLocalizations
+//                           .of(context)
+//                           .bestSeller,
+//                           style: TextStyle(
+//                             fontSize: 22,
+//                             fontWeight: FontWeight.bold,
+//                           )),
+//                       InkWell(
+//                         child: Text(
+//                           AppLocalizations
+//                               .of(context)
+//                               .viewall,
+//                           style: TextStyle(
+//                               color: Theme
+//                                   .of(context)
+//                                   .accentColor, fontSize: 16),
+//                         ),
+//                         onTap: () {
+//                           Navigator.pushNamed(context, '/');
+//                         },
+//                       )
+//                     ],
+//                   ),
+//                   Container(
+//                     height: 220,
+//                     child: ListView(
+// // This next line does the trick.
+//                       scrollDirection: Axis.horizontal,
+//                       children: <Widget>[
+//                         ProductThumbnail(
+//                           price: 100,
+//                           discount: 10,
+//                           badges: false,
+//                         ),
+//                         ProductThumbnail(
+//                           price: 200,
+//                           discount: 20,
+//                           badges: false,
+//                         ),
+//                         ProductThumbnail(
+//                           price: 150,
+//                           badges: false,
+//                         ),
+//                         ProductThumbnail(
+//                           price: 120,
+//                           badges: false,
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       Text(AppLocalizations
+//                           .of(context)
+//                           .nearbyStore,
+//                           style: TextStyle(
+//                             fontSize: 22,
+//                             fontWeight: FontWeight.bold,
+//                           )),
+//                       InkWell(
+//                         child: Text(
+//                           AppLocalizations
+//                               .of(context)
+//                               .viewall,
+//                           style: TextStyle(
+//                               color: Theme
+//                                   .of(context)
+//                                   .accentColor, fontSize: 16),
+//                         ),
+//                         onTap: () {
+//                           Navigator.pushNamed(context, '/');
+//                         },
+//                       )
+//                     ],
+//                   ),
+                  GridView.builder(
+                    itemCount: snapshot.data.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 2 / 3,
+                      crossAxisSpacing: 10,
+                      // mainAxisSpacing: 1,
+                      crossAxisCount: 2,
+                    ),
+                    itemBuilder: (context, index) {
+                      // return Product(data:snapshot.data[index]);
+                      return ProductThumbnail(
+                        product: Product.fromJson(snapshot.data[index].data()),
+                      );
+                    },
                   ),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                )
-              ],
-            ),
-            Container(
-                child: StaggeredGridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 3,
-              staggeredTiles: _cardTile,
-              children: _listTile,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-            )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(AppLocalizations.of(context).bestSeller,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    )),
-                InkWell(
-                  child: Text(
-                    AppLocalizations.of(context).viewall,
-                    style: TextStyle(
-                        color: Theme.of(context).accentColor, fontSize: 16),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                )
-              ],
-            ),
-            Container(
-              height: 220,
-              child: ListView(
-// This next line does the trick.
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  Product(
-                    price: 100,
-                    discount: 10,
-                    badges: false,
-                  ),
-                  Product(
-                    price: 200,
-                    discount: 20,
-                    badges: false,
-                  ),
-                  Product(
-                    price: 150,
-                    badges: false,
-                  ),
-                  Product(
-                    price: 120,
-                    badges: false,
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(AppLocalizations.of(context).nearbyStore,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    )),
-                InkWell(
-                  child: Text(
-                    AppLocalizations.of(context).viewall,
-                    style: TextStyle(
-                        color: Theme.of(context).accentColor, fontSize: 16),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                )
-              ],
-            ),
-            GridView.count(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              childAspectRatio: 2 / 3,
-              crossAxisSpacing: 10,
-              // mainAxisSpacing: 75,
-              children: [
-                Product(price: 100),
-                Product(price: 100),
-                Product(
-                  price: 100,
-                  discount: 15,
-                ),
-                Product(price: 100),
-                Product(price: 100),
-                Product(price: 100),
-                Product(price: 100),
-              ],
-            ),
-          ]),
+                ]),
+              );
+            } else if (snapshot.hasError) {
+              return Container(
+                  child: Center(
+                      child: Text(
+                          "${AppLocalizations.of(context).error} ${AppLocalizations.of(context).somthingWrong} ${AppLocalizations.of(context).pleasereload}...")));
+            } else {
+              return Container(
+                  child: Center(child: CircularProgressIndicator()));
+            }
+          },
         ),
         bottomNavigationBar: CustomBottomBar(
           selectedIndex: 0,

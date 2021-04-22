@@ -1,3 +1,4 @@
+import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import "package:finalproject/models/Product.dart";
@@ -11,7 +12,6 @@ class ProductReview extends StatelessWidget {
   Widget build(BuildContext context) {
     final Product product =
         ModalRoute.of(context).settings.arguments as Product;
-    print(product.toJson());
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -77,13 +77,13 @@ class ProductReview extends StatelessWidget {
                                 flex: 2,
                               ),
                               Expanded(
-                                child: Text(
-                                  '${product.arName}',
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
+                                child: LanguageTextSwitcher(
+                                    ar: product.arName,
+                                    en: product.enName,
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold)),
                                 flex: 5,
                               )
                             ],
@@ -363,31 +363,31 @@ class ProductReview extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context).specialOrder,
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 2,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "bool",
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 5,
-                              ),
-                            ],
-                          ),
+                          // Divider(),
+                          // Row(
+                          //   children: [
+                          //     Expanded(
+                          //       child: Text(
+                          //         AppLocalizations.of(context).specialOrder,
+                          //         style: TextStyle(
+                          //             height: 1.5,
+                          //             fontSize: 16,
+                          //             fontWeight: FontWeight.bold),
+                          //       ),
+                          //       flex: 2,
+                          //     ),
+                          //     Expanded(
+                          //       child: Text(
+                          //         "bool",
+                          //         style: TextStyle(
+                          //             height: 1.5,
+                          //             fontSize: 16,
+                          //             fontWeight: FontWeight.bold),
+                          //       ),
+                          //       flex: 5,
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     )

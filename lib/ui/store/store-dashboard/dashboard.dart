@@ -19,12 +19,6 @@ class StoreDashboard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Color(0xff273147)),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pushNamed('/');
-          },
-        ),
       ),
       body: Container(
           child: ListView(
@@ -52,7 +46,7 @@ class StoreDashboard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 40),
                         ),
-                        Text("Awaiting Orders",
+                        Text(AppLocalizations.of(context).awaitingorders,
                             style: TextStyle(
                                 color: Theme.of(context).backgroundColor,
                                 fontWeight: FontWeight.bold,
@@ -98,7 +92,7 @@ class StoreDashboard extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25),
                               ),
-                              Text("Returned Orders",
+                              Text(AppLocalizations.of(context).returnedOrders,
                                   style: TextStyle(
                                       color: Theme.of(context).backgroundColor,
                                       fontWeight: FontWeight.bold,
@@ -145,7 +139,7 @@ class StoreDashboard extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25),
                               ),
-                              Text("Not Shipped Orders",
+                              Text(AppLocalizations.of(context).notShipped,
                                   style: TextStyle(
                                       color: Theme.of(context).backgroundColor,
                                       fontWeight: FontWeight.bold,
@@ -191,7 +185,7 @@ class StoreDashboard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Live Inventory",
+                              Text(AppLocalizations.of(context).liveInventory,
                                   style: TextStyle(
                                       color: Color(0xff283148),
                                       fontWeight: FontWeight.bold,
@@ -248,7 +242,7 @@ class StoreDashboard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Pending",
+                              Text(AppLocalizations.of(context).pending,
                                   style: TextStyle(
                                       color: Color(0xff283148),
                                       fontWeight: FontWeight.bold,
@@ -309,7 +303,7 @@ class StoreDashboard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Rejected",
+                              Text(AppLocalizations.of(context).rejected,
                                   style: TextStyle(
                                       color: Color(0xff283148),
                                       fontWeight: FontWeight.bold,
@@ -366,7 +360,7 @@ class StoreDashboard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Sold out",
+                              Text(AppLocalizations.of(context).soldout,
                                   style: TextStyle(
                                       color: Color(0xff283148),
                                       fontWeight: FontWeight.bold,
@@ -416,7 +410,7 @@ class StoreDashboard extends StatelessWidget {
         child: const Icon(Icons.add),
         backgroundColor: Theme.of(context).accentColor,
       ),
-      bottomNavigationBar: DashboardBottomBar(selectedIndex:0),
+      bottomNavigationBar: DashboardBottomBar(selectedIndex: 0),
     );
   }
 }

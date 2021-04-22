@@ -10,10 +10,6 @@ class LoginProfileWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<MainLocaleProvider>(context).user;
-    print("fromwrapper");
-      print(user);
-      print(user.toString());
-      print("fromwrapper");
     return user == null ? ProfileUnAuth() : Profile();
   }
 }

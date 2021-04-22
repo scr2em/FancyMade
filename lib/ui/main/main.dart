@@ -116,7 +116,8 @@ class MyApp extends StatelessWidget {
             '/contactUs': (context) => ContactUs(),
             '/faq': (context) => FAQ(),
             '/notfound': (context) => PageNotFound(),
-            '/order-history': (context) => OrdersHistory()
+            '/order-history': (context) => OrdersHistory(),
+            '/editProduct': (context) => EditProduct()
           },
 
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
