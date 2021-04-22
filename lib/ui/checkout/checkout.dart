@@ -434,7 +434,7 @@ class _CheckoutState extends State<Checkout> {
                         text: "Pay Now",
                         // AppLocalizations.of(context).done,
                         onpress: () {
-                          Navigator.of(context).pushNamed('/product');
+                          Navigator.of(context).pushNamed('/editProduct');
                         })
                   ],
                 ),

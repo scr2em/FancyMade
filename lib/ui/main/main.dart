@@ -96,7 +96,8 @@ class MyApp extends StatelessWidget {
             '/req-msgs': (context) => ReqChatPage(),
             '/contactUs': (context) => ContactUs(),
             '/faq': (context) => FAQ(),
-            '/notfound': (context) => PageNotFound()
+            '/notfound': (context) => PageNotFound(),
+            '/editProduct': (context) => EditProduct()
           },
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         );

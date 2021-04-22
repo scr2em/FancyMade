@@ -220,9 +220,9 @@ Widget _buildList({String key, String string, docs}) {
                   );
                 },
                 child: Text(
-                  "edit",
+                  AppLocalizations.of(context).edit,
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.w700,
                       color: Theme.of(context).accentColor,
                       height: .9),
