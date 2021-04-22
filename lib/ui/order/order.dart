@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // print(MediaQuery.of(context).size.width);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Order #114224')),
@@ -221,7 +222,7 @@ class Order extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: 250,
+                      width: MediaQuery.of(context).size.width * 0.694,
                       child: ListTile(
                         leading: CircleAvatar(
                           child: Icon(
@@ -241,7 +242,7 @@ class Order extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 250,
+                      width: MediaQuery.of(context).size.width * 0.694,
                       child: ListTile(
                         leading: CircleAvatar(
                           child: Icon(
@@ -259,7 +260,7 @@ class Order extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 250,
+                      width: MediaQuery.of(context).size.width * 0.694,
                       child: ListTile(
                         leading: CircleAvatar(
                           child: Icon(

@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // print(MediaQuery.of(context).size.width);
     return Scaffold(
         appBar: CustomAppBar(),
         body: loading
@@ -129,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: SizedBox(
                           height: 50,
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.583,
                           child: TextButton(
                             onPressed: onPressed,
                             style: ButtonStyle(

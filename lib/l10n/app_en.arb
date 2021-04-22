@@ -126,6 +126,12 @@
     "lE":"L.E",
     "itemremoved":"Item removed",
     "checkout":"Check out",
-    "total":"Total"
+    "total":"Total",
+    "orderhistory":"History of orders",
+    "order":"Order",
+    "status":"Status",
+    "ongoing":"ongoing",
+    "delivered":"Delivered",
+    "moredetails":"More details"
 
 }

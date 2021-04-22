@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -75,162 +76,166 @@ class ProductReview extends StatelessWidget {
               //   }, growable: true),
               // )
               //
-              Container(
-                decoration: BoxDecoration(
-                    color: Color(0xffeeeeee),
-                    border: Border.all(
-                      width: 3,
+              FadeInDown(
+                delay: const Duration(microseconds: 30000),
+                duration: const Duration(microseconds: 50000),
+                child: Container(
+                  decoration: BoxDecoration(
                       color: Color(0xffeeeeee),
-                    ),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(
-                        AppLocalizations.of(context).prodInfo,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 22),
+                      border: Border.all(
+                        width: 3,
+                        color: Color(0xffeeeeee),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(
-                          top: 20, right: 20, left: 20, bottom: 15),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.vertical(
-                              bottom: Radius.circular(10))),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context).name,
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 1,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Bag",
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 3,
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context).price,
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 1,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "200 ${AppLocalizations.of(context).pound}",
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 3,
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context).name,
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 1,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Bag",
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 3,
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context).price,
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 1,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "200 ${AppLocalizations.of(context).pound}",
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 3,
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context).name,
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 1,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Bag",
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 3,
-                              )
-                            ],
-                          ),
-                        ],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          AppLocalizations.of(context).prodInfo,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 22),
+                        ),
                       ),
-                    )
-                  ],
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: 20, right: 20, left: 20, bottom: 15),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.vertical(
+                                bottom: Radius.circular(10))),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    AppLocalizations.of(context).name,
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 1,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Bag",
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 3,
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    AppLocalizations.of(context).price,
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 1,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "200 ${AppLocalizations.of(context).pound}",
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 3,
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    AppLocalizations.of(context).name,
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 1,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Bag",
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 3,
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    AppLocalizations.of(context).price,
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 1,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "200 ${AppLocalizations.of(context).pound}",
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 3,
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    AppLocalizations.of(context).name,
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 1,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Bag",
+                                    style: TextStyle(
+                                        height: 1.5,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  flex: 3,
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Padding(

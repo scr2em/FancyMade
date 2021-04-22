@@ -29,6 +29,7 @@ class _StoreState extends State<Store> {
         children: [
           Expanded(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,

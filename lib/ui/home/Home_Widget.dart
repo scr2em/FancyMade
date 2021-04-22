@@ -8,8 +8,9 @@ import "../../sharedWidgets/CustomBottomBar.dart";
 import 'package:flutter/cupertino.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:animate_do/animate_do.dart';
 
-var obj = new CartState();
+// var obj = new CartState();
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -20,22 +21,29 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  // // Navigate back to first screen when tapped.
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/order', (Route<dynamic> route) => false);
-                },
-                child: Text('home'),
+              FadeInRight(
+                duration: const Duration(microseconds: 30000),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // // Navigate back to first screen when tapped.
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/order-history', (Route<dynamic> route) => false);
+                  },
+                  child: Text('home'),
+                ),
               ),
-              CustomButton(
-                text: 'test1',
-                onpress: () {
-                  NAlertDialog(
-                    content: Cart(),
-                    blur: 2,
-                  ).show(context, transitionType: DialogTransitionType.Bubble);
-                },
+              BounceInLeft(
+                duration: const Duration(microseconds: 30000),
+                child: CustomButton(
+                  text: 'test1',
+                  onpress: () {
+                    NAlertDialog(
+                      content: Cart(),
+                      blur: 2,
+                    ).show(context,
+                        transitionType: DialogTransitionType.Bubble);
+                  },
+                ),
               ),
               CustomButton(
                 text: 'test2',

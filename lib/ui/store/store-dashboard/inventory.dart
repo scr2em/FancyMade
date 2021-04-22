@@ -77,6 +77,7 @@ class StoreInventory extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 // if (constraints.maxWidth > 200.0) {
