@@ -1,41 +1,47 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import '../../../sharedWidgets/CustomButton.dart';
+import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:group_radio_button/group_radio_button.dart';
-import '../../../utils/validators.dart';
+import 'package:finalproject/utils/validators.dart';
 import "package:finalproject/models/Product.dart";
 import "package:finalproject/ui/main/main_locale_provider.dart";
 
-class ProductListing extends StatefulWidget {
+class EditProduct extends StatefulWidget {
+  Product newProduct;
+  String productId;
+
+  EditProduct({this.newProduct, this.productId});
+
   @override
-  _ProductListingState createState() => _ProductListingState();
+  _EditProductState createState() => _EditProductState();
 }
 
-class _ProductListingState extends State<ProductListing> {
+class _EditProductState extends State<EditProduct> {
   File image;
   final _picker = ImagePicker();
   final _productListingForm = GlobalKey<FormState>();
 
-  //product details
+  // //product details
   String groupValue;
-  String arName;
-  String arDesc;
-  String enName;
-  String enDesc;
-  int price;
-  int discount;
-  int discountDuration;
-  String category;
-  int itemsAvailable;
-  List<String> tags;
-  int maxQuantityPerOrder;
-  String shipment;
+
+  // String arName;
+  // String arDesc;
+  // String enName;
+  // String enDesc;
+  // int price;
+  // int discount;
+  // int discountDuration;
+  // String category;
+  // int itemsAvailable;
+  // List<String> tags;
+  // int maxQuantityPerOrder;
+  // String shipment;
   bool _checked = false;
-  String _groupValue;
 
   _imgFromCamera() async {
     PickedFile img =
@@ -87,10 +93,11 @@ class _ProductListingState extends State<ProductListing> {
 
   @override
   Widget build(BuildContext context) {
+    groupValue = widget.newProduct.shipment;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).productlisting,
+          AppLocalizations.of(context).editProduct,
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
@@ -101,14 +108,9 @@ class _ProductListingState extends State<ProductListing> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Form(
             key: _productListingForm,
             child: Column(children: [
-              Text(
-                AppLocalizations.of(context).detailsbelow,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-              ),
               SizedBox(
                 height: 20,
               ),
@@ -131,28 +133,18 @@ class _ProductListingState extends State<ProductListing> {
                         : Stack(
                             alignment: AlignmentDirectional.bottomEnd,
                             children: [
-                                Container(
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffC4C4C4),
-                                        borderRadius: BorderRadius.circular(6)),
-                                    width: 280,
-                                    height: 305,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          AppLocalizations.of(context)
-                                              .addProductImg,
-                                          style: TextStyle(
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    )),
+                                Image.network(
+                                  widget.newProduct.image,
+                                  width: 300,
+                                  height: 300,
+                                  fit: BoxFit.fitHeight,
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.all(20),
-                                  child: Icon(Icons.add_a_photo),
+                                  child: Icon(
+                                    Icons.add_a_photo,
+                                    color: Colors.red,
+                                  ),
                                 )
                               ]),
                   ),
@@ -195,22 +187,26 @@ class _ProductListingState extends State<ProductListing> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: CustomLightTextFormField(
+                        initialValue: widget.newProduct.arName,
                         hintText: AppLocalizations.of(context).productName,
                         validator: notEmpty,
                         onChanged: (val) {
-                          arName = val;
+                          setState(() {
+                            widget.newProduct.arName = val;
+                          });
                         },
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: CustomLightTextFormField(
+                        initialValue: widget.newProduct.arDesc,
                         hintText:
                             AppLocalizations.of(context).productdescription,
                         maxLines: 5,
                         validator: notEmpty,
                         onChanged: (val) {
-                          arDesc = val;
+                          widget.newProduct.arDesc = val;
                         },
                       ),
                     ),
@@ -234,22 +230,24 @@ class _ProductListingState extends State<ProductListing> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: CustomLightTextFormField(
+                        initialValue: widget.newProduct.enName,
                         hintText: AppLocalizations.of(context).productName,
                         validator: notEmpty,
                         onChanged: (val) {
-                          enName = val;
+                          widget.newProduct.enName = val;
                         },
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: CustomLightTextFormField(
+                        initialValue: widget.newProduct.enDesc,
                         hintText:
                             AppLocalizations.of(context).productdescription,
                         maxLines: 5,
                         validator: notEmpty,
                         onChanged: (val) {
-                          enDesc = val;
+                          widget.newProduct.enDesc = val;
                         },
                       ),
                     ),
@@ -284,10 +282,11 @@ class _ProductListingState extends State<ProductListing> {
                           child: Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: CustomLightTextFormField(
+                              initialValue: "${widget.newProduct.price}",
                               hintText:
                                   AppLocalizations.of(context).sellingprice,
                               onChanged: (val) {
-                                price = int.parse(val);
+                                widget.newProduct.price = int.parse(val);
                               },
                             ),
                           )),
@@ -296,88 +295,66 @@ class _ProductListingState extends State<ProductListing> {
                           child: Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: CustomLightTextFormField(
+                              initialValue:
+                                  widget.newProduct.discount.toString(),
                               hintText: AppLocalizations.of(context).discount,
                               onChanged: (val) {
-                                discount = int.parse(val);
+                                widget.newProduct.discount = int.parse(val);
                               },
                             ),
                           )),
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Wrap(
-                      children: [
-                        Text(
-                          AppLocalizations.of(context).specSub1,
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              height: .9),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: Text(
-                            AppLocalizations.of(context).view,
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: Theme.of(context).accentColor,
-                                height: .9),
-                          ),
-                        ),
-                        Text(
-                          AppLocalizations.of(context).specSub2,
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              height: .9),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: CustomLightTextFormField(
+                      initialValue:
+                          widget.newProduct.maxQuantityPerOrder.toString(),
                       hintText: AppLocalizations.of(context).maxquan,
                       onChanged: (val) {
-                        maxQuantityPerOrder = int.parse(val);
+                        widget.newProduct.maxQuantityPerOrder = int.parse(val);
                       },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: CustomLightTextFormField(
+                      initialValue: widget.newProduct.itemsAvailable.toString(),
                       hintText: AppLocalizations.of(context).quan,
                       onChanged: (val) {
-                        itemsAvailable = int.parse(val);
+                        widget.newProduct.itemsAvailable = int.parse(val);
                       },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: CustomLightTextFormField(
+                      initialValue:
+                          widget.newProduct.discountDuration.toString(),
                       hintText: AppLocalizations.of(context).discDur,
                       onChanged: (val) {
-                        discountDuration = int.parse(val);
+                        print('cahaaaaaaaaaaaaa');
+                        widget.newProduct.discountDuration = int.parse(val);
                       },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: CustomLightTextFormField(
+                      initialValue: widget.newProduct.category,
                       hintText: AppLocalizations.of(context).prodCat,
                       onChanged: (val) {
-                        category = val;
+                        widget.newProduct.category = val;
                       },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: CustomLightTextFormField(
+                      initialValue: widget.newProduct.tags.join(","),
                       hintText: AppLocalizations.of(context).srchTags,
                       onChanged: (val) {
-                        tags = val.split(",").toList();
+                        widget.newProduct.tags = val.split(",").toList();
                       },
                     ),
                   ),
@@ -399,7 +376,7 @@ class _ProductListingState extends State<ProductListing> {
                 padding: const EdgeInsets.all(
                   10,
                 ),
-                margin: EdgeInsets.only(top: 16, bottom: 100),
+                margin: EdgeInsets.only(top: 16, bottom: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -419,11 +396,11 @@ class _ProductListingState extends State<ProductListing> {
                     ),
                     Row(
                       children: [
-                        Radio(
-                          activeColor: Color(0xff273147),
+                        RadioButton(
+                          description: '',
                           groupValue: groupValue,
                           onChanged: (value) => setState(() {
-                            groupValue = value;
+                            widget.newProduct.shipment = value;
                           }),
                           value: 'user',
                         ),
@@ -436,11 +413,11 @@ class _ProductListingState extends State<ProductListing> {
                     ),
                     Row(
                       children: [
-                        Radio(
-                          activeColor: Color(0xff273147),
+                        RadioButton(
+                          description: '',
                           groupValue: groupValue,
                           onChanged: (value) => setState(() {
-                            groupValue = value;
+                            widget.newProduct.shipment = value;
                           }),
                           value: 'FancyMade',
                         ),
@@ -451,20 +428,6 @@ class _ProductListingState extends State<ProductListing> {
                         )
                       ],
                     ),
-                    // Row(
-                    //   children: [
-                    //     Checkbox(
-                    //         value: _checked,
-                    //         onChanged: (value) => setState(() {
-                    //               _groupValue = value as String;
-                    //             })),
-                    //     Text(
-                    //       AppLocalizations.of(context).checkSpecialitem,
-                    //       style: TextStyle(
-                    //           fontSize: 16, fontWeight: FontWeight.w500),
-                    //     )
-                    //   ],
-                    // )
                   ],
                 ),
               ),
@@ -476,28 +439,14 @@ class _ProductListingState extends State<ProductListing> {
                       primary: Color(0xff273147),
                       text: AppLocalizations.of(context).done,
                       onpress: () async {
-                        print(image != null);
-                        if (_productListingForm.currentState.validate() &&
-                            image != null) {
-                          Product product = Product.fromJson({
-                            "arName": arName,
-                            "arDesc": arDesc,
-                            "enName": enName,
-                            "enDesc": enDesc,
-                            "price": price,
-                            "discount": discount,
-                            "discountDuration": discountDuration,
-                            "itemsAvailable": itemsAvailable,
-                            "tags": tags,
-                            "maxQuantityPerOrder": maxQuantityPerOrder,
-                            "shipment": groupValue
-                          });
+                        if (_productListingForm.currentState.validate()) {
                           try {
                             await Provider.of<MainLocaleProvider>(context,
                                     listen: false)
-                                .addProduct(product, image);
+                                .updateProduct(
+                                    widget.newProduct, image, widget.productId);
                             Navigator.of(context).pushNamed('/productReview',
-                                arguments: product);
+                                arguments: widget.newProduct);
                           } catch (err) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               backgroundColor: Colors.red,

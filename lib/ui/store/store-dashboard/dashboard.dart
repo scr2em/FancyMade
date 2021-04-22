@@ -1,6 +1,7 @@
 import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../sharedWidgets/CustomBottomBar.dart';
 import '../../../sharedWidgets/DashboardBottomBar.dart';
@@ -9,7 +10,22 @@ class StoreDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: AppBar(
+        title: Text(
+          AppLocalizations.of(context).dashboard,
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Color(0xff273147)),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/');
+          },
+        ),
+      ),
       body: Container(
           child: ListView(
         children: [
@@ -395,11 +411,12 @@ class StoreDashboard extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Add your onPressed code here!
+          Navigator.of(context).pushNamed("/productlisting");
         },
         child: const Icon(Icons.add),
         backgroundColor: Theme.of(context).accentColor,
       ),
-      bottomNavigationBar: DashboardBottomBar(),
+      bottomNavigationBar: DashboardBottomBar(selectedIndex:0),
     );
   }
 }

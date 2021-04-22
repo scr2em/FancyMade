@@ -27,3 +27,9 @@ ThemeData theme = ThemeData(
     ),
   ),
 );
+
+
+ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+  accentColor: Color(0xffEB8038),
+);

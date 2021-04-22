@@ -71,6 +71,12 @@ class _ReqChatPageState extends State<ReqChatPage> {
           "Messages",
           style: Theme.of(context).textTheme.headline5,
         ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/');
+          },
+        ),
         // backgroundColor: Color(0xffffffff),
         // bottomOpacity: 0.4,
         // toolbarOpacity: 0.4,
@@ -148,7 +154,7 @@ class _ReqChatPageState extends State<ReqChatPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(child: DashboardBottomBar()),
+      bottomNavigationBar: Container(child: DashboardBottomBar(selectedIndex:2)),
     );
   }
 }

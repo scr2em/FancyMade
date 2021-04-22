@@ -8,7 +8,6 @@ import '../../../../sharedWidgets/CustomBottomBar.dart';
 import "../../../../services/auth_service.dart";
 import "../../../main/main_provider.dart";
 import "../../../../models/CustomUser.dart";
-
 const int ARABIC_VALUE = 1;
 const int ENGLISH_VALUE = 2;
 
@@ -23,7 +22,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<CustomUser>(context);
+    final user = Provider.of<MainLocaleProvider>(context).user;
     return Scaffold(
       appBar: AppBar(
         // leading: Icon(Icons.arrow_back_ios),
@@ -112,7 +111,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       height: 50,
                       child: OutlinedButton(
                         onPressed: () async {
-                          await _auth.signOut();
+                          Provider.of<MainLocaleProvider>(context, listen: false).signOut();
                           Navigator.of(context).pushNamed("/signin");
                         },
                         style: ButtonStyle(

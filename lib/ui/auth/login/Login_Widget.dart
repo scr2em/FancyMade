@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:finalproject/ui/main/main_locale_provider.dart';
 
 //Custom Widgets
 import '../../../sharedWidgets/CustomBottomBar.dart';
@@ -57,7 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {
           errorMessage = "";
         });
-        print(result);
+        Provider.of<MainLocaleProvider>(context, listen: false)
+            .updateUser(result);
         Navigator.of(context).pushNamed("/");
       }
       setState(() {
@@ -73,101 +75,112 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: CustomAppBar(),
         body: loading
             ? Loading()
-            : Container(
-                padding: EdgeInsets.all(10.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text(
-                            AppLocalizations.of(context).logIntoYourAccount,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 22)),
-                      ),
-                      CustomTextFormField(
-                        validator: emailValidator,
-                        hintText: AppLocalizations.of(context).email,
-                        onChanged: onEmailChange,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      CustomTextFormField(
-                        validator: passwordValidator,
-                        hintText: AppLocalizations.of(context).password,
-                        obscureText: _obscureText,
-                        onChanged: onPasswordChange,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 10),
-                            child: Text(
-                              errorMessage,
-                              style: TextStyle(color: Colors.red),
+            : SingleChildScrollView(
+                child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Center(
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 80,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 10),
-                            child: Text(
-                              AppLocalizations.of(context).forgotYourPassword,
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20.0),
+                              child: Text(
+                                  AppLocalizations.of(context)
+                                      .logIntoYourAccount,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22)),
                             ),
-                          ),
-                        ],
-                      ),
+                            CustomTextFormField(
+                              validator: emailValidator,
+                              hintText: AppLocalizations.of(context).email,
+                              onChanged: onEmailChange,
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            CustomTextFormField(
+                              validator: passwordValidator,
+                              hintText: AppLocalizations.of(context).password,
+                              obscureText: _obscureText,
+                              onChanged: onPasswordChange,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 10),
+                                  child: Text(
+                                    errorMessage,
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 10),
+                                  child: Text(
+                                    AppLocalizations.of(context)
+                                        .forgotYourPassword,
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline),
+                                  ),
+                                ),
+                              ],
+                            ),
 
-                      //login button
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width * 0.583,
-                          child: TextButton(
-                            onPressed: onPressed,
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Color(0xff273147)),
-                              // side: MaterialStateProperty.all(
-                              //     BorderSide(color: Theme.of(context).accentColor)),
-                              foregroundColor: MaterialStateProperty.all(
-                                Colors.black,
+                            //login button
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                height: 50,
+                                width: .583 * MediaQuery.of(context).size.width,
+                                child: TextButton(
+                                  onPressed: onPressed,
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Theme.of(context).accentColor),
+                                    // side: MaterialStateProperty.all(
+                                    //     (Theme.of(context).accentColor)),
+                                    foregroundColor: MaterialStateProperty.all(
+                                      Colors.black,
+                                    ),
+                                    overlayColor: MaterialStateProperty.all(
+                                      Theme.of(context).accentColor,
+                                    ),
+                                    shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    )),
+                                  ),
+                                  child: Text(
+                                      AppLocalizations.of(context).signin,
+                                      style: TextStyle(color: Colors.white)),
+                                ),
                               ),
-                              overlayColor: MaterialStateProperty.all(
-                                Theme.of(context).accentColor,
-                              ),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              )),
                             ),
-                            child: Text(AppLocalizations.of(context).signin,
-                                style: TextStyle(color: Colors.white)),
-                          ),
+                            GestureDetector(
+                              child: Text(
+                                  AppLocalizations.of(context)
+                                      .orCreateANewAccount
+                                      .toUpperCase(),
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline)),
+                              onTap: () {
+                                Navigator.of(context).pushNamed("/signup");
+                              },
+                            )
+                          ],
                         ),
                       ),
-                      GestureDetector(
-                        child: Text(
-                            AppLocalizations.of(context)
-                                .orCreateANewAccount
-                                .toUpperCase(),
-                            style: TextStyle(
-                                decoration: TextDecoration.underline)),
-                        onTap: () {
-                          Navigator.of(context).pushNamed("/signup");
-                        },
-                      )
-                    ],
-                  ),
-                )),
+                    )),
+              ),
         bottomNavigationBar: CustomBottomBar());
   }
 }

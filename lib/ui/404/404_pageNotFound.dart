@@ -6,27 +6,25 @@ class PageNotFound extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context).faq,
-          style: TextStyle(color: Colors.black),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/');
+          },
         ),
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Color(0xff273147)),
       ),
       backgroundColor: const Color(323232),
       body: Stack(
         children: [
-          Positioned(
-            top: 24,
-            bottom: 200,
-            left: 24,
-            right: 24,
-            child: Container(
-              child: Image.asset('images/brain.png'),
-            ),
-          ),
+          // Positioned(
+          //   top: 24,
+          //   bottom: 200,
+          //   left: 24,
+          //   right: 24,
+          //   child: Container(
+          //     child: Image.asset('brain.png'),
+          //   ),
+          // ),
           Positioned(
             top: 150,
             bottom: 0,

@@ -12,6 +12,7 @@ class CustomTextFormField extends StatefulWidget {
   Function validator;
   int maxLines;
   bool enabled;
+  String initialValue;
 
   CustomTextFormField(
       {this.hintText,
@@ -23,7 +24,8 @@ class CustomTextFormField extends StatefulWidget {
       this.onSuffixIconPress,
       this.validator,
       this.maxLines = 1,
-      this.enabled = true});
+      this.enabled = true,
+      this.initialValue = ""});
 
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
@@ -43,12 +45,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       width: widget.width,
       height: widget.height,
       child: TextFormField(
+        initialValue: widget.initialValue,
         enabled: widget.enabled,
         maxLines: widget.maxLines,
         validator: widget.validator,
         style: TextStyle(color: Theme.of(context).primaryColor),
         obscureText: widget.obscureText,
         decoration: InputDecoration(
+
           suffixIcon: widget.obscureText
               ? IconButton(
                   icon: Icon(Icons.visibility),

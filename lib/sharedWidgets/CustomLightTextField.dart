@@ -10,9 +10,10 @@ class CustomLightTextFormField extends StatefulWidget {
   Function validator;
   int maxLines;
   bool enabled;
-
+  String initialValue;
   CustomLightTextFormField(
       {this.hintText,
+        this.initialValue="",
       this.obscureText = false,
       this.width = 400,
       this.onChanged,
@@ -39,6 +40,7 @@ class _CustomLightTextFormFieldState extends State<CustomLightTextFormField> {
     return Container(
       width: widget.width,
       child: TextFormField(
+        initialValue: widget.initialValue,
         enabled: widget.enabled,
         maxLines: widget.maxLines,
         validator: widget.validator,
@@ -56,6 +58,7 @@ class _CustomLightTextFormFieldState extends State<CustomLightTextFormField> {
                       onPressed: onShowPassword,
                     )
                   : null,
+
           labelText: widget.hintText,
           fillColor: Colors.white,
           filled: true,
