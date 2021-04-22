@@ -208,9 +208,10 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                                     .showSnackBar(SnackBar(
                                   backgroundColor: Colors.green,
                                   content: Text(
-                                      "Store '$enName' created successfully."),
+                                      "${AppLocalizations.of(context).store} '$enName' ${AppLocalizations.of(context).createdsuccessfully}."),
                                 ));
-                                Navigator.of(context).pushNamed('/store-dashboard');
+                                Navigator.of(context)
+                                    .pushNamed('/store-dashboard');
                               } catch (err) {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(

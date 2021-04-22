@@ -79,7 +79,7 @@ class ProductScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                "category / ${product.category} ",
+                                "${AppLocalizations.of(context).category} / ${product.category} ",
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w400,
@@ -201,12 +201,13 @@ class ProductScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                                'Availability: ${product.itemsAvailable} in stock'),
+                                '${AppLocalizations.of(context).availability}: ${product.itemsAvailable} ${AppLocalizations.of(context).instock}'),
                             Text(
-                                'Max quantity per order: ${product.maxQuantityPerOrder}'),
+                                '${AppLocalizations.of(context).maxquan}: ${product.maxQuantityPerOrder}'),
                             Text(
-                                'discountDuration: ${product.discountDuration} minutes'),
-                            Text('will be shipped by: ${product.shipment}'),
+                                '${AppLocalizations.of(context).discDur}: ${product.discountDuration} minutes'),
+                            Text(
+                                '${AppLocalizations.of(context).shippedby}: ${product.shipment}'),
                           ],
                         ),
                       ],
@@ -494,7 +495,7 @@ class ProductScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              "95% Positive FeedBack",
+                                              "95% ${AppLocalizations.of(context).positivefeedback}",
                                               style: TextStyle(
                                                   color: Theme.of(context)
                                                       .hintColor,

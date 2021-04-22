@@ -12,6 +12,10 @@ class Checkout extends StatefulWidget {
 }
 
 class _CheckoutState extends State<Checkout> {
+  var groupValue;
+
+  bool enablefield;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,51 +39,64 @@ class _CheckoutState extends State<Checkout> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppLocalizations.of(context).shipping,
+                  AppLocalizations.of(context).address,
                   // "Shipping ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
-                Container(
-                  height: 90,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 20),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Container(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    margin: EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          flex: 5,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(Icons.local_shipping),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 10, left: 10),
-                                child: Text(
-                                    // "Add Address",
-                                    AppLocalizations.of(context).addAddress),
+                              Text(
+                                "Banu Elson",
+                                // AppLocalizations.of(context).addAddress),
                               ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: Text(
+                                  'orders@banuelson.com',
+                                ),
+                              ),
+                              Text('+49 179 111 1010'),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: Text(
+                                    'Leibnizstraße 16, Wohnheim 6, No: 8X Clausthal-Zellerfeld, Germany'),
+                              )
                             ],
                           ),
-                          Icon(
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Icon(
                             Icons.arrow_forward_ios_outlined,
                             color: Theme.of(context).accentColor,
-                          )
-                        ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Theme.of(context).highlightColor,
-                        onPrimary: Theme.of(context).primaryColor,
-                        onSurface: Colors.grey,
-                        textStyle: TextStyle(
-                          // color: Colors.blue,
-                          fontSize: 16,
-                        ),
-                        shape: (RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          // side: BorderSide(color: Colors.black),
-                        )),
-                      ),
+                          ),
+                        )
+                      ],
                     ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).highlightColor,
+                    onPrimary: Theme.of(context).primaryColor,
+                    onSurface: Colors.grey,
+                    textStyle: TextStyle(
+                      // color: Colors.blue,
+                      fontSize: 16,
+                    ),
+                    shape: (RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      // side: BorderSide(color: Colors.black),
+                    )),
                   ),
                 ),
               ],
@@ -98,6 +115,56 @@ class _CheckoutState extends State<Checkout> {
                   AppLocalizations.of(context).payment,
                   // "Payment ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                ),
+                Text(
+                  "${AppLocalizations.of(context).pillingType}*",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Radio(
+                            activeColor: Theme.of(context).accentColor,
+                            groupValue: groupValue,
+                            onChanged: (value) => setState(() {
+                              groupValue = value;
+                              this.enablefield = false;
+                            }),
+                            value: 'cash',
+                          ),
+                          Text(
+                            AppLocalizations.of(context).cash,
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
+                          )
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Radio(
+                            activeColor: Theme.of(context).accentColor,
+                            groupValue: groupValue,
+                            onChanged: (value) => setState(() {
+                              groupValue = value;
+                              this.enablefield = true;
+                            }),
+                            value: 'credit',
+                          ),
+                          Text(
+                            AppLocalizations.of(context).credit,
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -125,15 +192,16 @@ class _CheckoutState extends State<Checkout> {
                         padding: const EdgeInsets.only(top: 20),
                         child: Container(
                           child: CustomLightTextFormField(
+                              enableInteractiveSelection: this.enablefield,
                               hintText:
-                                  AppLocalizations.of(context).productName),
+                                  AppLocalizations.of(context).cardholder),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: CustomLightTextFormField(
-                          hintText:
-                              AppLocalizations.of(context).productdescription,
+                          enableInteractiveSelection: this.enablefield,
+                          hintText: AppLocalizations.of(context).cardnum,
                         ),
                       ),
                       Padding(
@@ -151,8 +219,8 @@ class _CheckoutState extends State<Checkout> {
                             child: Padding(
                               padding: const EdgeInsets.all(5),
                               child: CustomLightTextFormField(
-                                  hintText:
-                                      AppLocalizations.of(context).productName),
+                                  enableInteractiveSelection: this.enablefield,
+                                  hintText: AppLocalizations.of(context).month),
                             ),
                           ),
                           Expanded(
@@ -161,8 +229,8 @@ class _CheckoutState extends State<Checkout> {
                               padding: const EdgeInsets.only(
                                   right: 5, left: 5, top: 10, bottom: 10),
                               child: CustomLightTextFormField(
-                                  hintText:
-                                      AppLocalizations.of(context).productName),
+                                  enableInteractiveSelection: this.enablefield,
+                                  hintText: AppLocalizations.of(context).year),
                             ),
                           ),
                         ],
@@ -171,7 +239,8 @@ class _CheckoutState extends State<Checkout> {
                         padding: const EdgeInsets.all(5),
                         width: (MediaQuery.of(context).size.width / 2.0) - 30,
                         child: CustomLightTextFormField(
-                            hintText: AppLocalizations.of(context).productName),
+                            enableInteractiveSelection: this.enablefield,
+                            hintText: AppLocalizations.of(context).secCode),
                       ),
                     ],
                   ),
@@ -265,21 +334,21 @@ class _CheckoutState extends State<Checkout> {
                                     ),
                                   ),
                                   Text(
-                                    'Color: Blue',
+                                    '${AppLocalizations.of(context).color}: Blue',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Theme.of(context).hintColor,
                                         height: 1.5),
                                   ),
                                   Text(
-                                    'Size: 37',
+                                    '${AppLocalizations.of(context).size}: 37',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Theme.of(context).hintColor,
                                         height: 1.5),
                                   ),
                                   Text(
-                                    'Qty: 1',
+                                    '${AppLocalizations.of(context).quan}: 1',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Theme.of(context).hintColor,
@@ -349,21 +418,21 @@ class _CheckoutState extends State<Checkout> {
                                     ),
                                   ),
                                   Text(
-                                    'Color: Blue',
+                                    '${AppLocalizations.of(context).color}: Blue',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Theme.of(context).hintColor,
                                         height: 1.5),
                                   ),
                                   Text(
-                                    'Size: 37',
+                                    '${AppLocalizations.of(context).size}: 37',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Theme.of(context).hintColor,
                                         height: 1.5),
                                   ),
                                   Text(
-                                    'Qty: 1',
+                                    '${AppLocalizations.of(context).quan}: 1',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Theme.of(context).hintColor,
@@ -414,7 +483,7 @@ class _CheckoutState extends State<Checkout> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Total",
+                              AppLocalizations.of(context).total,
                               style: TextStyle(fontSize: 16),
                             ),
                             Text(
@@ -431,7 +500,7 @@ class _CheckoutState extends State<Checkout> {
                         // height: 60,
                         width: 150,
                         primary: Theme.of(context).accentColor.withOpacity(.37),
-                        text: "Pay Now",
+                        text: AppLocalizations.of(context).payNow,
                         // AppLocalizations.of(context).done,
                         onpress: () {
                           Navigator.of(context).pushNamed('/editProduct');

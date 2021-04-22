@@ -13,6 +13,7 @@ import 'package:ndialog/ndialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import "package:finalproject/services/products_service.dart";
+
 var obj = new CartState();
 
 class HomeScreen extends StatelessWidget {
@@ -145,16 +146,17 @@ class HomeScreen extends StatelessWidget {
                     itemCount: snapshot.data.length,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                      gridDelegate : SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 2 / 3,
-                        crossAxisSpacing: 10,
-                        // mainAxisSpacing: 1,
-                        crossAxisCount: 2,
-                      ),
-
-                    itemBuilder: (context, index){
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 2 / 3,
+                      crossAxisSpacing: 10,
+                      // mainAxisSpacing: 1,
+                      crossAxisCount: 2,
+                    ),
+                    itemBuilder: (context, index) {
                       // return Product(data:snapshot.data[index]);
-                      return ProductThumbnail(product: Product.fromJson(snapshot.data[index].data()),);
+                      return ProductThumbnail(
+                        product: Product.fromJson(snapshot.data[index].data()),
+                      );
                     },
                   ),
                 ]),
@@ -162,8 +164,8 @@ class HomeScreen extends StatelessWidget {
             } else if (snapshot.hasError) {
               return Container(
                   child: Center(
-                      child:
-                      Text("Error something went wrong please reload...")));
+                      child: Text(
+                          "${AppLocalizations.of(context).error} ${AppLocalizations.of(context).somthingWrong} ${AppLocalizations.of(context).pleasereload}...")));
             } else {
               return Container(
                   child: Center(child: CircularProgressIndicator()));

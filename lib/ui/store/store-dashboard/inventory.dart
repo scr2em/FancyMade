@@ -66,7 +66,8 @@ class StoreInventory extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "Total Items",
+                                    //"Total Items"
+                                    "${AppLocalizations.of(context).total} ${AppLocalizations.of(context).items}",
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 20,
@@ -87,7 +88,7 @@ class StoreInventory extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "Offers",
+                                    AppLocalizations.of(context).offers,
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 20,
@@ -113,31 +114,35 @@ class StoreInventory extends StatelessWidget {
                           Container(
                             width: .3 * MediaQuery.of(context).size.width,
                             child: Tab(
-                              text: 'All Products',
+                              text: AppLocalizations.of(context).allproducts,
                             ),
                           ),
                           Container(
                             width: .3 * MediaQuery.of(context).size.width,
                             child: Tab(
-                              text: 'Category1',
+                              text:
+                                  '${AppLocalizations.of(context).category} 1',
                             ),
                           ),
                           Container(
                             width: .2 * MediaQuery.of(context).size.width,
                             child: Tab(
-                              text: 'Tab3',
+                              text:
+                                  '${AppLocalizations.of(context).category} 2',
                             ),
                           ),
                           Container(
                             width: .2 * MediaQuery.of(context).size.width,
                             child: Tab(
-                              text: 'Tab4',
+                              text:
+                                  '${AppLocalizations.of(context).category} 3',
                             ),
                           ),
                           Container(
                             width: .2 * MediaQuery.of(context).size.width,
                             child: Tab(
-                              text: 'Tab5',
+                              text:
+                                  '${AppLocalizations.of(context).category} 4',
                             ),
                           ),
                         ],
@@ -170,8 +175,8 @@ class StoreInventory extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Container(
                 child: Center(
-                    child:
-                        Text("Error something went wrong please reload...")));
+                    child: Text(
+                        "${AppLocalizations.of(context).error} ${AppLocalizations.of(context).somthingWrong} ${AppLocalizations.of(context).pleasereload}...")));
           } else {
             return Container(child: Center(child: CircularProgressIndicator()));
           }
@@ -192,14 +197,16 @@ Widget _buildList({String key, String string, docs}) {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Theme.of(context).accentColor)),
         child: ListTile(
-          leading: CircleAvatar(
-            maxRadius: 50,
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
             child: Image.network(
               docs[i]["image"],
             ),
           ),
-          title:LanguageTextSwitcher(ar:docs[i]["arName"], en: docs[i]["enName"] ),
-          subtitle: Text('Men\'s Shoes'),
+          title: LanguageTextSwitcher(
+              ar: docs[i]["arName"], en: docs[i]["enName"]),
+          subtitle: LanguageTextSwitcher(
+              ar: docs[i]["arDesc"], en: docs[i]["enDesc"]),
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -223,7 +230,7 @@ Widget _buildList({String key, String string, docs}) {
                 ),
               ),
               Text(
-                '${docs[i]["price"]} L.E',
+                '${docs[i]["price"]} ${AppLocalizations.of(context).pound}',
                 style: TextStyle(color: Colors.red, fontSize: 18),
               ),
             ],

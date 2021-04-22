@@ -100,7 +100,7 @@ class _StoreState extends State<Store> {
                     child: Row(
                       children: [
                         Text(
-                          "More (14)",
+                          "${AppLocalizations.of(context).more} (14)",
                           style: Theme.of(context).textTheme.headline2,
                         ),
                       ],

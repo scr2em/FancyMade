@@ -363,31 +363,31 @@ class ProductReview extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context).specialOrder,
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 2,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "bool",
-                                  style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                flex: 5,
-                              ),
-                            ],
-                          ),
+                          // Divider(),
+                          // Row(
+                          //   children: [
+                          //     Expanded(
+                          //       child: Text(
+                          //         AppLocalizations.of(context).specialOrder,
+                          //         style: TextStyle(
+                          //             height: 1.5,
+                          //             fontSize: 16,
+                          //             fontWeight: FontWeight.bold),
+                          //       ),
+                          //       flex: 2,
+                          //     ),
+                          //     Expanded(
+                          //       child: Text(
+                          //         "bool",
+                          //         style: TextStyle(
+                          //             height: 1.5,
+                          //             fontSize: 16,
+                          //             fontWeight: FontWeight.bold),
+                          //       ),
+                          //       flex: 5,
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     )

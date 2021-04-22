@@ -241,8 +241,8 @@ class StoreInfo extends StatelessWidget {
             } else if (snapshot.hasError) {
               return Container(
                   child: Center(
-                      child:
-                          Text("Error something went wrong please reload...")));
+                      child: Text(
+                          "${AppLocalizations.of(context).error} ${AppLocalizations.of(context).somthingWrong} ${AppLocalizations.of(context).pleasereload}...")));
             } else {
               return Container(
                   child: Center(child: CircularProgressIndicator()));
