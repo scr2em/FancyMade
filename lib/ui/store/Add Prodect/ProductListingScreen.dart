@@ -102,6 +102,7 @@ class _ProductListingState extends State<ProductListing> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Form(
             key: _productListingForm,
             child: Column(children: [

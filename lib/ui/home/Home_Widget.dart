@@ -11,10 +11,11 @@ import "../../sharedWidgets/CustomBottomBar.dart";
 import 'package:flutter/cupertino.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import "package:finalproject/services/products_service.dart";
 
-var obj = new CartState();
+// var obj = new CartState();
 
 class HomeScreen extends StatelessWidget {
   @override

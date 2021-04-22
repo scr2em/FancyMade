@@ -1,5 +1,6 @@
 import 'package:finalproject/ui/ContactUs/contactus.dart';
 import 'package:finalproject/ui/FAQ/faq.dart';
+import 'package:finalproject/ui/Orders/Orders_history.dart';
 import 'package:finalproject/ui/auth/profile/Profile_Widget.dart';
 import 'package:finalproject/ui/checkout/checkout.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
@@ -41,6 +42,7 @@ import '../store/store-dashboard/dashboard.dart';
 import '../store/store-dashboard/inventory.dart';
 import 'main_provider.dart';
 import 'main_locale_provider.dart';
+import 'package:page_transition/page_transition.dart';
 
 //base
 import '../../base/base_view.dart';
@@ -65,14 +67,31 @@ class MyApp extends StatelessWidget {
       create: (context) => MainLocaleProvider(),
       child: Consumer<MainLocaleProvider>(
           builder: (context, mainLocaleProvider, child) {
+        print(ThemeMode.values);
         return MaterialApp(
+          // onGenerateRoute: (settings) {
+          //   switch (settings.name) {
+          //     case '/':
+          //       // if (settings.name == './signin')
+          //       return PageTransition(
+          //         child: LoginScreen(),
+          //         type: PageTransitionType.scale,
+          //         settings: settings,
+          //         reverseDuration: Duration(seconds: 40),
+          //       );
+
+          //       break;
+          //     default:
+          //       return null;
+          //   }
+          // },
           locale: mainLocaleProvider.applicationLocale,
           title: "FancyMade",
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           theme: theme,
-          // themeMode: ThemeMode.dark,
-          // darkTheme: darkTheme,
+          themeMode: mainLocaleProvider.applicationTheme,
+          darkTheme: darkTheme,
           initialRoute: '/home',
           routes: {
             '/': (context) => HomeScreen(),
@@ -97,8 +116,10 @@ class MyApp extends StatelessWidget {
             '/contactUs': (context) => ContactUs(),
             '/faq': (context) => FAQ(),
             '/notfound': (context) => PageNotFound(),
-            '/editProduct': (context) => EditProduct(),
+            '/order-history': (context) => OrdersHistory(),
+            '/editProduct': (context) => EditProduct()
           },
+
           // home: MyHomePage(title: 'Flutter Demo Home Page1'),
         );
       }),

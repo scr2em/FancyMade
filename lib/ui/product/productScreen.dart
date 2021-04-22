@@ -32,6 +32,7 @@ class ProductScreen extends StatelessWidget {
         body: Column(children: <Widget>[
           Expanded(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(children: [
                 Stack(children: [
                   Container(

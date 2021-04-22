@@ -13,10 +13,12 @@ import "package:finalproject/services/products_service.dart";
 
 const String APP_FIRST_OPEN = "APP_FIRST_OPEN";
 const String APP_SAVED_LOCALE = "APP_SAVED_LOCALE";
+const String APP_SAVED_Theme = "APP_SAVED_Theme";
 
 class MainLocaleProvider extends ChangeNotifier {
   Locale applicationLocale;
   CustomUser user;
+  ThemeMode applicationTheme;
 
   MainLocaleProvider() {
     loadSavedLocale();
@@ -84,5 +86,34 @@ class MainLocaleProvider extends ChangeNotifier {
   void saveApplicationLocale(String languageCode) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(APP_SAVED_LOCALE, languageCode);
+  }
+
+  updateApplicationTheme(String themeName) {
+    ThemeMode newtheme = ThemeMode.values
+        .firstWhere((themeMode) => themeMode.toString() == themeName);
+    saveApplicationTheme(themeName);
+    applicationTheme = newtheme;
+    notifyListeners();
+  }
+
+  void loadSavedTheme() async {
+    String themeName = await getSelectedTheme();
+    // print(ThemeMode.values);
+    ThemeMode savedTheme = ThemeMode.values
+        .firstWhere((themeMode) => themeMode.toString() == themeName);
+    if (savedTheme != null) {
+      updateApplicationTheme(themeName);
+    }
+  }
+
+  void saveApplicationTheme(String themeName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString(APP_SAVED_Theme, themeName);
+  }
+
+  Future<String> getSelectedTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(APP_SAVED_Theme) ??
+        "ThemeMode.light"; //default theme is Light
   }
 }

@@ -35,6 +35,7 @@ class StoreInventory extends StatelessWidget {
               child: DefaultTabController(
                 length: 5,
                 child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
                   child: Column(
                     children: [
                       Container(

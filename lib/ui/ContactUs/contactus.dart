@@ -22,6 +22,7 @@ class ContactUs extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Form(
             child: Container(
               margin: EdgeInsets.only(top: 60),
