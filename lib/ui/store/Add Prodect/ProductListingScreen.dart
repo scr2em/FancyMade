@@ -10,6 +10,7 @@ import '../../../utils/validators.dart';
 import "package:finalproject/models/Product.dart";
 import "package:finalproject/ui/main/main_locale_provider.dart";
 import 'package:flutter_tagging/flutter_tagging.dart';
+import 'package:textfield_tags/textfield_tags.dart';
 
 class ProductListing extends StatefulWidget {
   @override
@@ -37,7 +38,7 @@ class _ProductListingState extends State<ProductListing> {
   bool _checked = false;
   String _groupValue;
 
-  List<dynamic> tags = [];
+  List<String> tags = ['Painting', 'Jewelry', 'Dolls', 'Accrssiries'];
 
   _imgFromCamera() async {
     PickedFile img =
@@ -375,15 +376,32 @@ class _ProductListingState extends State<ProductListing> {
                       },
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 20),
-                  //   child: CustomLightTextFormField(
-                  //     hintText: AppLocalizations.of(context).srchTags,
-                  //     onChanged: (val) {
-                  //       tags = val.split(",").toList();
-                  //     },
-                  //   ),
-                  // ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: CustomLightTextFormField(
+                      hintText: AppLocalizations.of(context).srchTags,
+                      onChanged: (val) {
+                        tags = val.split(",").toList();
+                      },
+                    ),
+                  ),
+
+                  TextFieldTags(
+                      initialTags: tags,
+                      tagsStyler: TagsStyler(
+                          tagTextStyle: TextStyle(fontWeight: FontWeight.bold),
+                          tagDecoration: BoxDecoration(
+                            color: Color(0xffE9A06B),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          tagCancelIcon: Icon(Icons.cancel,
+                              size: 18.0, color: Theme.of(context).accentColor),
+                          tagPadding: const EdgeInsets.all(6.0)),
+                      textFieldStyler: TextFieldStyler(),
+                      onTag: (tag) {
+                        tags.add(tag);
+                      },
+                      onDelete: (tag) {})
 
                   // TextFieldTags(
                   //     initialTags: tags,
@@ -431,48 +449,53 @@ class _ProductListingState extends State<ProductListing> {
                   //     onTag: (tag) {},
                   //     onDelete: (tag) {}),
 
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: FlutterTagging(
-                      textFieldDecoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: AppLocalizations.of(context).srchTags,
-                        labelText: AppLocalizations.of(context).tags,
-                      ),
-                      addButtonWidget: Container(
-                        padding: EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          color: Theme.of(context).accentColor,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 15.0,
-                            ),
-                            Text(
-                              AppLocalizations.of(context).addtags,
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 14.0),
-                            ),
-                          ],
-                        ),
-                      ),
-                      chipsColor: Theme.of(context).accentColor,
-                      chipsFontColor: Colors.white,
-                      deleteIcon: Icon(Icons.cancel, color: Colors.white),
-                      chipsPadding: EdgeInsets.all(2.0),
-                      chipsFontSize: 14.0,
-                      chipsSpacing: 5.0,
-                      suggestionsCallback: (pattern) async {
-                        return await TagSearchService.getSuggestions(pattern);
-                      },
-                      onChanged: (tag) {},
-                    ),
-                  )
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 20),
+                  //   child: FlutterTagging(
+                  //     textFieldDecoration: InputDecoration(
+                  //       border: OutlineInputBorder(
+                  //           borderSide: BorderSide(
+                  //               color: Theme.of(context).accentColor)),
+                  //       hintText: AppLocalizations.of(context).tags,
+                  //       labelText: AppLocalizations.of(context).srchTags,
+                  //     ),
+                  //     addButtonWidget: Container(
+                  //       padding: EdgeInsets.all(8.0),
+                  //       decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  //         color: Theme.of(context).accentColor,
+                  //       ),
+                  //       child: Row(
+                  //         mainAxisSize: MainAxisSize.min,
+                  //         children: <Widget>[
+                  //           Icon(
+                  //             Icons.add,
+                  //             color: Colors.white,
+                  //             size: 15.0,
+                  //           ),
+                  //           Text(
+                  //             AppLocalizations.of(context).addtags,
+                  //             style: TextStyle(
+                  //                 color: Colors.white, fontSize: 14.0),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //     chipsColor: Theme.of(context).accentColor,
+                  //     chipsFontColor: Colors.white,
+                  //     deleteIcon: Icon(Icons.cancel, color: Colors.white),
+                  //     chipsPadding: EdgeInsets.all(2.0),
+                  //     chipsFontSize: 14.0,
+                  //     chipsSpacing: 5.0,
+                  //     suggestionsCallback: (pattern) async {
+                  //       return await TagSearchService.getSuggestions(pattern);
+                  //     },
+                  //     onChanged: (tag) {
+                  //       print(tag);
+                  //       print(tags);
+                  //     },
+                  //   ),
+                  // )
                 ]),
               ),
               Container(
@@ -586,19 +609,25 @@ class _ProductListingState extends State<ProductListing> {
 class TagSearchService {
   static Future<List> getSuggestions(String query) async {
     await Future.delayed(Duration(milliseconds: 400), null);
-    List<dynamic> tags = <dynamic>[];
-    tags.add({'name': "Flutter", 'value': "Flutter"});
-    tags.add({'name': "HummingBird", 'value': "Flutter"});
-    tags.add({'name': "Dart", 'value': "Flutter"});
-    List<dynamic> filteredtags = <dynamic>[];
+    List<String> tagList = <String>[
+      'Painting',
+      'Jewelry',
+      'Dolls',
+      'Accrssiries'
+    ];
+    // tagList.add('Painting');
+    // tagList.add('Jewelry');
+    // tagList.add('Dolls');
+    // tagList.add('Accrssiries');
+    List<String> filteredTagList = <String>[];
     if (query.isNotEmpty) {
-      filteredtags.add({'name': query, 'value': ''});
+      filteredTagList.add(query);
     }
-    for (var tag in tags) {
-      if (tag['name'].toLowerCase().contains(query)) {
-        filteredtags.add(tag);
+    for (String tag in tagList) {
+      if (tag.toLowerCase().contains(query)) {
+        filteredTagList.add(tag);
       }
     }
-    return filteredtags;
+    return filteredTagList;
   }
 }

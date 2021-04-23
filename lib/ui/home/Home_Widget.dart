@@ -208,12 +208,15 @@ List<StaggeredTile> _cardTile = <StaggeredTile>[
 
 List<Widget> _listTile = <Widget>[
   Stack(alignment: AlignmentDirectional.bottomStart, children: [
-    ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Image.asset(
-        'assets/images/categories/accessories.jpg',
-        fit: BoxFit.fill,
-      ),
+    Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/categories/accessories.jpg',
+            ),
+            fit: BoxFit.fill,
+          )),
     ),
     Text('Accessories',
         style: TextStyle(
@@ -227,12 +230,15 @@ List<Widget> _listTile = <Widget>[
             ]))
   ]),
   Stack(alignment: AlignmentDirectional.bottomStart, children: [
-    ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Image.asset(
-        'assets/images/categories/dolls.jpg',
-        fit: BoxFit.fill,
-      ),
+    Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/categories/dolls.jpg',
+            ),
+            fit: BoxFit.fill,
+          )),
     ),
     Text('Dolls',
         style: TextStyle(
@@ -246,12 +252,15 @@ List<Widget> _listTile = <Widget>[
             ]))
   ]),
   Stack(alignment: AlignmentDirectional.bottomStart, children: [
-    ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Image.asset(
-        'assets/images/categories/Jewelry.jpg',
-        fit: BoxFit.fill,
-      ),
+    Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/categories/Jewelry.jpg',
+            ),
+            fit: BoxFit.fill,
+          )),
     ),
     Text('Jewelry',
         style: TextStyle(
@@ -265,12 +274,15 @@ List<Widget> _listTile = <Widget>[
             ]))
   ]),
   Stack(alignment: AlignmentDirectional.bottomStart, children: [
-    ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Image.asset(
-        'assets/images/categories/Paintings.jpg',
-        fit: BoxFit.fill,
-      ),
+    Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/categories/Paintings.jpg',
+            ),
+            fit: BoxFit.fill,
+          )),
     ),
     Text('Paintings',
         style: TextStyle(
