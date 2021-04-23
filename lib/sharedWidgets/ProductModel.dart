@@ -37,13 +37,21 @@ class ProductThumbnail extends StatelessWidget {
             ),
             Row(
               children: [
-                Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: LanguageTextSwitcher(
-                      ar: product.arName.length > 80 ? product.arName.substring(0,27) + "..." : product.arName ,
-                      en:  product.enName.length > 80 ? product.enName.substring(0,27) + "..." : product.enName ,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    )),
+                Container(
+                  width: MediaQuery.of(context).size.width / 2.5,
+                  child: Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: LanguageTextSwitcher(
+                        ar: product.arName,
+                        en: product.enName,
+
+                        // ar: product.arName.length > 80 ? product.arName.substring(0,27) + "..." : product.arName ,
+                        // en:  product.enName.length > 80 ? product.enName.substring(0,27) + "..." : product.enName ,
+                        style: Theme.of(context).textTheme.bodyText1,
+                        maxline: 2,
+                        overflow: TextOverflow.ellipsis,
+                      )),
+                ),
               ],
             ),
             Row(
