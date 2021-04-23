@@ -29,11 +29,12 @@ class ProductThumbnail extends StatelessWidget {
         },
         child: Wrap(
           children: [
-            Image.network(
-              product.image,
-              height: 150,
+            FadeInImage.assetNetwork(
               width: 190,
+              height: 150,
               fit: BoxFit.cover,
+              placeholder: 'assets/Spinner-1s-200px.gif',
+              image: product.image,
             ),
             Row(
               children: [

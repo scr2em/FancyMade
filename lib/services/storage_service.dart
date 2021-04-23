@@ -1,7 +1,7 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import "dart:io";
-import 'package:path_provider/path_provider.dart';
 import 'dart:math';
+
+import 'package:firebase_storage/firebase_storage.dart';
 
 class StorageService {
   FirebaseStorage storage = FirebaseStorage.instance;

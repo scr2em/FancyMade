@@ -1,7 +1,5 @@
-import 'package:finalproject/sharedWidgets/CustomNavigationButton.dart';
 import 'package:finalproject/models/inboxscreen_model.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
 import 'package:flutter/foundation.dart';
 
 class Individual_chat extends StatefulWidget {

@@ -1,14 +1,8 @@
-import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
-import 'package:finalproject/ui/store/CreateStoreForm.dart';
 import "package:flutter/material.dart";
-import "../../../sharedWidgets/CustomAppBar.dart";
 import "../../../sharedWidgets/CustomBottomBar.dart";
-import "../../../services/auth_service.dart";
 import "../../../sharedWidgets/CustomNavigationButton.dart";
-import "../../../sharedWidgets/CustomButton.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileUnAuth extends StatelessWidget {
@@ -166,19 +160,6 @@ class ProfileUnAuth extends StatelessWidget {
       ),
       bottomNavigationBar: CustomBottomBar(selectedIndex: 3),
 
-      // Center(
-      //   child: ElevatedButton(
-      //       child: Text('signout'),
-      //       onPressed: () async {
-      //         dynamic result = await _auth.signOut();
-      //         if (result == null) {
-      //           print('error signing in');
-      //         } else {
-      //           print('signedin');
-      //           print(result);
-      //         }
-      //       }),
-      // ),
     );
   }
 }

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../models/Product.dart';
+
 import '../models/CartList.dart';
 
 class CartService {

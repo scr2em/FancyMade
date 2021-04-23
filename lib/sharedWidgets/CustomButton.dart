@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
-  String text;
-  double width;
-  double height;
-  double radiustopright;
-  double radiustopleft;
-  double radiustbotright;
-  double radiusbotleft;
-  double fontsize;
-  Object bordercolor;
-  Object primary;
-  Object onprimary;
-  Object icons;
+  final String text;
+  final double width;
+  final double height;
+  final double radiustopright;
+  final double radiustopleft;
+  final double radiustbotright;
+  final double radiusbotleft;
+  final double fontsize;
+  final Object bordercolor;
+  final Object primary;
+  final Object onprimary;
+  final  Object icons;
   Function onpress = () {};
   double elevation;
 

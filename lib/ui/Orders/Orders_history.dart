@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
-import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
-import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -1,12 +1,10 @@
-import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
-import 'package:finalproject/sharedWidgets/CustomBottomBar.dart';
+
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:finalproject/ui/inbox/individual_chat.dart';
-import 'package:finalproject/utils/theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'dart:developer';
-import 'package:flutter/foundation.dart';
+
 import '../../../../sharedWidgets/DashboardBottomBar.dart';
 import 'inboxscreen_model.dart';
 

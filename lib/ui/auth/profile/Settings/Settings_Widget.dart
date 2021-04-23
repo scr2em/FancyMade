@@ -1,14 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import "package:flutter/material.dart";
-import "../../../../sharedWidgets/CustomTextFormField.dart";
-import '../../../../utils/shared_preference.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../main/main_locale_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../sharedWidgets/CustomBottomBar.dart';
-import "../../../../services/auth_service.dart";
-import "../../../main/main_provider.dart";
-import "../../../../models/CustomUser.dart";
+
 
 const int ARABIC_VALUE = 1;
 const int ENGLISH_VALUE = 2;
@@ -20,14 +16,12 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   List<String> languages = ["عربي", "english"];
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<MainLocaleProvider>(context).user;
     return Scaffold(
       appBar: AppBar(
-        // leading: Icon(Icons.arrow_back_ios),
         title: Text(
           AppLocalizations.of(context).settings,
           style: TextStyle(color: Colors.black),

@@ -1,17 +1,15 @@
-import 'package:finalproject/sharedWidgets/CustomButton.dart';
-import 'package:finalproject/utils/theme.dart';
+import "package:finalproject/ui/main/main_locale_provider.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import "package:provider/provider.dart";
-import "package:finalproject/ui/main/main_locale_provider.dart";
+
+import "../../../services/auth_service.dart";
+import '../../../sharedWidgets/CustomAppBar.dart';
 //Custom Widgets
 import '../../../sharedWidgets/CustomBottomBar.dart';
-import '../../../sharedWidgets/CustomAppBar.dart';
 import "../../../sharedWidgets/CustomTextFormField.dart";
-import "../../../services/auth_service.dart";
-
-import "../../../utils/validators.dart";
 import "../../../sharedWidgets/Loading.dart";
+import "../../../utils/validators.dart";
 
 class SignupScreen extends StatefulWidget {
   @override

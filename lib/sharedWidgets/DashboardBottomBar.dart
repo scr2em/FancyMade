@@ -1,9 +1,8 @@
-import 'package:finalproject/models/CustomUser.dart';
 import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:finalproject/ui/store/store-dashboard/info.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class DashboardBottomBar extends StatelessWidget {
   final int selectedIndex;
@@ -46,15 +45,11 @@ class DashboardBottomBar extends StatelessWidget {
         } else if (index == 3) {
           Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) {
-                  print("==========");
-                  print(Provider.of<MainLocaleProvider>(context).user.toJson());
-                  print("==========");
-                  return StoreInfo(
-                    storeId:Provider.of<MainLocaleProvider>(context).user.storeId,
-                  );
-                }),
+            MaterialPageRoute(builder: (context) {
+              return StoreInfo(
+                storeId: Provider.of<MainLocaleProvider>(context).user.storeId,
+              );
+            }),
           );
         } else {
           Navigator.of(context).pushNamed('/store-dashboard');
