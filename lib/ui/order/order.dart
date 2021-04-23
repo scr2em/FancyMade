@@ -1,12 +1,15 @@
 import 'package:finalproject/sharedWidgets/CustomBottomBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // print(MediaQuery.of(context).size.width);
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Order #114224')),
+        title: Center(
+            child: Text('${AppLocalizations.of(context).order} #114224')),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
@@ -15,12 +18,12 @@ class Order extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: Text(
-                "Details :",
+                "${AppLocalizations.of(context).details} :",
                 style: TextStyle(fontSize: 20),
               ),
             ),
             Text(
-              '• Cash on delivery: 200EGP',
+              '• ${AppLocalizations.of(context).cashonDelivery}: 200EGP',
               style: TextStyle(fontSize: 18),
             ),
             Padding(
@@ -79,21 +82,21 @@ class Order extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                'Color: Blue',
+                                '${AppLocalizations.of(context).color}: Blue',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
-                                'Size: 37',
+                                '${AppLocalizations.of(context).size}: 37',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
-                                'Qty: 1',
+                                '${AppLocalizations.of(context).quan}: 1',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).hintColor,
@@ -162,21 +165,21 @@ class Order extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                'Color: Blue',
+                                '${AppLocalizations.of(context).color}: Blue',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
-                                'Size: 37',
+                                '${AppLocalizations.of(context).size}: 37',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).hintColor,
                                     height: 1.5),
                               ),
                               Text(
-                                'Qty: 1',
+                                '${AppLocalizations.of(context).quan}: 1',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).hintColor,
@@ -221,7 +224,7 @@ class Order extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: 250,
+                      width: MediaQuery.of(context).size.width * 0.694,
                       child: ListTile(
                         leading: CircleAvatar(
                           child: Icon(
@@ -233,7 +236,7 @@ class Order extends StatelessWidget {
                           maxRadius: 30,
                         ),
                         title: Text(
-                          'Order Placed',
+                          AppLocalizations.of(context).orderplaced,
                           style:
                               TextStyle(color: Theme.of(context).accentColor),
                         ),
@@ -241,7 +244,7 @@ class Order extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 250,
+                      width: MediaQuery.of(context).size.width * 0.694,
                       child: ListTile(
                         leading: CircleAvatar(
                           child: Icon(
@@ -252,14 +255,14 @@ class Order extends StatelessWidget {
                           maxRadius: 30,
                         ),
                         title: Text(
-                          'Order Placed',
+                          AppLocalizations.of(context).orderplaced,
                           style: TextStyle(color: Color(0xff3498DB)),
                         ),
                         subtitle: Text("June 10, 2021  | 03:48am"),
                       ),
                     ),
                     SizedBox(
-                      width: 250,
+                      width: MediaQuery.of(context).size.width * 0.694,
                       child: ListTile(
                         leading: CircleAvatar(
                           child: Icon(
@@ -270,7 +273,7 @@ class Order extends StatelessWidget {
                           backgroundColor: Color(0xff3CAF47).withOpacity(.37),
                           maxRadius: 30,
                         ),
-                        title: Text('Order Placed',
+                        title: Text(AppLocalizations.of(context).orderplaced,
                             style: TextStyle(color: Color(0xff3CAF47))),
                         subtitle: Text("June 10, 2021  | 03:48am"),
                       ),

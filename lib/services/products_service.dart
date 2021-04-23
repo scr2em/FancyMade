@@ -2,16 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:finalproject/models/CustomUser.dart";
 import "package:finalproject/models/Store.dart";
 import "package:finalproject/models/Product.dart";
+import "package:finalproject/services/database.dart";
 
 class ProductsService {
   final CollectionReference productsCollection =
       FirebaseFirestore.instance.collection("products");
+
   Future getHomePageProducts() async {
     QuerySnapshot data = await productsCollection.limit(20).get();
     List<QueryDocumentSnapshot> docs = data.docs;
     return docs;
-
   }
+
   Future updateProduct(Product product, String productId) async {
     return await productsCollection.doc(productId).update(product.toJson());
   }

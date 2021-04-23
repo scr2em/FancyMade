@@ -23,7 +23,7 @@ class CheckoutSuccessScreen extends StatelessWidget {
                   ),
                   Center(
                     child: Text(
-                      AppLocalizations.of(context).hello,
+                      AppLocalizations.of(context).checkoutSuccess,
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
@@ -58,7 +58,8 @@ class CheckoutSuccessScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w600, fontSize: 18),
                             ),
                             Text(
-                              AppLocalizations.of(context).yourOrderHasBeenPlaced,
+                              AppLocalizations.of(context)
+                                  .yourOrderHasBeenPlaced,
                               // AppLocalizations.of(context).placed_order,
                               style: TextStyle(fontSize: 16),
                             ),

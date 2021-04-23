@@ -68,7 +68,7 @@ class _ReqChatPageState extends State<ReqChatPage> {
         centerTitle: true,
         // Text('test')
         title: Text(
-          "Messages",
+          AppLocalizations.of(context).messages,
           style: Theme.of(context).textTheme.headline5,
         ),
         leading: IconButton(
@@ -154,7 +154,8 @@ class _ReqChatPageState extends State<ReqChatPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(child: DashboardBottomBar(selectedIndex:2)),
+      bottomNavigationBar:
+          Container(child: DashboardBottomBar(selectedIndex: 2)),
     );
   }
 }

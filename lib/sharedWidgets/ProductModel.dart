@@ -74,7 +74,7 @@ class ProductThumbnail extends StatelessWidget {
                           ? Icons.beenhere_outlined
                           : null,
                       color: Colors.grey,
-                      size: 18,
+                      size: 14,
                     ),
                     //failed to combine them
                     Icon(
@@ -84,13 +84,13 @@ class ProductThumbnail extends StatelessWidget {
                                 : null
                             : null,
                         color: Colors.grey,
-                        size: 18),
+                        size: 14),
                     Icon(
                         product.freeShipping != null
                             ? Icons.local_shipping_outlined
                             : null,
                         color: Colors.grey,
-                        size: 18),
+                        size: 14),
                   ],
                 ),
               ],
@@ -105,7 +105,7 @@ class ProductThumbnail extends StatelessWidget {
 class Price extends StatelessWidget {
   int value;
   int discount;
-  double priceFontSize = 18;
+  double priceFontSize = 16;
 
   Price({this.value, this.discount = 0});
 

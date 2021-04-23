@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import "../../sharedWidgets/CustomTextFormField.dart";
 import "../../sharedWidgets/CustomButton.dart";
@@ -15,6 +18,8 @@ class CreateStoreForm extends StatefulWidget {
 }
 
 class _CreateStoreFormState extends State<CreateStoreForm> {
+  File image;
+  final _picker = ImagePicker();
   bool checkedValue = false;
   String arName;
   String arAddress;
@@ -25,6 +30,54 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
   String productsAddress;
   String facebookPage;
   final _CreateStoreformKey = GlobalKey<FormState>();
+
+  _imgFromCamera() async {
+    PickedFile img =
+    await _picker.getImage(source: ImageSource.camera, imageQuality: 50);
+
+    setState(() {
+      image = File(img.path);
+    });
+  }
+
+  _imgFromGallery() async {
+    PickedFile img =
+    await _picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      image = File(img.path);
+    });
+  }
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title:
+                      new Text(AppLocalizations.of(context).photoLibrary),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text(AppLocalizations.of(context).camera),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +102,55 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        _showPicker(context);
+                      },
+                      child: Container(
+                        child: image != null
+                            ? ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image.file(
+                            image,
+                            width: 300,
+                            height: 300,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        )
+                            : Stack(
+                            alignment: AlignmentDirectional.bottomEnd,
+                            children: [
+                              Container(
+                                  decoration: BoxDecoration(
+                                      color: Color(0xffC4C4C4),
+                                      borderRadius: BorderRadius.circular(6)),
+                                  width: 280,
+                                  height: 305,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)
+                                            .addStoreImage,
+                                        style: TextStyle(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  )),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Icon(Icons.add_a_photo),
+                              )
+                            ]),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: 20,
                   ),
@@ -189,7 +291,8 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                             setState(() {
                               checkedValue = false;
                             });
-                            if (_CreateStoreformKey.currentState.validate()) {
+                            if (_CreateStoreformKey.currentState.validate() &&
+                                image != null) {
                               try {
                                 Store store = Store.fromJson({
                                   "arName": arName?.trim(),
@@ -203,14 +306,15 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                                 });
                                 await Provider.of<MainLocaleProvider>(context,
                                         listen: false)
-                                    .createStore(store);
+                                    .createStore(store, image);
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
                                   backgroundColor: Colors.green,
                                   content: Text(
-                                      "Store '$enName' created successfully."),
+                                      "${AppLocalizations.of(context).store} '$enName' ${AppLocalizations.of(context).createdsuccessfully}."),
                                 ));
-                                Navigator.of(context).pushNamed('/store-dashboard');
+                                Navigator.of(context)
+                                    .pushNamed('/store-dashboard');
                               } catch (err) {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(

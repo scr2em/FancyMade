@@ -67,7 +67,7 @@ class _ChatPageState extends State<ChatPage> {
         centerTitle: true,
         // Text('test')
         title: Text(
-          "Messages",
+          AppLocalizations.of(context).messages,
           style: Theme.of(context).textTheme.headline5,
         ),
         // backgroundColor: Color(0xffffffff),

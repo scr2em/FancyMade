@@ -378,7 +378,9 @@ class CartState extends State<Cart> {
                               primary: Theme.of(context).accentColor,
                               onprimary: Colors.white,
                               bordercolor: Colors.transparent,
-                              onpress: () {}),
+                              onpress: () {
+                                Navigator.of(context).pushNamed('/checkout');
+                              }),
                           SizedBox(
                             width: 20,
                           ),

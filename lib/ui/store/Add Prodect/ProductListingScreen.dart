@@ -65,14 +65,15 @@ class _ProductListingState extends State<ProductListing> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text('Photo Library'),
+                      title:
+                          new Text(AppLocalizations.of(context).photoLibrary),
                       onTap: () {
                         _imgFromGallery();
                         Navigator.of(context).pop();
                       }),
                   new ListTile(
                     leading: new Icon(Icons.photo_camera),
-                    title: new Text('Camera'),
+                    title: new Text(AppLocalizations.of(context).camera),
                     onTap: () {
                       _imgFromCamera();
                       Navigator.of(context).pop();
@@ -101,6 +102,7 @@ class _ProductListingState extends State<ProductListing> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Form(
             key: _productListingForm,
             child: Column(children: [
@@ -450,20 +452,6 @@ class _ProductListingState extends State<ProductListing> {
                         )
                       ],
                     ),
-                    // Row(
-                    //   children: [
-                    //     Checkbox(
-                    //         value: _checked,
-                    //         onChanged: (value) => setState(() {
-                    //               _groupValue = value as String;
-                    //             })),
-                    //     Text(
-                    //       AppLocalizations.of(context).checkSpecialitem,
-                    //       style: TextStyle(
-                    //           fontSize: 16, fontWeight: FontWeight.w500),
-                    //     )
-                    //   ],
-                    // )
                   ],
                 ),
               ),
@@ -475,7 +463,6 @@ class _ProductListingState extends State<ProductListing> {
                       primary: Color(0xff273147),
                       text: AppLocalizations.of(context).done,
                       onpress: () async {
-                        print(image != null);
                         if (_productListingForm.currentState.validate() &&
                             image != null) {
                           Product product = Product.fromJson({
@@ -500,7 +487,8 @@ class _ProductListingState extends State<ProductListing> {
                           } catch (err) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               backgroundColor: Colors.red,
-                              content: Text('Something went wrong'),
+                              content: Text(
+                                  AppLocalizations.of(context).somthingWrong),
                             ));
                           }
                         }

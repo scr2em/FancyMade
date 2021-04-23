@@ -48,7 +48,6 @@ class DatabaseService {
     DocumentReference doc = await storesCollection.add(store.toJson());
     String docId = doc.id;
    return await updateAsingleProperty(property: "storeId",newValue: docId);
-
   }
 
   Future updateAsingleProperty({String property, String newValue}) async {

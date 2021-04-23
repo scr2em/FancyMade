@@ -9,6 +9,10 @@ import '../../../sharedWidgets/DashboardBottomBar.dart';
 import "package:finalproject/services/store_service.dart";
 
 class StoreInfo extends StatelessWidget {
+  final String storeId;
+
+  StoreInfo({this.storeId});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +27,7 @@ class StoreInfo extends StatelessWidget {
         iconTheme: IconThemeData(color: Color(0xff273147)),
       ),
       body: FutureBuilder(
-          future: StoreService().getStoreInfo(
-              Provider.of<MainLocaleProvider>(context).user.storeId),
+          future: StoreService().getStoreInfo(storeId),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final data = snapshot.data;
@@ -40,8 +43,7 @@ class StoreInfo extends StatelessWidget {
                           padding: const EdgeInsets.only(bottom: 20),
                           child: CircleAvatar(
                               radius: 55,
-                              backgroundImage: NetworkImage(
-                                  'https://th.bing.com/th/id/OIP.LC6JuWgA_1GxGH-nQJ1b0wHaHa?w=159&h=180&c=7&o=5&dpr=1.25&pid=1.7')),
+                              backgroundImage: NetworkImage(store["image"])),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -241,8 +243,8 @@ class StoreInfo extends StatelessWidget {
             } else if (snapshot.hasError) {
               return Container(
                   child: Center(
-                      child:
-                          Text("Error something went wrong please reload...")));
+                      child: Text(
+                          "${AppLocalizations.of(context).error} ${AppLocalizations.of(context).somthingWrong} ${AppLocalizations.of(context).pleasereload}...")));
             } else {
               return Container(
                   child: Center(child: CircularProgressIndicator()));

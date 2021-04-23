@@ -71,14 +71,15 @@ class _EditProductState extends State<EditProduct> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text('Photo Library'),
+                      title:
+                          new Text(AppLocalizations.of(context).photoLibrary),
                       onTap: () {
                         _imgFromGallery();
                         Navigator.of(context).pop();
                       }),
                   new ListTile(
                     leading: new Icon(Icons.photo_camera),
-                    title: new Text('Camera'),
+                    title: new Text(AppLocalizations.of(context).camera),
                     onTap: () {
                       _imgFromCamera();
                       Navigator.of(context).pop();
@@ -449,7 +450,8 @@ class _EditProductState extends State<EditProduct> {
                           } catch (err) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               backgroundColor: Colors.red,
-                              content: Text('Something went wrong'),
+                              content: Text(
+                                  AppLocalizations.of(context).somthingWrong),
                             ));
                           }
                         }

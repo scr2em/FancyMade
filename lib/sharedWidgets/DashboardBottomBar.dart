@@ -1,4 +1,6 @@
 import 'package:finalproject/models/CustomUser.dart';
+import 'package:finalproject/ui/main/main_locale_provider.dart';
+import 'package:finalproject/ui/store/store-dashboard/info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -42,7 +44,14 @@ class DashboardBottomBar extends StatelessWidget {
         } else if (index == 2) {
           Navigator.of(context).pushNamed('/req-msgs');
         } else if (index == 3) {
-          Navigator.of(context).pushNamed('/store-info');
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => StoreInfo(
+                  storeId:Provider.of<MainLocaleProvider>(context).user.storeId,
+                )),
+          );
         } else {
           Navigator.of(context).pushNamed('/store-dashboard');
         }

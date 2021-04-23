@@ -1,6 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -45,13 +47,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   onPressed() async {
-    // if (_formKey.currentState.validate()) {
+    if (_formKey.currentState.validate()) {
       setState(() {
         loading = true;
       });
-      dynamic result = await _auth.signInWithGoogle();
-      print(result);
-      // dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+
+      dynamic result = await _auth.signInWithEmailAndPassword(email, password);
       if (result == null) {
         setState(() {
           errorMessage = AppLocalizations.of(context).somethingWentWrong;
@@ -67,9 +68,29 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         loading = false;
       });
-    // }
+    }
   }
-
+  onPressedSignedInWithGoogle() async {
+    setState(() {
+      loading = true;
+    });
+    dynamic result = await _auth.signInWithGoogle();
+    if (result == null) {
+      setState(() {
+        errorMessage = AppLocalizations.of(context).somethingWentWrong;
+      });
+    } else {
+      setState(() {
+        errorMessage = "";
+      });
+      Provider.of<MainLocaleProvider>(context, listen: false)
+          .updateUser(result);
+      Navigator.of(context).pushNamed("/");
+    }
+    setState(() {
+      loading = false;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,19 +119,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 22)),
                             ),
-                            CustomTextFormField(
-                              validator: emailValidator,
-                              hintText: AppLocalizations.of(context).email,
-                              onChanged: onEmailChange,
+                            FadeInDownBig(
+                              duration: Duration(milliseconds: 500),
+                              child: CustomTextFormField(
+                                validator: emailValidator,
+                                hintText: AppLocalizations.of(context).email,
+                                onChanged: onEmailChange,
+                              ),
                             ),
                             SizedBox(
                               height: 15,
                             ),
-                            CustomTextFormField(
-                              validator: passwordValidator,
-                              hintText: AppLocalizations.of(context).password,
-                              obscureText: _obscureText,
-                              onChanged: onPasswordChange,
+                            FadeInDownBig(
+                              duration: Duration(milliseconds: 500),
+                              child: CustomTextFormField(
+                                validator: passwordValidator,
+                                hintText: AppLocalizations.of(context).password,
+                                obscureText: _obscureText,
+                                onChanged: onPasswordChange,
+                              ),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -137,34 +164,53 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
 
                             //login button
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SizedBox(
-                                height: 50,
-                                width: .583 * MediaQuery.of(context).size.width,
-                                child: TextButton(
-                                  onPressed: onPressed,
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Theme.of(context).accentColor),
-                                    // side: MaterialStateProperty.all(
-                                    //     (Theme.of(context).accentColor)),
-                                    foregroundColor: MaterialStateProperty.all(
-                                      Colors.black,
+                            FadeInDownBig(
+                              duration: Duration(milliseconds: 500),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SizedBox(
+                                  height: 50,
+                                  width:
+                                      .583 * MediaQuery.of(context).size.width,
+                                  child: TextButton(
+                                    onPressed: onPressed,
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Theme.of(context).accentColor),
+                                      // side: MaterialStateProperty.all(
+                                      //     (Theme.of(context).accentColor)),
+                                      foregroundColor:
+                                          MaterialStateProperty.all(
+                                        Colors.black,
+                                      ),
+                                      overlayColor: MaterialStateProperty.all(
+                                        Theme.of(context).accentColor,
+                                      ),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      )),
                                     ),
-                                    overlayColor: MaterialStateProperty.all(
-                                      Theme.of(context).accentColor,
-                                    ),
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    )),
+                                    child: Text(
+                                        AppLocalizations.of(context).signin,
+                                        style: TextStyle(color: Colors.white)),
                                   ),
-                                  child: Text(
-                                      AppLocalizations.of(context).signin,
-                                      style: TextStyle(color: Colors.white)),
                                 ),
                               ),
+                            ),
+                            FadeInDownBig(
+                              duration: Duration(milliseconds: 500),
+                              child: GoogleSignInButton(
+                                onPressed:onPressedSignedInWithGoogle,
+                                splashColor: Theme.of(context).backgroundColor,
+                                // darkMode: true,
+                                borderRadius: 10,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                             GestureDetector(
                               child: Text(
@@ -182,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )),
               ),
-        bottomNavigationBar: CustomBottomBar());
+        bottomNavigationBar: CustomBottomBar(selectedIndex: 3,));
   }
 }
 

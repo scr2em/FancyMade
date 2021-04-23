@@ -9,17 +9,18 @@ class CustomLightTextFormField extends StatefulWidget {
   bool passwordVisible = false;
   Function validator;
   int maxLines;
-  bool enabled;
+  bool enabled, enableInteractiveSelection;
   String initialValue;
   CustomLightTextFormField(
       {this.hintText,
-        this.initialValue="",
+      this.initialValue = "",
       this.obscureText = false,
       this.width = 400,
       this.onChanged,
       this.onSuffixIconPress,
       this.validator,
       this.maxLines = 1,
+      this.enableInteractiveSelection = true,
       this.enabled = true});
 
   @override
@@ -40,6 +41,7 @@ class _CustomLightTextFormFieldState extends State<CustomLightTextFormField> {
     return Container(
       width: widget.width,
       child: TextFormField(
+        enableInteractiveSelection: widget.enableInteractiveSelection,
         initialValue: widget.initialValue,
         enabled: widget.enabled,
         maxLines: widget.maxLines,
@@ -58,7 +60,6 @@ class _CustomLightTextFormFieldState extends State<CustomLightTextFormField> {
                       onPressed: onShowPassword,
                     )
                   : null,
-
           labelText: widget.hintText,
           fillColor: Colors.white,
           filled: true,

@@ -72,7 +72,7 @@ class Profile extends StatelessWidget {
                 backgroundColor: Theme.of(context).backgroundColor,
                 prefixIcon: Icons.settings_outlined),
             CustomNavigationButton(
-              route: '/orders',
+              route: '/order-history',
               text: AppLocalizations.of(context).orders,
               backgroundColor: Theme.of(context).backgroundColor,
               prefixIcon: Icons.list,
@@ -98,8 +98,6 @@ class Profile extends StatelessWidget {
                       textColor: Colors.white,
                     ),
             ),
-
-            // delete this button later
             CustomButton(
                 height: 50,
                 primary: Theme.of(context).accentColor,
@@ -115,13 +113,13 @@ class Profile extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             CustomNavigationButton(
-                route: '/faq',
-                text: AppLocalizations.of(context).faq,
-                backgroundColor: Theme.of(context).backgroundColor,
-                prefixIcon: Icons.help_outline,
+              route: '/faq',
+              text: AppLocalizations.of(context).faq,
+              backgroundColor: Theme.of(context).backgroundColor,
+              prefixIcon: Icons.help_outline,
             ),
             CustomNavigationButton(
-                route: '/contactUs',
+              route: '/contactUs',
               text: AppLocalizations.of(context).contactUs,
               backgroundColor: Theme.of(context).backgroundColor,
               prefixIcon: Icons.call,
@@ -132,7 +130,7 @@ class Profile extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomBar(selectedIndex:3),
+      bottomNavigationBar: CustomBottomBar(selectedIndex: 3),
 
       // Center(
       //   child: ElevatedButton(
