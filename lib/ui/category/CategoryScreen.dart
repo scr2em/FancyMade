@@ -1,11 +1,9 @@
-import 'package:finalproject/models/Product.dart';
-import 'package:finalproject/services/products_service.dart';
-import 'package:finalproject/sharedWidgets/ProductThumbnail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../.../../../sharedWidgets/CustomBottomBar.dart';
-import '../.../../../sharedWidgets/CustomAppBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../.../../../sharedWidgets/CustomAppBar.dart';
+import '../.../../../sharedWidgets/CustomBottomBar.dart';
 
 class CategoryScreen extends StatefulWidget {
   String category;

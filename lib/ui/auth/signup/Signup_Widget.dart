@@ -5,7 +5,6 @@ import "package:provider/provider.dart";
 
 import "../../../services/auth_service.dart";
 import '../../../sharedWidgets/CustomAppBar.dart';
-
 //Custom Widgets
 import '../../../sharedWidgets/CustomBottomBar.dart';
 import "../../../sharedWidgets/CustomTextFormField.dart";

@@ -1,6 +1,5 @@
 import 'package:finalproject/models/inboxscreen_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 class Individual_chat extends StatefulWidget {
   @override
