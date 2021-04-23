@@ -51,6 +51,7 @@ dependencies:
   google_sign_in: ^4.5.1
   page_transition: ^1.1.7+6
   flutter_auth_buttons: ^0.10.0
+  textfield_tags: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,10 @@ flutter:
   assets:
     - assets/images/language/ar.png
     - assets/images/profile.jpg
+    - assets/images/categories/dolls.jpg
+    - assets/images/categories/accessories.jpg
+    - assets/images/categories/Jewelry.jpg
+    - assets/images/categories/Paintings.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
