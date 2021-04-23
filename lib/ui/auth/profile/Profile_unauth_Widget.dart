@@ -30,9 +30,16 @@ class ProfileUnAuth extends StatelessWidget {
           children: [
             SizedBox(height: 20),
             CircleAvatar(
-                radius: 55,
-                backgroundImage:
-                    NetworkImage('https://via.placeholder.com/110x110')),
+              radius: 70.0,
+              backgroundColor: Color(0xFFFFFF),
+              child: ClipRRect(
+                child: Image.asset(
+                  "assets/images/profile.jpg",
+                  // fit: BoxFit.fill,
+                ),
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+            ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -140,7 +147,7 @@ class ProfileUnAuth extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomBar(selectedIndex:3),
+      bottomNavigationBar: CustomBottomBar(selectedIndex: 3),
 
       // Center(
       //   child: ElevatedButton(

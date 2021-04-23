@@ -179,5 +179,8 @@
     "more":"more",
     "checkoutSuccess":"Checkout Success",
     "addStoreImage":"Store Image",
-    "latestStores" : "Latest stores"
+    "latestStores" : "Latest stores",
+    "storedashboard":"Store Dashboard",
+    "signInWithGoogle":"Sign in with Google",
+    "theme":"theme"
 }

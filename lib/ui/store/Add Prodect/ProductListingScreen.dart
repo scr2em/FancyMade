@@ -126,7 +126,7 @@ class _ProductListingState extends State<ProductListing> {
                               image,
                               width: 300,
                               height: 300,
-                              fit: BoxFit.fitHeight,
+                              fit: BoxFit.cover,
                             ),
                           )
                         : Stack(

@@ -38,7 +38,12 @@ class ProductScreen extends StatelessWidget {
                   Container(
                     decoration: new BoxDecoration(color: Colors.white),
                     alignment: Alignment.topCenter,
-                    child: Image.network(product.image, fit: BoxFit.fill),
+                    child: ClipRRect(
+                        child: Image.network(
+                      product.image,
+                      fit: BoxFit.fitHeight,
+                      height: 300,
+                    )),
                   ),
                   Container(
                     child: product.discount != null

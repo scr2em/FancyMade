@@ -132,7 +132,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         Expanded(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(AppLocalizations.of(context).thankYou),
+                          child: Text(AppLocalizations.of(context).theme),
                         )),
                         Image.asset(
                           "assets/images/language/ar.png",

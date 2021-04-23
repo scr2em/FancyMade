@@ -179,7 +179,8 @@
     "more":"أكثر",
     "checkoutSuccess":"تمت عملية الدفع بنجاح",
     "addStoreImage":"صورة المتجر",
-    "latestStores" : "جديد المتاجر"
-
-
+    "latestStores" : "جديد المتاجر",
+    "storedashboard":"لوحة قيادة المتجر",
+    "signInWithGoogle":"سجل دخول باستخدام جوجل",
+    "theme":"السمة"
 }

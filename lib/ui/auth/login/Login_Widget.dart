@@ -204,6 +204,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               duration: Duration(milliseconds: 500),
                               child: GoogleSignInButton(
                                 onPressed:onPressedSignedInWithGoogle,
+                                text: AppLocalizations.of(context)
+                                    .signInWithGoogle,
+                                centered: true,
                                 splashColor: Theme.of(context).backgroundColor,
                                 // darkMode: true,
                                 borderRadius: 10,

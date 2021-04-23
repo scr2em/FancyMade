@@ -34,11 +34,22 @@ class Profile extends StatelessWidget {
           children: [
             SizedBox(height: 20),
             CircleAvatar(
-              radius: 55,
-              backgroundImage: NetworkImage(
-                  Provider.of<MainLocaleProvider>(context).user.avatar),
 
+              radius: 70,
+              backgroundColor: Color(0xFFFFFF),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Provider.of<MainLocaleProvider>(context).user.avatar ==
+                          null
+                      ? Image.asset(
+                          "assets/images/profile",
+                          // scale: 50,
+                        )
+                      : Image.network(Provider.of<MainLocaleProvider>(context)
+                          .user
+                          .avatar)),
             ),
+
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -92,7 +103,7 @@ class Profile extends StatelessWidget {
                     )
                   : CustomNavigationButton(
                       route: '/store-dashboard',
-                      text: "Store Dashboard",
+                      text: AppLocalizations.of(context).storedashboard,
                       backgroundColor: Color(0xff283148),
                       prefixIcon: Icons.assistant_photo_outlined,
                       textColor: Colors.white,
