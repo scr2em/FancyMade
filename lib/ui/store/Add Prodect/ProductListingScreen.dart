@@ -126,7 +126,7 @@ class _ProductListingState extends State<ProductListing> {
                               image,
                               width: 300,
                               height: 300,
-                              fit: BoxFit.fitHeight,
+                              fit: BoxFit.cover,
                             ),
                           )
                         : Stack(
@@ -452,20 +452,6 @@ class _ProductListingState extends State<ProductListing> {
                         )
                       ],
                     ),
-                    // Row(
-                    //   children: [
-                    //     Checkbox(
-                    //         value: _checked,
-                    //         onChanged: (value) => setState(() {
-                    //               _groupValue = value as String;
-                    //             })),
-                    //     Text(
-                    //       AppLocalizations.of(context).checkSpecialitem,
-                    //       style: TextStyle(
-                    //           fontSize: 16, fontWeight: FontWeight.w500),
-                    //     )
-                    //   ],
-                    // )
                   ],
                 ),
               ),
@@ -477,7 +463,6 @@ class _ProductListingState extends State<ProductListing> {
                       primary: Color(0xff273147),
                       text: AppLocalizations.of(context).done,
                       onpress: () async {
-                        print(image != null);
                         if (_productListingForm.currentState.validate() &&
                             image != null) {
                           Product product = Product.fromJson({

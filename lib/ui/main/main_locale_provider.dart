@@ -33,13 +33,15 @@ class MainLocaleProvider extends ChangeNotifier {
   }
 
   Future addProduct(Product product, File img) async {
-    product.storeId = user.uid;
-    product.image = await StorageService().uploadImage(img, user.uid);
+
+    product.storeId = user.storeId;
+    product.image = await StorageService().uploadImage(img, user.storeId);
     await ProductsService().addProduct(product);
   }
 
-  createStore(Store store) async {
+  createStore(Store store, File img) async {
     store.ownerId = user.uid;
+    store.image = await StorageService().uploadImage(img, user.uid);
     CustomUser newData =
         await DatabaseService(uid: user.uid).createStore(store);
     updateUser(newData);

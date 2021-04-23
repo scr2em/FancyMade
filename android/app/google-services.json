@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "721631317946",
+    "firebase_url": "https://final-project-62b85-default-rtdb.firebaseio.com",
     "project_id": "final-project-62b85",
     "storage_bucket": "final-project-62b85.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "721631317946-v4d5a6csbl6q5l1bjk9ogf5qg83erl99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finalproject",
+            "certificate_hash": "c82a324f727868477ffa1f5a9abc9c9f83f601d4"
+          }
+        },
         {
           "client_id": "721631317946-3gf3eqdlbfrkojtiqtls1l9jpgkbk8t1.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +38,13 @@
             {
               "client_id": "721631317946-3gf3eqdlbfrkojtiqtls1l9jpgkbk8t1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "721631317946-ek9n5t1a8t1eco9ihtiks41u1dlh52b4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.finalproject"
+              }
             }
           ]
         }

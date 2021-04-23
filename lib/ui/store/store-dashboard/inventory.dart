@@ -26,7 +26,7 @@ class StoreInventory extends StatelessWidget {
       ),
       body: FutureBuilder(
         future: ProductsService().getInventory(
-            uid: Provider.of<MainLocaleProvider>(context).user.uid),
+            uid: Provider.of<MainLocaleProvider>(context).user.storeId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final docs = snapshot.data.docs;
@@ -202,6 +202,7 @@ Widget _buildList({String key, String string, docs}) {
             borderRadius: BorderRadius.circular(50),
             child: Image.network(
               docs[i]["image"],
+              fit: BoxFit.cover,
             ),
           ),
           title: LanguageTextSwitcher(

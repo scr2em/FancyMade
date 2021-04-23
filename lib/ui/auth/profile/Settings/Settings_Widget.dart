@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import "package:flutter/material.dart";
 import "../../../../sharedWidgets/CustomTextFormField.dart";
 import '../../../../utils/shared_preference.dart';
@@ -36,7 +37,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body: Container(
+      body: AnimatedContainer(
+        duration: Duration(microseconds: 500),
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: ListView(
           children: [
@@ -49,53 +51,58 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                child: DropdownButton<String>(
-                  underline: Container(),
-                  isExpanded: true,
-                  icon: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Theme.of(context).accentColor,
+                child: FadeInDownBig(
+                  duration: Duration(microseconds: 500),
+                  child: DropdownButton<String>(
+                    underline: Container(),
+                    isExpanded: true,
+                    icon: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
+                    hint: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.flag_outlined,
+                            color: Theme.of(context).accentColor,
+                          ),
+                          Expanded(
+                              child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Text(AppLocalizations.of(context).language),
+                          )),
+                          Image.asset(
+                            "assets/images/language/ar.png",
+                            scale: 11,
+                          ),
+                        ],
+                      ),
+                    ),
+                    items: [
+                      DropdownMenuItem(
+                        child: Text("عربي"),
+                        onTap: () async {
+                          Provider.of<MainLocaleProvider>(context,
+                                  listen: false)
+                              .updateApplicationLocale('ar');
+                        },
+                      ),
+                      DropdownMenuItem(
+                        child: Text("english"),
+                        onTap: () async {
+                          Provider.of<MainLocaleProvider>(context,
+                                  listen: false)
+                              .updateApplicationLocale('en');
+                        },
+                      ),
+                    ],
+                    onChanged: (_) {},
                   ),
-                  hint: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.flag_outlined,
-                          color: Theme.of(context).accentColor,
-                        ),
-                        Expanded(
-                            child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(AppLocalizations.of(context).language),
-                        )),
-                        Image.asset(
-                          "assets/images/language/ar.png",
-                          scale: 11,
-                        ),
-                      ],
-                    ),
-                  ),
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("عربي"),
-                      onTap: () async {
-                        Provider.of<MainLocaleProvider>(context, listen: false)
-                            .updateApplicationLocale('ar');
-                      },
-                    ),
-                    DropdownMenuItem(
-                      child: Text("english"),
-                      onTap: () async {
-                        Provider.of<MainLocaleProvider>(context, listen: false)
-                            .updateApplicationLocale('en');
-                      },
-                    ),
-                  ],
-                  onChanged: (_) {},
                 ),
               ),
             ),
@@ -111,60 +118,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                child: DropdownButton<String>(
-                  underline: Container(),
-                  isExpanded: true,
-                  icon: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Theme.of(context).accentColor,
+                child: FadeInDownBig(
+                  duration: Duration(microseconds: 500),
+                  child: DropdownButton<String>(
+                    underline: Container(),
+                    isExpanded: true,
+                    icon: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
+                    hint: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.brush_outlined,
+                            color: Theme.of(context).accentColor,
+                          ),
+                          Expanded(
+                              child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Text(AppLocalizations.of(context).theme),
+                          )),
+                        ],
+                      ),
+                    ),
+                    items: [
+                      DropdownMenuItem(
+                        child: Text("dark"),
+                        onTap: () async {
+                          Provider.of<MainLocaleProvider>(context,
+                                  listen: false)
+                              .updateApplicationTheme('ThemeMode.dark');
+                        },
+                      ),
+                      DropdownMenuItem(
+                        child: Text("light"),
+                        onTap: () async {
+                          Provider.of<MainLocaleProvider>(context,
+                                  listen: false)
+                              .updateApplicationTheme('ThemeMode.light');
+                        },
+                      ),
+                      DropdownMenuItem(
+                        child: Text("Following system theme"),
+                        onTap: () async {
+                          Provider.of<MainLocaleProvider>(context,
+                                  listen: false)
+                              .updateApplicationTheme('ThemeMode.system');
+                        },
+                      ),
+                    ],
+                    onChanged: (_) {},
                   ),
-                  hint: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.flag_outlined,
-                          color: Theme.of(context).accentColor,
-                        ),
-                        Expanded(
-                            child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(AppLocalizations.of(context).thankYou),
-                        )),
-                        Image.asset(
-                          "assets/images/language/ar.png",
-                          scale: 11,
-                        ),
-                      ],
-                    ),
-                  ),
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("dark"),
-                      onTap: () async {
-                        Provider.of<MainLocaleProvider>(context, listen: false)
-                            .updateApplicationTheme('ThemeMode.dark');
-                      },
-                    ),
-                    DropdownMenuItem(
-                      child: Text("light"),
-                      onTap: () async {
-                        Provider.of<MainLocaleProvider>(context, listen: false)
-                            .updateApplicationTheme('ThemeMode.light');
-                      },
-                    ),
-                    DropdownMenuItem(
-                      child: Text("Following system theme"),
-                      onTap: () async {
-                        Provider.of<MainLocaleProvider>(context, listen: false)
-                            .updateApplicationTheme('ThemeMode.system');
-                      },
-                    ),
-                  ],
-                  onChanged: (_) {},
                 ),
               ),
             ),

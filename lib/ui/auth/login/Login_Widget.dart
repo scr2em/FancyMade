@@ -51,6 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         loading = true;
       });
+
       dynamic result = await _auth.signInWithEmailAndPassword(email, password);
       if (result == null) {
         setState(() {
@@ -70,9 +71,30 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  onPressedSignedInWithGoogle() async {
+    setState(() {
+      loading = true;
+    });
+    dynamic result = await _auth.signInWithGoogle();
+    if (result == null) {
+      setState(() {
+        errorMessage = AppLocalizations.of(context).somethingWentWrong;
+      });
+    } else {
+      setState(() {
+        errorMessage = "";
+      });
+      Provider.of<MainLocaleProvider>(context, listen: false)
+          .updateUser(result);
+      Navigator.of(context).pushNamed("/");
+    }
+    setState(() {
+      loading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // print(MediaQuery.of(context).size.width);
     return Scaffold(
         appBar: CustomAppBar(),
         body: loading
@@ -183,7 +205,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             FadeInDownBig(
                               duration: Duration(milliseconds: 500),
                               child: GoogleSignInButton(
-                                onPressed: () {},
+                                onPressed: onPressedSignedInWithGoogle,
+                                text: AppLocalizations.of(context)
+                                    .signInWithGoogle,
+                                centered: true,
                                 splashColor: Theme.of(context).backgroundColor,
                                 // darkMode: true,
                                 borderRadius: 10,
@@ -208,7 +233,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )),
               ),
-        bottomNavigationBar: CustomBottomBar());
+        bottomNavigationBar: CustomBottomBar(
+          selectedIndex: 3,
+        ));
   }
 }
 

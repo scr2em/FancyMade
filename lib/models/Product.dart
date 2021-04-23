@@ -9,26 +9,25 @@ Product productFromJson(String str) => Product.fromJson(json.decode(str));
 String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
-  Product({
-    this.arName,
-    this.arDesc,
-    this.enName,
-    this.enDesc,
-    this.price,
-    this.discount = 0,
-    this.discountDuration = 0,
-    this.category,
-    this.image,
-    this.sku,
-    this.itemsAvailable,
-    this.freeShipping,
-    this.verifiedStore,
-    this.rating,
-    this.tags,
-    this.maxQuantityPerOrder,
-    this.storeId,
-    this.shipment
-  });
+  Product(
+      {this.arName,
+      this.arDesc,
+      this.enName,
+      this.enDesc,
+      this.price,
+      this.discount = 0,
+      this.discountDuration = 0,
+      this.category,
+      this.image,
+      this.sku,
+      this.itemsAvailable,
+      this.freeShipping,
+      this.verifiedStore,
+      this.rating,
+      this.tags,
+      this.maxQuantityPerOrder,
+      this.storeId,
+      this.shipment});
 
   String arName;
   String arDesc;
@@ -38,7 +37,8 @@ class Product {
   int discount;
   int discountDuration;
   String category;
-  String image ;
+  String image;
+
   String sku;
   int itemsAvailable;
   bool freeShipping;
@@ -67,7 +67,7 @@ class Product {
         tags: List<String>.from(json["tags"].map((x) => x)),
         maxQuantityPerOrder: json["maxQuantityPerOrder"],
         storeId: json["storeId"],
-    shipment: json["shipment"],
+        shipment: json["shipment"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -88,7 +88,7 @@ class Product {
         "tags": List<dynamic>.from(tags.map((x) => x)),
         "maxQuantityPerOrder": maxQuantityPerOrder,
         "storeId": storeId,
-    "shipment" : shipment
+        "shipment": shipment
       };
 }
 

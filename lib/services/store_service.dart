@@ -8,17 +8,22 @@ import 'package:flutter/material.dart';
 
 class StoreService {
   final CollectionReference storesCollection =
-  FirebaseFirestore.instance.collection("stores");
+      FirebaseFirestore.instance.collection("stores");
 
   final CollectionReference usersCollection =
-  FirebaseFirestore.instance.collection("users");
+      FirebaseFirestore.instance.collection("users");
 
   Future getStoreInfo(storeId) async {
-   DocumentSnapshot store = await storesCollection.doc(storeId).get();
-   String userId = store.data()["ownerId"];
-   var userData = await usersCollection.doc(userId).get();
-   return {"store": store, "owner":  CustomUser.fromJson({...userData.data(),"uid":userId})};
- }
+    DocumentSnapshot store = await storesCollection.doc(storeId).get();
+    String userId = store.data()["ownerId"];
+    var userData = await usersCollection.doc(userId).get();
+    return {
+      "store": store,
+      "owner": CustomUser.fromJson({...userData.data(), "uid": userId})
+    };
+  }
 
-
+  Future<QuerySnapshot> getLatestStores(number) async {
+    return await storesCollection.limit(number).get();
+  }
 }

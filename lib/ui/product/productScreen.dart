@@ -3,12 +3,15 @@ import 'dart:ui';
 import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
+import 'package:finalproject/sharedWidgets/ProductModel.dart';
+import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
-
+import "package:finalproject/services/store_service.dart";
 import '../../sharedWidgets/CustomButton.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -20,10 +23,10 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            product.enName,
-            style: TextStyle(color: Colors.black),
-          ),
+          title: LanguageTextSwitcher(
+              ar: product.arName,
+              en: product.enName,
+              style: TextStyle(color: Colors.black)),
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.white,
@@ -38,29 +41,36 @@ class ProductScreen extends StatelessWidget {
                   Container(
                     decoration: new BoxDecoration(color: Colors.white),
                     alignment: Alignment.topCenter,
-                    child: Image.network(product.image, fit: BoxFit.fill),
+                    child: ClipRRect(
+                        child: Image.network(
+                      product.image,
+                      fit: BoxFit.fitHeight,
+                      height: 300,
+                    )),
                   ),
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.only(
-                          top: 8, bottom: 8, right: 40, left: 40),
-                      decoration: BoxDecoration(
-                        color: Colors.red[400],
-                      ),
-                      child: product.discount != null
-                          ? product.discount != 0
-                              ? Text(
-                                  '${product.discount}\$',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24),
-                                )
-                              : null
-                          : null,
-                    ),
-                    bottom: 50,
-                    right: 0,
+                  Container(
+                    child: product.discount != null
+                        ? product.discount != 0
+                            ? Positioned(
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                      top: 8, bottom: 8, right: 40, left: 40),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red[400],
+                                  ),
+                                  child: Text(
+                                    '${product.discount}%',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24),
+                                  ),
+                                ),
+                                bottom: 50,
+                                right: 0,
+                              )
+                            : null
+                        : null,
                   )
                 ]),
                 Container(
@@ -80,7 +90,7 @@ class ProductScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                "${AppLocalizations.of(context).category} / ${product.category} ",
+                                "${AppLocalizations.of(context).category} / ${product.category ?? AppLocalizations.of(context).uncategorized} ",
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w400,
@@ -114,9 +124,9 @@ class ProductScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(10),
-                            child: Text(
-                              '${product.enName}',
-                              //////need responsive
+                            child: LanguageTextSwitcher(
+                              ar: product.arName,
+                              en: product.enName,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
@@ -130,24 +140,46 @@ class ProductScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '${product.price}',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 20,
-                                      decoration: TextDecoration.lineThrough),
-                                ),
-                                Text(
-                                  '${(product.price * (1 - (product.discount / 100))).toStringAsFixed(2)}',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30,
-                                      color: Theme.of(context).accentColor),
-                                )
-                              ],
-                            ),
+                                children: product.discount != 0
+                                    ? [
+                                  Text(
+                                    Provider.of<MainLocaleProvider>(context)
+                                        .applicationLocale
+                                        .languageCode ==
+                                        "ar"
+                                        ? '${product.price} جنيه'
+                                        : '${product.price} EGP',
+                                    style:TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 20,
+                                        decoration: TextDecoration.lineThrough),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8),
+                                    child: Text(
+                                      '${((1 - (product.discount / 100)) * product.price).toStringAsFixed(2)}',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                          color: Theme.of(context).accentColor),
+                                    ),
+                                  ),
+                                ]
+                                    : [
+                                  Text(
+                                    Provider.of<MainLocaleProvider>(context)
+                                        .applicationLocale
+                                        .languageCode ==
+                                        "ar"
+                                        ? '${product.price} جنيه'
+                                        : '${product.price} EGP',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30,
+                                        color: Theme.of(context).accentColor),
+                                  ),
+                                ]),
+
                             RatingBarIndicator(
                               rating: 2.75,
                               itemBuilder: (context, index) => Icon(
@@ -296,7 +328,7 @@ class ProductScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Text(
-                                  "user review user review user review user review user review user review ",
+                                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia",
                                   style: TextStyle(fontSize: 16),
                                 ),
                               )
@@ -358,7 +390,7 @@ class ProductScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Text(
-                                  "user review user review user review user review user review user review ",
+                                  "harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident",
                                   style: TextStyle(fontSize: 16),
                                 ),
                               )
@@ -419,108 +451,121 @@ class ProductScreen extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text(
-                              "Store Info",
-                              // AppLocalizations.of(context).storeInfo,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  height: 1.5),
+                  child: FutureBuilder(
+                    future: StoreService().getStoreInfo(product.storeId),
+                    builder: (context, snapshot){
+                      if(snapshot.hasData){
+                        final data = snapshot.data;
+                        final store = data["store"];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Text(
+                                    AppLocalizations.of(context).storeInfo,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        height: 1.5),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                      // CustomTextFormField(
-                      //   hintText: AppLocalizations.of(context).yourOpinion,
-                      // ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      CircleAvatar(
-                                        maxRadius: 35,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 10, left: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
                                           children: [
-                                            Text(
-                                              "Store Name",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16),
+                                            CircleAvatar(
+                                              radius: 55,
+                                              backgroundImage:
+                                              NetworkImage(store["image"]),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 5, bottom: 5),
-                                              child: Row(
+                                                  right: 10, left: 10),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                                 children: [
-                                                  RatingBarIndicator(
-                                                    rating: 2.75 / 5,
-                                                    itemBuilder:
-                                                        (context, index) =>
-                                                            Icon(
-                                                      Icons.star,
-                                                      color: Colors.amber,
+                                                  LanguageTextSwitcher(ar:store["arName"], en:store["enName"], style:TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 16))
+                                                ,
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        top: 5, bottom: 5),
+                                                    child: Row(
+                                                      children: [
+                                                        RatingBarIndicator(
+                                                          rating: 2.75 / 5,
+                                                          itemBuilder:
+                                                              (context, index) =>
+                                                              Icon(
+                                                                Icons.star,
+                                                                color: Colors.amber,
+                                                              ),
+                                                          itemCount: 1,
+                                                          itemSize: 20,
+                                                          direction: Axis.horizontal,
+                                                        ),
+                                                        Text(
+                                                          " 2.75",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                              FontWeight.bold,
+                                                              fontSize: 16),
+                                                        )
+                                                      ],
                                                     ),
-                                                    itemCount: 1,
-                                                    itemSize: 20,
-                                                    direction: Axis.horizontal,
                                                   ),
                                                   Text(
-                                                    " 2.75",
+                                                    "95% ${AppLocalizations.of(context).positivefeedback}",
                                                     style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 16),
+                                                        color: Theme.of(context)
+                                                            .hintColor,
+                                                        fontSize: 14),
                                                   )
                                                 ],
                                               ),
                                             ),
-                                            Text(
-                                              "95% ${AppLocalizations.of(context).positivefeedback}",
-                                              style: TextStyle(
-                                                  color: Theme.of(context)
-                                                      .hintColor,
-                                                  fontSize: 14),
-                                            )
                                           ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: Theme.of(context).hintColor,
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Theme.of(context).hintColor,
+                                          ),
+                                          onPressed: () {},
+                                        )
+                                      ],
                                     ),
-                                    onPressed: () {},
-                                  )
-                                ],
+                                  ],
+                                ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                            ),
+                          ],
+                        );
+                      }else if (snapshot.hasError){
+                       return  Container(
+                            child: Center(
+                                child: Text(
+                                    "${AppLocalizations.of(context).error} ${AppLocalizations.of(context).somthingWrong} ${AppLocalizations.of(context).pleasereload}...")));
+                      }else {
+                        return Container(child: Center(child: CircularProgressIndicator()));
+
+                      }
+    },
                   ),
                 ),
               ]),

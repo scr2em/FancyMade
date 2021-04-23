@@ -169,7 +169,6 @@
     "somthingWrong":"Something went wrong..",
     "error":"Error",
     "pleasereload":"please reload",
-    "order":"Order",
     "cashonDelivery":"Cash on delivery",
     "orderplaced":"Order Placed",
     "availability":"Availability",
@@ -177,6 +176,13 @@
     "shippedby":"will be shipped by",
     "positivefeedback":"Positive FeedBack",
     "createdsuccessfully":"created successfully",
-    "more":"more"
+    "more":"more",
+    "checkoutSuccess":"Checkout Success",
+    "addStoreImage":"Store Image",
+    "latestStores" : "Latest stores",
+    "storedashboard":"Store Dashboard",
+    "signInWithGoogle":"Sign in with Google",
+    "theme":"theme",
+     "uncategorized" : "uncategorized"
 
 }

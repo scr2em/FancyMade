@@ -30,12 +30,19 @@ class ProfileUnAuth extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(height: 20),
-            FadeInDownBig(
-              duration: Duration(milliseconds: 500),
+            FadeInDown(
+              duration: Duration(microseconds: 500),
               child: CircleAvatar(
-                  radius: 55,
-                  backgroundImage:
-                      NetworkImage('https://via.placeholder.com/110x110')),
+                radius: 70.0,
+                backgroundColor: Color(0xFFFFFF),
+                child: ClipRRect(
+                  child: Image.asset(
+                    "assets/images/profile.jpg",
+                    // fit: BoxFit.fill,
+                  ),
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+              ),
             ),
             Center(
               child: Padding(

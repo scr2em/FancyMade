@@ -141,7 +141,12 @@ class Price extends StatelessWidget {
                 ]
               : [
                   Text(
-                    '$value EGP',
+                    Provider.of<MainLocaleProvider>(context)
+                                .applicationLocale
+                                .languageCode ==
+                            "ar"
+                        ? '$value جنيه'
+                        : '$value EGP',
                     style: TextStyle(
                         color: Color(0xffFF5959),
                         fontSize: priceFontSize,

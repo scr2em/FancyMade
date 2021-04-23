@@ -30,7 +30,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   onEmailChange(value) {
     setState(() {
-      email = value.trim();
+      email = value.trim().toLowerCase();
     });
   }
 
@@ -195,6 +195,6 @@ class _SignupScreenState extends State<SignupScreen> {
                   )),
                 ]),
               ),
-        bottomNavigationBar: CustomBottomBar());
+        bottomNavigationBar: CustomBottomBar(selectedIndex: 3,));
   }
 }

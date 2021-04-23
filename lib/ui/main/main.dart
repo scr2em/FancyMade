@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
             '/CreateStoreForm': (context) => CreateStoreForm(),
             '/profileInfo': (context) => InfoScreen(),
             '/profileSettings': (context) => SettingsScreen(),
-            '/store': (context) => Store(),
+            '/store': (context) => StoreScreen(),
             '/order': (context) => Order(),
             '/productlisting': (context) => ProductListing(),
             '/productReview': (context) => ProductReview(),

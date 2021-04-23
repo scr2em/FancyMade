@@ -24,6 +24,7 @@ class Store {
     this.category ="",
     this.plan = "",
     this.social,
+    this.image
   });
 
   String ownerId;
@@ -37,7 +38,7 @@ class Store {
   String category;
   String plan;
   Social social;
-
+  String image;
   factory Store.fromJson(Map<String, dynamic> json) => Store(
     ownerId: json["ownerId"],
     arName: json["arName"],
@@ -49,6 +50,7 @@ class Store {
     productsAddress: json["productsAddress"],
     category: json["category"],
     plan: json["plan"],
+    image: json["image"],
     social: Social.fromJson(json["social"]),
   );
 
@@ -64,6 +66,7 @@ class Store {
     "category": category,
     "plan": plan,
     "social": social.toJson(),
+    "image" : image
   };
 }
 

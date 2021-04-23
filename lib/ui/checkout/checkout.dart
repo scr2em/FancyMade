@@ -14,7 +14,7 @@ class Checkout extends StatefulWidget {
 class _CheckoutState extends State<Checkout> {
   var groupValue;
 
-  bool enablefield;
+  bool enablefield=true;
 
   @override
   Widget build(BuildContext context) {
