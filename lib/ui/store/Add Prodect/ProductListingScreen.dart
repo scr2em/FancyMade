@@ -9,6 +9,7 @@ import 'package:group_radio_button/group_radio_button.dart';
 import '../../../utils/validators.dart';
 import "package:finalproject/models/Product.dart";
 import "package:finalproject/ui/main/main_locale_provider.dart";
+import 'package:flutter_tagging/flutter_tagging.dart';
 
 class ProductListing extends StatefulWidget {
   @override
@@ -31,11 +32,12 @@ class _ProductListingState extends State<ProductListing> {
   int discountDuration;
   String category;
   int itemsAvailable;
-  List<String> tags;
   int maxQuantityPerOrder;
   String shipment;
   bool _checked = false;
   String _groupValue;
+
+  List<dynamic> tags = [];
 
   _imgFromCamera() async {
     PickedFile img =
@@ -373,22 +375,102 @@ class _ProductListingState extends State<ProductListing> {
                       },
                     ),
                   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 20),
+                  //   child: CustomLightTextFormField(
+                  //     hintText: AppLocalizations.of(context).srchTags,
+                  //     onChanged: (val) {
+                  //       tags = val.split(",").toList();
+                  //     },
+                  //   ),
+                  // ),
+
+                  // TextFieldTags(
+                  //     initialTags: tags,
+                  //     tagsStyler: TagsStyler(
+                  //       tagTextStyle: TextStyle(
+                  //           fontWeight: FontWeight.bold,
+                  //           color: Colors.white),
+                  //       tagDecoration: BoxDecoration(
+                  //         color: Color(0xffE9A06B),
+                  //         borderRadius: BorderRadius.circular(8.0),
+                  //       ),
+                  //       tagCancelIcon: Icon(Icons.cancel,
+                  //           size: 16.0,
+                  //           color: Color.fromARGB(255, 235, 214, 214)),
+                  //       tagPadding: const EdgeInsets.all(10.0),
+                  //     ),
+                  //     textFieldStyler: TextFieldStyler(
+                  //       hintText: AppLocalizations.of(context).srchTags,
+                  //       textFieldFilledColor:
+                  //           Theme.of(context).backgroundColor,
+                  //       helperText: '',
+                  //       // textFieldBorder: OutlineInputBorder(borderSide: )
+                  //     ),
+                  //     onTag: (tag) {
+                  //       // tags.add(tag);
+                  //       print(tag);
+                  //       print(tags);
+                  //     },
+                  //     onDelete: (tag) {})
+
+                  // TextFieldTags(
+                  //     initialTags:tags,
+                  //     tagsStyler: TagsStyler(
+                  //         tagTextStyle:
+                  //             TextStyle(fontWeight: FontWeight.bold),
+                  //         tagDecoration: BoxDecoration(
+                  //           color: Color(0xffFCCDAB),
+                  //           borderRadius: BorderRadius.circular(8.0),
+                  //         ),
+                  //         tagCancelIcon: Icon(Icons.cancel,
+                  //             size: 18.0,
+                  //             color: Theme.of(context).accentColor),
+                  //         tagPadding: const EdgeInsets.all(6.0)),
+                  //     textFieldStyler: TextFieldStyler(),
+                  //     onTag: (tag) {},
+                  //     onDelete: (tag) {}),
+
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: CustomLightTextFormField(
-                      hintText: AppLocalizations.of(context).srchTags,
-                      onChanged: (val) {
-                        tags = val.split(",").toList();
+                    child: FlutterTagging(
+                      textFieldDecoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: AppLocalizations.of(context).srchTags,
+                        labelText: AppLocalizations.of(context).tags,
+                      ),
+                      addButtonWidget: Container(
+                        padding: EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          color: Theme.of(context).accentColor,
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 15.0,
+                            ),
+                            Text(
+                              AppLocalizations.of(context).addtags,
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 14.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                      chipsColor: Theme.of(context).accentColor,
+                      chipsFontColor: Colors.white,
+                      deleteIcon: Icon(Icons.cancel, color: Colors.white),
+                      chipsPadding: EdgeInsets.all(2.0),
+                      chipsFontSize: 14.0,
+                      chipsSpacing: 5.0,
+                      suggestionsCallback: (pattern) async {
+                        return await TagSearchService.getSuggestions(pattern);
                       },
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    width: MediaQuery.of(context).size.width,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
+                      onChanged: (tag) {},
                     ),
                   )
                 ]),
@@ -498,5 +580,25 @@ class _ProductListingState extends State<ProductListing> {
         ),
       ),
     );
+  }
+}
+
+class TagSearchService {
+  static Future<List> getSuggestions(String query) async {
+    await Future.delayed(Duration(milliseconds: 400), null);
+    List<dynamic> tags = <dynamic>[];
+    tags.add({'name': "Flutter", 'value': "Flutter"});
+    tags.add({'name': "HummingBird", 'value': "Flutter"});
+    tags.add({'name': "Dart", 'value': "Flutter"});
+    List<dynamic> filteredtags = <dynamic>[];
+    if (query.isNotEmpty) {
+      filteredtags.add({'name': query, 'value': ''});
+    }
+    for (var tag in tags) {
+      if (tag['name'].toLowerCase().contains(query)) {
+        filteredtags.add(tag);
+      }
+    }
+    return filteredtags;
   }
 }

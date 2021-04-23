@@ -207,7 +207,7 @@ List<StaggeredTile> _cardTile = <StaggeredTile>[
 ];
 
 List<Widget> _listTile = <Widget>[
-  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+  Stack(alignment: AlignmentDirectional.bottomStart, children: [
     ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Image.asset(
@@ -226,7 +226,7 @@ List<Widget> _listTile = <Widget>[
               )
             ]))
   ]),
-  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+  Stack(alignment: AlignmentDirectional.bottomStart, children: [
     ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Image.asset(
@@ -245,7 +245,7 @@ List<Widget> _listTile = <Widget>[
               )
             ]))
   ]),
-  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+  Stack(alignment: AlignmentDirectional.bottomStart, children: [
     ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Image.asset(
@@ -264,7 +264,7 @@ List<Widget> _listTile = <Widget>[
               )
             ]))
   ]),
-  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+  Stack(alignment: AlignmentDirectional.bottomStart, children: [
     ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Image.asset(
