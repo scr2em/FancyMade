@@ -16,12 +16,15 @@ class DatabaseService {
   final CollectionReference productsCollection =
       FirebaseFirestore.instance.collection("products");
 
-
-
   Future updateUserData(
-      {String phoneNumber, String name, String email, storeId = false, avatar = "https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png"}) async {
+      {String phoneNumber,
+      String name,
+      String email,
+      storeId = false,
+      avatar =
+          "https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png"}) async {
     return await usersCollection.doc(uid).set({
-      "avatar":avatar,
+      "avatar": avatar,
       "phoneNumber": phoneNumber,
       "name": name,
       "email": email,
@@ -32,25 +35,27 @@ class DatabaseService {
 
   Future getUserDate() async {
     var data = await usersCollection.doc(uid).get();
-    return CustomUser.fromJson({...data.data(),"uid":uid});
+    return CustomUser.fromJson({...data.data(), "uid": uid});
   }
 
   Future createStore(Store store) async {
-    var arData = await storesCollection.where("arName", isEqualTo: store.arName).get();
-    var enData =  await storesCollection.where("enName", isEqualTo: store.enName).get();
-    if(arData.size != 0 ){
+    var arData =
+        await storesCollection.where("arName", isEqualTo: store.arName).get();
+    var enData =
+        await storesCollection.where("enName", isEqualTo: store.enName).get();
+    if (arData.size != 0) {
       throw "the arabic name already exists.";
     }
-    if(enData.size != 0 ){
+    if (enData.size != 0) {
       throw "the english name already exists.";
     }
     DocumentReference doc = await storesCollection.add(store.toJson());
     String docId = doc.id;
-   return await updateAsingleProperty(property: "storeId",newValue: docId);
+    return await updateAsingleProperty(property: "storeId", newValue: docId);
   }
 
   Future updateAsingleProperty({String property, String newValue}) async {
-    await usersCollection.doc(uid).update({property:newValue});
+    await usersCollection.doc(uid).update({property: newValue});
     return await getUserDate();
   }
 

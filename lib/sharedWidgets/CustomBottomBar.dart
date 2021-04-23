@@ -14,16 +14,13 @@ class CustomBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CartProvider>(
-
       builder: (context, cartProvider, child) {
         return BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: AppLocalizations
-                  .of(context)
-                  .sw_CustomBottomBar_home,
+              label: AppLocalizations.of(context).sw_CustomBottomBar_home,
             ),
             BottomNavigationBarItem(
               icon: Stack(
@@ -53,30 +50,20 @@ class CustomBottomBar extends StatelessWidget {
                   )
                 ],
               ),
-              label: AppLocalizations
-                  .of(context)
-                  .cart,
+              label: AppLocalizations.of(context).cart,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.mark_email_unread_outlined),
-              label: AppLocalizations
-                  .of(context)
-                  .messages,
+              label: AppLocalizations.of(context).messages,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle_rounded),
-              label: AppLocalizations
-                  .of(context)
-                  .profile,
+              label: AppLocalizations.of(context).profile,
             ),
           ],
           currentIndex: selectedIndex,
-          selectedItemColor: Theme
-              .of(context)
-              .accentColor,
-          backgroundColor: Theme
-              .of(context)
-              .backgroundColor,
+          selectedItemColor: Theme.of(context).accentColor,
+          backgroundColor: Theme.of(context).backgroundColor,
           onTap: (int index) {
             if (index == 0) {
               Navigator.of(context).pushNamed('/home');
@@ -93,7 +80,7 @@ class CustomBottomBar extends StatelessWidget {
               Navigator.of(context).pushNamed('/home');
             }
           },
-        )
+        );
       },
     );
   }

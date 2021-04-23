@@ -1,4 +1,3 @@
-
 import "package:flutter/material.dart";
 import "../../../sharedWidgets/CustomBottomBar.dart";
 import "../../../sharedWidgets/CustomNavigationButton.dart";
@@ -91,7 +90,6 @@ class Profile extends StatelessWidget {
                       textColor: Colors.white,
                     ),
             ),
-
             SizedBox(
               height: 20,
             ),

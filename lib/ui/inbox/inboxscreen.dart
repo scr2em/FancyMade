@@ -1,4 +1,3 @@
-
 import 'package:finalproject/sharedWidgets/CustomBottomBar.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:finalproject/ui/inbox/individual_chat.dart';
@@ -56,6 +55,7 @@ class _ChatPageState extends State<ChatPage> {
         imageURL: "images/userImage8.jpeg",
         time: "18 Feb"),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,6 +158,7 @@ class ConversationList extends StatefulWidget {
   String time;
   bool isMessageRead;
   Function onTap = () {};
+
   ConversationList(
       {@required this.name,
       @required this.messageText,

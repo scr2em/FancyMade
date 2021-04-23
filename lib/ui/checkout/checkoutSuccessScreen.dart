@@ -8,12 +8,10 @@ class CheckoutSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-        // MaterialApp(
-        //   home:
+
         Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              //Theme.of(context).accentColor,
               title: Row(
                 children: [
                   Icon(
@@ -26,7 +24,6 @@ class CheckoutSuccessScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
-                      // AppLocalizations.of(context).checkoutSuccess,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -141,8 +138,5 @@ class CheckoutSuccessScreen extends StatelessWidget {
               ),
             ),
             bottomNavigationBar: CustomBottomBar());
-    // );
   }
 }
-//Theme.of(context).accentColor
-////AppLocalizations.of(context).helloWorld

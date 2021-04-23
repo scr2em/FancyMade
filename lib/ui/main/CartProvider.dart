@@ -4,25 +4,24 @@ import 'package:flutter/material.dart';
 class CartProvider extends ChangeNotifier {
   List<Cartproduct> cartproducts = [
     // Cartproduct(
-        // id: "11",
-        // price: 120,
-        // productname: 'notebook',
-        // multiplier: 3,
-        // imageURL:
-        //     'https://wilderness-production.imgix.net/2018/11/Terra-pants.jpg?auto=compress%2Cformat&fit=scale&h=1020&ixlib=php-3.3.0&w=1536&wpsize=1536x1536'),
-
+    // id: "11",
+    // price: 120,
+    // productname: 'notebook',
+    // multiplier: 3,
+    // imageURL:
+    //     'https://wilderness-production.imgix.net/2018/11/Terra-pants.jpg?auto=compress%2Cformat&fit=scale&h=1020&ixlib=php-3.3.0&w=1536&wpsize=1536x1536'),
   ];
 
   CartProvider();
 
   addProductToCart(Cartproduct product) {
-  // addProductToCart() {
+    // addProductToCart() {
     cartproducts.add(product);
     notifyListeners();
   }
 
   deleteProductFromCart({id}) {
-   cartproducts =  cartproducts.where((x)=> x.id != id).toList();
+    cartproducts = cartproducts.where((x) => x.id != id).toList();
     notifyListeners();
   }
 
@@ -45,9 +44,5 @@ class CartProvider extends ChangeNotifier {
   onload(int index) {
     var agg = cartproducts[index].multiplier * cartproducts[index].price;
     return agg;
-  }
-
-  updateCart(u) {
-    notifyListeners();
   }
 }

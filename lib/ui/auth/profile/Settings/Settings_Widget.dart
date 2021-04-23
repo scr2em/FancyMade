@@ -5,7 +5,6 @@ import '../../../main/main_locale_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../sharedWidgets/CustomBottomBar.dart';
 
-
 const int ARABIC_VALUE = 1;
 const int ENGLISH_VALUE = 2;
 

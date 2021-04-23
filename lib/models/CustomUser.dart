@@ -32,15 +32,14 @@ class CustomUser {
   String shippingAddress;
 
   factory CustomUser.fromJson(Map<String, dynamic> json) => CustomUser(
-        uid: json["uid"],
-        avatar: json["avatar"],
-        phoneNumber: json["phoneNumber"],
-        name: json["name"],
-        storeId: json["storeId"],
-        email: json["email"],
-        // joinedAt: json["joinedAt"],
-      shippingAddress: json["shippingAddress"]
-      );
+      uid: json["uid"],
+      avatar: json["avatar"],
+      phoneNumber: json["phoneNumber"],
+      name: json["name"],
+      storeId: json["storeId"],
+      email: json["email"],
+      // joinedAt: json["joinedAt"],
+      shippingAddress: json["shippingAddress"]);
 
   Map<String, dynamic> toJson() => {
         "uid": uid,
@@ -50,7 +49,7 @@ class CustomUser {
         "storeId": storeId,
         "email": email,
         "joinedAt": joinedAt,
-      "shippingAddress" : shippingAddress
+        "shippingAddress": shippingAddress
       };
 }
 

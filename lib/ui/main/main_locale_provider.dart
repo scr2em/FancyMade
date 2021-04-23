@@ -33,7 +33,6 @@ class MainLocaleProvider extends ChangeNotifier {
   }
 
   Future addProduct(Product product, File img) async {
-
     product.storeId = user.storeId;
     product.image = await StorageService().uploadImage(img, user.storeId);
     await ProductsService().addProduct(product);
@@ -100,7 +99,6 @@ class MainLocaleProvider extends ChangeNotifier {
 
   void loadSavedTheme() async {
     String themeName = await getSelectedTheme();
-    // print(ThemeMode.values);
     ThemeMode savedTheme = ThemeMode.values
         .firstWhere((themeMode) => themeMode.toString() == themeName);
     if (savedTheme != null) {

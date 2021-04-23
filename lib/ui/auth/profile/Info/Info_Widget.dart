@@ -20,8 +20,6 @@ class _InfoScreenState extends State<InfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: Icon(Icons.arrow_back_ios),
-
         title: Text(
           AppLocalizations.of(context).info,
           style: TextStyle(color: Colors.black),

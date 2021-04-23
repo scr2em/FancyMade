@@ -11,6 +11,7 @@ class CustomLightTextFormField extends StatefulWidget {
   int maxLines;
   bool enabled, enableInteractiveSelection;
   String initialValue;
+
   CustomLightTextFormField(
       {this.hintText,
       this.initialValue = "",

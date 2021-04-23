@@ -1,6 +1,6 @@
-
 import 'package:finalproject/models/CartProduct.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
+import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:finalproject/ui/main/CartProvider.dart';
 import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,13 +16,11 @@ class Cart extends StatefulWidget {
 class CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartProvider>(
-        builder: (context, cartProvider, child) {
-       List<Cartproduct> cartproducts =  cartProvider.cartproducts;
-      String languageCode =
-          Provider.of<MainLocaleProvider>(context)
-              .applicationLocale
-              .languageCode;
+    return Consumer<CartProvider>(builder: (context, cartProvider, child) {
+      List<Cartproduct> cartproducts = cartProvider.cartproducts;
+      String languageCode = Provider.of<MainLocaleProvider>(context)
+          .applicationLocale
+          .languageCode;
       return Container(
         height: MediaQuery.of(context).size.height * .75,
         width: MediaQuery.of(context).size.width,
@@ -61,12 +59,15 @@ class CartState extends State<Cart> {
                               ],
                             )))),
                 backgroundColor: Colors.white,
-                body:
-                    SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
+                body: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: cartproducts.length == 0
+                        ? [
+                            Image.asset("assets/images/emptyCart.png"),
+                          ]
+                        : [
                             ListView.builder(
                                 itemCount: cartproducts.length,
                                 shrinkWrap: true,
@@ -114,14 +115,19 @@ class CartState extends State<Cart> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: <Widget>[
-                                                          Text(
-                                                            'Men shoes',
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
+                                                          LanguageTextSwitcher(
+                                                              ar: cartproducts[
+                                                                      index]
+                                                                  .arName,
+                                                              en: cartproducts[
+                                                                      index]
+                                                                  .enName,
+                                                              style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold)),
+
                                                           SizedBox(
                                                             height: 7,
                                                           ),
@@ -247,7 +253,11 @@ class CartState extends State<Cart> {
                                                         size: 20,
                                                       ),
                                                       onPressed: () {
-                                                        cartProvider.deleteProductFromCart(id: cartproducts[index].id);
+                                                        cartProvider
+                                                            .deleteProductFromCart(
+                                                                id: cartproducts[
+                                                                        index]
+                                                                    .id);
 
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -279,9 +289,8 @@ class CartState extends State<Cart> {
                               height: 100,
                             )
                           ],
-                        ),
-                      )
-                   ,
+                  ),
+                ),
                 bottomSheet: Container(
                   padding: EdgeInsets.zero,
                   color: Colors.white,
@@ -308,7 +317,7 @@ class CartState extends State<Cart> {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
-                        children:  [
+                        children: [
                           SizedBox(height: 6),
                           Align(
                             alignment: Alignment.bottomLeft,
@@ -331,7 +340,7 @@ class CartState extends State<Cart> {
                           //     ),
                           //   ),
                           // ),
-                        ] ,
+                        ],
                       ),
                     ],
                   ),

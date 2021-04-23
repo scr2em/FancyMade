@@ -1,4 +1,3 @@
-
 import 'package:animate_do/animate_do.dart';
 import "package:flutter/material.dart";
 import "../../../sharedWidgets/CustomBottomBar.dart";
@@ -91,7 +90,6 @@ class ProfileUnAuth extends StatelessWidget {
           ],
         ),
       ),
-
       bottomSheet: Container(
         padding: EdgeInsets.all(15),
         child: Row(
@@ -159,7 +157,6 @@ class ProfileUnAuth extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: CustomBottomBar(selectedIndex: 3),
-
     );
   }
 }

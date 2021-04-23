@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:finalproject/models/CartProduct.dart';
 import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
@@ -269,7 +268,7 @@ class _ProductScreenState extends State<ProductScreen> {
                             Text(
                                 '${AppLocalizations.of(context).maxquan}: ${widget.product.maxQuantityPerOrder}'),
                             Text(
-                                '${AppLocalizations.of(context).discDur}: ${widget.product.discountDuration} minutes'),
+                                '${AppLocalizations.of(context).discDur}: ${widget.product.discountDuration} ${AppLocalizations.of(context).minutes}'),
                             Text(
                                 '${AppLocalizations.of(context).shippedby}: ${widget.product.shipment}'),
                           ],
@@ -619,95 +618,130 @@ class _ProductScreenState extends State<ProductScreen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context).quantity,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 18,
-                                  height: 1.5),
-                            ),
-                            Container(
-                              // width: 100,
-                              // height: 30,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 2,
-                                  color: Color(0xff283148).withOpacity(.2),
-                                ),
-                                borderRadius: BorderRadius.circular(6),
-                                color: Color(0xff283148).withOpacity(.2),
-                              ),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all(
-                                                  Size(10, 2))),
-                                      child: Text(
-                                        "-",
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
+                    child: cartProvider.cartproducts
+                                .where((x) => x.id == widget.product.id)
+                                .length ==
+                            0
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(context).quantity,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 18,
+                                        height: 1.5),
+                                  ),
+                                  Container(
+                                    // width: 100,
+                                    // height: 30,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 2,
+                                        color:
+                                            Color(0xff283148).withOpacity(.2),
                                       ),
+                                      borderRadius: BorderRadius.circular(6),
+                                      color: Color(0xff283148).withOpacity(.2),
                                     ),
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 10, horizontal: 15),
-                                      color: Colors.white,
-                                      child: Center(
-                                        child: Text(
-                                          "${multiplier}",
-                                          style: TextStyle(
-                                            fontSize: 22,
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {
+                                              if (multiplier > 1) {
+                                                setState(() {
+                                                  multiplier = multiplier - 1;
+                                                });
+                                              }
+                                            },
+                                            style: ButtonStyle(
+                                                minimumSize:
+                                                    MaterialStateProperty.all(
+                                                        Size(10, 2))),
+                                            child: Text(
+                                              "-",
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all(
-                                                  Size(10, 2))),
-                                      child: Text("+",
-                                          style: TextStyle(
-                                              fontSize: 22,
-                                              color: Colors.black)),
-                                    )
-                                  ]),
-                            )
-                          ],
-                        ),
-                        CustomButton(
-                            elevation: 0,
-                            // height: 60,
-                            width: 150,
-                            primary: Theme.of(context).accentColor,
-                            text: AppLocalizations.of(context).addtocart,
-                            onpress: () {
-                              var productToAdd = Cartproduct(
-                                  id: widget.product.id,
-                                  price: widget.product.price,
-                                  arName: widget.product.arName,
-                                  enName: widget.product.enName,
-                                  multiplier: 3,
-                                  imageURL: widget.product.image);
-                              cartProvider.addProductToCart(productToAdd);
-                              // Navigator.of(context).pushNamed('/profileSettings');
-                            })
-                      ],
-                    ),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 15),
+                                            color: Colors.white,
+                                            child: Center(
+                                              child: Text(
+                                                "${multiplier}",
+                                                style: TextStyle(
+                                                  fontSize: 22,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                multiplier = multiplier + 1;
+                                              });
+                                            },
+                                            style: ButtonStyle(
+                                                minimumSize:
+                                                    MaterialStateProperty.all(
+                                                        Size(10, 2))),
+                                            child: Text("+",
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Colors.black)),
+                                          )
+                                        ]),
+                                  )
+                                ],
+                              ),
+                              CustomButton(
+                                  elevation: 0,
+                                  // height: 60,
+                                  width: 150,
+                                  primary: Theme.of(context).accentColor,
+                                  text: AppLocalizations.of(context).addtocart,
+                                  onpress: () {
+                                    var productToAdd = Cartproduct(
+                                        id: widget.product.id,
+                                        price: widget.product.price,
+                                        arName: widget.product.arName,
+                                        enName: widget.product.enName,
+                                        multiplier: multiplier,
+                                        imageURL: widget.product.image);
+                                    cartProvider.addProductToCart(productToAdd);
+                                    // Navigator.of(context).pushNamed('/profileSettings');
+                                  })
+                            ],
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                                CustomButton(
+                                    elevation: 0,
+                                    // height: 60,
+                                    width: 150,
+                                    primary: Theme.of(context).accentColor,
+                                    text: AppLocalizations.of(context)
+                                        .removeFromCart,
+                                    onpress: () {
+                                      cartProvider.deleteProductFromCart(
+                                          id: widget.product.id);
+                                      setState(() {
+                                        multiplier = 1;
+                                      });
+
+                                      // Navigator.of(context).pushNamed('/profileSettings');
+                                    })
+                              ]),
                   ),
                 ),
               ],

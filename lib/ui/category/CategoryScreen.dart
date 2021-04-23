@@ -1,6 +1,6 @@
 import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/services/products_service.dart';
-import 'package:finalproject/sharedWidgets/ProductModel.dart';
+import 'package:finalproject/sharedWidgets/ProductThumbnail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../.../../../sharedWidgets/CustomBottomBar.dart';
@@ -26,7 +26,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
-
       ),
       body: Column(
         children: [

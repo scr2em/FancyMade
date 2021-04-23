@@ -5,6 +5,7 @@ import "package:provider/provider.dart";
 
 import "../../../services/auth_service.dart";
 import '../../../sharedWidgets/CustomAppBar.dart';
+
 //Custom Widgets
 import '../../../sharedWidgets/CustomBottomBar.dart';
 import "../../../sharedWidgets/CustomTextFormField.dart";
@@ -193,6 +194,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   )),
                 ]),
               ),
-        bottomNavigationBar: CustomBottomBar(selectedIndex: 3,));
+        bottomNavigationBar: CustomBottomBar(
+          selectedIndex: 3,
+        ));
   }
 }

@@ -1,7 +1,7 @@
 import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/services/products_service.dart';
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
-import 'package:finalproject/sharedWidgets/ProductModel.dart';
+import 'package:finalproject/sharedWidgets/ProductThumbnail.dart';
 import 'package:finalproject/ui/store/store-dashboard/info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,15 +32,17 @@ class _StoreScreenState extends State<StoreScreen> {
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
         actions: [
-          IconButton(icon: Icon(Icons.info_outlined), onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => StoreInfo(
-                    storeId:widget.store.id,
-                  )),
-            );
-          }),
+          IconButton(
+              icon: Icon(Icons.info_outlined),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => StoreInfo(
+                            storeId: widget.store.id,
+                          )),
+                );
+              }),
         ],
       ),
       body: Column(
@@ -145,7 +147,8 @@ class _StoreScreenState extends State<StoreScreen> {
                                   children: [
                                     Text(
                                       "${AppLocalizations.of(context).more} (${snapshot.data.docs.length})",
-                                      style: Theme.of(context).textTheme.headline2,
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
                                     ),
                                   ],
                                 ),

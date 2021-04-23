@@ -61,7 +61,6 @@ class OrdersHistoryState extends State<OrdersHistory> {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              // print();
               return Container(
                   padding: EdgeInsets.all(8),
                   child: ExpansionTile(
@@ -138,6 +137,7 @@ class Orders {
   List<String> productName;
   bool status;
   DateTime date;
+
   Orders(
       {@required this.orderId,
       @required this.productName,

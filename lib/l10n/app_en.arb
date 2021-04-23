@@ -185,6 +185,9 @@
     "signInWithGoogle":"Sign in with Google",
     "theme":"theme",
      "uncategorized" : "uncategorized",
-     "topProducts" : "Top products"
+     "topProducts" : "Top products",
+     "minutes" : "minutes",
+      "removeFromCart" : "Remove from cart"
+
 
 }

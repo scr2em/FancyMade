@@ -17,7 +17,7 @@ class Product {
       this.price,
       this.discount = 0,
       this.discountDuration = 0,
-        this.id = "",
+      this.id = "",
       this.category,
       this.image,
       this.sku,

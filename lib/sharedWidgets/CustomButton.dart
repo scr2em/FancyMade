@@ -12,26 +12,25 @@ class CustomButton extends StatefulWidget {
   final Object bordercolor;
   final Object primary;
   final Object onprimary;
-  final  Object icons;
+  final Object icons;
   Function onpress = () {};
   double elevation;
 
-  CustomButton(
-      {this.text = "cutomize me",
-      this.primary,
-      this.bordercolor = Colors.transparent,
-      this.width = 200,
-      this.height = 50,
-      this.radiustopright = 10,
-      this.radiustopleft = 10,
-      this.radiustbotright = 10,
-      this.radiusbotleft = 10,
-      this.fontsize = 16,
-      // @required
-      this.onpress,
-      this.icons,
-      this.onprimary,
-      this.elevation = 2});
+  CustomButton({this.text = "cutomize me",
+    this.primary,
+    this.bordercolor = Colors.transparent,
+    this.width = 200,
+    this.height = 50,
+    this.radiustopright = 10,
+    this.radiustopleft = 10,
+    this.radiustbotright = 10,
+    this.radiusbotleft = 10,
+    this.fontsize = 16,
+    // @required
+    this.onpress,
+    this.icons,
+    this.onprimary,
+    this.elevation = 2});
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -76,6 +75,5 @@ class _CustomButtonState extends State<CustomButton> {
             )),
           ),
         ));
-
   }
 }

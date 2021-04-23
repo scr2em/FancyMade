@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/models/Product.dart';
 import "package:finalproject/services/products_service.dart";
 import 'package:finalproject/services/store_service.dart';
-import 'package:finalproject/sharedWidgets/ProductModel.dart';
+import 'package:finalproject/sharedWidgets/ProductThumbnail.dart';
 import 'package:finalproject/ui/store/Store.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -12,7 +12,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import "../../sharedWidgets/CustomAppBar.dart";
 import "../../sharedWidgets/CustomBottomBar.dart";
 
-// var obj = new CartState();
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -55,7 +54,6 @@ class HomeScreen extends StatelessWidget {
                     children: _listTile,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
-
                   )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,12 +110,14 @@ class HomeScreen extends StatelessWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         ClipRRect(
-                                          borderRadius: BorderRadius.circular(55.0),
+                                          borderRadius:
+                                              BorderRadius.circular(55.0),
                                           child: FadeInImage.assetNetwork(
                                             width: 80,
                                             height: 80,
                                             fit: BoxFit.cover,
-                                            placeholder: 'assets/Spinner-1s-200px.gif',
+                                            placeholder:
+                                                'assets/Spinner-1s-200px.gif',
                                             image: store["image"],
                                           ),
                                         ),
@@ -180,10 +180,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       // return Product(data:snapshot.data[index]);
-            Product product1 = Product.fromJson(snapshot.data[index].data());
-            product1.id = snapshot.data[index].id;
+                      Product product1 =
+                          Product.fromJson(snapshot.data[index].data());
+                      product1.id = snapshot.data[index].id;
                       return ProductThumbnail(
-                        product:product1,
+                        product: product1,
                       );
                     },
                   ),
@@ -215,7 +216,7 @@ List<StaggeredTile> _cardTile = <StaggeredTile>[
 
 List<Widget> _listTile = <Widget>[
   GestureDetector(
-    onTap: (){
+    onTap: () {
       // Navigator.push(
       //   context,
       //   MaterialPageRoute(builder: (context) {
