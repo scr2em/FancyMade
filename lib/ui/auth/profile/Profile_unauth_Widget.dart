@@ -31,11 +31,10 @@ class ProfileUnAuth extends StatelessWidget {
             SizedBox(height: 20),
             CircleAvatar(
               radius: 70.0,
-              backgroundColor: Color(0xFFFFFF),
+              backgroundColor: Colors.transparent,
               child: ClipRRect(
                 child: Image.asset(
                   "assets/images/profile.jpg",
-                  // fit: BoxFit.fill,
                 ),
                 borderRadius: BorderRadius.circular(50.0),
               ),
