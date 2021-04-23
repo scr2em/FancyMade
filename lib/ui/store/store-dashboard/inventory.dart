@@ -202,6 +202,7 @@ Widget _buildList({String key, String string, docs}) {
             borderRadius: BorderRadius.circular(50),
             child: Image.network(
               docs[i]["image"],
+              fit: BoxFit.cover,
             ),
           ),
           title: LanguageTextSwitcher(

@@ -183,6 +183,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             FadeInDownBig(
                               duration: Duration(milliseconds: 500),
                               child: GoogleSignInButton(
+                                text: AppLocalizations.of(context)
+                                    .signInWithGoogle,
+                                centered: true,
                                 onPressed: () {},
                                 splashColor: Theme.of(context).backgroundColor,
                                 // darkMode: true,

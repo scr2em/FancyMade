@@ -177,6 +177,8 @@
     "positivefeedback":"Positive FeedBack",
     "createdsuccessfully":"created successfully",
     "more":"more",
-    "checkoutSuccess":"Checkout Success"
-
+    "checkoutSuccess":"Checkout Success",
+    "storedashboard":"Store Dashboard",
+    "signInWithGoogle":"Sign in with Google",
+    "theme":"theme"
 }

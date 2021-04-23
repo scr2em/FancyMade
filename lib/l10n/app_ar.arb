@@ -177,5 +177,8 @@
     "positivefeedback":"ردود الفعل الإيجابية",
     "createdsuccessfully":"تم إنشاؤه بنجاح",
     "more":"أكثر",
-    "checkoutSuccess":"تمت عملية الدفع بنجاح"
+    "checkoutSuccess":"تمت عملية الدفع بنجاح",
+    "storedashboard":"لوحة قيادة المتجر",
+    "signInWithGoogle":"سجل دخول باستخدام جوجل",
+    "theme":"السمة"
 }
