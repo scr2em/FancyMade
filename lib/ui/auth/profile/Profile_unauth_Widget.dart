@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:finalproject/ui/store/CreateStoreForm.dart';
 import "package:flutter/material.dart";
@@ -29,14 +30,16 @@ class ProfileUnAuth extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(height: 20),
-            CircleAvatar(
-              radius: 70.0,
-              backgroundColor: Colors.transparent,
-              child: ClipRRect(
-                child: Image.asset(
-                  "assets/images/profile.jpg",
+            FadeInDown(
+              duration: Duration(microseconds: 500),
+              child: CircleAvatar(
+                radius: 70.0,
+                backgroundColor: Colors.transparent,
+                child: ClipRRect(
+                  child: Image.asset(
+                    "assets/images/profile.jpg",
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(50.0),
               ),
             ),
             Center(
@@ -55,11 +58,14 @@ class ProfileUnAuth extends StatelessWidget {
                 ),
               ),
             ),
-            CustomNavigationButton(
-                route: '/profileSettings',
-                text: AppLocalizations.of(context).settings,
-                backgroundColor: Theme.of(context).backgroundColor,
-                prefixIcon: Icons.settings_outlined),
+            FadeInDownBig(
+              duration: Duration(milliseconds: 500),
+              child: CustomNavigationButton(
+                  route: '/profileSettings',
+                  text: AppLocalizations.of(context).settings,
+                  backgroundColor: Theme.of(context).backgroundColor,
+                  prefixIcon: Icons.settings_outlined),
+            ),
             SizedBox(
               height: 20,
             ),
@@ -67,17 +73,23 @@ class ProfileUnAuth extends StatelessWidget {
               AppLocalizations.of(context).help,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            CustomNavigationButton(
-              route: '/faq',
-              text: AppLocalizations.of(context).faq,
-              backgroundColor: Theme.of(context).backgroundColor,
-              prefixIcon: Icons.help_outline,
+            FadeInDownBig(
+              duration: Duration(milliseconds: 500),
+              child: CustomNavigationButton(
+                route: '/faq',
+                text: AppLocalizations.of(context).faq,
+                backgroundColor: Theme.of(context).backgroundColor,
+                prefixIcon: Icons.help_outline,
+              ),
             ),
-            CustomNavigationButton(
-              route: '/contactUs',
-              text: AppLocalizations.of(context).contactUs,
-              backgroundColor: Theme.of(context).backgroundColor,
-              prefixIcon: Icons.call,
+            FadeInDownBig(
+              duration: Duration(milliseconds: 500),
+              child: CustomNavigationButton(
+                route: '/contactUs',
+                text: AppLocalizations.of(context).contactUs,
+                backgroundColor: Theme.of(context).backgroundColor,
+                prefixIcon: Icons.call,
+              ),
             ),
             SizedBox(
               height: 40,
@@ -85,6 +97,7 @@ class ProfileUnAuth extends StatelessWidget {
           ],
         ),
       ),
+
       bottomSheet: Container(
         padding: EdgeInsets.all(15),
         child: Row(
@@ -109,12 +122,17 @@ class ProfileUnAuth extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     )),
                   ),
-                  child: Text(AppLocalizations.of(context).createAnAccount),
+                  child: Wrap(children: [
+                    Text(
+                      AppLocalizations.of(context).createAnAccount,
+                      textAlign: TextAlign.center,
+                    )
+                  ]),
                 ),
               ),
             ),
             SizedBox(
-              width: 50,
+              width: 20,
             ),
             Expanded(
               child: SizedBox(

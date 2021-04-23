@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import "package:flutter/material.dart";
 import "../../../../sharedWidgets/CustomTextFormField.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,32 +38,44 @@ class _InfoScreenState extends State<InfoScreen> {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: ListView(
           children: [
-            EditInputField(
-                label: AppLocalizations.of(context).name,
-                text: Provider.of<MainLocaleProvider>(context).user.name,
-                hintText: AppLocalizations.of(context).enterYourName,
-                obscure: false,
-                onPress: (newValue) async {
-                  await Provider.of<MainLocaleProvider>(context, listen: false)
-                      .updateAsingleProperty(
-                          property: "name", newValue: newValue);
-                }),
-            EditInputField(
-              label: AppLocalizations.of(context).email,
-              text: Provider.of<MainLocaleProvider>(context).user.email,
-              hintText: AppLocalizations.of(context).enterYourEmail,
-              obscure: false,
+            FadeInDown(
+              duration: Duration(microseconds: 500),
+              child: EditInputField(
+                  label: AppLocalizations.of(context).name,
+                  text: Provider.of<MainLocaleProvider>(context).user.name,
+                  hintText: AppLocalizations.of(context).enterYourName,
+                  obscure: false,
+                  onPress: (newValue) async {
+                    await Provider.of<MainLocaleProvider>(context,
+                            listen: false)
+                        .updateAsingleProperty(
+                            property: "name", newValue: newValue);
+                  }),
             ),
-            EditInputField(
-                label: AppLocalizations.of(context).phoneNumber,
-                text: Provider.of<MainLocaleProvider>(context).user.phoneNumber,
-                hintText: AppLocalizations.of(context).enterAvalidPhoneNumber,
+            FadeInDownBig(
+              duration: Duration(microseconds: 500),
+              child: EditInputField(
+                label: AppLocalizations.of(context).email,
+                text: Provider.of<MainLocaleProvider>(context).user.email,
+                hintText: AppLocalizations.of(context).enterYourEmail,
                 obscure: false,
-                onPress: (newValue) async {
-                  await Provider.of<MainLocaleProvider>(context, listen: false)
-                      .updateAsingleProperty(
-                          property: "phoneNumber", newValue: newValue);
-                }),
+              ),
+            ),
+            FadeInDown(
+              duration: Duration(microseconds: 500),
+              child: EditInputField(
+                  label: AppLocalizations.of(context).phoneNumber,
+                  text:
+                      Provider.of<MainLocaleProvider>(context).user.phoneNumber,
+                  hintText: AppLocalizations.of(context).enterAvalidPhoneNumber,
+                  obscure: false,
+                  onPress: (newValue) async {
+                    await Provider.of<MainLocaleProvider>(context,
+                            listen: false)
+                        .updateAsingleProperty(
+                            property: "phoneNumber", newValue: newValue);
+                  }),
+            ),
             EditInputField(
               label: AppLocalizations.of(context).password,
               text: "0123456789",

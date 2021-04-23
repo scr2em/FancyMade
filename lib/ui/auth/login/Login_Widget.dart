@@ -70,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
     }
   }
+
   onPressedSignedInWithGoogle() async {
     setState(() {
       loading = true;
@@ -91,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
       loading = false;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -203,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             FadeInDownBig(
                               duration: Duration(milliseconds: 500),
                               child: GoogleSignInButton(
-                                onPressed:onPressedSignedInWithGoogle,
+                                onPressed: onPressedSignedInWithGoogle,
                                 text: AppLocalizations.of(context)
                                     .signInWithGoogle,
                                 centered: true,
@@ -231,7 +233,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )),
               ),
-        bottomNavigationBar: CustomBottomBar(selectedIndex: 3,));
+        bottomNavigationBar: CustomBottomBar(
+          selectedIndex: 3,
+        ));
   }
 }
 

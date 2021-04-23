@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   FutureBuilder(
-                    future: StoreService().getLatestStores(3),
+                    future: StoreService().getLatestStores(5),
                     builder: (context, snapshot2) {
                       if (snapshot2.hasData) {
                         final List<QueryDocumentSnapshot> docs =
