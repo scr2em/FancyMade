@@ -3,8 +3,11 @@ import 'dart:ui';
 import 'package:finalproject/models/Product.dart';
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
+import 'package:finalproject/sharedWidgets/ProductModel.dart';
+import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
 import '../../sharedWidgets/CustomBottomBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
@@ -87,7 +90,7 @@ class ProductScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                "${AppLocalizations.of(context).category} / ${product.category} ",
+                                "${AppLocalizations.of(context).category} / ${product.category ?? AppLocalizations.of(context).uncategorized} ",
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w400,
@@ -137,24 +140,46 @@ class ProductScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '${product.price}',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 20,
-                                      decoration: TextDecoration.lineThrough),
-                                ),
-                                Text(
-                                  '${(product.price * (1 - (product.discount / 100))).toStringAsFixed(2)}',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30,
-                                      color: Theme.of(context).accentColor),
-                                )
-                              ],
-                            ),
+                                children: product.discount != 0
+                                    ? [
+                                  Text(
+                                    Provider.of<MainLocaleProvider>(context)
+                                        .applicationLocale
+                                        .languageCode ==
+                                        "ar"
+                                        ? '${product.price} جنيه'
+                                        : '${product.price} EGP',
+                                    style:TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 20,
+                                        decoration: TextDecoration.lineThrough),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8),
+                                    child: Text(
+                                      '${((1 - (product.discount / 100)) * product.price).toStringAsFixed(2)}',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                          color: Theme.of(context).accentColor),
+                                    ),
+                                  ),
+                                ]
+                                    : [
+                                  Text(
+                                    Provider.of<MainLocaleProvider>(context)
+                                        .applicationLocale
+                                        .languageCode ==
+                                        "ar"
+                                        ? '${product.price} جنيه'
+                                        : '${product.price} EGP',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30,
+                                        color: Theme.of(context).accentColor),
+                                  ),
+                                ]),
+
                             RatingBarIndicator(
                               rating: 2.75,
                               itemBuilder: (context, index) => Icon(
@@ -441,8 +466,7 @@ class ProductScreen extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 10),
                                   child: Text(
-                                    "Store Info",
-                                    // AppLocalizations.of(context).storeInfo,
+                                    AppLocalizations.of(context).storeInfo,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
@@ -463,7 +487,9 @@ class ProductScreen extends StatelessWidget {
                                         Row(
                                           children: [
                                             CircleAvatar(
-                                              maxRadius: 35,
+                                              radius: 55,
+                                              backgroundImage:
+                                              NetworkImage(store["image"]),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(

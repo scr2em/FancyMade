@@ -182,5 +182,7 @@
     "latestStores" : "Latest stores",
     "storedashboard":"Store Dashboard",
     "signInWithGoogle":"Sign in with Google",
-    "theme":"theme"
+    "theme":"theme",
+     "uncategorized" : "uncategorized"
+
 }

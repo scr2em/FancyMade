@@ -99,7 +99,7 @@
     "youcanaddlater":"يمكنك دائمًا إضافة المعلومات أو تحديثها لاحقًا",
     "cart":"سلة المشتريات",
     "securePayment":"دفع امن",
-    "addAddress":"اضف عنوان",
+    "addAddress":"أضف عنوان",
     "payment":"دفع",
     "addCredit":"إضافة رصيد",
     "debitCard":"بطاقة ائتمان",
@@ -108,7 +108,7 @@
     "arrivesby":"يصل",
     "to":"حتى",
     "finalStep":"هذه هي الخطوة الأخيرة ، بعد الضغط على زر 'الدفع الآن' ، سيتم إجراء عملية الدفع",
-    "addtocart":"اضف إلى السلة",
+    "addtocart":"أضف إلى السلة",
     "storeInfo":"معلومات المتجر",
     "ownerName":"اسم المالك",
     "avgRating":"متوسط التقييم",
@@ -182,5 +182,6 @@
     "latestStores" : "جديد المتاجر",
     "storedashboard":"لوحة قيادة المتجر",
     "signInWithGoogle":"سجل دخول باستخدام جوجل",
-    "theme":"السمة"
+    "theme":"السمة",
+    "uncategorized" : "غير مصنف"
 }
