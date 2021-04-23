@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   FutureBuilder(
-                    future: StoreService().getLatestStores(3),
+                    future: StoreService().getLatestStores(5),
                     builder: (context, snapshot2) {
                       if (snapshot2.hasData) {
                         final List<QueryDocumentSnapshot> docs =
@@ -207,22 +207,82 @@ List<StaggeredTile> _cardTile = <StaggeredTile>[
 ];
 
 List<Widget> _listTile = <Widget>[
-  ClipRRect(
-    borderRadius: BorderRadius.circular(10),
-    child: Placeholder(),
-  ),
-  ClipRRect(
-    borderRadius: BorderRadius.circular(10),
-    child: Placeholder(),
-  ),
-  ClipRRect(
-    borderRadius: BorderRadius.circular(10),
-    child: Placeholder(),
-  ),
-  ClipRRect(
-    borderRadius: BorderRadius.circular(10),
-    child: Placeholder(),
-  ),
+  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+    ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(
+        'assets/images/categories/accessories.jpg',
+        fit: BoxFit.fill,
+      ),
+    ),
+    Text('Accessories',
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                blurRadius: 3.0,
+              )
+            ]))
+  ]),
+  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+    ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(
+        'assets/images/categories/dolls.jpg',
+        fit: BoxFit.fill,
+      ),
+    ),
+    Text('Dolls',
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                blurRadius: 3.0,
+              )
+            ]))
+  ]),
+  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+    ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(
+        'assets/images/categories/Jewelry.jpg',
+        fit: BoxFit.fill,
+      ),
+    ),
+    Text('Jewelry',
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                blurRadius: 3.0,
+              )
+            ]))
+  ]),
+  Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+    ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(
+        'assets/images/categories/Paintings.jpg',
+        fit: BoxFit.fill,
+      ),
+    ),
+    Text('Paintings',
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                blurRadius: 3.0,
+              )
+            ]))
+  ]),
 ];
 
 // Padding(

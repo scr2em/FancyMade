@@ -198,12 +198,12 @@ Widget _buildList({String key, String string, docs}) {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Theme.of(context).accentColor)),
         child: ListTile(
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.network(
+          leading: CircleAvatar(
+            radius: 30.0,
+            backgroundImage: NetworkImage(
               docs[i]["image"],
-              fit: BoxFit.cover,
             ),
+            backgroundColor: Colors.transparent,
           ),
           title: LanguageTextSwitcher(
               ar: docs[i]["arName"], en: docs[i]["enName"]),

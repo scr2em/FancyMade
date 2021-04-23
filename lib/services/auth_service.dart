@@ -34,14 +34,9 @@ class AuthService {
             email: userCredential.user.email,
             avatar: userCredential.user.photoURL);
       }
+      CustomUser newUser = await DatabaseService(uid: userId).getUserDate();
 
-      return CustomUser.fromJson({
-        "uid": userId,
-        "email": userCredential.user.email,
-        "phoneNumber": userCredential.user.phoneNumber,
-        "name": userCredential.user.displayName,
-        "avatar": userCredential.user.photoURL
-      });
+      return newUser;
     } catch (err) {
       return null;
     }

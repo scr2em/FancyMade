@@ -29,6 +29,7 @@ class StoreInfo extends StatelessWidget {
       body: FutureBuilder(
           future: StoreService().getStoreInfo(storeId),
           builder: (context, snapshot) {
+
             if (snapshot.hasData) {
               final data = snapshot.data;
               final CustomUser owner = data["owner"];

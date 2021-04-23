@@ -34,22 +34,11 @@ class Profile extends StatelessWidget {
           children: [
             SizedBox(height: 20),
             CircleAvatar(
-
-              radius: 70,
-              backgroundColor: Color(0xFFFFFF),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Provider.of<MainLocaleProvider>(context).user.avatar ==
-                          null
-                      ? Image.asset(
-                          "assets/images/profile",
-                          // scale: 50,
-                        )
-                      : Image.network(Provider.of<MainLocaleProvider>(context)
-                          .user
-                          .avatar)),
+              radius: 70.0,
+              backgroundImage: NetworkImage(
+                  Provider.of<MainLocaleProvider>(context).user.avatar),
+              backgroundColor: Colors.transparent,
             ),
-
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

@@ -40,8 +40,8 @@ class ProductThumbnail extends StatelessWidget {
                 Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: LanguageTextSwitcher(
-                      ar: product.arName,
-                      en: product.enName,
+                      ar: product.arName.length > 80 ? product.arName.substring(0,27) + "..." : product.arName ,
+                      en:  product.enName.length > 80 ? product.enName.substring(0,27) + "..." : product.enName ,
                       style: Theme.of(context).textTheme.bodyText1,
                     )),
               ],
