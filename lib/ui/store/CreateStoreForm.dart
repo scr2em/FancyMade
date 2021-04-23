@@ -29,7 +29,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
   String enDescription;
   String productsAddress;
   String facebookPage;
-  final _CreateStoreformKey = GlobalKey<FormState>();
+  final _createStoreformKey = GlobalKey<FormState>();
 
   _imgFromCamera() async {
     PickedFile img =
@@ -99,7 +99,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
           ),
           child: SingleChildScrollView(
             child: Form(
-              key: _CreateStoreformKey,
+              key: _createStoreformKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -293,7 +293,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                             setState(() {
                               checkedValue = false;
                             });
-                            if (_CreateStoreformKey.currentState.validate() &&
+                            if (_createStoreformKey.currentState.validate() &&
                                 image != null) {
                               try {
                                 Store store = Store.fromJson({

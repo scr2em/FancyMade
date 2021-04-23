@@ -25,23 +25,7 @@ class _EditProductState extends State<EditProduct> {
   File image;
   final _picker = ImagePicker();
   final _productListingForm = GlobalKey<FormState>();
-
-  // //product details
   String groupValue;
-
-  // String arName;
-  // String arDesc;
-  // String enName;
-  // String enDesc;
-  // int price;
-  // int discount;
-  // int discountDuration;
-  // String category;
-  // int itemsAvailable;
-  // List<String> tags;
-  // int maxQuantityPerOrder;
-  // String shipment;
-  bool _checked = false;
 
   _imgFromCamera() async {
     PickedFile img =

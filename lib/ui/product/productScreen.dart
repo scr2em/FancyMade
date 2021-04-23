@@ -677,7 +677,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                             color: Colors.white,
                                             child: Center(
                                               child: Text(
-                                                "${multiplier}",
+                                                multiplier,
                                                 style: TextStyle(
                                                   fontSize: 22,
                                                 ),

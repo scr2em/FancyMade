@@ -34,8 +34,6 @@ class _ProductListingState extends State<ProductListing> {
   int itemsAvailable;
   int maxQuantityPerOrder;
   String shipment;
-  bool _checked = false;
-  String _groupValue;
 
   List<dynamic> tags = [];
 

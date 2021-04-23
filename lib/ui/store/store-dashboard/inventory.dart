@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:finalproject/models/Product.dart';
-import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:finalproject/ui/main/main_locale_provider.dart';
