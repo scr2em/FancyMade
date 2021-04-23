@@ -69,22 +69,22 @@ class MyApp extends StatelessWidget {
           builder: (context, mainLocaleProvider, child) {
         print(ThemeMode.values);
         return MaterialApp(
-          // onGenerateRoute: (settings) {
-          //   switch (settings.name) {
-          //     case '/':
-          //       // if (settings.name == './signin')
-          //       return PageTransition(
-          //         child: LoginScreen(),
-          //         type: PageTransitionType.scale,
-          //         settings: settings,
-          //         reverseDuration: Duration(seconds: 40),
-          //       );
+          onGenerateRoute: (settings) {
+            switch (settings.name) {
+              case '/profileSettings':
+                // if (settings.name == './signin')
+                return PageTransition(
+                  child: SettingsScreen(),
+                  type: PageTransitionType.leftToRight,
+                  settings: settings,
+                  duration: Duration(seconds: 1),
+                );
 
-          //       break;
-          //     default:
-          //       return null;
-          //   }
-          // },
+                break;
+              default:
+                return null;
+            }
+          },
           locale: mainLocaleProvider.applicationLocale,
           title: "FancyMade",
           localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -101,12 +101,11 @@ class MyApp extends StatelessWidget {
             '/product': (context) => ProductScreen(),
             '/CreateStoreForm': (context) => CreateStoreForm(),
             '/profileInfo': (context) => InfoScreen(),
-            '/profileSettings': (context) => SettingsScreen(),
+            // '/profileSettings': (context) => SettingsScreen(),
             '/store': (context) => StoreScreen(),
             '/order': (context) => Order(),
             '/productlisting': (context) => ProductListing(),
             '/productReview': (context) => ProductReview(),
-            '/store-info': (context) => StoreInfo(),
             '/store-inventory': (context) => StoreInventory(),
             '/checkout': (context) => Checkout(),
             '/checkout-success': (context) => CheckoutSuccessScreen(),

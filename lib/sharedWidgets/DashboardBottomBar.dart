@@ -44,13 +44,17 @@ class DashboardBottomBar extends StatelessWidget {
         } else if (index == 2) {
           Navigator.of(context).pushNamed('/req-msgs');
         } else if (index == 3) {
-
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => StoreInfo(
-                  storeId:Provider.of<MainLocaleProvider>(context).user.storeId,
-                )),
+                builder: (context) {
+                  print("==========");
+                  print(Provider.of<MainLocaleProvider>(context).user.toJson());
+                  print("==========");
+                  return StoreInfo(
+                    storeId:Provider.of<MainLocaleProvider>(context).user.storeId,
+                  );
+                }),
           );
         } else {
           Navigator.of(context).pushNamed('/store-dashboard');
