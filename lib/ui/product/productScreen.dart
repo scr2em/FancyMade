@@ -25,21 +25,21 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   int multiplier = 1;
-  increaseMultiplier(){
+
+  increaseMultiplier() {
     setState(() {
-      multiplier = multiplier +1;
+      multiplier = multiplier + 1;
     });
   }
 
-  decreaseMultiplier(){
-
-      if(multiplier >1){
-        setState(() {
-        multiplier = multiplier -1;
-        });
-
-      }
+  decreaseMultiplier() {
+    if (multiplier > 1) {
+      setState(() {
+        multiplier = multiplier - 1;
+      });
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +47,7 @@ class _ProductScreenState extends State<ProductScreen> {
           title: LanguageTextSwitcher(
               ar: widget.product.arName,
               en: widget.product.enName,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(color: Colors.black)),
           elevation: 0,
           centerTitle: true,
@@ -143,13 +144,17 @@ class _ProductScreenState extends State<ProductScreen> {
                       ),
                       Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: LanguageTextSwitcher(
-                              ar: widget.product.arName,
-                              en: widget.product.enName,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.1,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: LanguageTextSwitcher(
+                                ar: widget.product.arName,
+                                en: widget.product.enName,
+                                maxline: 4,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
                             ),
                           ),
                         ],
@@ -163,44 +168,49 @@ class _ProductScreenState extends State<ProductScreen> {
                             Row(
                                 children: widget.product.discount != 0
                                     ? [
-                                  Text(
-                                    Provider.of<MainLocaleProvider>(context)
-                                        .applicationLocale
-                                        .languageCode ==
-                                        "ar"
-                                        ? '${widget.product.price} جنيه'
-                                        : '${widget.product.price} EGP',
-                                    style:TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 20,
-                                        decoration: TextDecoration.lineThrough),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8),
-                                    child: Text(
-                                      '${((1 - (widget.product.discount / 100)) * widget.product.price).toStringAsFixed(2)}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30,
-                                          color: Theme.of(context).accentColor),
-                                    ),
-                                  ),
-                                ]
+                                        Text(
+                                          Provider.of<MainLocaleProvider>(
+                                                          context)
+                                                      .applicationLocale
+                                                      .languageCode ==
+                                                  "ar"
+                                              ? '${widget.product.price} جنيه'
+                                              : '${widget.product.price} EGP',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w900,
+                                              fontSize: 20,
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 8),
+                                          child: Text(
+                                            '${((1 - (widget.product.discount / 100)) * widget.product.price).toStringAsFixed(2)}',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                                color: Theme.of(context)
+                                                    .accentColor),
+                                          ),
+                                        ),
+                                      ]
                                     : [
-                                  Text(
-                                    Provider.of<MainLocaleProvider>(context)
-                                        .applicationLocale
-                                        .languageCode ==
-                                        "ar"
-                                        ? '${widget.product.price} جنيه'
-                                        : '${widget.product.price} EGP',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 30,
-                                        color: Theme.of(context).accentColor),
-                                  ),
-                                ]),
-
+                                        Text(
+                                          Provider.of<MainLocaleProvider>(
+                                                          context)
+                                                      .applicationLocale
+                                                      .languageCode ==
+                                                  "ar"
+                                              ? '${widget.product.price} جنيه'
+                                              : '${widget.product.price} EGP',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 30,
+                                              color: Theme.of(context)
+                                                  .accentColor),
+                                        ),
+                                      ]),
                             RatingBarIndicator(
                               rating: 2.75,
                               itemBuilder: (context, index) => Icon(
@@ -467,15 +477,16 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 20),
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(
+                      MediaQuery.of(context).size.aspectRatio + 3),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: FutureBuilder(
                     future: StoreService().getStoreInfo(widget.product.storeId),
-                    builder: (context, snapshot){
-                      if(snapshot.hasData){
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
                         final data = snapshot.data;
                         final store = data["store"];
                         return Column(
@@ -485,7 +496,8 @@ class _ProductScreenState extends State<ProductScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 10),
+                                  padding: const EdgeInsets.only(
+                                      bottom: 10, left: 7),
                                   child: Text(
                                     AppLocalizations.of(context).storeInfo,
                                     style: TextStyle(
@@ -503,48 +515,54 @@ class _ProductScreenState extends State<ProductScreen> {
                                   children: [
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             CircleAvatar(
                                               radius: 55,
                                               backgroundImage:
-                                              NetworkImage(store["image"]),
+                                                  NetworkImage(store["image"]),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(
                                                   right: 10, left: 10),
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  LanguageTextSwitcher(ar:store["arName"], en:store["enName"], style:TextStyle(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 16))
-                                                ,
+                                                  LanguageTextSwitcher(
+                                                      ar: store["arName"],
+                                                      en: store["enName"],
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 16)),
                                                   Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        top: 5, bottom: 5),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 5, bottom: 5),
                                                     child: Row(
                                                       children: [
                                                         RatingBarIndicator(
                                                           rating: 2.75 / 5,
-                                                          itemBuilder:
-                                                              (context, index) =>
+                                                          itemBuilder: (context,
+                                                                  index) =>
                                                               Icon(
-                                                                Icons.star,
-                                                                color: Colors.amber,
-                                                              ),
+                                                            Icons.star,
+                                                            color: Colors.amber,
+                                                          ),
                                                           itemCount: 1,
                                                           itemSize: 20,
-                                                          direction: Axis.horizontal,
+                                                          direction:
+                                                              Axis.horizontal,
                                                         ),
                                                         Text(
                                                           " 2.75",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.bold,
+                                                                  FontWeight
+                                                                      .bold,
                                                               fontSize: 16),
                                                         )
                                                       ],
@@ -577,124 +595,125 @@ class _ProductScreenState extends State<ProductScreen> {
                             ),
                           ],
                         );
-                      }else if (snapshot.hasError){
-                       return  Container(
+                      } else if (snapshot.hasError) {
+                        return Container(
                             child: Center(
                                 child: Text(
                                     "${AppLocalizations.of(context).error} ${AppLocalizations.of(context).somthingWrong} ${AppLocalizations.of(context).pleasereload}...")));
-                      }else {
-                        return Container(child: Center(child: CircularProgressIndicator()));
-
+                      } else {
+                        return Container(
+                            child: Center(child: CircularProgressIndicator()));
                       }
-    },
+                    },
                   ),
                 ),
               ]),
             ),
           ),
-          Consumer<CartProvider>(
-            builder: (context, cartProvider, child){
-              return Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context).quantity,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 18,
-                                    height: 1.5),
-                              ),
-                              Container(
-                                // width: 100,
-                                // height: 30,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 2,
-                                    color: Color(0xff283148).withOpacity(.2),
-                                  ),
-                                  borderRadius: BorderRadius.circular(6),
+          Consumer<CartProvider>(builder: (context, cartProvider, child) {
+            return Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context).quantity,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 18,
+                                  height: 1.5),
+                            ),
+                            Container(
+                              // width: 100,
+                              // height: 30,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 2,
                                   color: Color(0xff283148).withOpacity(.2),
                                 ),
-                                child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        style: ButtonStyle(
-                                            minimumSize: MaterialStateProperty.all(
-                                                Size(10, 2))),
-                                        child: Text(
-                                          "-",
-                                          style: TextStyle(
-                                              fontSize: 22,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        ),
+                                borderRadius: BorderRadius.circular(6),
+                                color: Color(0xff283148).withOpacity(.2),
+                              ),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all(
+                                                  Size(10, 2))),
+                                      child: Text(
+                                        "-",
+                                        style: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
                                       ),
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 10, horizontal: 15),
-                                        color: Colors.white,
-                                        child: Center(
-                                          child: Text(
-                                            "${multiplier}",
-                                            style: TextStyle(
-                                              fontSize: 22,
-                                            ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 10, horizontal: 15),
+                                      color: Colors.white,
+                                      child: Center(
+                                        child: Text(
+                                          "${multiplier}",
+                                          style: TextStyle(
+                                            fontSize: 22,
                                           ),
                                         ),
                                       ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        style: ButtonStyle(
-                                            minimumSize: MaterialStateProperty.all(
-                                                Size(10, 2))),
-                                        child: Text("+",
-                                            style: TextStyle(
-                                                fontSize: 22, color: Colors.black)),
-                                      )
-                                    ]),
-                              )
-                            ],
-                          ),
-                          CustomButton(
-                              elevation: 0,
-                              // height: 60,
-                              width: 150,
-                              primary: Theme.of(context).accentColor,
-                              text: AppLocalizations.of(context).addtocart,
-                              onpress: () {
-                                var productToAdd = Cartproduct(
-                                    id: widget.product.id,
-                                    price: widget.product.price,
-                                    arName: widget.product.arName,
-                                    enName: widget.product.enName,
-                                    multiplier: 3,
-                                    imageURL: widget.product.image);
-                                  cartProvider.addProductToCart(productToAdd);
-                                // Navigator.of(context).pushNamed('/profileSettings');
-                              })
-                        ],
-                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all(
+                                                  Size(10, 2))),
+                                      child: Text("+",
+                                          style: TextStyle(
+                                              fontSize: 22,
+                                              color: Colors.black)),
+                                    )
+                                  ]),
+                            )
+                          ],
+                        ),
+                        CustomButton(
+                            elevation: 0,
+                            // height: 60,
+                            width: 150,
+                            primary: Theme.of(context).accentColor,
+                            text: AppLocalizations.of(context).addtocart,
+                            onpress: () {
+                              var productToAdd = Cartproduct(
+                                  id: widget.product.id,
+                                  price: widget.product.price,
+                                  arName: widget.product.arName,
+                                  enName: widget.product.enName,
+                                  multiplier: 3,
+                                  imageURL: widget.product.image);
+                              cartProvider.addProductToCart(productToAdd);
+                              // Navigator.of(context).pushNamed('/profileSettings');
+                            })
+                      ],
                     ),
                   ),
-                ],
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              );
-            }
-          )
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            );
+          })
         ]),
         bottomNavigationBar: Container(child: CustomBottomBar()));
   }
