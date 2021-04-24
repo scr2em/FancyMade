@@ -67,7 +67,8 @@ class AuthService {
         "uid": user.uid,
         "email": email,
         "phoneNumber": phoneNumber,
-        "name": name
+        "name": name,
+        "avatar": "https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png"
       });
     } catch (e) {
       return null;
