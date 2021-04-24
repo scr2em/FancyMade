@@ -1,18 +1,16 @@
 import 'dart:ui';
-
 import 'package:finalproject/models/CartProduct.dart';
 import 'package:finalproject/models/Product.dart';
-import "package:finalproject/services/store_service.dart";
 import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:finalproject/ui/main/CartProvider.dart';
 import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-
 import '../../sharedWidgets/CustomBottomBar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import "package:finalproject/services/store_service.dart";
 import '../../sharedWidgets/CustomButton.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -725,7 +723,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                 CustomButton(
                                     elevation: 0,
                                     // height: 60,
-                                    width: 250,
+                                    width: 150,
                                     primary: Theme.of(context).accentColor,
                                     text: AppLocalizations.of(context)
                                         .removeFromCart,

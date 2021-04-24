@@ -39,7 +39,7 @@ class ProductThumbnail extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
+                  width: MediaQuery.of(context).size.width / 2.8,
                   child: Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: LanguageTextSwitcher(
@@ -114,7 +114,7 @@ class ProductThumbnail extends StatelessWidget {
 class Price extends StatelessWidget {
   int value;
   int discount;
-  double priceFontSize = 16;
+  double priceFontSize = 14;
 
   Price({this.value, this.discount = 0});
 

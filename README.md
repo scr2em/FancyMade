@@ -14,3 +14,17 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+### How to use
+
+flutter pub get
+#change entry point to lib/ui/main/main.dart
+flutter run lib/ui/main/main.dart
+
+## Built with
+* No external libraries were used in this project
+
+## Authors
+* **Ahmed Bahaa** 
+* **Aya Ahmed****
+* **Mohamed AbdElgwad**
