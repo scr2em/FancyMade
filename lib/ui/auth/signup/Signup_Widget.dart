@@ -1,3 +1,4 @@
+import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import "package:finalproject/ui/main/main_locale_provider.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,6 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
   String name = "";
   String phoneNumber = "";
   String errorMessage = "";
+  String errorMessage2 = "";
   bool loading = false;
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -57,9 +59,11 @@ class _SignupScreenState extends State<SignupScreen> {
       });
       dynamic result = await _auth.createUserWithEmailAndPassword(
           email, password, phoneNumber, name);
+      print(result.toJson());
       if (result == null) {
         setState(() {
           errorMessage = "Something went wrong, please try again.";
+          errorMessage2 = "حدث خطأ ما";
         });
       } else {
         Provider.of<MainLocaleProvider>(context, listen: false)
@@ -135,7 +139,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 35),
-                            child: Text(errorMessage),
+                            child: LanguageTextSwitcher(ar:errorMessage2,en:errorMessage),
                           ),
 
                           //signup button
