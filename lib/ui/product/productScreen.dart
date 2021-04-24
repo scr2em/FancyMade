@@ -45,11 +45,15 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: LanguageTextSwitcher(
-              ar: widget.product.arName,
-              en: widget.product.enName,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Colors.black)),
+          title: Container(
+            width: MediaQuery.of(context).size.width,
+            child: LanguageTextSwitcher(
+                ar: widget.product.arName,
+                en: widget.product.enName,
+                overflow: TextOverflow.ellipsis,
+                maxline: 1,
+                style: TextStyle(color: Colors.black)),
+          ),
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.white,
@@ -145,16 +149,19 @@ class _ProductScreenState extends State<ProductScreen> {
                       ),
                       Row(
                         children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width / 1.1,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: LanguageTextSwitcher(
-                                ar: widget.product.arName,
-                                en: widget.product.enName,
-                                maxline: 4,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
+                          Center(
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.1,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: LanguageTextSwitcher(
+                                  ar: widget.product.arName,
+                                  en: widget.product.enName,
+                                  maxline: 4,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
                               ),
                             ),
                           ),
@@ -207,7 +214,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                               : '${widget.product.price} EGP',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 30,
+                                              fontSize: 20,
                                               color: Theme.of(context)
                                                   .accentColor),
                                         ),
@@ -227,18 +234,21 @@ class _ProductScreenState extends State<ProductScreen> {
                       ),
                       Row(
                         children: [
-                          Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 10, left: 10, bottom: 20),
-                              child: LanguageTextSwitcher(
-                                  ar: widget.product.arDesc,
-                                  en: widget.product.enDesc,
-                                  maxline: 4,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color(0xff5F5F5F),
-                                  ))),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            child: Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10, left: 10, bottom: 20),
+                                child: LanguageTextSwitcher(
+                                    ar: widget.product.arDesc,
+                                    en: widget.product.enDesc,
+                                    maxline: 4,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Color(0xff5F5F5F),
+                                    ))),
+                          ),
                         ],
                       ),
                     ],

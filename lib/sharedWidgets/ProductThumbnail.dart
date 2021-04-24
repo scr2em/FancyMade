@@ -28,6 +28,7 @@ class ProductThumbnail extends StatelessWidget {
           );
         },
         child: Wrap(
+          // alignment: WrapAlignment.center,
           children: [
             FadeInImage.assetNetwork(
               width: 190,
@@ -37,35 +38,43 @@ class ProductThumbnail extends StatelessWidget {
               image: product.image,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: LanguageTextSwitcher(
-                        ar: product.arName,
-                        en: product.enName,
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: LanguageTextSwitcher(
+                      ar: product.arName,
+                      en: product.enName,
 
-                        // ar: product.arName.length > 80 ? product.arName.substring(0,27) + "..." : product.arName ,
-                        // en:  product.enName.length > 80 ? product.enName.substring(0,27) + "..." : product.enName ,
-                        style: Theme.of(context).textTheme.bodyText1,
-                        maxline: 2,
-                        overflow: TextOverflow.ellipsis,
-                      )),
+                      // ar: product.arName.length > 80 ? product.arName.substring(0,27) + "..." : product.arName ,
+                      // en:  product.enName.length > 80 ? product.enName.substring(0,27) + "..." : product.enName ,
+                      style: Theme.of(context).textTheme.bodyText1,
+                      maxline: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ),
+                // ),
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RatingBarIndicator(
-                  rating: 2.75,
-                  itemBuilder: (context, index) => Icon(
-                    Icons.star,
-                    color: Colors.amber,
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: RatingBarIndicator(
+                      rating: 2.75,
+                      itemBuilder: (context, index) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      itemCount: 5,
+                      itemSize: 10,
+                      direction: Axis.horizontal,
+                    ),
                   ),
-                  itemCount: 5,
-                  itemSize: 20,
-                  direction: Axis.horizontal,
                 ),
               ],
             ),
@@ -83,7 +92,7 @@ class ProductThumbnail extends StatelessWidget {
                           ? Icons.beenhere_outlined
                           : null,
                       color: Colors.grey,
-                      size: 14,
+                      size: 8,
                     ),
                     //failed to combine them
                     Icon(
@@ -93,13 +102,13 @@ class ProductThumbnail extends StatelessWidget {
                                 : null
                             : null,
                         color: Colors.grey,
-                        size: 14),
+                        size: 8),
                     Icon(
                         product.freeShipping != null
                             ? Icons.local_shipping_outlined
                             : null,
                         color: Colors.grey,
-                        size: 14),
+                        size: 8),
                   ],
                 ),
               ],
@@ -138,7 +147,7 @@ class Price extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 0),
                     child: Text(
                       '${((1 - (discount / 100)) * value).toStringAsFixed(2)}',
                       style: TextStyle(
