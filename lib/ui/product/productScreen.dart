@@ -233,6 +233,8 @@ class _ProductScreenState extends State<ProductScreen> {
                               child: LanguageTextSwitcher(
                                   ar: widget.product.arDesc,
                                   en: widget.product.enDesc,
+                                  maxline: 4,
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Color(0xff5F5F5F),

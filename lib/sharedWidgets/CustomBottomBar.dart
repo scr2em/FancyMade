@@ -23,31 +23,33 @@ class CustomBottomBar extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: Stack(
-                children: <Widget>[
-                  Icon(Icons.shopping_cart_outlined),
-                  Positioned(
-                    right: 0,
-                    child: Container(
-                      padding: EdgeInsets.all(1),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      constraints: BoxConstraints(
-                        minWidth: 15,
-                        minHeight: 15,
-                      ),
-                      child: Text(
-                        '${cartProvider.cartproducts.length}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 11,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  )
-                ],
+                children: cartProvider.cartproducts.length != 0
+                    ? [
+                        Icon(Icons.shopping_cart_outlined),
+                        Positioned(
+                          right: 0,
+                          child: Container(
+                            padding: EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 15,
+                              minHeight: 15,
+                            ),
+                            child: Text(
+                              '${cartProvider.cartproducts.length}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )
+                      ]
+                    : [Icon(Icons.shopping_cart_outlined)],
               ),
               label: AppLocalizations.of(context).cart,
             ),
@@ -64,20 +66,23 @@ class CustomBottomBar extends StatelessWidget {
           selectedItemColor: Theme.of(context).accentColor,
           backgroundColor: Theme.of(context).backgroundColor,
           onTap: (int index) {
-            if (index == 0) {
-              Navigator.of(context).pushNamed('/home');
-            } else if (index == 1) {
-              NAlertDialog(
-                content: Cart(),
-                blur: 2,
-              ).show(context, transitionType: DialogTransitionType.Bubble);
-            } else if (index == 2) {
-              Navigator.of(context).pushNamed('/order-history');
-            } else if (index == 3) {
-              Navigator.of(context).pushNamed('/loginProfileWrapper');
-            } else {
-              Navigator.of(context).pushNamed('/home');
+            if(selectedIndex != index){
+              if (index == 0) {
+                Navigator.of(context).pushNamed('/home');
+              } else if (index == 1) {
+                NAlertDialog(
+                  content: Cart(),
+                  blur: 2,
+                ).show(context, transitionType: DialogTransitionType.Bubble);
+              } else if (index == 2) {
+                Navigator.of(context).pushNamed('/order-history');
+              } else if (index == 3) {
+                Navigator.of(context).pushNamed('/loginProfileWrapper');
+              } else {
+                Navigator.of(context).pushNamed('/home');
+              }
             }
+
           },
         );
       },
