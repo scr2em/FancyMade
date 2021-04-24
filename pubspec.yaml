@@ -86,6 +86,7 @@ flutter:
     - assets/images/categories/Paintings.jpg
     - assets/images/emptyCart.png
     - assets/Spinner-1s-200px.gif
+    - assets/images/user.jpg
     - assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
