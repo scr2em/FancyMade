@@ -30,6 +30,7 @@ class ProfileUnAuth extends StatelessWidget {
                 radius: 70.0,
                 backgroundColor: Colors.transparent,
                 child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
                   child: Image.asset(
                     "assets/images/profile.jpg",
                   ),
