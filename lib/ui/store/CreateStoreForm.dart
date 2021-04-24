@@ -1,16 +1,17 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
-import "package:flutter/material.dart";
-import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
-import "../../sharedWidgets/CustomTextFormField.dart";
-import "../../sharedWidgets/CustomButton.dart";
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../sharedWidgets/CustomBottomBar.dart';
-import '../../utils/validators.dart';
 import 'package:finalproject/models/Store.dart';
 import "package:finalproject/ui/main/main_locale_provider.dart";
+import 'package:flutter/cupertino.dart';
+import "package:flutter/material.dart";
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+
+import '../../sharedWidgets/CustomBottomBar.dart';
+import "../../sharedWidgets/CustomButton.dart";
+import "../../sharedWidgets/CustomTextFormField.dart";
+import '../../utils/validators.dart';
 
 class CreateStoreForm extends StatefulWidget {
   @override

@@ -1,15 +1,16 @@
 import 'dart:io';
-import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
-import '../../../sharedWidgets/CustomButton.dart';
-import 'package:group_radio_button/group_radio_button.dart';
-import '../../../utils/validators.dart';
+
 import "package:finalproject/models/Product.dart";
+import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
 import "package:finalproject/ui/main/main_locale_provider.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_tagging/flutter_tagging.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+
+import '../../../sharedWidgets/CustomButton.dart';
+import '../../../utils/validators.dart';
 
 class ProductListing extends StatefulWidget {
   @override

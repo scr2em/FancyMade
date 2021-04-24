@@ -187,6 +187,8 @@
     "uncategorized" : "غير مصنف",
      "topProducts" : "أهم المنتجات",
      "minutes" : "دقائق",
-     "removeFromCart" : "حذف من سلة التسوق"
+     "removeFromCart" : "حذف من سلة التسوق",
+     "continueShopping" : "أكمل التسوق"
+
 
 }

@@ -187,7 +187,8 @@
      "uncategorized" : "uncategorized",
      "topProducts" : "Top products",
      "minutes" : "minutes",
-      "removeFromCart" : "Remove from cart"
+      "removeFromCart" : "Remove from cart",
+      "continueShopping" : "Continue shopping"
 
 
 }
