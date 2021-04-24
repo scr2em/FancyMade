@@ -23,9 +23,9 @@ class ProductsService {
     return await productsCollection.where("storeId", isEqualTo: uid).get();
   }
 
-  Future<QuerySnapshot> getAllProductsByCategory({String category}) async {
+  Future<QuerySnapshot> getAllProductsByCategory({String category }) async {
     return await productsCollection
-        .where("category", isEqualTo: "accessories")
+        .where("category", isEqualTo: category)
         .get();
   }
 }
