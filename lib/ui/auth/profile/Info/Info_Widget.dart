@@ -5,9 +5,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../sharedWidgets/CustomBottomBar.dart';
 import "package:finalproject/ui/main/main_locale_provider.dart";
 import "package:provider/provider.dart";
-import "package:finalproject/services/database.dart";
-import "package:finalproject/models/CustomUser.dart";
-import "package:finalproject/ui/main/main_locale_provider.dart";
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -23,8 +20,6 @@ class _InfoScreenState extends State<InfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: Icon(Icons.arrow_back_ios),
-
         title: Text(
           AppLocalizations.of(context).info,
           style: TextStyle(color: Colors.black),

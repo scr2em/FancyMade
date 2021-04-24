@@ -1,8 +1,5 @@
-import 'package:finalproject/sharedWidgets/CustomNavigationButton.dart';
 import 'package:finalproject/models/inboxscreen_model.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
-import 'package:flutter/foundation.dart';
 
 class Individual_chat extends StatefulWidget {
   @override
@@ -29,7 +26,6 @@ class _Individual_chatState extends State<Individual_chat> {
   @override
   Widget build(BuildContext context) {
     final ChatUsers instance = ModalRoute.of(context).settings.arguments;
-    debugPrint('test: $instance');
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -169,7 +165,6 @@ class _Individual_chatState extends State<Individual_chat> {
                   messages.add(ChatMessage(
                       messageContent: "is there any thing wrong?",
                       messageType: "sender"));
-                  debugPrint('$message');
                 });
               },
               child: Icon(

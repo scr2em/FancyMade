@@ -52,7 +52,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         style: TextStyle(color: Theme.of(context).primaryColor),
         obscureText: widget.obscureText,
         decoration: InputDecoration(
-
           suffixIcon: widget.obscureText
               ? IconButton(
                   icon: Icon(Icons.visibility),

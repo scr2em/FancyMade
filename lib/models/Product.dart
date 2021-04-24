@@ -17,6 +17,7 @@ class Product {
       this.price,
       this.discount = 0,
       this.discountDuration = 0,
+      this.id = "",
       this.category,
       this.image,
       this.sku,
@@ -38,7 +39,7 @@ class Product {
   int discountDuration;
   String category;
   String image;
-
+  String id;
   String sku;
   int itemsAvailable;
   bool freeShipping;
@@ -68,6 +69,7 @@ class Product {
         maxQuantityPerOrder: json["maxQuantityPerOrder"],
         storeId: json["storeId"],
         shipment: json["shipment"],
+        id: json["id"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -88,7 +90,8 @@ class Product {
         "tags": List<dynamic>.from(tags.map((x) => x)),
         "maxQuantityPerOrder": maxQuantityPerOrder,
         "storeId": storeId,
-        "shipment": shipment
+        "shipment": shipment,
+        "id": id
       };
 }
 

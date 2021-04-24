@@ -1,11 +1,5 @@
-import 'dart:io';
-
-import 'package:finalproject/sharedWidgets/CustomTextFormField.dart';
-import 'package:finalproject/ui/store/CreateStoreForm.dart';
 import "package:flutter/material.dart";
-import "../../../sharedWidgets/CustomAppBar.dart";
 import "../../../sharedWidgets/CustomBottomBar.dart";
-import "../../../services/auth_service.dart";
 import "../../../sharedWidgets/CustomNavigationButton.dart";
 import "../../../sharedWidgets/CustomButton.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,8 +7,6 @@ import "package:finalproject/ui/main/main_locale_provider.dart";
 import "package:provider/provider.dart";
 
 class Profile extends StatelessWidget {
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,13 +90,6 @@ class Profile extends StatelessWidget {
                       textColor: Colors.white,
                     ),
             ),
-            CustomButton(
-                height: 50,
-                primary: Theme.of(context).accentColor,
-                text: AppLocalizations.of(context).createYourStoreNow,
-                onpress: () {
-                  Navigator.of(context).pushNamed('/CreateStoreForm');
-                }),
             SizedBox(
               height: 20,
             ),
@@ -131,20 +116,6 @@ class Profile extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: CustomBottomBar(selectedIndex: 3),
-
-      // Center(
-      //   child: ElevatedButton(
-      //       child: Text('signout'),
-      //       onPressed: () async {
-      //         dynamic result = await _auth.signOut();
-      //         if (result == null) {
-      //           print('error signing in');
-      //         } else {
-      //           print('signedin');
-      //           print(result);
-      //         }
-      //       }),
-      // ),
     );
   }
 }

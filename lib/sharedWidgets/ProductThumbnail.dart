@@ -15,7 +15,7 @@ class ProductThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(right: 8),
+      padding: EdgeInsets.only(right: 10, left: 10),
       width: 190.0,
       child: GestureDetector(
         onTap: () {
@@ -29,21 +29,30 @@ class ProductThumbnail extends StatelessWidget {
         },
         child: Wrap(
           children: [
-            Image.network(
-              product.image,
-              height: 150,
+            FadeInImage.assetNetwork(
               width: 190,
+              height: 150,
               fit: BoxFit.cover,
+              placeholder: 'assets/Spinner-1s-200px.gif',
+              image: product.image,
             ),
             Row(
               children: [
-                Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: LanguageTextSwitcher(
-                      ar: product.arName.length > 80 ? product.arName.substring(0,27) + "..." : product.arName ,
-                      en:  product.enName.length > 80 ? product.enName.substring(0,27) + "..." : product.enName ,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    )),
+                Container(
+                  width: MediaQuery.of(context).size.width / 2.5,
+                  child: Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: LanguageTextSwitcher(
+                        ar: product.arName,
+                        en: product.enName,
+
+                        // ar: product.arName.length > 80 ? product.arName.substring(0,27) + "..." : product.arName ,
+                        // en:  product.enName.length > 80 ? product.enName.substring(0,27) + "..." : product.enName ,
+                        style: Theme.of(context).textTheme.bodyText1,
+                        maxline: 2,
+                        overflow: TextOverflow.ellipsis,
+                      )),
+                ),
               ],
             ),
             Row(

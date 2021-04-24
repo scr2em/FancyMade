@@ -1,20 +1,17 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../sharedWidgets/CustomBottomBar.dart';
-import '../main/main.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+
+import '../../sharedWidgets/CustomBottomBar.dart';
 
 class CheckoutSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-        // MaterialApp(
-        //   home:
+
         Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              //Theme.of(context).accentColor,
               title: Row(
                 children: [
                   Icon(
@@ -27,7 +24,6 @@ class CheckoutSuccessScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
-                      // AppLocalizations.of(context).checkoutSuccess,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -142,8 +138,5 @@ class CheckoutSuccessScreen extends StatelessWidget {
               ),
             ),
             bottomNavigationBar: CustomBottomBar());
-    // );
   }
 }
-//Theme.of(context).accentColor
-////AppLocalizations.of(context).helloWorld

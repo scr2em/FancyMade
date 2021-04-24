@@ -1,24 +1,20 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:finalproject/sharedWidgets/CustomButton.dart';
+import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:finalproject/ui/main/main_locale_provider.dart';
-
-//Custom Widgets
-import '../../../sharedWidgets/CustomBottomBar.dart';
-import '../../../sharedWidgets/CustomAppBar.dart';
-import '../../../sharedWidgets/CustomTextFormField.dart';
 
 //services
 import "../../../services/auth_service.dart";
-import "../../../models/CustomUser.dart";
+import '../../../sharedWidgets/CustomAppBar.dart';
 
-import "../../../utils/validators.dart";
+//Custom Widgets
+import '../../../sharedWidgets/CustomBottomBar.dart';
+import '../../../sharedWidgets/CustomTextFormField.dart';
 import "../../../sharedWidgets/Loading.dart";
+import "../../../utils/validators.dart";
 
 class LoginScreen extends StatefulWidget {
   @override

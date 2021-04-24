@@ -1,15 +1,15 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
-import 'package:finalproject/sharedWidgets/CustomButton.dart';
-import 'package:group_radio_button/group_radio_button.dart';
-import 'package:finalproject/utils/validators.dart';
+
 import "package:finalproject/models/Product.dart";
+import 'package:finalproject/sharedWidgets/CustomButton.dart';
+import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
 import "package:finalproject/ui/main/main_locale_provider.dart";
+import 'package:finalproject/utils/validators.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:group_radio_button/group_radio_button.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class EditProduct extends StatefulWidget {
   Product newProduct;

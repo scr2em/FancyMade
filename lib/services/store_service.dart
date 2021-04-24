@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:finalproject/models/CustomUser.dart";
-import "package:finalproject/models/Store.dart";
-import "package:finalproject/models/Product.dart";
-import 'package:flutter/material.dart';
 
 //TODO: move createStore from Database here
 

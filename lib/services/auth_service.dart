@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 import '../models/CustomUser.dart';
 import "database.dart";
-import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -25,7 +26,6 @@ class AuthService {
         await FirebaseAuth.instance.signInWithCredential(credential);
     String userId = userCredential.user.uid;
     bool isUserNew = userCredential.additionalUserInfo.isNewUser;
-    print(userCredential.user.photoURL);
     try {
       if (isUserNew) {
         await DatabaseService(uid: userId).updateUserData(
@@ -50,7 +50,6 @@ class AuthService {
       CustomUser newUser = await DatabaseService(uid: user.uid).getUserDate();
       return newUser;
     } catch (e) {
-      print(e.message);
       return null;
     }
   }
@@ -71,7 +70,6 @@ class AuthService {
         "name": name
       });
     } catch (e) {
-      print(e.toString());
       return null;
     }
   }
@@ -81,7 +79,6 @@ class AuthService {
       await GoogleSignIn().signOut();
       return await _auth.signOut();
     } catch (e) {
-      print(e.toString());
       return null;
     }
   }

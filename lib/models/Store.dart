@@ -12,20 +12,19 @@ Store storeFromJson(String str) => Store.fromJson(json.decode(str));
 String storeToJson(Store data) => json.encode(data.toJson());
 
 class Store {
-  Store({
-    this.ownerId = "",
-    this.arName,
-    this.arAddress,
-    this.arDesc,
-    this.enName,
-    this.enAddress,
-    this.enDesc,
-    this.productsAddress,
-    this.category ="",
-    this.plan = "",
-    this.social,
-    this.image
-  });
+  Store(
+      {this.ownerId = "",
+      this.arName,
+      this.arAddress,
+      this.arDesc,
+      this.enName,
+      this.enAddress,
+      this.enDesc,
+      this.productsAddress,
+      this.category = "",
+      this.plan = "",
+      this.social,
+      this.image});
 
   String ownerId;
   String arName;
@@ -39,35 +38,36 @@ class Store {
   String plan;
   Social social;
   String image;
+
   factory Store.fromJson(Map<String, dynamic> json) => Store(
-    ownerId: json["ownerId"],
-    arName: json["arName"],
-    arAddress: json["arAddress"],
-    arDesc: json["arDesc"],
-    enName: json["enName"],
-    enAddress: json["enAddress"],
-    enDesc: json["enDesc"],
-    productsAddress: json["productsAddress"],
-    category: json["category"],
-    plan: json["plan"],
-    image: json["image"],
-    social: Social.fromJson(json["social"]),
-  );
+        ownerId: json["ownerId"],
+        arName: json["arName"],
+        arAddress: json["arAddress"],
+        arDesc: json["arDesc"],
+        enName: json["enName"],
+        enAddress: json["enAddress"],
+        enDesc: json["enDesc"],
+        productsAddress: json["productsAddress"],
+        category: json["category"],
+        plan: json["plan"],
+        image: json["image"],
+        social: Social.fromJson(json["social"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "ownerId": ownerId,
-    "arName": arName,
-    "arAddress": arAddress,
-    "arDesc": arDesc,
-    "enName": enName,
-    "enAddress": enAddress,
-    "enDesc": enDesc,
-    "productsAddress": productsAddress,
-    "category": category,
-    "plan": plan,
-    "social": social.toJson(),
-    "image" : image
-  };
+        "ownerId": ownerId,
+        "arName": arName,
+        "arAddress": arAddress,
+        "arDesc": arDesc,
+        "enName": enName,
+        "enAddress": enAddress,
+        "enDesc": enDesc,
+        "productsAddress": productsAddress,
+        "category": category,
+        "plan": plan,
+        "social": social.toJson(),
+        "image": image
+      };
 }
 
 class Social {
@@ -78,16 +78,13 @@ class Social {
   String facebook;
 
   factory Social.fromJson(Map<String, dynamic> json) => Social(
-    facebook: json["facebook"],
-  );
+        facebook: json["facebook"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "facebook": facebook,
-  };
+        "facebook": facebook,
+      };
 }
-
-
-
 
 // {
 // "ownerId": "ownerId",
@@ -104,5 +101,3 @@ class Social {
 // "facebook" : "http://....",
 // },
 // }
-
-

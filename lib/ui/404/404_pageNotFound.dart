@@ -16,15 +16,6 @@ class PageNotFound extends StatelessWidget {
       backgroundColor: const Color(323232),
       body: Stack(
         children: [
-          // Positioned(
-          //   top: 24,
-          //   bottom: 200,
-          //   left: 24,
-          //   right: 24,
-          //   child: Container(
-          //     child: Image.asset('brain.png'),
-          //   ),
-          // ),
           Positioned(
             top: 150,
             bottom: 0,

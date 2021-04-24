@@ -23,6 +23,14 @@ class StoreInventory extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Color(0xff273147)),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed("/store-dashboard");
+          },
+        ),
       ),
       body: FutureBuilder(
         future: ProductsService().getInventory(

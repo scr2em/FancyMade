@@ -1,15 +1,14 @@
 import 'dart:io';
 
+import 'package:finalproject/models/CustomUser.dart';
+import 'package:finalproject/models/Product.dart';
+import 'package:finalproject/models/Store.dart';
+import "package:finalproject/services/database.dart";
+import "package:finalproject/services/products_service.dart";
+import "package:finalproject/services/storage_service.dart";
 import 'package:flutter/material.dart';
-import '../../utils/shared_preference.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:finalproject/models/CustomUser.dart';
-import 'package:finalproject/models/Store.dart';
-import 'package:finalproject/models/Product.dart';
-import "package:finalproject/services/database.dart";
-import "package:finalproject/services/storage_service.dart";
-import "package:finalproject/services/products_service.dart";
 
 const String APP_FIRST_OPEN = "APP_FIRST_OPEN";
 const String APP_SAVED_LOCALE = "APP_SAVED_LOCALE";
@@ -22,6 +21,7 @@ class MainLocaleProvider extends ChangeNotifier {
 
   MainLocaleProvider() {
     loadSavedLocale();
+    loadSavedTheme();
   }
 
   Future updateProduct(Product product, File img, String productId) async {
@@ -33,7 +33,6 @@ class MainLocaleProvider extends ChangeNotifier {
   }
 
   Future addProduct(Product product, File img) async {
-
     product.storeId = user.storeId;
     product.image = await StorageService().uploadImage(img, user.storeId);
     await ProductsService().addProduct(product);
@@ -100,7 +99,6 @@ class MainLocaleProvider extends ChangeNotifier {
 
   void loadSavedTheme() async {
     String themeName = await getSelectedTheme();
-    // print(ThemeMode.values);
     ThemeMode savedTheme = ThemeMode.values
         .firstWhere((themeMode) => themeMode.toString() == themeName);
     if (savedTheme != null) {

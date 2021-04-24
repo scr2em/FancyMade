@@ -184,5 +184,9 @@
     "storedashboard":"لوحة قيادة المتجر",
     "signInWithGoogle":"سجل دخول باستخدام جوجل",
     "theme":"السمة",
-    "uncategorized" : "غير مصنف"
+    "uncategorized" : "غير مصنف",
+     "topProducts" : "أهم المنتجات",
+     "minutes" : "دقائق",
+     "removeFromCart" : "حذف من سلة التسوق"
+
 }

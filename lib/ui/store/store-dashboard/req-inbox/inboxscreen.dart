@@ -1,12 +1,9 @@
-import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
-import 'package:finalproject/sharedWidgets/CustomBottomBar.dart';
 import 'package:finalproject/sharedWidgets/CustomButton.dart';
 import 'package:finalproject/ui/inbox/individual_chat.dart';
-import 'package:finalproject/utils/theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'dart:developer';
-import 'package:flutter/foundation.dart';
+
 import '../../../../sharedWidgets/DashboardBottomBar.dart';
 import 'inboxscreen_model.dart';
 
@@ -58,23 +55,24 @@ class _ReqChatPageState extends State<ReqChatPage> {
         imageURL: "images/userImage8.jpeg",
         time: "18 Feb"),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        // automaticallyImplyLeading: false,
         backgroundColor: Color(0xfffafafa),
         centerTitle: true,
-        // Text('test')
         title: Text(
           AppLocalizations.of(context).messages,
           style: Theme.of(context).textTheme.headline5,
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back,
+          ),
           onPressed: () {
-            Navigator.of(context).pushNamed('/');
+            Navigator.of(context).pushNamed("/store-dashboard");
           },
         ),
         // backgroundColor: Color(0xffffffff),
@@ -167,6 +165,7 @@ class ConversationList extends StatefulWidget {
   String time;
   bool isMessageRead;
   Function onTap = () {};
+
   ConversationList(
       {@required this.name,
       @required this.messageText,

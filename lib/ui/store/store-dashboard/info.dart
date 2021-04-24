@@ -1,12 +1,11 @@
+import "package:finalproject/models/CustomUser.dart";
+import "package:finalproject/services/store_service.dart";
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
-import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import "package:finalproject/models/CustomUser.dart";
-import 'package:provider/provider.dart';
+
 import '../../../sharedWidgets/DashboardBottomBar.dart';
-import "package:finalproject/services/store_service.dart";
 
 class StoreInfo extends StatelessWidget {
   final String storeId;
@@ -25,11 +24,18 @@ class StoreInfo extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Color(0xff273147)),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed("/store-dashboard");
+          },
+        ),
       ),
       body: FutureBuilder(
           future: StoreService().getStoreInfo(storeId),
           builder: (context, snapshot) {
-
             if (snapshot.hasData) {
               final data = snapshot.data;
               final CustomUser owner = data["owner"];

@@ -138,7 +138,7 @@
     "delivered":"Delivered",
     "moredetails":"More details",
     "backToDashboard" : "Back to dashboard",
-    "categories":"categories",
+    "categories":"Categories",
     "viewall":"View all",
     "bestSeller":"Best Seller",
     "nearbyStore":"Nearby stores",
@@ -184,6 +184,10 @@
     "storedashboard":"Store Dashboard",
     "signInWithGoogle":"Sign in with Google",
     "theme":"theme",
-     "uncategorized" : "uncategorized"
+     "uncategorized" : "uncategorized",
+     "topProducts" : "Top products",
+     "minutes" : "minutes",
+      "removeFromCart" : "Remove from cart"
+
 
 }

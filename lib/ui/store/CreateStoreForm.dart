@@ -33,7 +33,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
 
   _imgFromCamera() async {
     PickedFile img =
-    await _picker.getImage(source: ImageSource.camera, imageQuality: 50);
+        await _picker.getImage(source: ImageSource.camera, imageQuality: 50);
 
     setState(() {
       image = File(img.path);
@@ -42,12 +42,13 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
 
   _imgFromGallery() async {
     PickedFile img =
-    await _picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+        await _picker.getImage(source: ImageSource.gallery, imageQuality: 50);
 
     setState(() {
       image = File(img.path);
     });
   }
+
   void _showPicker(context) {
     showModalBottomSheet(
         context: context,
@@ -59,7 +60,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
                       title:
-                      new Text(AppLocalizations.of(context).photoLibrary),
+                          new Text(AppLocalizations.of(context).photoLibrary),
                       onTap: () {
                         _imgFromGallery();
                         Navigator.of(context).pop();
@@ -113,41 +114,42 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                       child: Container(
                         child: image != null
                             ? ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Image.file(
-                            image,
-                            width: 300,
-                            height: 300,
-                            fit: BoxFit.fitHeight,
-                          ),
-                        )
-                            : Stack(
-                            alignment: AlignmentDirectional.bottomEnd,
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Color(0xffC4C4C4),
-                                      borderRadius: BorderRadius.circular(6)),
-                                  width: 280,
-                                  height: 305,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        AppLocalizations.of(context)
-                                            .addStoreImage,
-                                        style: TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  )),
-                              Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: Icon(Icons.add_a_photo),
+                                borderRadius: BorderRadius.circular(5),
+                                child: Image.file(
+                                  image,
+                                  width: 300,
+                                  height: 300,
+                                  fit: BoxFit.fitHeight,
+                                ),
                               )
-                            ]),
+                            : Stack(
+                                alignment: AlignmentDirectional.bottomEnd,
+                                children: [
+                                    Container(
+                                        decoration: BoxDecoration(
+                                            color: Color(0xffC4C4C4),
+                                            borderRadius:
+                                                BorderRadius.circular(6)),
+                                        width: 280,
+                                        height: 305,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              AppLocalizations.of(context)
+                                                  .addStoreImage,
+                                              style: TextStyle(
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.all(20),
+                                      child: Icon(Icons.add_a_photo),
+                                    )
+                                  ]),
                       ),
                     ),
                   ),
