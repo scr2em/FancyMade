@@ -59,7 +59,6 @@ class _SignupScreenState extends State<SignupScreen> {
       });
       dynamic result = await _auth.createUserWithEmailAndPassword(
           email, password, phoneNumber, name);
-      print(result.toJson());
       if (result == null) {
         setState(() {
           errorMessage = "Something went wrong, please try again.";
