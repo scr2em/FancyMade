@@ -17,42 +17,50 @@ class _ChatPageState extends State<ChatPage> {
     ChatUsers(
         name: "Jane Russel",
         messageText: "Awesome Setup",
-        imageURL: "images/userImage1.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "now"),
     ChatUsers(
         name: "Glady's Murphy",
         messageText: "That's Great",
-        imageURL: "images/userImage2.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "now"),
     ChatUsers(
         name: "Jorge Henry",
         messageText: "Hey where are you?",
-        imageURL: "images/userImage3.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "31 Mar"),
     ChatUsers(
         name: "Philip Fox",
         messageText: "Busy! Call me in 20 mins",
-        imageURL: "images/userImage4.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "28 Mar"),
     ChatUsers(
         name: "Debra Hawkins",
         messageText: "Thankyou, It's awesome",
-        imageURL: "images/userImage5.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "23 Mar"),
     ChatUsers(
         name: "Jacob Pena",
         messageText: "will update you in evening",
-        imageURL: "images/userImage6.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "17 Mar"),
     ChatUsers(
         name: "Andrey Jones",
         messageText: "Can you please share the file?",
-        imageURL: "images/userImage7.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "24 Feb"),
     ChatUsers(
         name: "John Wick",
         messageText: "How are you?",
-        imageURL: "images/userImage8.jpeg",
+        imageURL:
+            "https://yt3.ggpht.com/ytc/AAUvwngw35YY8vYI86RTOoEGafSxEjghjzTcKw3LbMyZ=s900-c-k-c0x00ffffff-no-rj",
         time: "18 Feb"),
   ];
 

@@ -388,22 +388,22 @@ class _ProductListingState extends State<ProductListing> {
                     ),
                   ),
 
-                  TextFieldTags(
-                      initialTags: tags,
-                      tagsStyler: TagsStyler(
-                          tagTextStyle: TextStyle(fontWeight: FontWeight.bold),
-                          tagDecoration: BoxDecoration(
-                            color: Color(0xffE9A06B),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          tagCancelIcon: Icon(Icons.cancel,
-                              size: 18.0, color: Theme.of(context).accentColor),
-                          tagPadding: const EdgeInsets.all(6.0)),
-                      textFieldStyler: TextFieldStyler(),
-                      onTag: (tag) {
-                        tags.add(tag);
-                      },
-                      onDelete: (tag) {})
+                  // TextFieldTags(
+                  //     initialTags: tags,
+                  //     tagsStyler: TagsStyler(
+                  //         tagTextStyle: TextStyle(fontWeight: FontWeight.bold),
+                  //         tagDecoration: BoxDecoration(
+                  //           color: Color(0xffE9A06B),
+                  //           borderRadius: BorderRadius.circular(8.0),
+                  //         ),
+                  //         tagCancelIcon: Icon(Icons.cancel,
+                  //             size: 18.0, color: Theme.of(context).accentColor),
+                  //         tagPadding: const EdgeInsets.all(6.0)),
+                  //     textFieldStyler: TextFieldStyler(),
+                  //     onTag: (tag) {
+                  //       // tags.add(tag);
+                  //     },
+                  //     onDelete: (tag) {})
 
                   // TextFieldTags(
                   //     initialTags: tags,
@@ -608,28 +608,28 @@ class _ProductListingState extends State<ProductListing> {
   }
 }
 
-class TagSearchService {
-  static Future<List> getSuggestions(String query) async {
-    await Future.delayed(Duration(milliseconds: 400), null);
-    List<String> tagList = <String>[
-      'Painting',
-      'Jewelry',
-      'Dolls',
-      'Accrssiries'
-    ];
-    // tagList.add('Painting');
-    // tagList.add('Jewelry');
-    // tagList.add('Dolls');
-    // tagList.add('Accrssiries');
-    List<String> filteredTagList = <String>[];
-    if (query.isNotEmpty) {
-      filteredTagList.add(query);
-    }
-    for (String tag in tagList) {
-      if (tag.toLowerCase().contains(query)) {
-        filteredTagList.add(tag);
-      }
-    }
-    return filteredTagList;
-  }
-}
+// class TagSearchService {
+//   static Future<List> getSuggestions(String query) async {
+//     await Future.delayed(Duration(milliseconds: 400), null);
+//     List<String> tagList = <String>[
+//       'Painting',
+//       'Jewelry',
+//       'Dolls',
+//       'Accrssiries'
+//     ];
+//     // tagList.add('Painting');
+//     // tagList.add('Jewelry');
+//     // tagList.add('Dolls');
+//     // tagList.add('Accrssiries');
+//     List<String> filteredTagList = <String>[];
+//     if (query.isNotEmpty) {
+//       filteredTagList.add(query);
+//     }
+//     for (String tag in tagList) {
+//       if (tag.toLowerCase().contains(query)) {
+//         filteredTagList.add(tag);
+//       }
+//     }
+//     return filteredTagList;
+//   }
+// }

@@ -167,8 +167,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: SizedBox(
                                   height: 50,
-                                  width:
-                                      .583 * MediaQuery.of(context).size.width,
+                                  width: 251,
+                                  // .583 * MediaQuery.of(context).size.width,
                                   child: TextButton(
                                     onPressed: onPressed,
                                     style: ButtonStyle(

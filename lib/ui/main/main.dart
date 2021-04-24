@@ -3,6 +3,7 @@ import 'package:finalproject/ui/FAQ/faq.dart';
 import 'package:finalproject/ui/Orders/Orders_history.dart';
 import 'package:finalproject/ui/checkout/checkout.dart';
 import 'package:finalproject/ui/checkout/checkoutSuccessScreen.dart';
+import 'package:finalproject/ui/inbox/inboxscreen.dart';
 import 'package:finalproject/ui/order/order.dart';
 import 'package:finalproject/ui/store/Add%20Prodect/ProductListingScreen.dart';
 import 'package:finalproject/ui/store/Add%20Prodect/ProductReviewScreen.dart';
@@ -99,7 +100,8 @@ class MyApp extends StatelessWidget {
               '/faq': (context) => FAQ(),
               '/notfound': (context) => PageNotFound(),
               '/order-history': (context) => OrdersHistory(),
-              '/editProduct': (context) => EditProduct()
+              '/editProduct': (context) => EditProduct(),
+              '/messages': (context) => ChatPage()
             },
 
             // home: MyHomePage(title: 'Flutter Demo Home Page1'),
