@@ -123,7 +123,7 @@ class ProductThumbnail extends StatelessWidget {
 class Price extends StatelessWidget {
   int value;
   int discount;
-  double priceFontSize = 16;
+  double priceFontSize = 14;
 
   Price({this.value, this.discount = 0});
 

@@ -89,78 +89,114 @@ class HomeScreen extends StatelessWidget {
                                       ]))
                             ]),
                       ),
-                      Stack(
-                          alignment: AlignmentDirectional.bottomStart,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/categories/dolls.jpg',
-                                    ),
-                                    fit: BoxFit.fill,
-                                  )),
-                            ),
-                            Text('Dolls',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    shadows: [
-                                      Shadow(
-                                        blurRadius: 3.0,
-                                      )
-                                    ]))
-                          ]),
-                      Stack(
-                          alignment: AlignmentDirectional.bottomStart,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/categories/Jewelry.jpg',
-                                    ),
-                                    fit: BoxFit.fill,
-                                  )),
-                            ),
-                            Text('Jewelry',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    shadows: [
-                                      Shadow(
-                                        blurRadius: 3.0,
-                                      )
-                                    ]))
-                          ]),
-                      Stack(
-                          alignment: AlignmentDirectional.bottomStart,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/categories/Paintings.jpg',
-                                    ),
-                                    fit: BoxFit.fill,
-                                  )),
-                            ),
-                            Text('Paintings',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    shadows: [
-                                      Shadow(
-                                        blurRadius: 3.0,
-                                      )
-                                    ]))
-                          ]),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return CategoryScreen(
+                                category: "dolls",
+                              );
+                            }),
+                          );
+                        },
+                        child: Stack(
+                            alignment: AlignmentDirectional.bottomStart,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/categories/dolls.jpg',
+                                      ),
+                                      fit: BoxFit.fill,
+                                    )),
+                              ),
+                              Text('Dolls',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 3.0,
+                                        )
+                                      ]))
+                            ]),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return CategoryScreen(
+                                category: "jewelry",
+                              );
+                            }),
+                          );
+                        },
+                        child: Stack(
+                            alignment: AlignmentDirectional.bottomStart,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/categories/Jewelry.jpg',
+                                      ),
+                                      fit: BoxFit.fill,
+                                    )),
+                              ),
+                              Text('Jewelry',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 3.0,
+                                        )
+                                      ]))
+                            ]),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return CategoryScreen(
+                                category: "paintimg",
+                              );
+                            }),
+                          );
+                        },
+                        child: Stack(
+                            alignment: AlignmentDirectional.bottomStart,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/categories/Paintings.jpg',
+                                      ),
+                                      fit: BoxFit.fill,
+                                    )),
+                              ),
+                              Text('Paintings',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 3.0,
+                                        )
+                                      ]))
+                            ]),
+                      ),
                     ],
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
@@ -231,16 +267,9 @@ class HomeScreen extends StatelessWidget {
                                             image: store["image"],
                                           ),
                                         ),
-                                        Container(
-                                          // width: 10,
-
-                                          child: LanguageTextSwitcher(
+                                        LanguageTextSwitcher(
                                             ar: store["arName"],
-                                            en: store["enName"],
-                                            maxline: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
+                                            en: store["enName"]),
                                       ],
                                     ),
                                   ),

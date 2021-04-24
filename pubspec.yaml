@@ -55,6 +55,7 @@ dependencies:
   flutter_launcher_icons: ^0.9.0
   flutter_tagging: ^1.0.0
   transparent_image: ^2.0.0
+  splash_screen_view: ^1.0.3
 
 dev_dependencies:
   flutter_test:
