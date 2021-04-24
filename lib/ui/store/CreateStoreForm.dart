@@ -1,16 +1,17 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
-import "package:flutter/material.dart";
-import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
-import "../../sharedWidgets/CustomTextFormField.dart";
-import "../../sharedWidgets/CustomButton.dart";
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../sharedWidgets/CustomBottomBar.dart';
-import '../../utils/validators.dart';
 import 'package:finalproject/models/Store.dart';
 import "package:finalproject/ui/main/main_locale_provider.dart";
+import 'package:flutter/cupertino.dart';
+import "package:flutter/material.dart";
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+
+import '../../sharedWidgets/CustomBottomBar.dart';
+import "../../sharedWidgets/CustomButton.dart";
+import "../../sharedWidgets/CustomTextFormField.dart";
+import '../../utils/validators.dart';
 
 class CreateStoreForm extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
   String enDescription;
   String productsAddress;
   String facebookPage;
-  final _CreateStoreformKey = GlobalKey<FormState>();
+  final _createStoreformKey = GlobalKey<FormState>();
 
   _imgFromCamera() async {
     PickedFile img =
@@ -99,7 +100,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
           ),
           child: SingleChildScrollView(
             child: Form(
-              key: _CreateStoreformKey,
+              key: _createStoreformKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -293,7 +294,7 @@ class _CreateStoreFormState extends State<CreateStoreForm> {
                             setState(() {
                               checkedValue = false;
                             });
-                            if (_CreateStoreformKey.currentState.validate() &&
+                            if (_createStoreformKey.currentState.validate() &&
                                 image != null) {
                               try {
                                 Store store = Store.fromJson({

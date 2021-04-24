@@ -1,6 +1,7 @@
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../sharedWidgets/DashboardBottomBar.dart';
 
 class StoreDashboard extends StatelessWidget {

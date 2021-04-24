@@ -37,10 +37,7 @@ class CartState extends State<Cart> {
                             minimum: EdgeInsets.all(5),
                             child: Row(
                               children: [
-                                Text(
-                                    //should be localized
-                                    // 'cart'
-                                    AppLocalizations.of(context).cart,
+                                Text(AppLocalizations.of(context).cart,
                                     textAlign: TextAlign.left,
                                     style:
                                         Theme.of(context).textTheme.headline1),
@@ -303,22 +300,26 @@ class CartState extends State<Cart> {
                           width: 150,
                           height: 40,
                           //need localization
-                          text: '${AppLocalizations.of(context).checkout}',
+                          text:
+                              '${cartproducts.length == 0 ? AppLocalizations.of(context).continueShopping : AppLocalizations.of(context).checkout}',
                           fontsize: 12,
                           primary: Theme.of(context).accentColor,
                           onprimary: Colors.white,
                           bordercolor: Colors.transparent,
                           onpress: () {
-                            // cartProvider.addProductToCart();
-                            // Navigator.of(context).pushNamed('/checkout');
+                            if (cartproducts.length == 0) {
+                              Navigator.of(context).pushNamed('/');
+                            } else {
+                              Navigator.of(context).pushNamed('/checkout');
+                            }
                           }),
                       SizedBox(
-                        width: 20,
+                        width: 50,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          SizedBox(height: 6),
+                          SizedBox(height: 12),
                           Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(
@@ -329,17 +330,17 @@ class CartState extends State<Cart> {
                               ),
                             ),
                           ),
-                          // Align(
-                          //   alignment: Alignment.bottomLeft,
-                          //   child: Text(
-                          //     '${cartproducts.map((e) => e.price * e.multiplier).reduce((value, element) => value + element)}',
-                          //     style: TextStyle(
-                          //       color: Theme.of(context).accentColor,
-                          //       fontWeight: FontWeight.bold,
-                          //       fontSize: 21,
-                          //     ),
-                          //   ),
-                          // ),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Text(
+                              '${cartproducts.length == 0 ? "0" : cartproducts.map((e) => e.price * e.multiplier).reduce((value, element) => value + element)}',
+                              style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ],

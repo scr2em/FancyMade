@@ -16,21 +16,22 @@ class CustomButton extends StatefulWidget {
   Function onpress = () {};
   double elevation;
 
-  CustomButton({this.text = "cutomize me",
-    this.primary,
-    this.bordercolor = Colors.transparent,
-    this.width = 200,
-    this.height = 50,
-    this.radiustopright = 10,
-    this.radiustopleft = 10,
-    this.radiustbotright = 10,
-    this.radiusbotleft = 10,
-    this.fontsize = 16,
-    // @required
-    this.onpress,
-    this.icons,
-    this.onprimary,
-    this.elevation = 2});
+  CustomButton(
+      {this.text = "cutomize me",
+      this.primary,
+      this.bordercolor = Colors.transparent,
+      this.width = 200,
+      this.height = 50,
+      this.radiustopright = 10,
+      this.radiustopleft = 10,
+      this.radiustbotright = 10,
+      this.radiusbotleft = 10,
+      this.fontsize = 16,
+      // @required
+      this.onpress,
+      this.icons,
+      this.onprimary,
+      this.elevation = 2});
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -43,7 +44,6 @@ class _CustomButtonState extends State<CustomButton> {
         width: widget.width,
         height: widget.height,
         child: ElevatedButton(
-
           onPressed: widget.onpress,
           child: Stack(
             children: [

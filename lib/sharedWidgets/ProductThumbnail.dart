@@ -1,9 +1,9 @@
+import "package:finalproject/models/Product.dart";
+import "package:finalproject/sharedWidgets/LanguageTextSwitcher.dart";
 import 'package:finalproject/ui/main/main_locale_provider.dart';
+import "package:finalproject/ui/product/productScreen.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import "package:finalproject/models/Product.dart";
-import "package:finalproject/ui/product/productScreen.dart";
-import "package:finalproject/sharedWidgets/LanguageTextSwitcher.dart";
 import 'package:provider/provider.dart';
 
 class ProductThumbnail extends StatelessWidget {

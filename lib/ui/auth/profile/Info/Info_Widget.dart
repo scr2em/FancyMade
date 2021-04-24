@@ -13,7 +13,6 @@ class InfoScreen extends StatefulWidget {
 
 class _InfoScreenState extends State<InfoScreen> {
   var _isShippingInputEnabled = false;
-  var _isPaymentInputEnabled = false;
   String shippingAddress = "";
 
   @override

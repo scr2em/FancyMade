@@ -1,13 +1,13 @@
 import 'dart:ui';
+
 import 'package:finalproject/models/Product.dart';
-import 'package:finalproject/sharedWidgets/CustomAppBar.dart';
+import "package:finalproject/services/products_service.dart";
 import 'package:finalproject/sharedWidgets/DashboardBottomBar.dart';
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:finalproject/ui/main/main_locale_provider.dart';
 import 'package:finalproject/ui/product/EditProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import "package:finalproject/services/products_service.dart";
 import 'package:provider/provider.dart';
 
 class StoreInventory extends StatelessWidget {

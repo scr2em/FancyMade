@@ -1,9 +1,10 @@
+import "package:finalproject/models/Product.dart";
+import "package:finalproject/sharedWidgets/DashboardBottomBar.dart";
 import 'package:finalproject/sharedWidgets/LanguageTextSwitcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import "package:finalproject/models/Product.dart";
+
 import '../../../sharedWidgets/CustomButton.dart';
-import "package:finalproject/sharedWidgets/DashboardBottomBar.dart";
 
 class ProductReview extends StatelessWidget {
   // final Product product;

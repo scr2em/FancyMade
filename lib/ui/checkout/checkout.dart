@@ -1,10 +1,11 @@
+import 'dart:math' as math;
+
 import 'package:finalproject/sharedWidgets/CustomLightTextField.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../sharedWidgets/CustomButton.dart';
-import 'dart:math' as math;
 
 class Checkout extends StatefulWidget {
   @override

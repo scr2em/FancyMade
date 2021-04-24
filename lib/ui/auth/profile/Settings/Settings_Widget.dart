@@ -1,9 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../main/main_locale_provider.dart';
 import 'package:provider/provider.dart';
+
 import '../../../../sharedWidgets/CustomBottomBar.dart';
+import '../../../main/main_locale_provider.dart';
 
 const int ARABIC_VALUE = 1;
 const int ENGLISH_VALUE = 2;
