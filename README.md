@@ -18,7 +18,9 @@ samples, guidance on mobile development, and a full API reference.
 ### How to use
 
 flutter pub get
+
 #change entry point to lib/ui/main/main.dart
+
 flutter run lib/ui/main/main.dart
 
 ## Built with
