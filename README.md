@@ -23,9 +23,6 @@ flutter pub get
 
 flutter run lib/ui/main/main.dart
 
-## Built with
-* No external libraries were used in this project
-
 ## Authors
 * **Ahmed Bahaa** 
 * **Aya Ahmed****
