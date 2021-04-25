@@ -25,5 +25,5 @@ flutter run lib/ui/main/main.dart
 
 ## Authors
 * **Ahmed Bahaa** 
-* **Aya Ahmed****
+* **Aya Ahmed**
 * **Mohamed AbdElgwad**
